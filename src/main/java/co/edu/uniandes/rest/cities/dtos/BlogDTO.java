@@ -22,7 +22,7 @@ public class BlogDTO {
 
     /**
      * Constructor con parámetros.
-     * @param id identificador de la Biblioteca
+     * @param id identificador del blog
      * @param name nombre de la Biblioteca
      * @param descripcion
      */
