@@ -15,6 +15,7 @@ import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 /**
  *
@@ -48,5 +49,11 @@ public class BlogResource {
     @POST
     public BlogDTO  createBlog( BlogDTO  blog) throws CityLogicException {
         return blogLogic.createBlog(blog);
+    }
+    
+    @GET
+    @Path("{id: \\d+}")
+    public BlogDTO  getBlog( @PathParam("id") Long id) throws CityLogicException {
+        return blogLogic.getBlog(id);
     }
 }

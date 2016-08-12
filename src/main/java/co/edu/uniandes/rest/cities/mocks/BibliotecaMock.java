@@ -102,5 +102,30 @@ public class BibliotecaMock {
         bibliotecas.add(newBiblioteca);
         return newBiblioteca;
     }
+    /**
+	 * Obtiene el listado de bibliotecas. 
+         * @param id del blog buscado
+	 * @return lista de ciudades
+	 * @throws CityLogicException cuando no existe la lista en memoria  
+	 */    
+    public BibliotecaDTO getBiblioteca(Long id) throws CityLogicException {
+    	if (bibliotecas == null) {
+    		logger.severe("Error interno: lista de blogs  no existe.");
+    		throw new CityLogicException("Error interno: lista de blogs no existe.");    		
+    	}
+    	
+    	logger.info("retornando el blog buscado ");
+    	for (BibliotecaDTO bib : bibliotecas) {
+	        	// si existe una ciudad con ese id
+	            if (Objects.equals(id, bib.getId())){
+                        logger.severe("el blog");
+                        return bib;
+                    }
+                    
+                  }
+        logger.severe("Error interno: el blog no existe.");
+    		throw new CityLogicException("Error interno: el blo no existe."); 
+        
+    }
 
 }

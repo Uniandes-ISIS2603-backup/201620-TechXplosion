@@ -33,8 +33,8 @@ public class BlogMock {
 
     	if (blogs == null) {
             blogs  = new ArrayList<>();
-            blogs .add(new BlogDTO(1L, "Cien años de soledad","este blog es de literatura colombiana"));
-            blogs .add(new BlogDTO(2L, "El jugador","blog de discuición de la obra"));
+            blogs.add(new BlogDTO(1L, "Cien años de soledad","este blog es de literatura colombiana"));
+            blogs.add(new BlogDTO(2L, "El jugador","blog de discuición de la obra"));
             blogs.add(new BlogDTO(3L, "Crimen y castigo","blog de spoilers"));
         }
         
@@ -43,7 +43,7 @@ public class BlogMock {
     	
     	// muestra información 
     	logger.info("Inicializa la lista de blogs");
-    	logger.info("bibliotecas" + blogs );
+    	logger.info("blogs" + blogs );
     }    
     
 	/**
@@ -101,6 +101,31 @@ public class BlogMock {
     	logger.info("agregando blog " + newBlog);
         blogs.add(newBlog);
         return newBlog;
+    }
+    /**
+	 * Obtiene el listado de bibliotecas. 
+         * @param id del blog buscado
+	 * @return lista de ciudades
+	 * @throws CityLogicException cuando no existe la lista en memoria  
+	 */    
+    public BlogDTO getBlog(Long id) throws CityLogicException {
+    	if (blogs == null) {
+    		logger.severe("Error interno: lista de blogs  no existe.");
+    		throw new CityLogicException("Error interno: lista de blogs no existe.");    		
+    	}
+    	
+    	logger.info("retornando el blog buscado ");
+    	for (BlogDTO blog : blogs) {
+	        	// si existe una ciudad con ese id
+	            if (Objects.equals(id, blog.getId())){
+                        logger.severe("el blog");
+                        return blog;
+                    }
+                    
+                  }
+        logger.severe("Error interno: el blog no existe.");
+    		throw new CityLogicException("Error interno: el blo no existe."); 
+        
     }
 
 }

@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.rest.cities.resources;
 import co.edu.uniandes.rest.cities.dtos.BibliotecaDTO;
+import co.edu.uniandes.rest.cities.dtos.BlogDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 import co.edu.uniandes.rest.cities.mocks.BibliotecaMock;
 
@@ -15,6 +16,7 @@ import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 /**
  *
@@ -51,6 +53,11 @@ public class BibliotecaResource {
     @POST
     public BibliotecaDTO  createBiblioteca( BibliotecaDTO  biblioteca ) throws CityLogicException {
         return bibLogic.createBiblioteca(biblioteca);
+    }
+    @GET
+    @Path("{id: \\d+}")
+    public BibliotecaDTO  getBiblioteca( @PathParam("id") Long id) throws CityLogicException {
+        return bibLogic.getBiblioteca(id);
     }
 }
 
