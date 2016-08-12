@@ -56,6 +56,6 @@ public class CityResource {
     public CityDTO createCity(CityDTO city) throws CityLogicException {
         return cityLogic.createCity(city);
     }
-
-  
+    
+    
 }
