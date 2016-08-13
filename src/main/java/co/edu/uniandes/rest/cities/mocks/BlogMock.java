@@ -127,5 +127,29 @@ public class BlogMock {
     		throw new CityLogicException("Error interno: el blo no existe."); 
         
     }
+    public void deleteBlog(Long id)throws CityLogicException{
+        if (blogs == null) {
+    		logger.severe("Error interno: lista de blogs  no existe.");
+    		throw new CityLogicException("Error interno: lista de blogs no existe.");    		
+    	}
+    	boolean existe =false;
+    	logger.info("buscando el blog con el id: "+id);
+    	for (BlogDTO blog : blogs) {
+	        	// si existe una ciudad con ese id
+	            if (Objects.equals(id, blog.getId())){
+                        logger.severe("existe el blog con id: "+id);
+                        blogs.remove(blog);
+                        existe=true;
+                        logger.severe("se borro el blog con id: "+id);
+                        break;
+                    }
+                    
+                  }
+        if(!existe){
+            logger.severe("Error interno: el blog no existe.");
+            throw new CityLogicException("Error interno: el blog no existe."); 
+        }
+       
+    }
 
 }

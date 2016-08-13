@@ -11,10 +11,10 @@ import co.edu.uniandes.rest.cities.mocks.BlogMock;
 
 import java.util.List;
 
-
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 /**
@@ -54,6 +54,11 @@ public class BlogResource {
     @GET
     @Path("{id: \\d+}")
     public BlogDTO  getBlog( @PathParam("id") Long id) throws CityLogicException {
-        return blogLogic.getBlog(id);
+        return blogLogic.getBlog(id); 
+    }
+    @DELETE
+    @Path("{id: \\d+}")
+    public void  deleteBlog( @PathParam("id") Long id) throws CityLogicException {
+        blogLogic.deleteBlog(id);
     }
 }
