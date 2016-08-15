@@ -10,6 +10,7 @@ import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 import co.edu.uniandes.rest.cities.mocks.ReservaMock;
 import java.util.Date;
 import java.util.List;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -24,6 +25,7 @@ import javax.ws.rs.Produces;
  */
 @Path("reservas")
 @Produces("application/json")
+@Consumes("application/json")
 public class ReservaResource {
     
     ReservaMock reservaMock = new ReservaMock();
@@ -85,8 +87,8 @@ public class ReservaResource {
      * @throws CityLogicException En caso de que no hayan reservas hechas para esa fecha o que la lista de reservas sea vacía.
      */
     @GET
-    @Path("{fechaSolicitud: \\d+}")
-    public List<ReservaDTO> getReservasPorFecha( @PathParam("fechaSolicitud") Date fechaSolicitud ) throws CityLogicException
+    @Path("{fechaSolicitud: .+}")
+    public List<ReservaDTO> getReservasPorFecha( @PathParam("fechaSolicitud") String fechaSolicitud ) throws CityLogicException
     {
         return reservaMock.getReservasPorFecha(fechaSolicitud);
     }
