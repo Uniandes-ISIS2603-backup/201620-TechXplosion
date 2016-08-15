@@ -16,7 +16,7 @@ public class ReservaDTO
     private Long id;
     private Long idUsuario;
     private Long idRecurso;
-    private Date fechaSolicitud;
+    private String fechaSolicitud;
     
     /**
      * Constructor por defecto
@@ -31,7 +31,7 @@ public class ReservaDTO
      * @param idRecurso Identificador del recurso reservado.
      * @param fechaSolicitud Fecha de reserva.
      */
-    public ReservaDTO (Long id, Long idUsuario, Long idRecurso, Date fechaSolicitud)
+    public ReservaDTO (Long id, Long idUsuario, Long idRecurso, String fechaSolicitud)
     {
         super();
         this.id = id;
@@ -85,13 +85,13 @@ public class ReservaDTO
     /**
      * @return Fecha de solicitud de la reserva.
      */
-    public Date getFechaSolicitud() {
+    public String getFechaSolicitud() {
         return fechaSolicitud;
     }
     /**
      * @param fechaSolicitud Fecha de solicitud de la reserva.
      */
-    public void setFechaSolicitud(Date fechaSolicitud) {
+    public void setFechaSolicitud(String fechaSolicitud) {
         this.fechaSolicitud = fechaSolicitud;
     }
     
