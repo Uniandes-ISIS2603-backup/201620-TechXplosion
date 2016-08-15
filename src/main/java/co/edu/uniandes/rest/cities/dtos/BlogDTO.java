@@ -6,7 +6,7 @@
 package co.edu.uniandes.rest.cities.dtos;
 
 /**
- *
+ * Clase con la infomción de un blog.
  * @author js.sosa10
  */
 public class BlogDTO {
@@ -33,53 +33,53 @@ public class BlogDTO {
                 this.descripcion=descripcion;
 	}
 
-	/**
-     * @return the id
+    /**
+     * @return el identificador del blog.
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * @param id the id to set
+     * @param el id para actualizar.
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * @return the name
+     * @return el nombre del blog
      */
     public String getName() {
         return name;
     }
 
     /**
-     * @param name the name to set
+     * @param name, el nombre para actualizar.
      */
     public void setName(String name) {
         this.name = name;
     }
        /**
-     * @return la descripción
+     * @return la descripción del blog
      */
     public String getDescripcion() {
         return descripcion;
     }
 
     /**
-     * @param name thedescripcion to set
+     * @param descripcion, la descripcion para actualizar.
      */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
     
     /**
-     * Convierte el objeto a una cadena
-     * @return la cadena que represnta el objeto
+     * Convierte el objeto a una cadena de caracteres.
+     * @return la cadena de caracteres que represnta el objeto
      */
     @Override
     public String toString() {
-    	return "{ id : " + getId() + ", name : \"" + getName() + ", descripcion : \"" + getDescripcion()+ "\" }";  
+    	return "{ id : " + getId() + ", name : \"" + getName() + "\", descripcion : \"" + getDescripcion()+ "\" }";  
     } 
 }

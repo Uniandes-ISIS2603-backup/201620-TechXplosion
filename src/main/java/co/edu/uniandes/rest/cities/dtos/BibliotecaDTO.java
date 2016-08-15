@@ -6,7 +6,7 @@
 package co.edu.uniandes.rest.cities.dtos;
 
 /**
- *
+ * Clase que guarda la informacíon de una biblioteca
  * @author js.sosa10
  */
 public class BibliotecaDTO {
@@ -30,29 +30,29 @@ public class BibliotecaDTO {
 		this.name = name;
 	}
 
-	/**
-     * @return the id
+    /**
+     * @return el id de la biblioteca
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * @param id the id to set
+     * @param id el id a actualizar.
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * @return the name
+     * @return el nombre de la biblioteca.
      */
     public String getName() {
         return name;
     }
 
     /**
-     * @param name the name to set
+     * @param name el nombre de la biblioteca a actualizar.
      */
     public void setName(String name) {
         this.name = name;

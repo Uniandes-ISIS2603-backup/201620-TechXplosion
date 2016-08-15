@@ -14,16 +14,13 @@ import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-
-
 import co.edu.uniandes.rest.cities.dtos.BibliotecaDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 public class BibliotecaMock {
     // objeto para presentar logs de las operaciones
 	private final static Logger logger = Logger.getLogger(CityLogicMock.class.getName());
 	
-	// listado de ciudades
+	// listado de bibliotecaes
     private static ArrayList<BibliotecaDTO> bibliotecas;
 
     /**
@@ -48,7 +45,7 @@ public class BibliotecaMock {
     
 	/**
 	 * Obtiene el listado de bibliotecas. 
-	 * @return lista de ciudades
+	 * @return lista de bibliotecas
 	 * @throws CityLogicException cuando no existe la lista en memoria  
 	 */    
     public List<BibliotecaDTO> getBibliotecas() throws CityLogicException {
@@ -72,22 +69,22 @@ public class BibliotecaMock {
     public BibliotecaDTO createBiblioteca(BibliotecaDTO newBiblioteca) throws CityLogicException {
     	logger.info("recibiendo solicitud de agregar biblioteca " + newBiblioteca);
     	
-    	// la nueva ciudad tiene id ?
+    	// la nueva biblioteca tiene id ?
     	if ( newBiblioteca.getId() != null ) {
-	    	// busca la ciudad con el id suministrado
+	    	// busca la biblioteca con el id suministrado
 	        for (BibliotecaDTO biblioteca : bibliotecas) {
-	        	// si existe una ciudad con ese id
+	        	// si existe una biblioteca con ese id
 	            if (Objects.equals(biblioteca.getId(), newBiblioteca.getId())){
 	            	logger.severe("Ya existe una biblioteca con ese id");
 	                throw new CityLogicException("Ya existe una biblioteca con ese id");
 	            }
 	        }
 	        
-	    // la nueva ciudad no tiene id ? 
+	    // la nueva biblioteca no tiene id ? 
     	} else {
 
-    		// genera un id para la ciudad
-    		logger.info("Generando id paa la nueva ciudad");
+    		// genera un id para la biblioteca
+    		logger.info("Generando id paa la nueva biblioteca");
     		long newId = 1;
 	        for (BibliotecaDTO biblioteca : bibliotecas) {
 	            if (newId <= biblioteca.getId()){
@@ -97,34 +94,91 @@ public class BibliotecaMock {
 	        newBiblioteca.setId(newId);
     	}
     	
-        // agrega la ciudad
-    	logger.info("agregando ciudad " + newBiblioteca);
+        // agrega la biblioteca
+    	logger.info("agregando biblioteca " + newBiblioteca);
         bibliotecas.add(newBiblioteca);
         return newBiblioteca;
     }
     /**
 	 * Obtiene el listado de bibliotecas. 
-         * @param id del blog buscado
-	 * @return lista de ciudades
+         * @param id dla biblioteca buscado
+	 * @return lista de bibliotecas
 	 * @throws CityLogicException cuando no existe la lista en memoria  
 	 */    
     public BibliotecaDTO getBiblioteca(Long id) throws CityLogicException {
     	if (bibliotecas == null) {
-    		logger.severe("Error interno: lista de blogs  no existe.");
-    		throw new CityLogicException("Error interno: lista de blogs no existe.");    		
+    		logger.severe("Error interno: lista de bibliotecas  no existe.");
+    		throw new CityLogicException("Error interno: lista de bibliotecas no existe.");    		
     	}
     	
-    	logger.info("retornando el blog buscado ");
+    	logger.info("retornando la biblioteca buscado ");
     	for (BibliotecaDTO bib : bibliotecas) {
-	        	// si existe una ciudad con ese id
+	        	// si existe una biblioteca con ese id
 	            if (Objects.equals(id, bib.getId())){
-                        logger.severe("el blog");
+                        logger.severe("la biblioteca");
                         return bib;
                     }
                     
                   }
-        logger.severe("Error interno: el blog no existe.");
+        logger.severe("Error interno: la biblioteca no existe.");
     		throw new CityLogicException("Error interno: el blo no existe."); 
+        
+    }
+    /**
+     * elimina la biblioteca con el id suministrado de la lista.
+     * @param id identificador de la biblioteca a eliminar
+     * @throws CityLogicException si la lista no existe o la biblioteca con el id dado no existe
+     */
+    public void deleteBiblioteca(Long id)throws CityLogicException{
+        if (bibliotecas == null) {
+    		logger.severe("Error interno: lista de bibliotecas  no existe.");
+    		throw new CityLogicException("Error interno: lista de bibliotecas no existe.");    		
+    	}
+    	boolean existe =false;
+    	logger.info("buscando la biblioteca con el id: "+id);
+    	for (BibliotecaDTO biblioteca : bibliotecas) {
+	        	// si existe un biblioteca con ese id
+	            if (Objects.equals(id, biblioteca.getId())){
+                        logger.severe("existe la biblioteca con id: "+id);
+                        bibliotecas.remove(biblioteca);
+                        existe=true;
+                        logger.severe("se borro la biblioteca con id: "+id);
+                        break;
+                    }
+                    
+                  }
+        if(!existe){
+            logger.severe("Error interno: la biblioteca no existe.");
+            throw new CityLogicException("Error interno: la biblioteca no existe."); 
+        }
+       
+    }
+    /**
+     * actualiza la informacion de la biblioteca con el id suministrado. 
+     * @param id identificador de la biblioteca a actualizar.
+     * @param newBiblioteca objeto con la nueva infomación dle biblioteca.
+     * @return la biblioteca actualizada.
+     * @throws CityLogicException si la lista de bibliotecas no existe o la biblioteca con el id dado no existe.
+     */
+     public BibliotecaDTO updateBiblioteca(Long id,BibliotecaDTO newBiblioteca) throws CityLogicException {
+    	if (bibliotecas == null) {
+    		logger.severe("Error interno: lista de bibliotecas  no existe.");
+    		throw new CityLogicException("Error interno: lista de bibliotecas no existe.");    		
+    	}
+    	
+    	logger.info("retornando la biblioteca buscada ");
+    	for (BibliotecaDTO biblioteca : bibliotecas) {
+	        	// si existe un biblioteca con ese id
+	            if (Objects.equals(id, biblioteca.getId())){
+                        logger.severe("la biblioteca con el id: "+id);
+                        bibliotecas.remove(biblioteca);
+                        bibliotecas.add(newBiblioteca);
+                        return newBiblioteca;
+                    }
+                    
+                  }
+        logger.severe("Error interno: la biblioteca no existe.");
+    		throw new CityLogicException("Error interno: la biblioteca no existe."); 
         
     }
 

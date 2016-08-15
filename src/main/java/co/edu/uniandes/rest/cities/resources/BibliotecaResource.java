@@ -5,16 +5,15 @@
  */
 package co.edu.uniandes.rest.cities.resources;
 import co.edu.uniandes.rest.cities.dtos.BibliotecaDTO;
-import co.edu.uniandes.rest.cities.dtos.BlogDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 import co.edu.uniandes.rest.cities.mocks.BibliotecaMock;
 
 
 import java.util.List;
-
-
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -28,7 +27,7 @@ public class BibliotecaResource {
 
 
 
-    BibliotecaMock bibLogic = new BibliotecaMock();
+    BibliotecaMock bibliotecaLogic = new BibliotecaMock();
 
     /**
      * Obtiene el listado de Bibliotecas.
@@ -38,7 +37,7 @@ public class BibliotecaResource {
      */
     @GET
     public List<BibliotecaDTO> getBibliotecas() throws CityLogicException {
-        return bibLogic.getBibliotecas();
+        return bibliotecaLogic.getBibliotecas();
     }
 
    
@@ -52,12 +51,41 @@ public class BibliotecaResource {
      */
     @POST
     public BibliotecaDTO  createBiblioteca( BibliotecaDTO  biblioteca ) throws CityLogicException {
-        return bibLogic.createBiblioteca(biblioteca);
+        return bibliotecaLogic.createBiblioteca(biblioteca);
     }
+    /**
+     * obtiene la infomacion de la biblioteca identificado con el id.
+     * @param id de la biblioteca a buscar.
+     * @return la biblioteca identificada con el id.
+     * @throws CityLogicException cunado no existe una biblioteca con ese id.
+     */
     @GET
     @Path("{id: \\d+}")
     public BibliotecaDTO  getBiblioteca( @PathParam("id") Long id) throws CityLogicException {
-        return bibLogic.getBiblioteca(id);
+        return bibliotecaLogic.getBiblioteca(id);
+    }
+     /**
+     * elimina la biblioteca identificada con el id.
+     * @param id identificador de la biblioteca a eliminar.
+     * @throws CityLogicException si la biblioteca no identificado con ese id no existe.
+     */
+    @DELETE
+    @Path("{id: \\d+}")
+    public void  deleteBiblioteca( @PathParam("id") Long id) throws CityLogicException {
+        bibliotecaLogic.deleteBiblioteca(id);
+    }
+
+    /**
+     * Actualiza la información dla biblioteca identificada con el id.
+     * @param id identificador asociado a la biblioteca a actualizar
+     * @param newBiblioteca objeto con la nueva información dla biblioteca
+     * @return la biblioteca identificado con el id.
+     * @throws CityLogicException si la biblioteca con el id dado no existe.
+     */
+    @PUT
+    @Path("{id: \\d+}")
+    public BibliotecaDTO updateBiblioteca(@PathParam("id") Long id, BibliotecaDTO newBiblioteca) throws CityLogicException{
+        return bibliotecaLogic.updateBiblioteca(id, newBiblioteca);
     }
 }
 

@@ -6,7 +6,7 @@
 package co.edu.uniandes.rest.cities.mocks;
 
 /**
- *
+ * Mock del recurso Blog (Mock del servicio REST) 
  * @author js.sosa10
  */
 import java.util.ArrayList;
@@ -14,16 +14,12 @@ import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-
-
 import co.edu.uniandes.rest.cities.dtos.BlogDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 public class BlogMock {
      // objeto para presentar logs de las operaciones
-	private final static Logger logger = Logger.getLogger(CityLogicMock.class.getName());
-	
-	// listado de ciudades
+	private final static Logger logger = Logger.getLogger(CityLogicMock.class.getName());	
+	// listado de blogs
     private static ArrayList<BlogDTO> blogs;
 
     /**
@@ -47,8 +43,8 @@ public class BlogMock {
     }    
     
 	/**
-	 * Obtiene el listado de bibliotecas. 
-	 * @return lista de ciudades
+	 * Obtiene el listado de blogs. 
+	 * @return lista de blogs
 	 * @throws CityLogicException cuando no existe la lista en memoria  
 	 */    
     public List<BlogDTO> getBlogs() throws CityLogicException {
@@ -57,36 +53,36 @@ public class BlogMock {
     		throw new CityLogicException("Error interno: lista de blogs no existe.");    		
     	}
     	
-    	logger.info("retornando todas los blogs ");
+    	logger.info("retornando todos los blogs ");
     	return blogs;
     }
 
  
 
     /**
-     * Agrega una biblioteca a la lista.
-     * @param newBiblioteca biblioteca a adicionar
-     * @throws CityLogicException cuando ya existe una bibloteca con el id suministrado
-     * @return biblioteca agregada
+     * Agrega un blog a la lista.
+     * @param newBlog blog a adicionar
+     * @throws CityLogicException cuando ya existe un blog con el id suministrado
+     * @return blog agregado
      */
     public BlogDTO createBlog(BlogDTO newBlog) throws CityLogicException {
     	logger.info("recibiendo solicitud de agregar blog " + newBlog);
     	
-    	// la nueva ciudad tiene id ?
+    	// el nuevo blog tiene id ?
     	if ( newBlog.getId() != null ) {
-	    	// busca la ciudad con el id suministrado
+	    	// busca el blog con el id suministrado
 	        for (BlogDTO blog : blogs) {
-	        	// si existe una ciudad con ese id
+	        	// si existe un blog con ese id
 	            if (Objects.equals(blog.getId(), newBlog.getId())){
 	            	logger.severe("Ya existe una blog con ese id");
 	                throw new CityLogicException("Ya existe una blog con ese id");
 	            }
 	        }
 	        
-	    // la nueva ciudad no tiene id ? 
+	    // el nuevo blog no tiene id ? 
     	} else {
 
-    		// genera un id para la ciudad
+    		// genera un id para el blog
     		logger.info("Generando id para el nuevo blog");
     		long newId = 1;
 	        for (BlogDTO blog : blogs) {
@@ -97,16 +93,16 @@ public class BlogMock {
 	        newBlog.setId(newId);
     	}
     	
-        // agrega la ciudad
+        // agrega el blog
     	logger.info("agregando blog " + newBlog);
         blogs.add(newBlog);
         return newBlog;
     }
     /**
-	 * Obtiene el listado de bibliotecas. 
+	 * Obtiene el listado de blogs. 
          * @param id del blog buscado
-	 * @return lista de ciudades
-	 * @throws CityLogicException cuando no existe la lista en memoria  
+	 * @return blog con el id suministrado
+	 * @throws CityLogicException cuando no existe la lista en memoria o no existe el blog 
 	 */    
     public BlogDTO getBlog(Long id) throws CityLogicException {
     	if (blogs == null) {
@@ -116,17 +112,22 @@ public class BlogMock {
     	
     	logger.info("retornando el blog buscado ");
     	for (BlogDTO blog : blogs) {
-	        	// si existe una ciudad con ese id
+	        	// si existe un blog  con ese id
 	            if (Objects.equals(id, blog.getId())){
-                        logger.severe("el blog");
+                        logger.severe("el blog buscado: "+blog);
                         return blog;
                     }
                     
                   }
         logger.severe("Error interno: el blog no existe.");
-    		throw new CityLogicException("Error interno: el blo no existe."); 
+    		throw new CityLogicException("Error interno: el blog no existe."); 
         
     }
+    /**
+     * elimina el blog con el id suministrado de la lista.
+     * @param id identificador del blog a eliminar
+     * @throws CityLogicException si la lista no existe o el blog con el id dado no existe
+     */
     public void deleteBlog(Long id)throws CityLogicException{
         if (blogs == null) {
     		logger.severe("Error interno: lista de blogs  no existe.");
@@ -135,7 +136,7 @@ public class BlogMock {
     	boolean existe =false;
     	logger.info("buscando el blog con el id: "+id);
     	for (BlogDTO blog : blogs) {
-	        	// si existe una ciudad con ese id
+	        	// si existe un blog con ese id
 	            if (Objects.equals(id, blog.getId())){
                         logger.severe("existe el blog con id: "+id);
                         blogs.remove(blog);
@@ -150,6 +151,34 @@ public class BlogMock {
             throw new CityLogicException("Error interno: el blog no existe."); 
         }
        
+    }
+    /**
+     * actualiza la informacion del blog con el id suministrado. 
+     * @param id identificador del blog a actualizar.
+     * @param newBlog objeto con la nueva infomación dle blog.
+     * @return el blog actualizado.
+     * @throws CityLogicException si la lista de blogs no existe o el blog con el id dado no existe.
+     */
+     public BlogDTO updateBlog(Long id,BlogDTO newBlog) throws CityLogicException {
+    	if (blogs == null) {
+    		logger.severe("Error interno: lista de blogs  no existe.");
+    		throw new CityLogicException("Error interno: lista de blogs no existe.");    		
+    	}
+    	
+    	logger.info("retornando el blog buscado ");
+    	for (BlogDTO blog : blogs) {
+	        	// si existe un blog con ese id
+	            if (Objects.equals(id, blog.getId())){
+                        logger.severe("el blog");
+                        blogs.remove(blog);
+                        blogs.add(newBlog);
+                        return newBlog;
+                    }
+                    
+                  }
+        logger.severe("Error interno: el blog no existe.");
+    		throw new CityLogicException("Error interno: el blog no existe."); 
+        
     }
 
 }
