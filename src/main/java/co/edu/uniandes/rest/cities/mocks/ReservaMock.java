@@ -13,7 +13,6 @@ package co.edu.uniandes.rest.cities.mocks;
 import co.edu.uniandes.rest.cities.dtos.ReservaDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
@@ -102,7 +101,7 @@ public class ReservaMock {
      * @return La lista de reservas hechas en la fecha dada.
      * @throws CityLogicException En caso de no haber reservas para esa fecha o que la lista de reservas este vacia.
      */
-    public List<ReservaDTO> getReservasPorFecha(Date fechaSolicitud) throws CityLogicException
+    public List<ReservaDTO> getReservasPorFecha(String fechaSolicitud) throws CityLogicException
     {
         ArrayList <ReservaDTO> reservasPorFecha = new ArrayList<>();
         if (reservas.isEmpty())
@@ -142,8 +141,8 @@ public class ReservaMock {
     {
         if (reservas.isEmpty())
         {
-            logger.severe("Error: La lista de reservas está vacía ");
-            throw new CityLogicException("Error: La lista de reservas está vacía. ");
+            logger.severe("Error: La lista de reservas está vacia. ");
+            throw new CityLogicException("Error: La lista de reservas esta vacia. ");
         }
         else
         {
@@ -156,8 +155,8 @@ public class ReservaMock {
             }
                 
         }
-        logger.severe("No se encontró una reserva con el id dado.");
-        throw new CityLogicException("No se encontró una reserva con el id dado.");
+        logger.severe("No se encontro una reserva con el id dado.");
+        throw new CityLogicException("No se encontro una reserva con el id dado.");
     }
     /**
      * Obtiene las reservas que tiene un recurso en especifico.
@@ -170,8 +169,8 @@ public class ReservaMock {
         ArrayList <ReservaDTO> reservasPorRecurso = new ArrayList<>();
         if (reservas.isEmpty())
         {
-            logger.severe("Error: La lista de reservas está vacía ");
-            throw new CityLogicException("Error: La lista de reservas está vacía. ");
+            logger.severe("Error: La lista de reservas esta vacia ");
+            throw new CityLogicException("Error: La lista de reservas esta vacia. ");
         }
         else
         {
@@ -206,8 +205,8 @@ public class ReservaMock {
         ArrayList <ReservaDTO> reservasPorUsuario = new ArrayList<>();
         if (reservas.isEmpty())
         {
-            logger.severe("Error: La lista de reservas está vacía ");
-            throw new CityLogicException("Error: La lista de reservas está vacía. ");
+            logger.severe("Error: La lista de reservas esta vacia ");
+            throw new CityLogicException("Error: La lista de reservas esta vacia. ");
         }
         else
         {
@@ -241,8 +240,8 @@ public class ReservaMock {
         boolean isIdInArray = false;
         if (reservas.isEmpty())
         {
-            logger.severe("Error: La lista de reservas está vacía ");
-            throw new CityLogicException("Error: La lista de reservas está vacía. ");
+            logger.severe("Error: La lista de reservas esta vacia ");
+            throw new CityLogicException("Error: La lista de reservas esta vacia. ");
         }
         else
         {
@@ -259,8 +258,8 @@ public class ReservaMock {
         }
         if (isIdInArray == false )
         {
-            logger.severe("No se encontró una reserva con el id dado.");
-            throw new CityLogicException("No se encontró una reserva con el id dado.");
+            logger.severe("No se encontro una reserva con el id dado.");
+            throw new CityLogicException("No se encontro una reserva con el id dado.");
         }
 
     }
@@ -276,8 +275,8 @@ public class ReservaMock {
     {
         if (reservas.isEmpty())
         {
-            logger.severe("Error: La lista de reservas está vacía ");
-            throw new CityLogicException("Error: La lista de reservas está vacía. ");
+            logger.severe("Error: La lista de reservas esta vacia ");
+            throw new CityLogicException("Error: La lista de reservas esta vacia. ");
         }
         else if( id != reservaMod.getId())
         {
@@ -295,8 +294,8 @@ public class ReservaMock {
                 }
             }       
         }
-        logger.severe("No se encontró una reserva con el id dado.");
-        throw new CityLogicException("No se encontró una reserva con el id dado.");
+        logger.severe("No se encontro una reserva con el id dado.");
+        throw new CityLogicException("No se encontro una reserva con el id dado.");
     }
     
     
