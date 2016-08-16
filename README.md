@@ -18,10 +18,9 @@
  Objetos:
   ```javascript
  {
-    "name" : 'Carlos Valderrama'       /* Tipo String */
-    "cédula" : 542382304,    		   /* Tipo Long */
-    "especialidad" : 'Oftalmólogo'     /* Tipo String */
-    "consultorio" : 3,  			   /* Tipo Long */
+    "nombre" : 'Central'       /* Tipo String */
+    "id" : 542382304,    		   /* Tipo Long */
+
 }
  ```
 
@@ -31,16 +30,12 @@ Listas:
  ```javascript
 [ 
   	{
-   	 "name" : 'Carlos Valderrama'		/* Tipo String */
-   	 "cédula" : 542382304,			/* Tipo Long */
-   	 "especialidad" : 'Oftalmólogo'		/* Tipo String */
-   	 "consultorio" : 3,			/* Tipo Long */
+   	 "nombre" : 'Central'       /* Tipo String */
+        "id" : 542382304	    /* Tipo Long */
 	},
 	{
-   	 "name" : 'James Rodriguez'       	/* Tipo String */
-   	 "cédula" : 548393222,			/* Tipo Long */
-  	 "especialidad" : 'Cardiólogo'		/* Tipo String */
-  	 "consultorio" : 23,			/* Tipo Long */
+   	 "nombre" : 'Nacional'       /* Tipo String */
+         "id" : 54245,    		   /* Tipo Long */
 	}
 ]
 ```
@@ -50,11 +45,11 @@ La descripción del API REST se presenta a continuación:
 
 Método|URI|Acción|Parámetros|Cuerpo|Retorno
 :--:|:--:|:--:|:--:|:--:|:--:
-**GET**|/doctors|Lista los registros de Médico (READ)|||Colección de registros de Médico 
-**GET**|/doctors/*:cedula*|Obtener los atributos de una instancia de Médico (READ)|**@PathParam cédula**: Número de cédula del doctor a consultar||Atributos de la instancia de Médico
-**POST**|/doctors|Crear una nueva instancia de la entidad Médico (CREATE)||Atributos de la instancia de Médico a crear|Instancia de Médico creada, incluyendo su cédula
-**PUT**|/doctors/*:cedula*|Actualiza una instancia de la entidad Médico (UPDATE)|**@PathParam cédula**: Identificador del registro|Objeto JSON de Médico|Instancia de Médico actualizada
-**DELETE**|/doctors/*:cedula*|Borra instancia de Médico en el servidor (DELETE)|**@PathParam cédula**: Identificador del registro||
+**GET**|/bibliotecas|Lista las bibliotecas (READ)|||Colección de bibliotecas
+**GET**|/bibliotecas/*:id*|Obtener los atributos de una instancia de Biblioteca(READ)|**@PathParam id**: Número de id de la biblioteca a consultar||Atributos de la instancia de Biblioteca
+**POST**|/bibliotecas|Crear una nueva instancia de la entidad Biblioteca (CREATE)||Atributos de la instancia de biblioteca a crear|Instancia de Biblioteca creada, incluyendo su id
+**PUT**|/bibliotecas/*:id*|Actualiza una instancia de la entidad  biblioteca (UPDATE)|**@PathParam id**: Identificador del registro|Objeto JSON de  biblioteca|Instancia de  biblioteca actualizada
+**DELETE**|/bibliotecas/*:id*|Borra instancia de  biblioteca en el servidor (DELETE)|**@PathParam id**: Identificador del registro||
 
  ##Clase Blog
  ##Clase MedioPago
