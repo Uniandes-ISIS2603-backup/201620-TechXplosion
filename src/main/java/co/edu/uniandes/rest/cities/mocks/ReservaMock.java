@@ -68,7 +68,7 @@ public class ReservaMock {
     public ReservaDTO createReserva( ReservaDTO nuevaReserva ) throws CityLogicException
     {
         logger.info("Recibiendo solicitud de agregar nueva reserva. " + nuevaReserva);
-        if (nuevaReserva.getId() != null)
+        if (nuevaReserva.getId() != null && !reservas.isEmpty())
         {
             for (ReservaDTO reserva : reservas)
             {
@@ -76,10 +76,6 @@ public class ReservaMock {
                 {
                     logger.severe(("Ya existe una reserva con ese id. "));
                     throw new CityLogicException("Ya existe una reserva con ese id. ");
-                }
-                else
-                {
-                    reservas.add(reserva);
                 }
             }
         }
