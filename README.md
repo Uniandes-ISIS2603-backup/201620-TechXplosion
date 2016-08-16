@@ -52,5 +52,42 @@ Método|URI|Acción|Parámetros|Cuerpo|Retorno
 **DELETE**|/bibliotecas/*:id*|Borra instancia de  biblioteca en el servidor (DELETE)|**@PathParam id**: Identificador del registro||
 
  ##Clase Blog
+ Objetos:
+  ```javascript
+ {
+    "nombre" : 'Blog 1'       /* Tipo String */
+    "id" : 542382304,    		   /* Tipo Long */
+    "descripcion" : 'desc1'       /* Tipo String */
+
+}
+ ```
+
+Listas:
+
+
+ ```javascript
+[ 
+  	{
+   	"nombre" : 'Blog 1'       /* Tipo String */
+    "id" : 542382304,    		   /* Tipo Long */
+    "descripcion" : 'desc1'       /* Tipo String */
+	},
+	{
+   	 "nombre" : 'Blog 2'       /* Tipo String */
+    "id" : 542382303,    		   /* Tipo Long */
+    "descripcion" : 'desc2'       /* Tipo String */
+	}
+]
+```
+###Servicios REST
+La descripción del API REST se presenta a continuación:
+
+Método|URI|Acción|Parámetros|Cuerpo|Retorno
+:--:|:--:|:--:|:--:|:--:|:--:
+**GET**|/blogs|Lista los blogs (READ)|||Colección de blogs
+**GET**|/blogs/*:id*|Obtener los atributos de una instancia de Blog(READ)|**@PathParam id**: Número de id del blog a consultar||Atributos de la instancia de Blog
+**POST**|/blogs|Crear una nueva instancia de la entidad Blog (CREATE)||Atributos de la instancia de blog a crear|Instancia de Blog creada, incluyendo su id
+**PUT**|/blogs/*:id*|Actualiza una instancia de la entidad  blog (UPDATE)|**@PathParam id**: Identificador del registro|Objeto JSON de  biblioteca|Instancia de  blog actualizada
+**DELETE**|/blogs/*:id*|Borra instancia de  blogs en el servidor (DELETE)|**@PathParam id**: Identificador del registro||
  ##Clase MedioPago
  
