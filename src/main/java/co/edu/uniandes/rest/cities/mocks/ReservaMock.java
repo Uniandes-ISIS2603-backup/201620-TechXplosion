@@ -77,11 +77,15 @@ public class ReservaMock {
                     logger.severe(("Ya existe una reserva con ese id. "));
                     throw new CityLogicException("Ya existe una reserva con ese id. ");
                 }
+                else
+                {
+                    reservas.add(reserva);
+                }
             }
         }
         else
         {
-            logger.info("Generando id para la nueva ciudad. ");
+            logger.info("Generando id para la nueva Reserva. ");
             long newId = 1;
 	        for (ReservaDTO reserva : reservas) {
 	            if (newId <= reserva.getId()){
