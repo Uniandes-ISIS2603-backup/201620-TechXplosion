@@ -49,7 +49,7 @@ public class ReservaResource {
      * @throws CityLogicException En caso de no haber una reserva con el ida dado o que la lista de reservas sea vacía.
      */
     @GET
-    @QueryParam("{id: \\d+}")
+    @Path("reserva/{id: \\d+}")
     public ReservaDTO getReserva(@QueryParam("id") Long id) throws CityLogicException 
     {
         return reservaMock.getReserva(id);
@@ -62,7 +62,7 @@ public class ReservaResource {
      * @throws CityLogicException En caso de que no hayan reservas para ese recurso o que la lista de reservas esté vacía.
      */
     @GET
-    @QueryParam("{idRecurso: \\d+}")
+    @Path("recurso/{idRecurso: \\d+}")
     public List<ReservaDTO> getReservasPorRecurso(@QueryParam("idRecurso")Long idRecurso) throws CityLogicException
     {
         return reservaMock.getReservasPorRecurso(idRecurso);
@@ -75,7 +75,7 @@ public class ReservaResource {
      * @throws CityLogicException En caso de que no hayan reservas para ese usuario o que la lista de reservas esté vacía.
      */
     @GET
-    @QueryParam("{idUsuario: \\d+}")
+    @Path("usuario/{idUsuario: \\d+}")
     public List<ReservaDTO> getReservasPorUsuario(@QueryParam("idUsuario") Long idUsuario) throws CityLogicException
     {
         return reservaMock.getReservasPorUsuario(idUsuario);
@@ -88,7 +88,7 @@ public class ReservaResource {
      * @throws CityLogicException En caso de que no hayan reservas hechas para esa fecha o que la lista de reservas sea vacía.
      */
     @GET
-    @QueryParam("{fechaSolicitud: .+}")
+    @Path("fecha/{fechaSolicitud: .+}")
     public List<ReservaDTO> getReservasPorFecha( @QueryParam("fechaSolicitud") String fechaSolicitud ) throws CityLogicException
     {
         return reservaMock.getReservasPorFecha(fechaSolicitud);
