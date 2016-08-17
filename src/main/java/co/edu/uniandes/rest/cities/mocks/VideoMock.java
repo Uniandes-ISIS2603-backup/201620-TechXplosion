@@ -31,10 +31,13 @@ public class VideoMock
     
     public VideoMock()
     {
-        videos = new ArrayList<VideoDTO>();
-        videos.add(new VideoDTO("El Arte de la Guerra - Sun Tzu", Long.parseLong("0000001"), 90, true));
-        videos.add(new VideoDTO("El Abrazo de la Serpiente", Long.parseLong("0000002"), 120, false));
-        videos.add(new VideoDTO("", Long.parseLong("0000003"), 180, true));
+        if(videos == null)
+        {
+            videos = new ArrayList<VideoDTO>();
+            videos.add(new VideoDTO("El Arte de la Guerra - Sun Tzu", Long.parseLong("0000001"), 90, true));
+            videos.add(new VideoDTO("El Abrazo de la Serpiente", Long.parseLong("0000002"), 120, false));
+            videos.add(new VideoDTO("", Long.parseLong("0000003"), 180, true));
+        }
         
         // indica que se muestren todos los mensajes
     	logger.setLevel(Level.INFO);
