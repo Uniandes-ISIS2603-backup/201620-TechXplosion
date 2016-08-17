@@ -29,9 +29,9 @@ public class BlogMock {
 
     	if (blogs == null) {
             blogs  = new ArrayList<>();
-            blogs.add(new BlogDTO(1L, "Cien años de soledad","este blog es de literatura colombiana"));
-            blogs.add(new BlogDTO(2L, "El jugador","blog de discuición de la obra"));
-            blogs.add(new BlogDTO(3L, "Crimen y castigo","blog de spoilers"));
+            blogs.add(new BlogDTO(1L, "Cien años de soledad","este blog es de literatura colombiana","comentario1"));
+            blogs.add(new BlogDTO(2L, "El jugador","blog de discuición de la obra","comentario2"));
+            blogs.add(new BlogDTO(3L, "Crimen y castigo","blog de spoilers","comentario3"));
         }
         
     	// indica que se muestren todos los mensajes

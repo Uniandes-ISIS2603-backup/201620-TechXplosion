@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.rest.cities.dtos;
 
+import java.util.ArrayList;
+
 /**
  * Clase con la infomción de un blog.
  * @author js.sosa10
@@ -13,6 +15,7 @@ public class BlogDTO {
     private Long id;
     private String name;
     private String descripcion;
+    private String comentarios;
 
     /**
      * Constructor por defecto
@@ -26,11 +29,12 @@ public class BlogDTO {
      * @param name nombre de la Biblioteca
      * @param descripcion
      */
-    public BlogDTO(Long id,String name ,String descripcion) {
+    public BlogDTO(Long id,String name ,String descripcion, String comentraios ) {
 		super();
 		this.id = id;
 		this.name = name;
                 this.descripcion=descripcion;
+                this.comentarios=comentraios;
 	}
 
     /**
@@ -72,6 +76,14 @@ public class BlogDTO {
      */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(String comentraios) {
+        this.comentarios = comentarios;
     }
     
     /**
