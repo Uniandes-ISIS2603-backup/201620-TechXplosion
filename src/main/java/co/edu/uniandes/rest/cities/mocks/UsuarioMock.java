@@ -125,6 +125,7 @@ public class UsuarioMock
      * @throws CityLogicException si la lista no existe o el user
      */
     public void deleteUsuario(Long id)throws CityLogicException{
+        logger.severe("Listo para borrar usuario");
         if (usuarios == null) 
         {
     		logger.severe("Error interno: lista de usuarios no existe.");
