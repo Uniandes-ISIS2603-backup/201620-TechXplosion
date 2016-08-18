@@ -27,7 +27,7 @@ public class VideoMock
     /**
      * Atributo que modela la lista de videos.
      */
-    private ArrayList<VideoDTO> videos;
+    private static ArrayList<VideoDTO> videos;
     
     /**
      * Clase que inicializa el administrador de videos.
@@ -36,10 +36,11 @@ public class VideoMock
     {
         if(videos == null)
         {
-            videos = new ArrayList<VideoDTO>();
+            System.out.println("holaaa1");
+            videos = new ArrayList<>();
             videos.add(new VideoDTO("El Arte de la Guerra - Sun Tzu", Long.parseLong("0000001"), 90, true));
             videos.add(new VideoDTO("El Abrazo de la Serpiente", Long.parseLong("0000002"), 120, false));
-            videos.add(new VideoDTO("", Long.parseLong("0000003"), 180, true));
+            videos.add(new VideoDTO("La Vida de lo Desconocido", Long.parseLong("0000003"), 180, true));
         }
         
         // indica que se muestren todos los mensajes
@@ -47,7 +48,7 @@ public class VideoMock
     	
     	// muestra información 
     	logger.info("Inicializa la lista de videos.");
-    	logger.info("Libros" + videos );
+    	logger.info("Videos" + videos );
     }
     
     /**
@@ -79,10 +80,10 @@ public class VideoMock
         {
             for (VideoDTO video : videos) 
             {
-                if (Objects.equals(video.getNombre(), newVideo.getNombre()))
+                if (Objects.equals(video.getId(), newVideo.getId()))
                 {
-	            	logger.severe("Ya existe un video con ese nombre");
-	                throw new CityLogicException("Ya existe un video con ese nombre");
+	            	logger.severe("Ya existe un video con ese id");
+	                throw new CityLogicException("Ya existe un video con ese id");
 	        }
             }
         }
@@ -174,11 +175,11 @@ public class VideoMock
     	 int pos = -1;
          for (int i = 0; i < videos.size(); i++) 
             {
-                if(videos.get(i).getId() == id)
+                if(Objects.equals(videos.get(i).getId(), id))
                 {
                     pos = i;
                 }
-                else if(videos.get(i).getId() == newVideo.getId())
+                else if(Objects.equals(videos.get(i).getId(), newVideo.getId()))
                 {
                     logger.info("El video con el id: " +  newVideo.getId() + " ya está en uso.");
                     throw new CityLogicException("Error interno: el video con el id: " +  newVideo.getId() + " ya está en uso.");

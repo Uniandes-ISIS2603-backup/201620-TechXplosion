@@ -65,6 +65,7 @@ public class UsuarioResource
     @Path("{id: \\d+}")
     public void  deleteUsuario( @PathParam("id") Long id) throws CityLogicException 
     {
+        System.out.println("Hola");
         UsuarioLogic.deleteUsuario(id);
     }
     
