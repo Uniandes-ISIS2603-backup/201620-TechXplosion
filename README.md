@@ -131,3 +131,14 @@ Método|URI|Acción|Parámetros|Cuerpo|Retorno
 **PUT**|/medioPagos/*:id*|Actualiza una instancia de la entidad  medioPago (UPDATE)|**@PathParam id**: Identificador del registro|Objeto JSON de  medioPago|Instancia de  medioPago actualizada
 **DELETE**|/medioPagos/*:id*|Borra instancia de  medioPago en el servidor (DELETE)|**@PathParam id**: Identificador del registro||
  
+## Clase Alquileres 
+ ###Servicios REST
+La descripción del API REST se presenta a continuación:
+
+Método|URI|Acción|Parámetros|Cuerpo|Retorno
+:--:|:--:|:--:|:--:|:--:|:--:
+**GET**|/alquileres|Lista de alquileres (READ)|||Lista de alquileres
+**GET**|/alquileres/*:id*|Obtener los atributos de una instancia de alquiler(READ)|**@PathParam id**: Número de id del alquiler a consultar||Atributos de la instancia de alquiler
+**POST**|/alquileres|Crear una nueva instancia de alquiler(CREATE)||Atributos de la instancia de alquiler a crear|Instancia de alquiler creada
+**PUT**|/alquileres/*:id*|Actualiza una instancia de la clase alquiler (UPDATE)|**@PathParam id**: Identificador de la instancia de alquiler|Objeto JSON de  alquiler|Instancia de alquiler actualizada
+**DELETE**|/alquileres/*:id*|Borra instancia de alquiler en el servidor (DELETE)|**@PathParam id**: Identificador de la instancia de alquiler a eliminar||
