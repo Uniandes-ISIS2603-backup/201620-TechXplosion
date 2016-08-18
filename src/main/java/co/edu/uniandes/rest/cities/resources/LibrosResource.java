@@ -20,7 +20,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 /**
  *
- * @author js.sosa10
+ * @author jc.sanchez16
  */
 @Path("libros")
 @Produces("application/json")

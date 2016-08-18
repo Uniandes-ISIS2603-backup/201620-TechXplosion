@@ -6,8 +6,8 @@
 package co.edu.uniandes.rest.cities.dtos;
 
 /**
- * Clase que guarda la informacíon de una biblioteca
- * @author js.sosa10
+ * Clase que guarda la informacíon de un libro
+ * @author jc.sanchez16
  */
 public class LibroDTO {
     public final static boolean VIRTUAL=true;

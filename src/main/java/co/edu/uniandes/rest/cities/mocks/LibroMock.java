@@ -6,8 +6,8 @@
 package co.edu.uniandes.rest.cities.mocks;
 
 /**
- *Mock del recurso Bibliotecas (Mock del servicio REST) 
- * @author js.sosa10
+ *Mock del recurso Libro (Mock del servicio REST) 
+ * @author jc.sanchez16
  */
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ public class LibroMock {
     // objeto para presentar logs de las operaciones
 	private final static Logger logger = Logger.getLogger(CityLogicMock.class.getName());
 	
-	// listado de bibliotecaes
+	// listado de libros
     private static ArrayList<LibroDTO> libros;
 
     /**
