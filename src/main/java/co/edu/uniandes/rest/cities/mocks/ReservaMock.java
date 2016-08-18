@@ -143,18 +143,19 @@ public class ReservaMock {
         }
         else
         {
-            for (ReservaDTO reserva : reservas)
-            {
-                if (reserva.getId().equals(id))
-                {
-                    isIdInArray = true;
-                    reservas.remove(reserva);
-                    break;
-                }
-            }
-                
+            for (ReservaDTO reserva : reservas) {
+	        	// si existe una reserva con ese id
+	            if (Objects.equals(id, reserva.getId())){
+                        logger.severe("Existe la reserva con id: "+id);
+                        reservas.remove(reserva);
+                        isIdInArray=true;
+                        logger.severe("Se borro la reserva con id: "+id);
+                        break;
+                    }
+                    
+                  }               
         }
-        if (isIdInArray == false )
+        if (!isIdInArray)
         {
             logger.severe("No se encontro una reserva con el id dado.");
             throw new CityLogicException("No se encontro una reserva con el id dado.");
