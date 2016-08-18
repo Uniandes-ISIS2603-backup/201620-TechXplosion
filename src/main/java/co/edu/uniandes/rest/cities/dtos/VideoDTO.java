@@ -11,7 +11,14 @@ package co.edu.uniandes.rest.cities.dtos;
  */
 public class VideoDTO 
 {
+    /**
+     * Constante que representa si un video es virtual.
+     */
     public static final boolean VIRTUAL = true;
+    
+    /**
+     * Constante que representa si un video es físico.
+     */
     public static final boolean FISICO = false;
     
     /**
@@ -53,41 +60,74 @@ public class VideoDTO
         this.duracion = duracion;
         this.tipo = tipo;
     }
+    
+    /**
+     * Metodo que devuelve el nombre del video.
+     * @return nombre del video.
+     */
     public String getNombre()
     {
         return nombre;
     }
     
+     /**
+     * Metodo que actualiza el nombre del video.
+     * @param nombre nombre del nuevo video.
+     */
     public void setNombre(String nombre)
     {
         this.nombre = nombre;
     }
     
+     /**
+     * Metodo que devuelve el id del video.
+     * @return id del video.
+     */
     public Long getId()
     {
         return id;
     }
     
+    /**
+     * Metodo que actualiza el id del video.
+     * @param id id del nuevo video.
+     */
     public void setId(Long id)
     {
         this.id = id;
     }
     
+    /**
+     * Metodo que devuelve la duración del video.
+     * @return duracion del video.
+     */
     public double getDuracion()
     {
         return duracion;
     }
     
+    /**
+     * Metodo que actualiza la duración del video.
+     * @param duracion duración del nuevo video.
+     */
     public void setDuracion(double duracion)
     {
         this.duracion = duracion;
     }
     
+    /**
+     * Metodo que devuelve el tipo del video.
+     * @return tipo del video.
+     */
     public boolean getTipo()
     {
         return tipo;
     }
     
+    /**
+     * Metodo que actualiza el tipo del video.
+     * @param tipo duración del nuevo video.
+     */
     public void setTipo(boolean tipo)
     {
         this.tipo = tipo;

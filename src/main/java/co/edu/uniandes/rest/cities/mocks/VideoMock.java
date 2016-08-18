@@ -29,6 +29,9 @@ public class VideoMock
      */
     private ArrayList<VideoDTO> videos;
     
+    /**
+     * Clase que inicializa el administrador de videos.
+     */
     public VideoMock()
     {
         if(videos == null)
@@ -47,6 +50,11 @@ public class VideoMock
     	logger.info("Libros" + videos );
     }
     
+    /**
+     * Método que retorna una lista de videos.
+     * @return List lista con los videos.
+     * @throws CityLogicException Excepción si la lista de videos no existe.
+     */
     public List<VideoDTO> getVideos()throws CityLogicException
     {
         if(videos == null)
@@ -57,6 +65,12 @@ public class VideoMock
         return videos;
     }
     
+    /**
+     * Método que se encarga de crear y añadir a la lista un video dado por parámetro.
+     * @param newVideo Video que va a ser creado y añadido a la lista.
+     * @return VideoDTO video creado y agregado a la lista.
+     * @throws CityLogicException Excepción si ya existe un video con el mismo nombre.
+     */
     public VideoDTO createVideo(VideoDTO newVideo)throws CityLogicException
     {
         logger.info("Recibiendo solicitud de agregar video " + newVideo.getNombre());
@@ -90,6 +104,12 @@ public class VideoMock
         return newVideo;
     }
     
+    /**
+     * Método que retorna un video con un id dado por parámetro.
+     * @param id id del video que se quiere encontrar.
+     * @return VideoDTO video con el id dado por parámetro.
+     * @throws CityLogicException Excepción si la lista de videos no ha sido inicializada o si el video no fue encontrado.
+     */
     public VideoDTO getVideo(Long id)throws CityLogicException
     {
         if(videos == null)
@@ -109,6 +129,11 @@ public class VideoMock
 	throw new CityLogicException("No existe un video con ese id.");
     }
     
+    /**
+     * Método que se encarda de eliminar un video de la lista con un id dado por parámetro.
+     * @param id id del video que se quiere eliminar.
+     * @throws CityLogicException Excepción si la lista de videos no ha sido inicializada o si el video con el id dado por parámetro no existe.
+     */
     public void delete(Long id)throws CityLogicException
     {
         if(videos == null)
@@ -130,6 +155,14 @@ public class VideoMock
 	throw new CityLogicException("No existe un video con ese id.");
     }
     
+    /**
+     * Método que se encarda de cambiar la información de un video específico con información específica.
+     * @param id id del video del cual se le quiere cambiar la información.
+     * @param newVideo información del video que va a reemplazar al video antiguo.
+     * @return VideoDTO video luego de ser actualizado.
+     * @throws CityLogicException Excepción si la lista de videos no ha sido inicializada, si el id nuevo ya lo tiene algún otro video de la lista
+     * o si el video que se quiere actualizar no existe.
+     */
     public VideoDTO updateVideo(Long id, VideoDTO newVideo) throws CityLogicException 
     {
     	if (videos == null) 
