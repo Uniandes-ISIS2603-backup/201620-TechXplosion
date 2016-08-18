@@ -30,14 +30,19 @@ public class ReservaMock {
      */
     public ReservaMock()
     {
-    	
-        reservas = new ArrayList<>();
-        // indica que se muestren todos los mensajes
+     	if (reservas == null) {
+            reservas = new ArrayList<>();
+            reservas.add(new ReservaDTO(1L,1L,1L,"01-01-2016"));
+            reservas.add(new ReservaDTO(2L,2L,2L,"01-02-2016"));
+            reservas.add(new ReservaDTO(3L,3L,3L,"01-03-2016"));
+        }
+        
+    	// indica que se muestren todos los mensajes
     	logger.setLevel(Level.INFO);
     	
     	// muestra información 
     	logger.info("Inicializa la lista de reservas");
-    	logger.info("reservas " + reservas );
+    	logger.info("reservas" + reservas );  	
     }
     
     /**
@@ -47,7 +52,7 @@ public class ReservaMock {
      */
     public List<ReservaDTO> getReservas() throws CityLogicException
     {
-        if (reservas.isEmpty())
+        if (reservas==null)
         {
             logger.severe("Error: La lista de reservas está vacía ");
             throw new CityLogicException("Error: La lista de reservas está vacía. ");
@@ -68,7 +73,7 @@ public class ReservaMock {
     public ReservaDTO createReserva( ReservaDTO nuevaReserva ) throws CityLogicException
     {
         logger.info("Recibiendo solicitud de agregar nueva reserva. " + nuevaReserva);
-        if (nuevaReserva.getId() != null && !reservas.isEmpty())
+        if (nuevaReserva.getId() != null)
         {
             for (ReservaDTO reserva : reservas)
             {
@@ -96,42 +101,6 @@ public class ReservaMock {
     }
     
     /**
-     * Obtiene las reservas hechas en una fecha dada
-     * @param fechaSolicitud Fecha por la cual se desea buscar una nueva reserva.
-     * @return La lista de reservas hechas en la fecha dada.
-     * @throws CityLogicException En caso de no haber reservas para esa fecha o que la lista de reservas este vacia.
-     */
-    public List<ReservaDTO> getReservasPorFecha(String fechaSolicitud) throws CityLogicException
-    {
-        ArrayList <ReservaDTO> reservasPorFecha = new ArrayList<>();
-        if (reservas.isEmpty())
-        {
-            logger.severe("Error: La lista de reservas está vacía ");
-            throw new CityLogicException("Error: La lista de reservas está vacía. ");
-        }
-        else
-        {
-            for (ReservaDTO reserva : reservas)
-            {
-                if (reserva.getFechaSolicitud().equals(fechaSolicitud))
-                {
-                    reservasPorFecha.add(reserva);
-                }
-            }
-                
-        }
-        if (reservasPorFecha.isEmpty())
-        {
-            logger.severe("No hay reservas hechas en esa fecha.");
-            throw new CityLogicException("No hay reservas para esa fecha.");
-        }
-        else
-        {
-            return reservasPorFecha;
-        }
-    }
-    
-    /**
      * Retorna un reserva con un id dado.
      * @param id El id de la reserva que se dea obtener
      * @return La reserva que se deseaba obtener.
@@ -139,7 +108,7 @@ public class ReservaMock {
      */
     public ReservaDTO getReserva(Long id) throws CityLogicException
     {
-        if (reservas.isEmpty())
+        if (reservas==null)
         {
             logger.severe("Error: La lista de reservas está vacia. ");
             throw new CityLogicException("Error: La lista de reservas esta vacia. ");
@@ -158,78 +127,7 @@ public class ReservaMock {
         logger.severe("No se encontro una reserva con el id dado.");
         throw new CityLogicException("No se encontro una reserva con el id dado.");
     }
-    /**
-     * Obtiene las reservas que tiene un recurso en especifico.
-     * @param idRecurso El id del recurso del cual queremos obtener sus reservas.
-     * @return Lista de reservas que tiene un recurso dado.
-     * @throws CityLogicException En caso de que no hayan reservas para ese recurso o que la lista de reservas esté vacía.
-     */
-    public ArrayList<ReservaDTO> getReservasPorRecurso(Long idRecurso) throws CityLogicException
-    {
-        ArrayList <ReservaDTO> reservasPorRecurso = new ArrayList<>();
-        if (reservas.isEmpty())
-        {
-            logger.severe("Error: La lista de reservas esta vacia ");
-            throw new CityLogicException("Error: La lista de reservas esta vacia. ");
-        }
-        else
-        {
-            for (ReservaDTO reserva : reservas)
-            {
-                if (reserva.getIdRecurso().equals(idRecurso))
-                {
-                    reservasPorRecurso.add(reserva);
-                }
-            }
-                
-        }
-        if (reservasPorRecurso.isEmpty())
-        {
-            logger.severe("No hay reservas hechas en esa fecha.");
-            throw new CityLogicException("No hay reservas para esa fecha.");
-        }
-        else
-        {
-            return reservasPorRecurso;
-        }
-    }
-    
-    /**
-     * Obtiene las reservas que tiene un usuario en especifico.
-     * @param idUsuario El id del usuario del cual queremos obtener sus reservas.
-     * @return Lista de reservas que tiene un usuario dado.
-     * @throws CityLogicException En caso de que no hayan reservas para ese usuario o que la lista de reservas esté vacía.
-     */
-    public ArrayList<ReservaDTO> getReservasPorUsuario(Long idUsuario) throws CityLogicException
-    {
-        ArrayList <ReservaDTO> reservasPorUsuario = new ArrayList<>();
-        if (reservas.isEmpty())
-        {
-            logger.severe("Error: La lista de reservas esta vacia ");
-            throw new CityLogicException("Error: La lista de reservas esta vacia. ");
-        }
-        else
-        {
-            for (ReservaDTO reserva : reservas)
-            {
-                if (reserva.getIdUsuario().equals(idUsuario))
-                {
-                    reservasPorUsuario.add(reserva);
-                }
-            }
-                
-        }
-        if (reservasPorUsuario.isEmpty())
-        {
-            logger.severe("No hay reservas hechas en esa fecha.");
-            throw new CityLogicException("No hay reservas para esa fecha.");
-        }
-        else
-        {
-            return reservasPorUsuario;
-        }
-    }
-    
+        
     /**
      * Elimina un recurso dado de la lista de reservas.
      * @param id El id del recurso que se desea eliminar.
@@ -238,7 +136,7 @@ public class ReservaMock {
     public void deleteReserva (Long id) throws CityLogicException
     {
         boolean isIdInArray = false;
-        if (reservas.isEmpty())
+        if (reservas==null)
         {
             logger.severe("Error: La lista de reservas esta vacia ");
             throw new CityLogicException("Error: La lista de reservas esta vacia. ");
@@ -273,7 +171,7 @@ public class ReservaMock {
      */
     public ReservaDTO updateReserva(Long id , ReservaDTO reservaMod) throws CityLogicException
     {
-        if (reservas.isEmpty())
+        if (reservas==null)
         {
             logger.severe("Error: La lista de reservas esta vacia ");
             throw new CityLogicException("Error: La lista de reservas esta vacia. ");

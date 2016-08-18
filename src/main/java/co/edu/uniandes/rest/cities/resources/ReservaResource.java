@@ -49,51 +49,12 @@ public class ReservaResource {
      * @throws CityLogicException En caso de no haber una reserva con el ida dado o que la lista de reservas sea vacía.
      */
     @GET
-    @Path("reserva/{id: \\d+}")
-    public ReservaDTO getReserva(@QueryParam("id") Long id) throws CityLogicException 
+    @Path("{id: \\d+}")
+    public ReservaDTO getReserva(@PathParam("id") Long id) throws CityLogicException 
     {
         return reservaMock.getReserva(id);
     }
-   
-    /**
-     * Obtiene las reservas que tiene un recurso en especifico.
-     * @param idRecurso El id del recurso del cual queremos obtener sus reservas.
-     * @return Lista de reservas que tiene un recurso dado.
-     * @throws CityLogicException En caso de que no hayan reservas para ese recurso o que la lista de reservas esté vacía.
-     */
-    @GET
-    @Path("recurso/{idRecurso: \\d+}")
-    public List<ReservaDTO> getReservasPorRecurso(@QueryParam("idRecurso")Long idRecurso) throws CityLogicException
-    {
-        return reservaMock.getReservasPorRecurso(idRecurso);
-    }
-    
-    /**
-     * Obtiene las reservas que tiene un usuario en especifico.
-     * @param idUsuario El id del usuario del cual queremos obtener sus reservas.
-     * @return Lista de reservas que tiene un usuario dado.
-     * @throws CityLogicException En caso de que no hayan reservas para ese usuario o que la lista de reservas esté vacía.
-     */
-    @GET
-    @Path("usuario/{idUsuario: \\d+}")
-    public List<ReservaDTO> getReservasPorUsuario(@QueryParam("idUsuario") Long idUsuario) throws CityLogicException
-    {
-        return reservaMock.getReservasPorUsuario(idUsuario);
-    }
-    
-    /**
-     * Obtiene el listado de reservas hechas en una fecha dada
-     * @param fechaSolicitud Fecha por la cual se desea buscar una reserva.
-     * @return Lista de reservas hechas en la fecha dada.
-     * @throws CityLogicException En caso de que no hayan reservas hechas para esa fecha o que la lista de reservas sea vacía.
-     */
-    @GET
-    @Path("fecha/{fechaSolicitud: .+}")
-    public List<ReservaDTO> getReservasPorFecha( @QueryParam("fechaSolicitud") String fechaSolicitud ) throws CityLogicException
-    {
-        return reservaMock.getReservasPorFecha(fechaSolicitud);
-    }
-    
+        
     /**
      * Agrega una reserva
      * @param nuevaReserva Reserva a agregar.
