@@ -16,7 +16,7 @@ public class UsuarioDTO
     /**
      * Atributo que modela el id del objeto
      */
-    private int id;
+    private Long id;
     /**
      * Atributo que modela el nombre del usuario
      */
@@ -48,7 +48,7 @@ public class UsuarioDTO
      * @param direccion
      * @param Apellido 
      */
-    public UsuarioDTO(int pId, String pNombre, Date pDate, String direccion , String Apellido)
+    public UsuarioDTO(Long pId, String pNombre, Date pDate, String direccion , String Apellido)
     {
         id=pId;
        nombre = pNombre;
@@ -69,7 +69,7 @@ public class UsuarioDTO
      * Da el id del objeto
      * @return id del objeto
      */
-    public int getId()
+    public Long getId()
     {
         return id;
     }
@@ -78,7 +78,7 @@ public class UsuarioDTO
      * Cambia el id del objeto
      * @param pId nuevo id del objeto
      */
-    public void setId(int pId)
+    public void setId(Long pId)
     {
         id = pId;
     }

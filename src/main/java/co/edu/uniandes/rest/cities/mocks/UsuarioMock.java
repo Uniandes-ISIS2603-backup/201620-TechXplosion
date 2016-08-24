@@ -38,7 +38,7 @@ public class UsuarioMock
     	if (usuarios == null) {
             usuarios = new ArrayList<>();
             Date nueva = new Date();
-            usuarios.add(new UsuarioDTO(156, "JuanMa", nueva, "Carrera 123", "Rodriguez"));
+            usuarios.add(new UsuarioDTO(156L, "JuanMa", nueva, "Carrera 123", "Rodriguez"));
         }
         
     	// indica que se muestren todos los mensajes

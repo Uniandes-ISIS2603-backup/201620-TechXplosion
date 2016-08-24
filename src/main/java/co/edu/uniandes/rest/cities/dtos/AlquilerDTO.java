@@ -16,7 +16,7 @@ public class AlquilerDTO
     /**
      * Atributo que modela el id del objeto
      */
-    private int id;
+    private Long id;
     /**
      * Atributo que modela el id del usuario que realizo el alquiler
      */
@@ -47,7 +47,7 @@ public class AlquilerDTO
      * @param inicio
      * @param fin 
      */
-    public AlquilerDTO(int pId, int pIdUsuario, int pIdRecurso, Date inicio, Date fin)
+    public AlquilerDTO(Long pId, int pIdUsuario, int pIdRecurso, Date inicio, Date fin)
     {
         id=pId;
         idUsuario = pIdUsuario;
@@ -68,7 +68,7 @@ public class AlquilerDTO
      * Da el id del objeto
      * @return id del objeto
      */
-    public int getId()
+    public Long getId()
     {
         return id;
     }
@@ -77,7 +77,7 @@ public class AlquilerDTO
      * Cambia el id del objeto
      * @param pId nuevo id del objeto
      */
-    public void setId(int pId)
+    public void setId(Long pId)
     {
         id = pId;
     }
