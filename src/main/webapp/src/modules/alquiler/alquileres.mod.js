@@ -1,1 +1,1 @@
-var app = ng.module("alquilerModule",["ngMessages","ui-router"]);
+var app = ng.module("alquilerModule",["ui.router"]);
