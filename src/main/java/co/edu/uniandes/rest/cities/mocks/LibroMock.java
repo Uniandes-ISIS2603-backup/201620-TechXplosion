@@ -30,9 +30,9 @@ public class LibroMock {
 
     	if (libros == null) {
             libros = new ArrayList<>();
-            libros.add(new LibroDTO((Long.parseLong("0000001")), "Cien años de soledad", "createSpace", "Gabriel Garcia Marquez", 2, false));
-            libros.add(new LibroDTO((Long.parseLong("0000002")), "El jugador", "akal", "Fiodor M.", 4, true));
-            libros.add(new LibroDTO((Long.parseLong("0000003")), "Crimen y castigo", "Encuentro", "Jose Cabrera", 0, false));
+            libros.add(new LibroDTO(1L, "Cien años de soledad", "createSpace", "Gabriel Garcia Marquez", 2, false));
+            libros.add(new LibroDTO(2L, "El jugador", "akal", "Fiodor M.", 4, true));
+            libros.add(new LibroDTO(3L, "Crimen y castigo", "Encuentro", "Jose Cabrera", 0, false));
         }
         
     	// indica que se muestren todos los mensajes
