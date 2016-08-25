@@ -1,0 +1,1 @@
+var app = ng.module("alquilerModule",["ngMessages","ui-router"]);

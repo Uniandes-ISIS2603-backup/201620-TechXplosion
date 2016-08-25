@@ -1,26 +1,19 @@
-(function (ng) {
 
-    var mod = ng.module("mainApp", [
+
+
+
+    var app = ng.module("mainApp", [
         "ui.router",
+        "ngMessages",
         "videoModule",
-	   "libroModule",
-	   "alquilereModule",
-	   "bibliotecaModule",
-	   "usuariosModule",
+        "libroModule",
+        "alquilerModule",
+        "bibliotecaModule",
+        "usuarioModule",
         "recursoModule",
-        "medioDePagoModule", 
+        "medioModule",
         "reservaModule",
-        "blogModule",
-        "ngMessages"
+        "blogModule"
+
     ]);
 
-    mod.config(['$logProvider', function ($logProvider) {
-            $logProvider.debugEnabled(true);
-        }]);
-
-    mod.config(['$urlRouterProvider', function ($urlRouterProvider) {
-            $urlRouterProvider.otherwise('/citiesList');
-        }]);
-
-  
-})(window.angular);
