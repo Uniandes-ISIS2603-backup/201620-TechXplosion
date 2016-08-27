@@ -1,5 +1,5 @@
 {
-  "name": "shopping_cart",
+  "name": "bibliotecas",
   "version": "1.0.0",
   "main": "src/main/webapp/index.html",
   "dependencies": {
@@ -9,5 +9,19 @@
     "angular-messages": "^1.5.8",
     "restangular": "^1.5.2"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "homepage": "https://github.com/Uniandes-isis2603/TechXplosion",
+  "authors": [
+    "sa.pardo10"
+  ],
+  "description": "bibliotecas de desarrollo de sfw por equipos",
+  "license": "none",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/main/webapp/bower_components",
+    "test",
+    "tests"
+  ]
 }
