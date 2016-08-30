@@ -1,13 +1,20 @@
-
-<div class="container-fluid" >
-    <h1>Alquileres</h1>
-        <p>Aca se mostrará el menu de alquileres</p>
-    <table class="table table-striped" >
-        <thead>
-            <tr>
-                <th>Name</th>        
-                <th>Actions</th>
-            </tr>
-        </thead>
-        </table>
+<div class="col-md-6 well">
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}} </alert>
+    <form novalidate name="form" id="biblioteca-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)">
+        
+        <div ng-messages="form.$error">
+            <div ng-message="required">Fill the required fields!</div>
+        </div>
+   
+        <fieldset>
+            <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
+            <div class="form-group col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+                <label for="name" class="col-md-2 control-label">Name</label>
+                <div class="col-md-10">
+                    <input id="name" name="name" class="form-control" type="text" ng-model="currentRecord.name" ng-init="currentRecord.name" required />
+                </div>
+            </div>
+            <button type="submit" >Save</button>    
+        </fieldset>
+    </form>
 </div>
