@@ -62,7 +62,7 @@ public class LibrosResource {
      */
     @GET
     @Path("{isbn: \\d+}")
-    public LibroDTO  getLibro( @PathParam("id") Long isbn) throws CityLogicException {
+    public LibroDTO  getLibro( @PathParam("isbn") Long isbn) throws CityLogicException {
         return libroLogic.getLibro(isbn);
     }
      /**
@@ -72,7 +72,7 @@ public class LibrosResource {
      */
     @DELETE
     @Path("{isbn: \\d+}")
-    public void  deleteLibro( @PathParam("id") Long isbn) throws CityLogicException {
+    public void  deleteLibro( @PathParam("isbn") Long isbn) throws CityLogicException {
         libroLogic.deleteLibro(isbn);
     }
 
