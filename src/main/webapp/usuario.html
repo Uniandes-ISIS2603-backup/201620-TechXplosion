@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html ng-app="mainApp">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Bibliotecas</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/restangular/dist/restangular.js"></script>
+        <script src="bower_components/angular-messages/angular-messages.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+        <script src="src/app.js" type="text/javascript"></script>  
+        <script src="src/modules/alquiler/alquiler.mod.js" type="text/javascript"></script>
+        <script src="src/modules/alquiler/alquiler.ctrl.js" type="text/javascript"></script>
+        
+        <script src="src/modules/biblioteca/biblioteca.mod.js" type="text/javascript"></script>
+        <script src="src/modules/biblioteca/biblioteca.ctrl.js" type="text/javascript"></script>
+        
+        <script src="src/modules/blog/blog.mod.js" type="text/javascript"></script>
+        <script src="src/modules/blog/blog.ctrl.js" type="text/javascript"></script>
+        
+        <script src="src/modules/libro/libro.mod.js" type="text/javascript"></script>
+        <script src="src/modules/libro/libro.ctrl.js" type="text/javascript"></script>
+        
+        <script src="src/modules/medioDePago/medio.mod.js" type="text/javascript"></script>
+        <script src="src/modules/medioDePago/medio.ctrl.js" type="text/javascript"></script>
+        
+        <script src="src/modules/recurso/recurso.mod.js" type="text/javascript"></script>
+        <script src="src/modules/recurso/recurso.ctrl.js" type="text/javascript"></script>
+        
+        <script src="src/modules/reserva/reserva.mod.js" type="text/javascript"></script>
+        <script src="src/modules/reserva/reserva.ctrl.js" type="text/javascript"></script>
+        
+        <script src="src/modules/usuario/usuario.mod.js" type="text/javascript"></script>
+        <script src="src/modules/usuario/usuario.ctrl.js" type="text/javascript"></script>
+        
+        <script src="src/modules/video/video.mod.js" type="text/javascript"></script>
+        <script src="src/modules/video/video.ctrl.js" type="text/javascript"></script>
+
+
+
+    </head>
+    <body style="padding-top: 20px;">
+        <div class="container-fluid" >   
+            <h3>Servicio de bibliotecas</h3>
+            <ul class="nav nav-tabs">            
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Alquileres
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu"> 
+                        <li><a ui-sref="alquilerCreate">Create</a></li>    
+                         <li><a ui-sref="alquilerList">List</a></li>     
+                    </ul>
+                </li>      
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Reservas
+                        <span class="caret"></span></a>                     
+                    <ul class="dropdown-menu"> 
+                        <li><a ui-sref="reservaCreate">Create</a></li>    
+                         <li><a ui-sref="reservaList">List</a></li>
+                    </ul>
+                </li> 
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Bibliotecas
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a ui-sref="bibliotecaCreate">Create</a></li>    
+                         <li><a ui-sref="bibliotecaList">List</a></li>
+                    </ul>
+                </li> 
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Blogs
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">    
+                        <li><a ui-sref="blogCreate">Create</a></li>    
+                         <li><a ui-sref="blogList">List</a></li>
+                    </ul>
+                </li> 
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Libros
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">   
+                        <li><a ui-sref="libroCreate">Create</a></li>    
+                         <li><a ui-sref="libroList">List</a></li>
+                    </ul>
+                </li> 
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Medios de pago
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu"> 
+                        <li><a ui-sref="medioCreate">Create</a></li>    
+                         <li><a ui-sref="medioList">List</a></li>
+                    </ul>
+                </li> 
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Recursos
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">   
+                        <li><a ui-sref="recursoCreate">Create</a></li>    
+                         <li><a ui-sref="recursoList">List</a></li>
+                    </ul>
+                </li> 
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Usuarios
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">  
+                        <li><a ui-sref="usuarioCreate">Create</a></li>    
+                         <li><a ui-sref=usuarioList">List</a></li>
+                    </ul>
+                </li> 
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Videos
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu"> 
+                        <li><a ui-sref="videoCreate">Create</a></li>    
+                         <li><a ui-sref="videoList">List</a></li>
+                    </ul>
+                </li> 
+            </ul>
+            <div>
+            </div>
+        </div>
+    </body>
+</html>
