@@ -1,3 +1,78 @@
-<div> 
-    
-</div>
+<html>
+
+<head>
+ <link rel ="stylesheet" href = "style.css">
+ <script src = "script.js"></script>
+</head>
+<body>
+  <div>
+  <h2>libro</h2>
+           
+
+    <table class="table ">
+     <thead>
+     <tr>
+        <th>Nombre</th>
+        <td>
+          <input type="text"  class="input-small" id= "nombre">
+        </td>
+        
+      </tr>
+        <tr>
+        <th>Isbn</th>
+        <td>
+          <input type="text"  class="input-small" id= "isbn">
+        </td>
+        
+      </tr>
+        <tr>
+        <th>Editorial</th>
+        <td>
+          <input type="text"  class="input-small" id= "editorial">
+        </td>
+       
+      </tr>
+        <tr>
+        <th>Tipo</th>
+        <td>
+          <input type="text"  class="input-small" id= "tipo">
+        </td>
+        
+      </tr>
+      <tr>
+        <th>Autor</th>
+        <td>
+          <input type="text"  class="input-small" id= "autor">
+        </td>
+        
+      </tr>
+       <tr>
+        <th>Edicion</th>
+        <td>
+          <input type="text"  class="input-small" id= "edicion">
+        </td>
+        
+      </tr>
+          </thead>
+      <tr >
+        
+       
+        <td></td>
+        <td><button onclick="Scope.deleteLast()">delete</button></td>
+        
+      </tr>
+      <tr>
+        <td>
+        <button onclick="Scope.additem()">add item</button>
+        </td>
+        <td></td>
+        <td>Total libros agregados:</td>
+        <td id = 'total'></td>
+		<td></td>
+      </tr>
+      <tbody id = "elements">
+    </table>
+  </div>
+</body>
+
+</html>
