@@ -21,7 +21,7 @@
         }]);
 
     mod.config(['$urlRouterProvider', function ($urlRouterProvider) {
-            $urlRouterProvider.otherwise('/citiesList');
+            $urlRouterProvider.otherwise('notfound');
         }]);
 
   
