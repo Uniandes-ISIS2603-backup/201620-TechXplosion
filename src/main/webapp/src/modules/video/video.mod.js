@@ -38,18 +38,6 @@
                     }
                 }
                 
-                 }).state('videoDelete', {
-                url: '/video/delete/:videoId',
-                param: {
-                    videoId: null
-                },
-                views: {
-                    'mainView': {
-                        controller: 'videoCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: basePath + 'video.index.html' //Se cambia por el html de delete cuando esté
-                    }
-                }
             });
         }]);
 })(window.angular);

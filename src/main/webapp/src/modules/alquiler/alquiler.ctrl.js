@@ -21,7 +21,7 @@
                         $scope.currentRecord = response.data;
                     }, responseError);
       }
-       
+  
       else
             
         {
