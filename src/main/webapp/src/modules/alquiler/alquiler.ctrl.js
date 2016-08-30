@@ -1,7 +1,7 @@
 (function (ng){
     var mod = angular.module("alquilerModule");
     
-    mod.controller("alquiler.ctrl",['$scope','$state','$stateParams', '$http', 'citiesContext', function ($scope, $state, $stateParams, $http, context){ 
+    mod.controller("alquilerCtrl",['$scope','$state','$stateParams', '$http', 'alquilerContext', function ($scope, $state, $stateParams, $http, context){ 
     
         $scope.records = {};
         
@@ -10,9 +10,9 @@
             $scope.records = response.data;    
         }, responseError);
         
-    if ($stateParams.cityId !== null && $stateParams.cityId !== undefined) {
+    if ($stateParams.alquilerId !== null && $stateParams.alquilerId !== undefined) {
                 
-                id = $stateParams.cityId;
+                id = $stateParams.alquilerId;
                 $http.get(context + "/" + id)
                     .then(function (response) 
                        {
@@ -21,7 +21,7 @@
                         $scope.currentRecord = response.data;
                     }, responseError);
       }
-      
+  }
       else
             
         {
@@ -41,8 +41,7 @@
                 if (id == null) {
 
                     // ejecuta POST en el recurso REST
-                    return $http.post(context, currentRecord)
-                        .then(function () 
+                    return $http.post(context, currentRecord).then(function () 
                 {
                             $state.go('alquilerList');
                         }, responseError);

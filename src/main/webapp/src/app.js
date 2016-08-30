@@ -5,9 +5,9 @@
     var mod = ng.module("mainApp", [
         "ui.router",
         "ngMessages",
-        "videoModule",
-        "libroModule",
         "alquilerModule",
+        "libroModule",
+        "videoModule",
         "bibliotecaModule",
         "usuarioModule",
         "recursoModule",
@@ -21,7 +21,7 @@
         }]);
 
     mod.config(['$urlRouterProvider', function ($urlRouterProvider) {
-            $urlRouterProvider.otherwise('/citiesList');
+            $urlRouterProvider.otherwise('notfound');
         }]);
 
   
