@@ -1,7 +1,7 @@
 (function (ng){
     var mod = angular.module("alquilerModule");
     
-    mod.controller("alquiler.ctrl",['$scope','$state','$stateParams', '$http', 'alquilerContext', function ($scope, $state, $stateParams, $http, context){ 
+    mod.controller("alquilerCtrl",['$scope','$state','$stateParams', '$http', 'alquilerContext', function ($scope, $state, $stateParams, $http, context){ 
     
         $scope.records = {};
         
@@ -21,7 +21,7 @@
                         $scope.currentRecord = response.data;
                     }, responseError);
       }
-      } 
+       
       else
             
         {
