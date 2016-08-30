@@ -5,6 +5,8 @@
     var mod = ng.module("mainApp", [
         "ui.router",
         "ngMessages",
+        
+        "reservaModule",
         "alquilerModule",
         "bibliotecaModule",
         "libroModule",
@@ -12,8 +14,7 @@
         "usuarioModule",
         "recursoModule",
         "medioModule",
-        "reservaModule",
-        "blogModule"
+"blogModule"
 
     ]);
      mod.config(['$logProvider', function ($logProvider) {

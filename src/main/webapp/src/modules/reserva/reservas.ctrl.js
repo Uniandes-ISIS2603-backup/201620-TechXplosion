@@ -1,5 +1,5 @@
 (function (ng) {
-    var mod = ng.module("reservasModule");
+    var mod = ng.module("reservaModule");
 
     mod.controller("reservasCtrl", ['$scope', '$state', '$stateParams', '$http', 'reservasContext', function ($scope, $state, $stateParams, $http, context) {
 
