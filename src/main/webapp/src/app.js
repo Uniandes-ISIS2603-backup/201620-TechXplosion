@@ -5,9 +5,9 @@
     var mod = ng.module("mainApp", [
         "ui.router",
         "ngMessages",
-        "videoModule",
-        "libroModule",
         "alquilerModule",
+        "libroModule",
+        "videoModule",
         "bibliotecaModule",
         "usuarioModule",
         "recursoModule",
