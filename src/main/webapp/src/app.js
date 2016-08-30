@@ -5,15 +5,16 @@
     var mod = ng.module("mainApp", [
         "ui.router",
         "ngMessages",
+        
+        "reservaModule",
         "alquilerModule",
+        "bibliotecaModule",
         "libroModule",
         "videoModule",
-        "bibliotecaModule",
         "usuarioModule",
         "recursoModule",
         "medioModule",
-        "reservaModule",
-        "blogModule"
+"blogModule"
 
     ]);
      mod.config(['$logProvider', function ($logProvider) {
