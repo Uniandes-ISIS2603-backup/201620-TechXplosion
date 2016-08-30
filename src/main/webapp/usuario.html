@@ -1,0 +1,71 @@
+<html>
+
+<head>
+ <link rel ="stylesheet" href = "style.css">
+ <script src = "script.js"></script>
+</head>
+<body>
+  <div>
+  <h2>Usuario</h2>
+           
+
+    <table class="table ">
+     <thead>
+     <tr>
+        <th>Id</th>
+        <td>
+          <input type="text"  class="input-small" id= "id">
+        </td>
+        
+      </tr>
+        <tr>
+        <th>Nombre</th>
+        <td>
+          <input type="text"  class="input-small" id= "nombre">
+        </td>
+        
+      </tr>
+        <tr>
+        <th>Apellido</th>
+        <td>
+          <input type="text"  class="input-small" id= "apellido">
+        </td>
+       
+      </tr>
+        <tr>
+        <th>Direccion</th>
+        <td>
+          <input type="text"  class="input-small" id= "direccion">
+        </td>
+        
+      </tr>
+      <tr>
+       <th>Fecha</th>
+       <td>
+          <input type="text"  class="input-small" id= "fecha">
+        </td>
+        </tr>
+          </thead>
+          <tbody>
+      <tr >
+        
+       
+        <td></td>
+        <td><button onclick="Scope.deleteLast()">delete last</button></td>
+        
+      </tr>
+      <tr>
+        <td>
+        <button onclick="Scope.additem()">add item</button>
+        </td>
+        <td></td>
+        <td>Total usuarios registrados:</td>
+        <td id = 'total'></td>
+		<td></td>
+      </tr>
+      <tbody id = "elements">
+    </table>
+  </div>
+</body>
+
+</html>
