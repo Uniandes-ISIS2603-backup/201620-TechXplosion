@@ -1,10 +1,18 @@
 <html>
 
 <head>
- <link rel ="stylesheet" href = "style.css">
- <script src = "script.js"></script>
+
+ <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/restangular/dist/restangular.js"></script>
+        <script src="bower_components/angular-messages/angular-messages.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+ <script src = "src/modules/usuario/usuario.mod.js"></script>
+   
+ 
 </head>
-<body>
+<body ng-controller="user">
   <div>
   <h2>Usuario</h2>
            
@@ -14,35 +22,35 @@
      <tr>
         <th>Id</th>
         <td>
-          <input type="text"  class="input-small" id= "id">
+          <input type="text"  class="input-small" id= "id" ng-model=actual.id>
         </td>
         
       </tr>
         <tr>
         <th>Nombre</th>
         <td>
-          <input type="text"  class="input-small" id= "nombre">
+          <input type="text"  class="input-small" id= "nombre" ng-model = actual.nombre>
         </td>
         
       </tr>
         <tr>
         <th>Apellido</th>
         <td>
-          <input type="text"  class="input-small" id= "apellido">
+          <input type="text"  class="input-small" id= "apellido" ng-model = actual.apellido>
         </td>
        
       </tr>
         <tr>
         <th>Direccion</th>
         <td>
-          <input type="text"  class="input-small" id= "direccion">
+          <input type="text"  class="input-small" id= "direccion" ng-model =actual.direccion>
         </td>
         
       </tr>
       <tr>
        <th>Fecha</th>
        <td>
-          <input type="text"  class="input-small" id= "fecha">
+          <input type="text"  class="input-small" id= "fecha" ng-model = actual.fecha>
         </td>
         </tr>
           </thead>
@@ -51,12 +59,12 @@
         
        
         <td></td>
-        <td><button onclick="Scope.deleteLast()">delete last</button></td>
+        <td><button ng-click="borrar()">delete last</button></td>
         
       </tr>
       <tr>
         <td>
-        <button onclick="Scope.additem()">add item</button>
+        <button ng-click = "agregar(actual)">add item</button>
         </td>
         <td></td>
         <td>Total usuarios registrados:</td>
