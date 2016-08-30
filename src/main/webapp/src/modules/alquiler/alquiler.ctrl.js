@@ -41,8 +41,7 @@
                 if (id == null) {
 
                     // ejecuta POST en el recurso REST
-                    return $http.post(context, currentRecord)
-                        .then(function () 
+                    return $http.post(context, currentRecord).then(function () 
                 {
                             $state.go('alquilerList');
                         }, responseError);

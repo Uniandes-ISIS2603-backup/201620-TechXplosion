@@ -1,5 +1,5 @@
 (function(ng){
-    var mod = amgular.module("alquilerModule",["ui.router","ngMessages"]);
+    var mod = angular.module("alquilerModule",["ui.router","ngMessages"]);
 
     mod.constant("alquilerContext", "api/alquiler");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
