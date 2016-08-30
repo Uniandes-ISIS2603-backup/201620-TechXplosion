@@ -1,21 +1,41 @@
 (function (ng) {
-    console.log("hola")
-     var mod = ng.module("usuarioModule", ["ui.router"]);
+    var mod = ng.module("usarioModule", ["ngMessages"]);
+    mod.constant("usuarioContext", "api/usuarios");
+    mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+            var basePath = 'src/modules/uusario/';
+            $urlRouterProvider.otherwise("/usuarioList");
      
-            mod.controller("user",function($scope){
-                 console.log("hihi")
-    $scope.user = [];
-    $scope.actual;
-     console.log("controler 2")
-    $scope.agregar= function(actual){
-      $scope.user.push(actual);
-      console.log(actual);
-      
-      $scope.borrar =function(){
-          $scope.user.pop();
-      }
-  }
-  
-  
-});
+            $stateProvider.state('usuarioList', {
+                url: '/usuarios',
+                views: {
+                    'mainView': {
+                        controller: 'usuarioCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + "usuario.list.html"
+                    }
+                }
+            }).state('usuarioCreate', {
+                url: '/usuarios/create',
+                views: {
+                    'mainView': {
+                        controller: 'usuarioCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'usuario.create.html'
+                    }
+                }
+
+            }).state('usuarioEdit', {
+                url: '/usuarios/:usuariosId',
+                param: {
+                    cityId: null
+                },
+                views: {
+                    'mainView': {
+                        controller: 'usuarioCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'usuarios.create.html'
+                    }
+                }
+            });
+        }]);
 })(window.angular);
