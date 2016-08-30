@@ -1,0 +1,1 @@
+var mod = ng.module("usuarioModule", ["ui.router"]);
