@@ -14,7 +14,7 @@
         "usuarioModule",
         "recursoModule",
         "medioModule",
-"blogModule"
+        "blogModule"
 
     ]);
      mod.config(['$logProvider', function ($logProvider) {

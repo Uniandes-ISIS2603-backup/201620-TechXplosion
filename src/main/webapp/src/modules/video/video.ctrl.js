@@ -1,7 +1,7 @@
 (function (ng){
     var mod = angular.module("videoModule");
     
-    mod.controller("videCtrl",['$scope','$state','$stateParams', '$http', 'videoContext', function ($scope, $state, $stateParams, $http, context)
+    mod.controller("videoCtrl",['$scope','$state','$stateParams', '$http', 'videoContext', function ($scope, $state, $stateParams, $http, context)
         { 
     
         $scope.records = {};

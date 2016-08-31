@@ -1,5 +1,5 @@
 (function (ng) {
-    var mod = ng.module("usarioModule", ["ngMessages"]);
+    var mod = ng.module("usuarioModule", ["ngMessages"]);
     mod.constant("usuarioContext", "api/usuarios");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/uusario/';
