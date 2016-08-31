@@ -5,15 +5,12 @@
     var mod = ng.module("mainApp", [
         "ui.router",
         "ngMessages",
-        
         "reservaModule",
         "alquilerModule",
         "bibliotecaModule",
         "libroModule",
         "videoModule",
-        "usuarioModule",
-        "recursoModule",
-        "medioModule",
+        "usuarioModule",,
         "blogModule"
 
     ]);
