@@ -41,14 +41,14 @@
                 currentRecord = $scope.currentRecord;
                 
                 // si el id es null, es un registro nuevo, entonces lo crea
-                if (id === null) {
+                if (id == null) {
 
                     // ejecuta POST en el recurso REST
                     return $http.post(context, currentRecord)
                         .then(function () {
                             // $http.post es una promesa
                             // cuando termine bien, cambie de estado
-                            $state.go('blogsList');
+                            $state.go('blogList');
                         }, responseError);
                         
                 // si el id no es null, es un registro existente entonces lo actualiza
@@ -59,11 +59,25 @@
                         .then(function () {
                             // $http.put es una promesa
                             // cuando termine bien, cambie de estado
-                            $state.go('blogsList');
+                            $state.go('blogList');
                         }, responseError);
                 };
             };
-           
+           this.deleteRecord = function (record) {
+                currentRecord = record;
+                
+                
+          
+                    
+                    // ejecuta DELETE en el recurso REST
+                   return $http.delete(context + "/" + currentRecord.id)
+                        .then(function () {
+                            // $http.delete es una promesa
+                            // cuando termine bien, cambie de estado
+                            $state.reload();
+                        }, responseError);
+              
+            };
 
 
 

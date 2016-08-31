@@ -3,9 +3,9 @@
     mod.constant("blogContext", "api/blogs");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/blog/';
-            $urlRouterProvider.otherwise("/blogsList");
+            $urlRouterProvider.otherwise("/blogList");
      
-            $stateProvider.state('blogsList', {
+            $stateProvider.state('blogList', {
                 url: '/blogs',
                 views: {
                     'mainView': {
