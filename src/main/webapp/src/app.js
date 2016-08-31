@@ -10,7 +10,8 @@
         "bibliotecaModule",
         "libroModule",
         "videoModule",
-        "usuarioModule",,
+        "usuarioModule",
+        "medioModule",
         "blogModule"
 
     ]);
