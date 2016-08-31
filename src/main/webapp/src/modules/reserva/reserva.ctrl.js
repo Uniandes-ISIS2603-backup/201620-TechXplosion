@@ -1,18 +1,18 @@
 (function (ng) {
     var mod = ng.module("reservaModule");
 
-    mod.controller("reservasCtrl", ['$scope', '$state', '$stateParams', '$http', 'reservasContext', function ($scope, $state, $stateParams, $http, context) {
+    mod.controller("reservaCtrl", ['$scope', '$state', '$stateParams', '$http', 'reservaContext', function ($scope, $state, $stateParams, $http, context) {
 
-            // Inicialmente el listado de reservas está vacio
+            // inicialmente el listado de reservas está vacio
             $scope.records = {};
-            // Carga las reservas
+            // carga las ciudades
             $http.get(context).then(function(response){
                 $scope.records = response.data;    
             }, responseError);
 
-            // El controlador recibió un id de alguna reserva ??
-            // Revisa los parámetros (ver el :reservaId en la definición de la ruta)
-            if ($stateParams.reservaId !== null && $stateParams.reservaId !== undefined) {
+            // el controlador recibió un reservaId ??
+            // revisa los parámetros (ver el :reservaId en la definición de la ruta)
+            if ($stateParams.bibliotecaId !== null && $stateParams.bibliotecaId !== undefined) {
                 
                 // toma el id del parámetro
                 id = $stateParams.reservaId;
@@ -30,7 +30,7 @@
                 // el registro actual debe estar vacio
                 $scope.currentRecord = {
                     id: undefined /*Tipo Long. El valor se asigna en el backend*/,
-                    name: '' /*Tipo String*/,
+                    name: '' /*Tipo String*/
                 };
               
                 $scope.alerts = [];
@@ -41,14 +41,14 @@
                 currentRecord = $scope.currentRecord;
                 
                 // si el id es null, es un registro nuevo, entonces lo crea
-                if (id == null) {
+                if (id === null) {
 
                     // ejecuta POST en el recurso REST
                     return $http.post(context, currentRecord)
                         .then(function () {
                             // $http.post es una promesa
                             // cuando termine bien, cambie de estado
-                            $state.go('reservasList');
+                            $state.go('reservaList');
                         }, responseError);
                         
                 // si el id no es null, es un registro existente entonces lo actualiza
@@ -59,10 +59,11 @@
                         .then(function () {
                             // $http.put es una promesa
                             // cuando termine bien, cambie de estado
-                            $state.go('reservasList');
+                            $state.go('reservaList');
                         }, responseError);
                 };
             };
+            
 
 
 

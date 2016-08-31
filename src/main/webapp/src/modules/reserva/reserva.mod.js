@@ -1,39 +1,39 @@
 (function (ng) {
-    var mod = ng.module("reservaModule", ["ngMessages"]);
-    mod.constant("reservasContext", "api/reservas");
+    var mod = ng.module("reservaModule", ["ui.router","ngMessages"]);
+    mod.constant("reservaContext", "api/reservas");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/modules/reservas/';
-            $urlRouterProvider.otherwise("/reservasList");
+            var basePath = 'src/modules/reserva/';
+            $urlRouterProvider.otherwise("/reservaList");
      
-            $stateProvider.state('reservasList', {
+            $stateProvider.state('reservaList', {
                 url: '/reservas',
                 views: {
                     'mainView': {
-                        controller: 'reservasCtrl',
+                        controller: 'reservaCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'reservas.list.html'
+                        templateUrl: basePath + "reserva.list.html"
                     }
                 }
-            }).state('reservasCreate', {
+            }).state('reservaCreate', {
                 url: '/reservas/create',
                 views: {
                     'mainView': {
-                        controller: 'reservasCtrl',
+                        controller: 'reservaCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'reservas.create.html'
+                        templateUrl: basePath + 'reserva.create.html'
                     }
                 }
 
             }).state('reservaEdit', {
                 url: '/reservas/:reservaId',
                 param: {
-                    reservaId: null
+                    cityId: null
                 },
                 views: {
                     'mainView': {
                         controller: 'reservaCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'reservas.create.html'
+                        templateUrl: basePath + 'reserva.create.html'
                     }
                 }
             });

@@ -1,7 +1,6 @@
-
 <div class="col-md-6 well">
     <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}} </alert>
-    <form novalidate name="form" id="city-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)">
+    <form novalidate name="form" id="reserva-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)">
         
         <div ng-messages="form.$error">
             <div ng-message="required">Fill the required fields!</div>
@@ -15,7 +14,7 @@
                     <input id="name" name="name" class="form-control" type="text" ng-model="currentRecord.name" ng-init="currentRecord.name" required />
                 </div>
             </div>
-            <button type="button" ui-sref='citiesList'>Cancel</button>
+            <button type="button" ui-sref='reservaList'>Cancel</button>
             <button type="submit" >Save</button>    
         </fieldset>
     </form>
