@@ -13,7 +13,12 @@
                 <div class="col-md-10">
                     <input id="name" name="name" class="form-control" type="text" ng-model="currentRecord.name" ng-init="currentRecord.name" required />
                 </div>
+                <label for="name" class="col-md-2 control-label">Descripción</label>
+                <div class="col-md-10">
+                    <input id="descripcion" name="descripcion" class="form-control" type="text" ng-model="currentRecord.descripcion" ng-init="currentRecord.descripcion" required />
+                </div>
             </div>
+           
             <button type="button" ui-sref='blogList'>Cancel</button>
             <button type="submit" >Save</button>    
         </fieldset>

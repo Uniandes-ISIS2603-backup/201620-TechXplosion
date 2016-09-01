@@ -12,7 +12,7 @@ package co.edu.uniandes.rest.cities.dtos;
 public class MedioPagoDTO {
     private Long id;
     private String tipo;
-    private int numreo;
+    private int numero;
     private int numeroSeguridad;
 /**
  * Constructor por defecto
@@ -23,13 +23,13 @@ public class MedioPagoDTO {
  * Constructor con parametros
  * @param id el id del medio de pago
  * @param tipo el tipo de medio de pago
- * @param numreo el numero del medio de pago
+ * @param numero el numero del medio de pago
  * @param numeroSeguridad el numero de seguridad del medio de pago
  */
-    public MedioPagoDTO(Long id, String tipo, int numreo, int numeroSeguridad) {
+    public MedioPagoDTO(Long id, String tipo, int numero, int numeroSeguridad) {
         this.id = id;
         this.tipo = tipo;
-        this.numreo = numreo;
+        this.numero = numero;
         this.numeroSeguridad = numeroSeguridad;
     }
 /**
@@ -64,15 +64,15 @@ public class MedioPagoDTO {
  * metodo para retornar el numero del medio de pago
  * @return numero
  */
-    public int getNumreo() {
-        return numreo;
+    public int getNumero() {
+        return numero;
     }
 /**
  * metodo para actualizar el numero del medio de pago
- * @param numreo 
+ * @param numero 
  */
-    public void setNumreo(int numreo) {
-        this.numreo = numreo;
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 /**
  * metodo para retornar el numero de seguridad del medio de pago
@@ -95,7 +95,7 @@ public class MedioPagoDTO {
      */
     @Override
     public String toString() {
-        return  "{id : " + id + ", tipo : \"" + tipo + "\" , numreo : " + numreo + ", numeroSeguridad :" + numeroSeguridad + "}";
+        return  "{id : " + id + ", tipo : \"" + tipo + "\" , numero : " + numero + ", numeroSeguridad :" + numeroSeguridad + "}";
     }
 
    
