@@ -1,0 +1,29 @@
+<div class="container-fluid" >
+   
+    <table class="table table-striped" class="col-md-4">
+        <thead>
+            <tr>
+                <th>Id del video</th>
+                <th>Nombre del video</th>   
+                <th>Duración del video</th>
+                <th>Tipo del video</th> 
+
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="record in records">
+                <td id="{{$index}}-idVideo">{{record.idVideo}}</td>
+                <td id="{{$index}}-nombreVideo">{{record.nombreVideo}}</td>
+                <td id="{{$index}}-duracion">{{record.duracion}}</td>
+                 <td id="{{$index}}-tipoVideo">{{record.tipoVideo}}</td>
+
+                <td>
+                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="videoEdit({videoId: record.idVideo})"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+                    <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteRecord(record)"><span class="glyphicon glyphicon-minus"></span> Remove</button>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

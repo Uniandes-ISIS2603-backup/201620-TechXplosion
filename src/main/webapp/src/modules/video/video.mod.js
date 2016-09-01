@@ -1,7 +1,7 @@
 (function(ng){
     var mod = angular.module("videoModule",["ui.router","ngMessages"]);
 
-    mod.constant("videoContext", "api/video");
+    mod.constant("videoContext", "api/videos");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/video/';
             $urlRouterProvider.otherwise("/videoList");
