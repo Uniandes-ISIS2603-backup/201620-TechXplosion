@@ -2,7 +2,7 @@
     var mod = ng.module("usuarioModule", ["ngMessages"]);
     mod.constant("usuarioContext", "api/usuarios");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/modules/uusario/';
+            var basePath = 'src/modules/usario/';
             $urlRouterProvider.otherwise("/usuarioList");
      
             $stateProvider.state('usuarioList', {
