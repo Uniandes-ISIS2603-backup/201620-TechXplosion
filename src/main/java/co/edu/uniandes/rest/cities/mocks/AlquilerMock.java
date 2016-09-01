@@ -6,6 +6,7 @@
 package co.edu.uniandes.rest.cities.mocks;
 
 import co.edu.uniandes.rest.cities.dtos.AlquilerDTO;
+import co.edu.uniandes.rest.cities.dtos.BibliotecaDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -36,8 +37,8 @@ public class AlquilerMock
 
     	if (alquileres == null) {
             alquileres = new ArrayList<>();
-            alquileres.add(new AlquilerDTO(0L,1,0,new Date(0), new Date(1000000)));
-            alquileres.add(new AlquilerDTO(1L,1,0,new Date(0), new Date(1000000)));
+            alquileres.add(new AlquilerDTO(0L,1,0,"8/5/2016", "16/5/2016"));
+            alquileres.add(new AlquilerDTO(1L,1,0,"9/5/2016", "20/5/2016"));
         }
         
     	// indica que se muestren todos los mensajes
@@ -76,7 +77,8 @@ public class AlquilerMock
     public AlquilerDTO createAlquiler(AlquilerDTO nuevo) throws CityLogicException 
     {
     	logger.info("recibiendo solicitud de agregar alquiler " + nuevo);
-    	
+    	if(nuevo.getId()!=null)
+        {
             for (AlquilerDTO alquiler: alquileres)
             {
                 if (Objects.equals(alquiler.getId(), nuevo.getId()))
@@ -85,8 +87,21 @@ public class AlquilerMock
                     throw new CityLogicException("Ya existe un alquiler con ese id");
                 }
             }
-    	
-    	logger.info("agregando el alquiler:  " + nuevo);
+ 	
+        }
+        else {
+
+    		// genera un id para la biblioteca
+    		logger.info("Generando id para el nuevo alquiler");
+    		long newId = 1;
+	        for (AlquilerDTO alquiler : alquileres) {
+	            if (newId <= alquiler.getId()){
+	                newId =  alquiler.getId() + 1;
+	            }
+	        }
+	        nuevo.setId(newId);
+    	}
+    logger.info("agregando el alquiler:  " + nuevo);
         alquileres.add(nuevo);
         return nuevo;
     }
@@ -163,9 +178,11 @@ public class AlquilerMock
     		logger.severe("Error interno: lista de alquileres no existe.");
     		throw new CityLogicException("Error interno: lista de alquileres no existe.");    		
     	}
-    	
+    	logger.info("retornando la biblioteca buscada ");
     	for (AlquilerDTO alquiler : alquileres) 
         {
+            
+                        logger.severe("la biblioteca con el id: "+id);
 	            if (Objects.equals(id, alquiler.getId()))
                     {
                         alquileres.remove(alquiler);

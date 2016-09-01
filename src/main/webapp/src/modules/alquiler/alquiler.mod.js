@@ -1,7 +1,7 @@
 (function(ng){
     var mod = angular.module("alquilerModule",["ui.router","ngMessages"]);
 
-    mod.constant("alquilerContext", "api/alquiler");
+    mod.constant("alquilerContext", "api/alquileres");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/alquiler/';
             $urlRouterProvider.otherwise("/alquilerList");
@@ -37,19 +37,6 @@
                         templateUrl: basePath + 'alquiler.index.html'
                     }
                 }
-            }).state('alquilerDelete',{
-                url:'/alquiler/delete/:alquilerId',
-                param: {
-                    alquilerId:null
-                },
-                views:{
-                    'mainView':{
-                        controller:'alquilerCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: basePath + 'alquiler.delete.html'
-                    }
-                }
-                       
             });
         }]);
 })(window.angular);

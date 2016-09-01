@@ -28,11 +28,11 @@ public class AlquilerDTO
     /**
      * Atributo que modela la fecha en la que se realizo el alquiler
      */
-    private Date fechaAlquiler;
+    private String fechaAlquiler;
     /**
      * Atributo que modela la fecha maxima en la que se debe devolver el recurso
      */
-    private Date fechaDevolucion;
+    private String fechaDevolucion;
     /**
      * Atributo que modela si el alquiler ya entro en vencimiento o no
      */
@@ -47,7 +47,7 @@ public class AlquilerDTO
      * @param inicio
      * @param fin 
      */
-    public AlquilerDTO(Long pId, int pIdUsuario, int pIdRecurso, Date inicio, Date fin)
+    public AlquilerDTO(Long pId, int pIdUsuario, int pIdRecurso, String inicio, String fin)
     {
         id=pId;
         idUsuario = pIdUsuario;
@@ -122,7 +122,7 @@ public class AlquilerDTO
      * Da la fecha de alquiler del recurso
      * @return fecha de alquiler del recurso
      */
-    public Date getFechaAlquiler()
+    public String getFechaAlquiler()
     {
         return fechaAlquiler;
     }
@@ -131,7 +131,7 @@ public class AlquilerDTO
      * Cambia la fecha en que se alquilo el recurso
      * @param pFechaAlquiler nueva fecha de alquiler del recurso
      */
-    public void setFechaAlquiler(Date pFechaAlquiler)
+    public void setFechaAlquiler(String pFechaAlquiler)
     {
         fechaAlquiler = pFechaAlquiler;
     }
@@ -140,7 +140,7 @@ public class AlquilerDTO
      * Da la fecha de devolucion maxima del recurso
      * @return fecha de devolucion maxima del recurso
      */
-    public Date getFechaDevolucion()
+    public String getFechaDevolucion()
     {
         return fechaDevolucion;
     }
@@ -149,7 +149,7 @@ public class AlquilerDTO
      * Cambia la fecha de devolucion maxima del recurso
      * @param pFechaDevolucion nueva fecha de devolucion maxima del recurso
      */
-    public void setFechaDevolucion(Date pFechaDevolucion)
+    public void setFechaDevolucion(String pFechaDevolucion)
     {
         fechaDevolucion = pFechaDevolucion;
     }

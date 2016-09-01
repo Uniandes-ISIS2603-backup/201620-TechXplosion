@@ -3,13 +3,20 @@
     <table class="table table-striped" class="col-md-4">
         <thead>
             <tr>
-                <th>Nombre</th>        
-                <th>Actions</th>
+                <th>Id</th>
+                <th>Id Usuario</th>   
+                <th>Fecha alquiler</th>
+                <th>Fecha devuelta</th> 
+
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="record in records">
-                <td id="{{$index}}-name">{{record.name}}</td>
+                <td id="{{$index}}-id">{{record.id}}</td>
+                <td id="{{$index}}-idUsuario">{{record.idUsuario}}</td>
+                <td id="{{$index}}-fechaAlquiler">{{record.fechaAlquiler}}</td>
+                 <td id="{{$index}}-fechaDevolucion">{{record.fechaDevolucion}}</td>
 
                 <td>
                     <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="alquilerEdit({alquilerId: record.id})"><span class="glyphicon glyphicon-edit"></span> Edit</button>
