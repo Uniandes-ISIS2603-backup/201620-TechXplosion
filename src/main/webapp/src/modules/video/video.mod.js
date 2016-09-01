@@ -12,7 +12,7 @@
                     'mainView': {
                         controller: 'videoCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'video.index.html'
+                        templateUrl: basePath + 'video.list.html'
                     }
                 }
             }).state('videoCreate', {
