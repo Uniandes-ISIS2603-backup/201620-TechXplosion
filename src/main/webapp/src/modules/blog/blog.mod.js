@@ -27,7 +27,7 @@
             }).state('blogEdit', {
                 url: '/blogs/:blogId',
                 param: {
-                    cityId: null
+                    blogId: null
                 },
                 views: {
                     'mainView': {

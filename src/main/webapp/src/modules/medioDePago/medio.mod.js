@@ -27,7 +27,7 @@
             }).state('medioEdit', {
                 url: '/medios/:medioId',
                 param: {
-                    cityId: null
+                    medioId: null
                 },
                 views: {
                     'mainView': {

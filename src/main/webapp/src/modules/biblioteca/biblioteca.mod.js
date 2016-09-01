@@ -27,7 +27,7 @@
             }).state('bibliotecaEdit', {
                 url: '/bibliotecas/:bibliotecaId',
                 param: {
-                    cityId: null
+                    bibliotecaId: null
                 },
                 views: {
                     'mainView': {
