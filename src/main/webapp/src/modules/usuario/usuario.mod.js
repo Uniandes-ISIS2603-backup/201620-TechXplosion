@@ -1,12 +1,12 @@
 (function (ng) {
-    var mod = ng.module("usuarioModule", ["ngMessages"]);
+    var mod = angular.module("usuarioModule", ["ui.router", "ngMessages"]);
     mod.constant("usuarioContext", "api/usuarios");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/modules/usario/';
+            var basePath = 'src/modules/usuario/';
             $urlRouterProvider.otherwise("/usuarioList");
      
             $stateProvider.state('usuarioList', {
-                url: '/usuarios',
+                url: '/usuario',
                 views: {
                     'mainView': {
                         controller: 'usuarioCtrl',
@@ -15,7 +15,7 @@
                     }
                 }
             }).state('usuarioCreate', {
-                url: '/usuarios/create',
+                url: '/usuario/create',
                 views: {
                     'mainView': {
                         controller: 'usuarioCtrl',
@@ -25,7 +25,7 @@
                 }
 
             }).state('usuarioEdit', {
-                url: '/usuarios/:usuariosId',
+                url: '/usuario/:usuariosId',
                 param: {
                     cityId: null
                 },

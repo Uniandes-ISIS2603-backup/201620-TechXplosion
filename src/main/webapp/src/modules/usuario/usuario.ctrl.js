@@ -63,6 +63,17 @@
                         }, responseError);
                 };
             };
+            this.deleteRecord = function (record) {
+                currentRecord = record;
+                    // ejecuta DELETE en el recurso REST
+                   return $http.delete(context + "/" + currentRecord.id)
+                        .then(function () {
+                            // $http.delete es una promesa
+                            // cuando termine bien, cambie de estado
+                            $state.reload();
+                        }, responseError);
+              
+            };
             
 
 
