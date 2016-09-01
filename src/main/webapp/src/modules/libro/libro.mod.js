@@ -1,6 +1,6 @@
 
 (function(ng){
-    var mod = angular.module("libroModule",["ui.router","ngMessages"]);
+    var mod = ng.module("libroModule",["ui.router","ngMessages"]);
 
     mod.constant("libroContext", "api/libro");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {

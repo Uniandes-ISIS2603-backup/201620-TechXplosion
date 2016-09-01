@@ -1,5 +1,5 @@
 (function (ng){
-    var mod = angular.module("libroModule");
+    var mod = ng.module("libroModule");
     
     mod.controller("libroCtrl",['$scope','$state','$stateParams', '$http', 'libroContext', function ($scope, $state, $stateParams, $http, context)
         { 
