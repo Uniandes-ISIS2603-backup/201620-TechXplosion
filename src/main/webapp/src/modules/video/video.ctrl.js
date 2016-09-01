@@ -29,7 +29,9 @@
         {
                 $scope.currentRecord = {
                     id: undefined /*Tipo Long. El valor se asigna en el backend*/,
-                    name: '' /*Tipo String*/,
+                    nombre: '' /*Tipo String*/,
+                    tipo: '',
+                    diracion: '',
                 };
               
                 $scope.alerts = [];

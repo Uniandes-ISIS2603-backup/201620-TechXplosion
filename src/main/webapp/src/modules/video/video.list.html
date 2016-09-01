@@ -13,10 +13,10 @@
         </thead>
         <tbody>
             <tr ng-repeat="record in records">
-                <td id="{{$index}}-idVideo">{{record.idVideo}}</td>
-                <td id="{{$index}}-nombreVideo">{{record.nombreVideo}}</td>
+                <td id="{{$index}}-idVideo">{{record.id}}</td>
+                <td id="{{$index}}-nombreVideo">{{record.nombre}}</td>
                 <td id="{{$index}}-duracion">{{record.duracion}}</td>
-                 <td id="{{$index}}-tipoVideo">{{record.tipoVideo}}</td>
+                 <td id="{{$index}}-tipoVideo">{{record.tipo}}</td>
 
                 <td>
                     <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="videoEdit({videoId: record.idVideo})"><span class="glyphicon glyphicon-edit"></span> Edit</button>

@@ -11,7 +11,7 @@
             <div class="form-group col-md-12" ng-class="{'has-success': form.tipo.$valid && form.tipo.$dirty, 'has-error': form.tipo.$invalid && (form.tipo.$dirty || form.$submitted)}" >
                 <label for="name" class="col-md-2 control-label">Nombre del video</label>
                 <div class="col-md-12">
-                    <input id="nombreVideo" name="nombreVideo" class="form-control" type="text" ng-model="currentRecord.nombreVideo" ng-init="currentRecord.nombreVideo" required />
+                    <input id="nombre" name="nombreVideo" class="form-control" type="text" ng-model="currentRecord.nombre" ng-init="currentRecord.nombre" required />
                 </div>
                 <label for="name" class="col-md-2 control-label">Duración del video</label>
                 <div class="col-md-12">
@@ -19,11 +19,11 @@
                 </div>
                   <label for="name" class="col-md-2 control-label">Id del video</label>
                 <div class="col-md-12">
-                    <input id="idVideo" name="idVideo" class="form-control" type="text" ng-model="currentRecord.idVideo" ng-init="currentRecord.idVideo" required />
+                    <input id="id" name="idVideo" class="form-control" type="text" ng-model="currentRecord.id" ng-init="currentRecord.id" required />
                 </div>
                   <label for="name" class="col-md-2 control-label">Tipo del video</label>
                 <div class="col-md-12">
-                    <input id="tipoVideo" name="tipoVideo" class="form-control" type="text" ng-model="currentRecord.tipoVideo" ng-init="currentRecord.tipoVideo" required />
+                    <input id="tipo" name="tipoVideo" class="form-control" type="text" ng-model="currentRecord.tipo" ng-init="currentRecord.tipo" required />
                 </div>
             </div>
            
