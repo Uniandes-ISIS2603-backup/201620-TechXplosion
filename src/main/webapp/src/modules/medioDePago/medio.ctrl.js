@@ -24,7 +24,7 @@
                         $scope.currentRecord = response.data;
                     }, responseError);
 
-            // el controlador no recibió un cityId
+            // el controlador no recibió un medioId
             } else
             {
                 // el registro actual debe estar vacio
