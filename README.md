@@ -1,4 +1,4 @@
--# TechXplosion
+-#TechXplosion
  -Líder del grupo - Sergio Andrés Pardo Sánchez	sapardo10	Sección 1	sa.pardo10@uniandes.edu.co
  -
  -Juan Camilo Sánchez Rodríguez	jcsanchez16	Sección 1	jc.sanchez16@uniandes.edu.co
@@ -11,7 +11,7 @@
  -
  -Juan Manuel Rodríguez Barragán	juanrodriguez32	Sección 1	jm.rodriguez11@uniandes.edu.co
  
- ## distribución recursos
+ ##Distribución recursos
  -Juan Sebastián Numpaque Roa: Reservas
  -
  -Juan Sebastian Sosa Florez: Bibliotecas, Blogs, Medios de pago.
