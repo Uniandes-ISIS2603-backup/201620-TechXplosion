@@ -12,12 +12,17 @@
  -Juan Manuel Rodríguez Barragán	juanrodriguez32	Sección 1	jm.rodriguez11@uniandes.edu.co
  
  ## distribución recursos
- Juan Sebastián Numpaque Roa: Reservas
- Juan Sebastian Sosa Florez: Bibliotecas, Blogs, Medios de pago.
- Juan Manuel Rodríguez Barragán: Usuarios
- Nicolás David Muñoz Cuervo : Videos.
- Juan Camilo Sánchez Rodríguez: Libros.
- Sergio Andrés Pardo Sánchez: Alquileres.
+ -Juan Sebastián Numpaque Roa: Reservas
+ -
+ -Juan Sebastian Sosa Florez: Bibliotecas, Blogs, Medios de pago.
+ -
+ -Juan Manuel Rodríguez Barragán: Usuarios
+ -
+ -Nicolás David Muñoz Cuervo : Videos.
+ -
+ -Juan Camilo Sánchez Rodríguez: Libros.
+ -
+ -Sergio Andrés Pardo Sánchez: Alquileres.
  #Documentacion del API
  
  ##Clase Biblioteca
