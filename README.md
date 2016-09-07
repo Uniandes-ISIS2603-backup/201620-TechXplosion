@@ -11,7 +11,7 @@
  -
  -Juan Manuel Rodríguez Barragán	juanrodriguez32	Sección 1	jm.rodriguez11@uniandes.edu.co
  -
- # distribución recursos
+ ## distribución recursos
  Juan Sebastián Numpaque Roa: Reservas
  Juan Sebastian Sosa Florez: Bibliotecas, Blogs, Medios de pago.
  Juan Manuel Rodríguez Barragán: Usuarios
