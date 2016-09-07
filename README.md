@@ -10,7 +10,7 @@
  -Nicolás David Muñoz Cuervo	ndmunoz10	Sección 1	nd.munoz10@uniandes.edu.co
  -
  -Juan Manuel Rodríguez Barragán	juanrodriguez32	Sección 1	jm.rodriguez11@uniandes.edu.co
- -
+ 
  ## distribución recursos
  Juan Sebastián Numpaque Roa: Reservas
  Juan Sebastian Sosa Florez: Bibliotecas, Blogs, Medios de pago.
