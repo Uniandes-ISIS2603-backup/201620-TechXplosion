@@ -12,7 +12,7 @@
 
             // el controlador recibió un reservaId ??
             // revisa los parámetros (ver el :reservaId en la definición de la ruta)
-            if ($stateParams.bibliotecaId !== null && $stateParams.bibliotecaId !== undefined) {
+            if ($stateParams.reservaId !== null && $stateParams.reservaId !== undefined) {
                 
                 // toma el id del parámetro
                 id = $stateParams.reservaId;
