@@ -5,7 +5,7 @@
 
             // inicialmente el listado de reservas está vacio
             $scope.records = {};
-            // carga las ciudades
+            // carga las reservas
             $http.get(context).then(function(response){
                 $scope.records = response.data;    
             }, responseError);
