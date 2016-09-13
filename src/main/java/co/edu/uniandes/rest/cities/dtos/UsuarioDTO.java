@@ -55,7 +55,7 @@ public class UsuarioDTO
        fechaNacimiento = pDate;
        direccionEnvio = direccion;
        apellido = Apellido;
-        estaMultado = false;
+       estaMultado = false;
     }
     /**
      * Constructor vacio

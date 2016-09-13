@@ -14,12 +14,12 @@ public class VideoDTO
     /**
      * Constante que representa si un video es virtual.
      */
-    public static final boolean VIRTUAL = true;
+    public static final String VIRTUAL = "Virtual";
     
     /**
      * Constante que representa si un video es físico.
      */
-    public static final boolean FISICO = false;
+    public static final String FISICO = "Físico";
     
     /**
      * Atributo que modela el nombre de un video.
@@ -39,7 +39,7 @@ public class VideoDTO
     /**
      * Atributo que modela el tipo del video.
      */
-    private boolean tipo;
+    private String tipo;
     
     public VideoDTO()
     {
@@ -53,7 +53,7 @@ public class VideoDTO
      * @param duracion duracion del video dado en minutos.
      * @param tipo tipo del video, false si es físico, true si es virtual.
      */
-    public VideoDTO(String nombre, Long id, double duracion, boolean tipo)
+    public VideoDTO(String nombre, Long id, double duracion, String tipo)
     {
         this.nombre = nombre;
         this.id = id;
@@ -119,7 +119,7 @@ public class VideoDTO
      * Metodo que devuelve el tipo del video.
      * @return tipo del video.
      */
-    public boolean getTipo()
+    public String getTipo()
     {
         return tipo;
     }
@@ -128,7 +128,7 @@ public class VideoDTO
      * Metodo que actualiza el tipo del video.
      * @param tipo duración del nuevo video.
      */
-    public void setTipo(boolean tipo)
+    public void setTipo(String tipo)
     {
         this.tipo = tipo;
     }
