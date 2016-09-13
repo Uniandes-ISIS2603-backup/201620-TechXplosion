@@ -38,9 +38,9 @@ public class VideoMock
         {
             System.out.println("holaaa1");
             videos = new ArrayList<>();
-            videos.add(new VideoDTO("El Arte de la Guerra - Sun Tzu", Long.parseLong("0000001"), 90, true));
-            videos.add(new VideoDTO("El Abrazo de la Serpiente", Long.parseLong("0000002"), 120, false));
-            videos.add(new VideoDTO("La Vida de lo Desconocido", Long.parseLong("0000003"), 180, true));
+            videos.add(new VideoDTO("El Arte de la Guerra - Sun Tzu", Long.parseLong("0000001"), 90, "Virtual"));
+            videos.add(new VideoDTO("El Abrazo de la Serpiente", Long.parseLong("0000002"), 120, "Físico"));
+            videos.add(new VideoDTO("La Vida de lo Desconocido", Long.parseLong("0000003"), 180, "Físico"));
         }
         
         // indica que se muestren todos los mensajes

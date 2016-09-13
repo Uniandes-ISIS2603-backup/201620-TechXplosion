@@ -25,37 +25,34 @@ public class UsuarioDTO
      * Atributo que modela la fecha
      * 
      */
-    private Date fechaNacimiento;
+    //private Date fechaNacimiento;
     /**
      * Atributo que modela la multa
      */
-    private boolean estaMultado;
+    //private boolean estaMultado;
     /**
      * Atributo que modela la fdireccion
      */
-    private String direccionEnvio;
+    //private String direccionEnvio;
     /**
      * Atributo que modela el apellido
      */
-    private String apellido;
+    //private String apellido;
     
     
     /**
      * Constructor de la clase
      * @param pId
      * @param pNombre
-     * @param pDate
-     * @param direccion
-     * @param Apellido 
      */
-    public UsuarioDTO(Long pId, String pNombre, Date pDate, String direccion , String Apellido)
+    public UsuarioDTO(Long pId, String pNombre)
     {
         id=pId;
        nombre = pNombre;
-       fechaNacimiento = pDate;
-       direccionEnvio = direccion;
-       apellido = Apellido;
-        estaMultado = false;
+       //fechaNacimiento = pDate;
+       //direccionEnvio = direccion;
+       //apellido = Apellido;
+       //estaMultado = false;
     }
     /**
      * Constructor vacio
@@ -109,7 +106,7 @@ public class UsuarioDTO
      */
     public void setFechaNacimiento(Date pFecha)
     {
-        fechaNacimiento = pFecha;
+        //fechaNacimiento = pFecha;
     }
         /**
      * retorna la fecha de nacimiento
@@ -117,7 +114,8 @@ public class UsuarioDTO
      */
     public Date getFechaNacimiento()
     {
-        return fechaNacimiento ;
+        //return fechaNacimiento ;
+        return null;
     }
     /**
      * Dice si esta o no multado
@@ -125,7 +123,8 @@ public class UsuarioDTO
      */
     public boolean estaMultado()
     {
-        return estaMultado;
+        //return estaMultado;
+        return false;
     }
     
     /**
@@ -133,7 +132,7 @@ public class UsuarioDTO
      */
     public void setMulta()
     {
-        estaMultado = !estaMultado;
+        //estaMultado = !estaMultado;
     }
     
     /**
@@ -152,7 +151,8 @@ public class UsuarioDTO
      */
     public String getAp()
     {
-        return apellido;
+        //return apellido;
+        return null;
     }
     
         /**
@@ -161,7 +161,7 @@ public class UsuarioDTO
      */
     public void setAp(String n)
     {
-         apellido = n;
+         //apellido = n;
     }
     
     
@@ -171,7 +171,8 @@ public class UsuarioDTO
      */
     public String getDireccion()
     {
-        return direccionEnvio;
+        //return direccionEnvio;
+        return null;
     }
     
         /**
@@ -181,6 +182,6 @@ public class UsuarioDTO
      */
     public void setdireccion(String n)
     {
-         direccionEnvio= n;
+         //direccionEnvio= n;
     }
 }
