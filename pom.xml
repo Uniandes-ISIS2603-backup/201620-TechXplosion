@@ -10,12 +10,12 @@
   <name>Biblioteca</name>
 
   <properties>
-        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
   <dependencies>
-        <dependency>
+    <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
@@ -24,7 +24,7 @@
    </dependencies>
 
   <build>
-        <plugins>
+    <plugins>
             <!-- Use a Java 1.7+ compiler -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
