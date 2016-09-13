@@ -17,6 +17,9 @@ public class CityDTO {
      * Constructor por defecto
      */
     public CityDTO() {
+        /**
+     * Constructor por defecto
+     */
 	}
 
     /**
