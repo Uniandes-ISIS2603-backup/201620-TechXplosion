@@ -1,5 +1,6 @@
-(function (ng) {
-    var mod = angular.module("usuarioModule", ["ui.router", "ngMessages"]);
+(function(ng){
+    var mod = angular.module("usuarioModule",["ui.router","ngMessages"]);
+
     mod.constant("usuarioContext", "api/usuarios");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/usuario/';
@@ -11,7 +12,7 @@
                     'mainView': {
                         controller: 'usuarioCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + "usuario.list.html"
+                        templateUrl: basePath + 'usuario.list.html'
                     }
                 }
             }).state('usuarioCreate', {
@@ -20,22 +21,23 @@
                     'mainView': {
                         controller: 'usuarioCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'usuario.create.html'
+                        templateUrl: basePath + 'usuario.index.html'
                     }
                 }
 
             }).state('usuarioEdit', {
-                url: '/usuario/:usuariosId',
+                url: '/usuario/:usuarioId',
                 param: {
-                    cityId: null
+                    videoId: null
                 },
                 views: {
                     'mainView': {
                         controller: 'usuarioCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'usuarios.create.html'
+                        templateUrl: basePath + 'usuario.index.html'
                     }
                 }
+                
             });
         }]);
 })(window.angular);
