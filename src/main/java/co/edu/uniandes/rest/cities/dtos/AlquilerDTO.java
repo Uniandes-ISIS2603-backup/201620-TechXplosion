@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.rest.cities.dtos;
 
-import java.util.Date;
 
 /**
  *
@@ -61,7 +60,9 @@ public class AlquilerDTO
      */
     public AlquilerDTO()
     {
-        
+        /**
+        * Constructor vacio
+        */
     }
     
     /**

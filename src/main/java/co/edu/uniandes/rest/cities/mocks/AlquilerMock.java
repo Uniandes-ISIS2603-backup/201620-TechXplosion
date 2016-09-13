@@ -6,10 +6,8 @@
 package co.edu.uniandes.rest.cities.mocks;
 
 import co.edu.uniandes.rest.cities.dtos.AlquilerDTO;
-import co.edu.uniandes.rest.cities.dtos.BibliotecaDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
@@ -54,7 +52,7 @@ public class AlquilerMock
 	 * @return lista de alquileres
 	 * @throws CityLogicException cuando no existe la lista en memoria  
 	 */    
-    public ArrayList<AlquilerDTO> getAlquileres() throws CityLogicException 
+    public List<AlquilerDTO> getAlquileres() throws CityLogicException 
     {
     	if (alquileres == null) 
         {
