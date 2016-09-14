@@ -5,13 +5,14 @@
  */
 package co.edu.uniandes.rest.cities.dtos;
 
-import java.util.ArrayList;
 
 /**
  * Clase con la infomción de un blog.
+ *
  * @author js.sosa10
  */
 public class BlogDTO {
+
     private Long id;
     private String name;
     private String descripcion;
@@ -21,21 +22,23 @@ public class BlogDTO {
      * Constructor por defecto
      */
     public BlogDTO() {
-	}
+    }
 
     /**
      * Constructor con parámetros.
+     *
      * @param id identificador del blog
      * @param name nombre de la Biblioteca
      * @param descripcion
+     * @param comentarios
      */
-    public BlogDTO(Long id,String name ,String descripcion, String comentraios ) {
-		super();
-		this.id = id;
-		this.name = name;
-                this.descripcion=descripcion;
-                this.comentarios=comentraios;
-	}
+    public BlogDTO(Long id, String name, String descripcion, String comentarios) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.descripcion = descripcion;
+        this.comentarios = comentarios;
+    }
 
     /**
      * @return el identificador del blog.
@@ -45,7 +48,7 @@ public class BlogDTO {
     }
 
     /**
-     * @param el id para actualizar.
+     * @param id
      */
     public void setId(Long id) {
         this.id = id;
@@ -64,7 +67,8 @@ public class BlogDTO {
     public void setName(String name) {
         this.name = name;
     }
-       /**
+
+    /**
      * @return la descripción del blog
      */
     public String getDescripcion() {
@@ -82,16 +86,17 @@ public class BlogDTO {
         return comentarios;
     }
 
-    public void setComentarios(String comentraios) {
+    public void setComentarios(String comentarios) {
         this.comentarios = comentarios;
     }
-    
+
     /**
      * Convierte el objeto a una cadena de caracteres.
+     *
      * @return la cadena de caracteres que represnta el objeto
      */
     @Override
     public String toString() {
-    	return "{ id : " + getId() + ", name : \"" + getName() + "\", descripcion : \"" + getDescripcion()+ "\" }";  
-    } 
+        return "{ id : " + getId() + ", name : \"" + getName() + "\", descripcion : \"" + getDescripcion() + "\" }";
+    }
 }

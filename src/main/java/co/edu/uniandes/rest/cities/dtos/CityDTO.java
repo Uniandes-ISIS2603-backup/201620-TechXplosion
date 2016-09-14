@@ -7,9 +7,11 @@ package co.edu.uniandes.rest.cities.dtos;
 
 /**
  * Objeto de transferencia de datos de Ciudades.
+ *
  * @author Asistente
  */
 public class CityDTO {
+
     private Long id;
     private String name;
 
@@ -18,22 +20,23 @@ public class CityDTO {
      */
     public CityDTO() {
         /**
-     * Constructor por defecto
-     */
-	}
+         * Constructor por defecto
+         */
+    }
 
     /**
      * Constructor con parámetros.
+     *
      * @param id identificador de la ciudad
      * @param name nombre de la ciudad
      */
     public CityDTO(Long id, String name) {
-		super();
-		this.id = id;
-		this.name = name;
-	}
+        super();
+        this.id = id;
+        this.name = name;
+    }
 
-	/**
+    /**
      * @return the id
      */
     public Long getId() {
@@ -60,12 +63,13 @@ public class CityDTO {
     public void setName(String name) {
         this.name = name;
     }
-    
+
     /**
      * Convierte el objeto a una cadena
+     * @return 
      */
     @Override
     public String toString() {
-    	return "{ id : " + getId() + ", name : \"" + getName() + "\" }" ;  
+        return "{ id : " + getId() + ", name : \"" + getName() + "\" }";
     }
 }

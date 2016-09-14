@@ -7,9 +7,11 @@ package co.edu.uniandes.rest.cities.dtos;
 
 /**
  * Clase que guarda la informacíon de una biblioteca
+ *
  * @author js.sosa10
  */
 public class BibliotecaDTO {
+
     private Long id;
     private String name;
 
@@ -18,20 +20,21 @@ public class BibliotecaDTO {
      */
     public BibliotecaDTO() {
         /**
-     * Constructor por defecto
-     */ 
-	}
+         * Constructor por defecto
+         */
+    }
 
     /**
      * Constructor con parámetros.
+     *
      * @param id identificador de la Biblioteca
      * @param name nombre de la Biblioteca
      */
     public BibliotecaDTO(Long id, String name) {
-		super();
-		this.id = id;
-		this.name = name;
-	}
+        super();
+        this.id = id;
+        this.name = name;
+    }
 
     /**
      * @return el id de la biblioteca
@@ -60,13 +63,14 @@ public class BibliotecaDTO {
     public void setName(String name) {
         this.name = name;
     }
-    
+
     /**
      * Convierte el objeto a una cadena
+     *
      * @return la cadena que represnta el objeto
      */
     @Override
     public String toString() {
-    	return "{ id : " + getId() + ", name : \"" + getName() + "\" }" ;  
-    } 
+        return "{ id : " + getId() + ", name : \"" + getName() + "\" }";
+    }
 }
