@@ -8,7 +8,6 @@ package co.edu.uniandes.rest.cities.resources;
 import co.edu.uniandes.rest.cities.dtos.AlquilerDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 import co.edu.uniandes.rest.cities.mocks.AlquilerMock;
-import co.edu.uniandes.rest.cities.mocks.CityLogicMock;
 import java.util.List;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -22,6 +21,7 @@ import javax.ws.rs.Produces;
  *
  * @author sa.pardo10
  */
+//@Path("usuarios/{idUsuario: \\d+}/alquileres")
 @Path("alquileres")
 @Produces("application/json")
 public class AlquilerResource 
@@ -35,7 +35,7 @@ public class AlquilerResource
      * @throws CityLogicException excepción retornada por la lógica
      */
     @GET
-    public List<AlquilerDTO> getAlquileres() throws CityLogicException 
+    public List<AlquilerDTO> getAlquileres(/**@PathParam("idUsuario")Long idLibro**/) throws CityLogicException 
     {
         return alquilerLogic.getAlquileres();
     }
