@@ -13,7 +13,7 @@
                     'mainView': {
                         controller: 'libroCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'libro.index.html'
+                        templateUrl: basePath + 'libro.list.html'
                     }
                 }
             }).state('libroCreate', {
@@ -22,7 +22,7 @@
                     'mainView': {
                         controller: 'libroCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'libro.index.html'
+                        templateUrl: basePath + 'libro.create.html'
                     }
                 }
 
@@ -35,7 +35,7 @@
                     'mainView': {
                         controller: 'libroCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'libro.index.html'
+                        templateUrl: basePath + 'libro.create.html'
                     }
                 }
                 

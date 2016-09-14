@@ -3,16 +3,29 @@
     <table class="table table-striped" class="col-md-4">
         <thead>
             <tr>
-                <th>Nombre</th>        
-                <th>Editorial</th>
+                <th>Nombre</th>    
                 <th>Isbn</th>
-                <th>Autor</th>
-                <th>Edicion</th>
                 <th>Tipo</th>
+                <th>Autor</th>    
+                <th>Editorial</th>
+                <th>Edicion</th>
+                <th>Opciones</th>
             </tr>
         </thead>
         <tbody>
-            
+           <tr ng-repeat="record in records">
+                <td id="{{$index}}-nombre">{{record.nombre}}</td>
+                <td id="{{$index}}-isbn">{{record.isbn}}</td>
+                <td id="{{$index}}-tipo">{{record.tipo}}</td>
+                <td id="{{$index}}-autor">{{record.autor}}</td>
+                <td id="{{$index}}-editorial">{{record.editorial}}</td>
+                <td id="{{$index}}-edicion">{{record.edicion}}</td>
+                <td>
+                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="libroEdit({libroId: record.isbn})"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+                    <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteRecord(record)"><span class="glyphicon glyphicon-minus"></span> Remove</button>
+
+                </td>
+            </tr> 
         </tbody>
     </table>
 </div>

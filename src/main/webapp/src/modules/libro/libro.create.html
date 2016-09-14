@@ -1,0 +1,42 @@
+<div class="col-md-6 well">
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}} </alert>
+    <form novalidate name="form" id="libro-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.isbn)">
+        
+        <div ng-messages="form.$error">
+            <div ng-message="required">Fill the required fields!</div>
+        </div>
+   
+        <fieldset>
+            <input id="isbn" class="form-control" type="hidden" ng-model="currentRecord.isbn"/>
+            <div class="form-group col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+                <label for="nombre" class="col-md-2 control-label">Nombre</label>
+                <div class="col-md-10">
+                    <input id="nombre" name="nombre" class="form-control" type="text" ng-model="currentRecord.nombre" ng-init="currentRecord.nombre" required />
+                </div>
+                 <label for="isbn" class="col-md-2 control-label">Isbn</label>
+                <div class="col-md-10">
+                    <input id="isbn" name="isbn" class="form-control" type="text" ng-model="currentRecord.isbn" ng-init="currentRecord.isbn" required />
+                </div>
+                  <label for="tipo" class="col-md-2 control-label">Tipo</label>
+                <div class="col-md-10">
+                    <input id="tipo" name="tipo" class="form-control" type="text" ng-model="currentRecord.tipo" ng-init="currentRecord.tipo" required />
+                </div>
+                   <label for="autor" class="col-md-2 control-label">Autor</label>
+                <div class="col-md-10">
+                    <input id="autor" name="autor" class="form-control" type="text" ng-model="currentRecord.autor" ng-init="currentRecord.autor" required />
+                </div>
+                    <label for="editorial" class="col-md-2 control-label">Editorial</label>
+                <div class="col-md-10">
+                    <input id="editorial" name="editorial" class="form-control" type="text" ng-model="currentRecord.editorial" ng-init="currentRecord.editorial" required />
+                </div>
+                     <label for="edicion" class="col-md-2 control-label">Edicion</label>
+                <div class="col-md-10">
+                    <input id="edicion" name="edicion" class="form-control" type="text" ng-model="currentRecord.edicion" ng-init="currentRecord.edicion" required />
+                </div>
+            </div>
+           
+            <button type="button" ui-sref='libroList'>Cancel</button>
+            <button type="submit" >Save</button>    
+        </fieldset>
+    </form>
+</div>

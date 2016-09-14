@@ -11,11 +11,11 @@
             $scope.records = response.data;    
         }, responseError);
         
-    if ($stateParams.libroId !== null && $stateParams.libroId !== undefined)
+    if ($stateParams.libroIsbn !== null && $stateParams.libroIsbn !== undefined)
     {
                 
-                id = $stateParams.libroId;
-                $http.get(context + "/" + id)
+                isbn = $stateParams.libroIsbn;
+                $http.get(context + "/" + isbn)
                     .then(function (response) 
                        {
                         // $http.get es una promesa
@@ -28,19 +28,24 @@
             
         {
                 $scope.currentRecord = {
-                    id: undefined /*Tipo Long. El valor se asigna en el backend*/,
-                    name: '' /*Tipo String*/,
+                    isbn: undefined ,
+                   nombre: '' ,
+                   tipo:'',
+                   autor:'',
+                   editorial:'',
+                   edicion:'',
+                   
                 };
               
                 $scope.alerts = [];
             }
 
 
-            this.saveRecord = function (id) 
+            this.saveRecord = function (isbn) 
             {
                 currentRecord = $scope.currentRecord;
                 
-                if (id == null) {
+                if (isbn == null) {
 
                     // ejecuta POST en el recurso REST
                     return $http.post(context, currentRecord)
@@ -53,13 +58,28 @@
                 } else {
                     
                     // ejecuta PUT en el recurso REST
-                    return $http.put(context + "/" + currentRecord.id, currentRecord)
+                    return $http.put(context + "/" + currentRecord.isbn, currentRecord)
                         .then(function () {
                             // $http.put es una promesa
                             // cuando termine bien, cambie de estado
                             $state.go('libroList');
                         }, responseError);
                 };
+            };
+            this.deleteRecord = function (record) {
+                currentRecord = record;
+                
+                
+          
+                    
+                    // ejecuta DELETE en el recurso REST
+                   return $http.delete(context + "/" + currentRecord.isbn)
+                        .then(function () {
+                            // $http.delete es una promesa
+                            // cuando termine bien, cambie de estado
+                            $state.reload();
+                        }, responseError);
+              
             };
 
 
