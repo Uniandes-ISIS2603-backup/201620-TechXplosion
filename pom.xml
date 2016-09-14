@@ -16,17 +16,17 @@
 
   <dependencies>
     <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>7.0</version>
-            <scope>provided</scope>
+      <groupId>javax</groupId>
+      <artifactId>javaee-web-api</artifactId>
+      <version>7.0</version>
+      <scope>provided</scope>
         </dependency>
    </dependencies>
 
   <build>
     <plugins>
             <!-- Use a Java 1.7+ compiler -->
-            <plugin>
+      <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
@@ -39,7 +39,7 @@
                 </configuration>
             </plugin>
             <!-- Create a Web archive (.war) -->
-            <plugin>
+      <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.3</version>
@@ -71,7 +71,7 @@
             </plugin>-->
             <!-- Include Java EE endorsed APIs during compilation -->
             <!-- Include Java EE endorsed APIs during compilation -->
-            <plugin>
+      <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>2.6</version>

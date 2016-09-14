@@ -17,6 +17,9 @@ public class BibliotecaDTO {
      * Constructor por defecto
      */
     public BibliotecaDTO() {
+        /**
+     * Constructor por defecto
+     */ 
 	}
 
     /**
