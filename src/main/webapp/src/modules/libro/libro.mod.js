@@ -2,7 +2,7 @@
 (function(ng){
     var mod = ng.module("libroModule",["ui.router","ngMessages"]);
 
-    mod.constant("libroContext", "api/libro");
+    mod.constant("libroContext", "api/libros");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/libro/';
             $urlRouterProvider.otherwise("/libroList");
