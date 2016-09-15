@@ -22,7 +22,7 @@ public class VideoMock
     /**
      * Objeto que representa los logs de las operaciones realizadas.
      */
-    private final static Logger logger = Logger.getLogger(CityLogicMock.class.getName());
+    private final static Logger logger = Logger.getLogger(VideoMock.class.getName());
     
     /**
      * Atributo que modela la lista de videos.

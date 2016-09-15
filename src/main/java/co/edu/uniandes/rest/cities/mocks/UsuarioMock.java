@@ -25,7 +25,7 @@ public class UsuarioMock
 {
 
     // objeto para presentar logs de las operaciones
-    private final static Logger logger = Logger.getLogger(CityLogicMock.class.getName());
+    private final static Logger logger = Logger.getLogger(UsuarioMock.class.getName());
 	
     // listado de usuarios
     private static ArrayList<UsuarioDTO> usuarios;

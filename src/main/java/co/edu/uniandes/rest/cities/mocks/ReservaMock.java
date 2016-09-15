@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 public class ReservaMock {
     
     // Objeto para presentar logs de las operaciones
-    private final static Logger logger = Logger.getLogger(CityLogicMock.class.getName());
+    private final static Logger logger = Logger.getLogger(ReservaMock.class.getName());
     // Listado de Reservas
     private static ArrayList<ReservaDTO> reservas;
     

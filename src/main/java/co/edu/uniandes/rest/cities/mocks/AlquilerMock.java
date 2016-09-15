@@ -23,7 +23,7 @@ public class AlquilerMock
 {
 
     // objeto para presentar logs de las operaciones
-    private final static Logger logger = Logger.getLogger(CityLogicMock.class.getName());
+    private final static Logger logger = Logger.getLogger(AlquilerMock.class.getName());
 	
     // listado de alquileres
     private static ArrayList<AlquilerDTO> alquileres;

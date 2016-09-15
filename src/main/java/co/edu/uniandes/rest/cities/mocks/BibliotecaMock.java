@@ -18,7 +18,7 @@ import co.edu.uniandes.rest.cities.dtos.BibliotecaDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 public class BibliotecaMock {
     // objeto para presentar logs de las operaciones
-	private final static Logger logger = Logger.getLogger(CityLogicMock.class.getName());
+	private final static Logger logger = Logger.getLogger(BibliotecaMock.class.getName());
 	
 	// listado de bibliotecaes
     private static ArrayList<BibliotecaDTO> bibliotecas;

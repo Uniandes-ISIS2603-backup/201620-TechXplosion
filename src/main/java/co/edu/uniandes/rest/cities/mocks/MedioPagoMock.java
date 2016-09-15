@@ -18,7 +18,7 @@ import co.edu.uniandes.rest.cities.dtos.MedioPagoDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 public class MedioPagoMock {
      // objeto para presentar logs de las operaciones
-	private final static Logger logger = Logger.getLogger(CityLogicMock.class.getName());	
+	private final static Logger logger = Logger.getLogger(MedioPagoMock.class.getName());	
 	// listado de MedioPagos
     private static ArrayList<MedioPagoDTO> MedioPagos;
 

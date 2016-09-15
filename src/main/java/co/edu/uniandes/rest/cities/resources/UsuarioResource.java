@@ -8,7 +8,6 @@ package co.edu.uniandes.rest.cities.resources;
 
 import co.edu.uniandes.rest.cities.dtos.UsuarioDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
-import co.edu.uniandes.rest.cities.mocks.CityLogicMock;
 import co.edu.uniandes.rest.cities.mocks.UsuarioMock;
 import java.util.List;
 import javax.ws.rs.DELETE;

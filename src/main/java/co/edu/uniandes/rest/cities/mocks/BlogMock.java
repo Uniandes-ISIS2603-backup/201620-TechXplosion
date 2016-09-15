@@ -18,7 +18,7 @@ import co.edu.uniandes.rest.cities.dtos.BlogDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 public class BlogMock {
      // objeto para presentar logs de las operaciones
-	private final static Logger logger = Logger.getLogger(CityLogicMock.class.getName());	
+	private final static Logger logger = Logger.getLogger(BlogMock.class.getName());	
 	// listado de blogs
     private static ArrayList<BlogDTO> blogs;
 
