@@ -28,12 +28,12 @@
             
         {
                 $scope.currentRecord = {
-                    isbn: undefined ,
+                   isbn: undefined ,
                    nombre: '' ,
                    tipo:'',
                    autor:'',
                    editorial:'',
-                   edicion:'',
+                   edicion:''
                    
                 };
               
