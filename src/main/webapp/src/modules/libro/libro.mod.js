@@ -27,9 +27,9 @@
                 }
 
             }).state('libroEdit', {
-                url: '/libro/:libroId',
+                url: '/libro/:libroIsbn',
                 param: {
-                    libroId: null
+                    libroIsbn: null
                 },
                 views: {
                     'mainView': {
