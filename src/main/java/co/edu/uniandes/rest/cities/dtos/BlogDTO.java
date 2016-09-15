@@ -22,6 +22,9 @@ public class BlogDTO {
      * Constructor por defecto
      */
     public BlogDTO() {
+        /**
+     * Constructor por defecto
+     */
     }
 
     /**
