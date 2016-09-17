@@ -8,7 +8,6 @@ package co.edu.uniandes.rest.cities.resources;
 import co.edu.uniandes.rest.cities.dtos.ReservaDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 import co.edu.uniandes.rest.cities.mocks.ReservaMock;
-import java.util.Date;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -18,13 +17,12 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 
 /**
  *
  * @author js.numpaque10
  */
-@Path("reservas")
+@Path("usuarios/{idUsuario \\d+}/reservas")
 @Produces("application/json")
 @Consumes("application/json")
 public class ReservaResource {
@@ -37,9 +35,9 @@ public class ReservaResource {
      * @throws CityLogicException 
      */
     @GET
-    public List<ReservaDTO> getReservas() throws CityLogicException
+    public List<ReservaDTO> getReservas(@PathParam("idUsuario")Long idUsuario) throws CityLogicException
     {
-        return reservaMock.getReservas();
+        return reservaMock.getReservas(idUsuario);
     }
     
     /**
@@ -50,9 +48,9 @@ public class ReservaResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public ReservaDTO getReserva(@PathParam("id") Long id) throws CityLogicException 
+    public ReservaDTO getReserva(@PathParam("idUsuario")Long idUsuario,@PathParam("id") Long id) throws CityLogicException 
     {
-        return reservaMock.getReserva(id);
+        return reservaMock.getReserva(idUsuario,id);
     }
         
     /**
@@ -62,9 +60,9 @@ public class ReservaResource {
      * @throws CityLogicException Cuando ya hay una reserva con el mismo id.
      */
     @POST
-    public ReservaDTO createReserva(ReservaDTO nuevaReserva) throws CityLogicException
+    public ReservaDTO createReserva(@PathParam("idUsuario")Long idUsuario,ReservaDTO nuevaReserva) throws CityLogicException
     {
-        return reservaMock.createReserva(nuevaReserva);
+        return reservaMock.createReserva(idUsuario,nuevaReserva);
     }
     
     /**
@@ -74,9 +72,9 @@ public class ReservaResource {
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteReserva(@PathParam("id") Long id) throws CityLogicException
+    public void deleteReserva(@PathParam("idUsuario")Long idUsuario,@PathParam("id") Long id) throws CityLogicException
     {
-      reservaMock.deleteReserva(id);
+      reservaMock.deleteReserva(idUsuario,id);
     }
     /**
      * Actualiza una instancia de la entidad Reserva.
@@ -87,9 +85,9 @@ public class ReservaResource {
     */
     @PUT
     @Path("{id: \\d+}")
-    public ReservaDTO updateReserva(@PathParam("id") Long id ,ReservaDTO reservaMod) throws CityLogicException
+    public ReservaDTO updateReserva(@PathParam("idUsuario")Long idUsuario,@PathParam("id") Long id ,ReservaDTO reservaMod) throws CityLogicException
     {
-        return reservaMock.updateReserva(id, reservaMod);
+        return reservaMock.updateReserva(idUsuario, id, reservaMod);
     }
     
 }

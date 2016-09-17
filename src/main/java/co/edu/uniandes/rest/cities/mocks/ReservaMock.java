@@ -50,7 +50,7 @@ public class ReservaMock {
      * @return Lista de reservas
      * @throws CityLogicException Cuando la listas de reservas no ha sido inicializada.
      */
-    public List<ReservaDTO> getReservas() throws CityLogicException
+    public List<ReservaDTO> getReservas(Long idUsuario) throws CityLogicException
     {
         if (reservas==null)
         {
@@ -70,7 +70,7 @@ public class ReservaMock {
     * @return La reserva que se ha adicionado.
     * @throws CityLogicException Cuando hay una reserva existente con el id suministrado.
     */
-    public ReservaDTO createReserva( ReservaDTO nuevaReserva ) throws CityLogicException
+    public ReservaDTO createReserva(Long idUsuario, ReservaDTO nuevaReserva ) throws CityLogicException
     {
         logger.info("Recibiendo solicitud de agregar nueva reserva. " + nuevaReserva);
         if (nuevaReserva.getId() != null)
@@ -106,7 +106,7 @@ public class ReservaMock {
      * @return La reserva que se deseaba obtener.
      * @throws CityLogicException En caso de no haber una reserva con el ida dado o que la lista de reservas sea vacía.
      */
-    public ReservaDTO getReserva(Long id) throws CityLogicException
+    public ReservaDTO getReserva(Long idUsuario, Long id) throws CityLogicException
     {
         if (reservas==null)
         {
@@ -133,7 +133,7 @@ public class ReservaMock {
      * @param id El id del recurso que se desea eliminar.
      * @throws CityLogicException Si no encuentra un recurso con el id dado o si la lista de reservas está vacía.
      */
-    public void deleteReserva (Long id) throws CityLogicException
+    public void deleteReserva (Long idUsuario, Long id) throws CityLogicException
     {
         boolean isIdInArray = false;
         if (reservas==null)
@@ -170,7 +170,7 @@ public class ReservaMock {
      * @return La instancia de Reserva actualizada.
      * @throws CityLogicException Si la lista de reservas es vacía, si no hay una reserva con el id dado o si el path y el id de la reserva no coinciden.
      */
-    public ReservaDTO updateReserva(Long id , ReservaDTO reservaMod) throws CityLogicException
+    public ReservaDTO updateReserva(Long idUsuario, Long id , ReservaDTO reservaMod) throws CityLogicException
     {
         if (reservas==null)
         {
