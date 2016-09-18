@@ -3,7 +3,7 @@
 (function (ng) {
     var mod = ng.module("reservaModule");
 
-    mod.controller("reservaCtrl", ['$scope', '$state', '$stateParams', '$http', 'usuarioContext', function ($scope, $state, $stateParams, $http, context) {
+    mod.controller("reservaCtrl", ['$scope', '$state', '$stateParams', '$http', 'usuarioContext', function ($scope, $state, $stateParams, $http, usuarioContext) {
 
             $scope.reservaContext = '/reservas';
             // inicialmente el listado de reservas está vacio
