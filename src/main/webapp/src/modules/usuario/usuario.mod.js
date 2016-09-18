@@ -6,6 +6,18 @@
             var basePath = 'src/modules/usuario/';
             $urlRouterProvider.otherwise("/usuarioList");
      
+            $stateProvider.state('usuarios',{
+                url:'/usuarios',
+                abstract: true,
+                views:{
+                    'mainView':{
+                        controller:'usuarioCtrl',
+                        controllerAs:'ctrl',
+                        templateUrl:basePath+'usuario.html'
+                    }
+                }
+            })
+     
             $stateProvider.state('usuarioList', {
                 url: '/usuario',
                 views: {
