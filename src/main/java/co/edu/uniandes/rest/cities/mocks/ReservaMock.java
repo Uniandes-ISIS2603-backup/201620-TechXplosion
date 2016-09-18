@@ -127,6 +127,40 @@ public class ReservaMock {
         logger.severe("No se encontro una reserva con el id dado.");
         throw new CityLogicException("No se encontro una reserva con el id dado.");
     }
+    
+       /**
+     * Retorna un reserva con un id dado.
+     * @param id El id de la reserva que se dea obtener
+     * @return La reserva que se deseaba obtener.
+     * @throws CityLogicException En caso de no haber una reserva con el ida dado o que la lista de reservas sea vacía.
+     */
+    public List<ReservaDTO> getReservaPorRecurso(Long idRecurso) throws CityLogicException
+    {
+        ArrayList<ReservaDTO> reservasPorRecurso = new ArrayList<>();
+        if (reservas==null)
+        {
+            logger.severe("Error: La lista de reservas está vacia. ");
+            throw new CityLogicException("Error: La lista de reservas esta vacia. ");
+        }
+        else
+        {
+            for (ReservaDTO reserva : reservas)
+            {
+                if (reserva.getIdRecurso().equals(idRecurso))
+                {
+                  reservasPorRecurso.add(reserva);
+                }
+            }
+            if (reservasPorRecurso.isEmpty())
+            {
+                throw new CityLogicException("No se encontraron reservas para ese recurso.");
+            }
+            else
+            {
+                return reservasPorRecurso;
+            }
+        }
+    }
         
     /**
      * Elimina un recurso dado de la lista de reservas.

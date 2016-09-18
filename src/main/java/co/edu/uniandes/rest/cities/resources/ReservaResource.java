@@ -52,6 +52,19 @@ public class ReservaResource {
     {
         return reservaMock.getReserva(idUsuario,id);
     }
+    
+        /**
+     * Retorna una lista de reservas asociadas a un recurso dado.
+     * @param id El id del recurso que se desea obtener.
+     * @return La lista de reservas que se deseaba obtener.
+     * @throws CityLogicException 
+     */
+    @GET
+    @Path("{id: \\d+}")
+    public List<ReservaDTO> getReservaPorRecurso(@PathParam("idRecurso")Long idRecurso) throws CityLogicException 
+    {
+        return reservaMock.getReservaPorRecurso(idRecurso);
+    }
         
     /**
      * Agrega una reserva
