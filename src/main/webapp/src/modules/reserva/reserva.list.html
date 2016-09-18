@@ -1,17 +1,17 @@
-<div class="container-fluid" >
-   
-    <table class="table table-striped" class="col-md-4">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Id del Usuario</th>   
-                <th>Id del Recurso</th>
-                <th>Fecha de Solicitud</th> 
-
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+<div class="col-md-12">
+    <div class="container-fluid">
+        <div class="row">
+            <button class="btn btn-default" ui-sref="reservaCreate">Create new Review</button></div>
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Source</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
             <tr ng-repeat="record in records">
                 <td id="{{$index}}-id">{{record.id}}</td>
                 <td id="{{$index}}-idUsuario">{{record.idUsuario}}</td>
@@ -25,5 +25,7 @@
                 </td>
             </tr>
         </tbody>
-    </table>
+            </table>
+        </div>
+    </div>
 </div>

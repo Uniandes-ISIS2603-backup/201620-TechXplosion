@@ -4,7 +4,7 @@
     mod.constant("usuarioContext", "api/usuarios");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/usuario/';
-            $urlRouterProvider.otherwise("/usuarioList");
+            $urlRouterProvider.otherwise("/usuarios");
      
             $stateProvider.state('usuarios',{
                 url:'/usuarios',
@@ -16,21 +16,21 @@
                         templateUrl:basePath+'usuario.html'
                     }
                 }
-            })
-     
-            $stateProvider.state('usuarioList', {
-                url: '/usuario',
+            }).state('usuarioList', {
+                url: '/list',
+                parent:'usuarios',
                 views: {
-                    'mainView': {
+                    'usuarioView': {
                         controller: 'usuarioCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'usuario.list.html'
                     }
                 }
             }).state('usuarioCreate', {
-                url: '/usuario/create',
+                url: '/create',
+                 parent:'usuarios',
                 views: {
-                    'mainView': {
+                    'usuarioView': {
                         controller: 'usuarioCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'usuario.index.html'
@@ -38,15 +38,19 @@
                 }
 
             }).state('usuarioEdit', {
-                url: '/usuario/:usuarioId',
+                url: '/{usuarioId:int}/edit',
                 param: {
-                    videoId: null
+                    usuarioId: null,
+                    parent:'usuarios',
                 },
                 views: {
-                    'mainView': {
+                    'usuarioView': {
                         controller: 'usuarioCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'usuario.index.html'
+                    },
+                    'hijoView' : {
+                        templateUrl: basePath + 'usuario.instance.html'
                     }
                 }
                 
