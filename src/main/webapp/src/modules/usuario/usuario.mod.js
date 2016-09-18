@@ -40,9 +40,9 @@
             }).state('usuarioEdit', {
                 url: '/{usuarioId:int}/edit',
                 param: {
-                    usuarioId: null,
-                    parent:'usuarios',
+                    'usuarioId': null
                 },
+                parent:'usuarios',
                 views: {
                     'usuarioView': {
                         controller: 'usuarioCtrl',

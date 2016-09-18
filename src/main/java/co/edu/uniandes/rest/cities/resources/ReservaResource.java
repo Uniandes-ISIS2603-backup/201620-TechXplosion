@@ -22,7 +22,7 @@ import javax.ws.rs.Produces;
  *
  * @author js.numpaque10
  */
-@Path("usuarios/{idUsuario \\d+}/reservas")
+@Path("usuarios/{idUsuario: \\d+}/reservas")
 @Produces("application/json")
 @Consumes("application/json")
 public class ReservaResource {
