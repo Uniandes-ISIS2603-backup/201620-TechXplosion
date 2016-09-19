@@ -57,9 +57,8 @@ public class LibroReservaResource {
     /**
      * Elimina los datos de una reserva
      *
-     * @param id identificador de el author a eliminar
-     * @throws BookLogicException cuando no existe un author con el id
-     * suministrado
+     * @param id identificador de la reserva a eliminar
+     * @throws CityLogicException cuando no existe un libro con el id dado
      */
     @DELETE
     @Path("{id: \\d+}")
