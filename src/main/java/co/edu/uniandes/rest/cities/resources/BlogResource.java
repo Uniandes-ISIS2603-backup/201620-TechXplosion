@@ -22,7 +22,7 @@ import javax.ws.rs.Produces;
  * Clase que represnta el recurso blog, que cumple con la arquitectura REST de la aplicación
  * @author js.sosa10
  */
-@Path("blogs")
+@Path("libros/{isbn: \\d++}/blogs")
 @Produces("application/json")
 public class BlogResource {
     BlogMock blogLogic = new BlogMock();
@@ -33,8 +33,8 @@ public class BlogResource {
      * @throws CityLogicException excepción retornada por la lógica
      */
     @GET
-    public List<BlogDTO> getBlogs() throws CityLogicException {
-        return blogLogic.getBlogs();
+    public List<BlogDTO> getBlogs(@PathParam("isbn") Long isbn) throws CityLogicException {
+        return blogLogic.getBlogs(isbn);
     }
 
    
@@ -46,8 +46,8 @@ public class BlogResource {
      * suministrado
      */
     @POST
-    public BlogDTO  createBlog( BlogDTO  blog) throws CityLogicException {
-        return blogLogic.createBlog(blog);
+    public BlogDTO  createBlog( @PathParam("isbn") Long isbn,BlogDTO  blog) throws CityLogicException {
+        return blogLogic.createBlog(isbn,blog);
     }
     
     /**
@@ -58,8 +58,8 @@ public class BlogResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public BlogDTO  getBlog( @PathParam("id") Long id) throws CityLogicException {
-        return blogLogic.getBlog(id); 
+    public BlogDTO  getBlog(@PathParam("isbn") Long isbn, @PathParam("id") Long id) throws CityLogicException {
+        return blogLogic.getBlog(isbn,id); 
     }
 
     /**
@@ -69,8 +69,8 @@ public class BlogResource {
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void  deleteBlog( @PathParam("id") Long id) throws CityLogicException {
-        blogLogic.deleteBlog(id);
+    public void  deleteBlog(@PathParam("isbn") Long isbn, @PathParam("id") Long id) throws CityLogicException {
+        blogLogic.deleteBlog(isbn,id);
     }
 
     /**
@@ -82,7 +82,7 @@ public class BlogResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public BlogDTO updateBlog(@PathParam("id") Long id, BlogDTO newBlog) throws CityLogicException{
-        return blogLogic.updateBlog(id, newBlog);
+    public BlogDTO updateBlog(@PathParam("isbn") Long isbn,@PathParam("id") Long id, BlogDTO newBlog) throws CityLogicException{
+        return blogLogic.updateBlog(isbn,id, newBlog);
     }
 }

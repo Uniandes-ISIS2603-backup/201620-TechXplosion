@@ -1,12 +1,13 @@
 (function (ng) {
     var mod = ng.module("blogModule");
 
-    mod.controller("blogCtrl", ['$scope', '$state', '$stateParams', '$http', 'blogContext', function ($scope, $state, $stateParams, $http, context) {
-
+    mod.controller("blogCtrl", ['$scope', '$state', '$stateParams', '$http', 'libroContext', function ($scope, $state, $stateParams, $http, context) {
+            
+            $scope.blogContext='/blogs';
             // inicialmente el listado de blogs está vacio
             $scope.records = {};
             // carga las ciudades
-            $http.get(context).then(function(response){
+            $http.get(context+"/"+$stateParams.libroIsbn+$scope.blogContext).then(function(response){
                 $scope.records = response.data;    
             }, responseError);
 
@@ -17,7 +18,7 @@
                 // toma el id del parámetro
                 id = $stateParams.blogId;
                 // obtiene el dato del recurso REST
-                $http.get(context + "/" + id)
+                $http.get(context+"/"+$stateParams.libroIsbn+$scope.blogContext + "/" + id)
                     .then(function (response) {
                         // $http.get es una promesa
                         // cuando llegue el dato, actualice currentRecord
@@ -47,7 +48,7 @@
                 if (id == null) {
 
                     // ejecuta POST en el recurso REST
-                    return $http.post(context, currentRecord)
+                    return $http.post(context+"/"+$stateParams.libroIsbn+$scope.blogContext, currentRecord)
                         .then(function () {
                             // $http.post es una promesa
                             // cuando termine bien, cambie de estado
@@ -58,7 +59,7 @@
                 } else {
                     
                     // ejecuta PUT en el recurso REST
-                    return $http.put(context + "/" + currentRecord.id, currentRecord)
+                    return $http.put(context+"/"+$stateParams.libroIsbn+$scope.blogContext + "/" + currentRecord.id, currentRecord)
                         .then(function () {
                             // $http.put es una promesa
                             // cuando termine bien, cambie de estado
@@ -73,7 +74,7 @@
           
                     
                     // ejecuta DELETE en el recurso REST
-                   return $http.delete(context + "/" + currentRecord.id)
+                   return $http.delete(context+"/"+$stateParams.libroIsbn+$scope.blogContext + "/" + currentRecord.id)
                         .then(function () {
                             // $http.delete es una promesa
                             // cuando termine bien, cambie de estado

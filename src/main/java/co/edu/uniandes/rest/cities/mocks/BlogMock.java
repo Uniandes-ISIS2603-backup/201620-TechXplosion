@@ -14,7 +14,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Named;
 import co.edu.uniandes.rest.cities.dtos.BlogDTO;
+import co.edu.uniandes.rest.cities.dtos.LibroCompletoDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 public class BlogMock {
      // objeto para presentar logs de las operaciones
@@ -47,7 +50,7 @@ public class BlogMock {
 	 * @return lista de blogs
 	 * @throws CityLogicException cuando no existe la lista en memoria  
 	 */    
-    public List<BlogDTO> getBlogs() throws CityLogicException {
+    public List<BlogDTO> getBlogs(Long isbn) throws CityLogicException {
     	if (blogs == null) {
     		logger.severe("Error interno: lista de blogs  no existe.");
     		throw new CityLogicException("Error interno: lista de blogs no existe.");    		
@@ -65,7 +68,7 @@ public class BlogMock {
      * @throws CityLogicException cuando ya existe un blog con el id suministrado
      * @return blog agregado
      */
-    public BlogDTO createBlog(BlogDTO newBlog) throws CityLogicException {
+    public BlogDTO createBlog(Long isbn,BlogDTO newBlog) throws CityLogicException {
     	logger.info("recibiendo solicitud de agregar blog " + newBlog);
     	
     	// el nuevo blog tiene id ?
@@ -104,7 +107,7 @@ public class BlogMock {
 	 * @return blog con el id suministrado
 	 * @throws CityLogicException cuando no existe la lista en memoria o no existe el blog 
 	 */    
-    public BlogDTO getBlog(Long id) throws CityLogicException {
+    public BlogDTO getBlog(Long isbn,Long id) throws CityLogicException {
     	if (blogs == null) {
     		logger.severe("Error interno: lista de blogs  no existe.");
     		throw new CityLogicException("Error interno: lista de blogs no existe.");    		
@@ -128,7 +131,7 @@ public class BlogMock {
      * @param id identificador del blog a eliminar
      * @throws CityLogicException si la lista no existe o el blog con el id dado no existe
      */
-    public void deleteBlog(Long id)throws CityLogicException{
+    public void deleteBlog(Long isbn,Long id)throws CityLogicException{
         if (blogs == null) {
     		logger.severe("Error interno: lista de blogs  no existe.");
     		throw new CityLogicException("Error interno: lista de blogs no existe.");    		
@@ -159,7 +162,7 @@ public class BlogMock {
      * @return el blog actualizado.
      * @throws CityLogicException si la lista de blogs no existe o el blog con el id dado no existe.
      */
-     public BlogDTO updateBlog(Long id,BlogDTO newBlog) throws CityLogicException {
+     public BlogDTO updateBlog(Long isbn,Long id,BlogDTO newBlog) throws CityLogicException {
     	if (blogs == null) {
     		logger.severe("Error interno: lista de blogs  no existe.");
     		throw new CityLogicException("Error interno: lista de blogs no existe.");    		
@@ -180,5 +183,17 @@ public class BlogMock {
     		throw new CityLogicException("Error interno: el blog no existe."); 
         
     }
+     public List<BlogDTO> updateBolgsLibro(Long id, List<BlogDTO> updateBlogs) throws CityLogicException{
+         logger.info("recibiendo la solicitud de modificar los blogs del del libro "+id);
+         LibroMock lbm = LibroMock.getInstance();
+         LibroCompletoDTO  libro= lbm.getLibro(id);
+         libro.setBlogs(updateBlogs);
+         return updateBlogs;
+     }
+     public List<BlogDTO> getBlogsLibro(Long id) throws CityLogicException{
+         LibroMock lbm = LibroMock.getInstance();
+         LibroCompletoDTO libro = lbm.getLibro(id);
+         return libro.getBlogs();
+     }
 
 }

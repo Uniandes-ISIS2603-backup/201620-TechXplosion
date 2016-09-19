@@ -7,17 +7,29 @@
             var basePath = 'src/modules/libro/';
             $urlRouterProvider.otherwise("/libroList");
      
-            $stateProvider.state('libroList', {
+            $stateProvider.state('libro', {
                 url: '/libro',
+                abstract: true,
                 views: {
                     'mainView': {
+                        controller: 'libroCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'libro.html'
+                    }
+                }
+            }).state('libroList', {
+                url: '/lista',
+                parent: 'libro',
+                views: {
+                    'libroView': {
                         controller: 'libroCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'libro.list.html'
                     }
                 }
             }).state('libroCreate', {
-                url: '/libro/create',
+                url: '/create',
+                parent: 'libro',
                 views: {
                     'mainView': {
                         controller: 'libroCtrl',
@@ -27,15 +39,19 @@
                 }
 
             }).state('libroEdit', {
-                url: '/libro/:libroIsbn',
+                url: '/:libroIsbn',
                 param: {
                     libroIsbn: null
                 },
+                parent: 'libro',
                 views: {
-                    'mainView': {
+                    'libroView': {
                         controller: 'libroCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'libro.create.html'
+                    },
+                    'childView':{
+                        templateUrl: basePath + 'libro.instance.html'
                     }
                 }
                 

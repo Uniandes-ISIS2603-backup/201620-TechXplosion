@@ -9,6 +9,7 @@ package co.edu.uniandes.rest.cities.mocks;
  *Mock del recurso Libro (Mock del servicio REST) 
  * @author jc.sanchez16
  */
+import co.edu.uniandes.rest.cities.dtos.LibroCompletoDTO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -19,9 +20,17 @@ import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 public class LibroMock {
     // objeto para presentar logs de las operaciones
 	private final static Logger logger = Logger.getLogger(LibroMock.class.getName());
+        private static LibroMock instance =null;
 	
 	// listado de libros
-    private static ArrayList<LibroDTO> libros;
+    private static ArrayList<LibroCompletoDTO> libros;
+
+    static LibroMock getInstance() {
+       if(instance==null){
+           instance=new LibroMock();
+       }
+       return instance;
+    }
 
     /**
      * Constructor. Crea los datos de ejemplo.
@@ -30,9 +39,9 @@ public class LibroMock {
 
     	if (libros == null) {
             libros = new ArrayList<>();
-            libros.add(new LibroDTO(1L, "Cien años de soledad", "createSpace", "Gabriel Garcia Marquez", 2, false));
-            libros.add(new LibroDTO(2L, "El jugador", "akal", "Fiodor M.", 4, true));
-            libros.add(new LibroDTO(3L, "Crimen y castigo", "Encuentro", "Jose Cabrera", 0, false));
+            libros.add(new LibroCompletoDTO(1L, "Cien años de soledad", "createSpace", "Gabriel Garcia Marquez", 2, false));
+            libros.add(new LibroCompletoDTO(2L, "El jugador", "akal", "Fiodor M.", 4, true));
+            libros.add(new LibroCompletoDTO(3L, "Crimen y castigo", "Encuentro", "Jose Cabrera", 0, false));
         }
         
     	// indica que se muestren todos los mensajes
@@ -53,9 +62,12 @@ public class LibroMock {
     		logger.severe("Error interno: lista de libros  no existe.");
     		throw new CityLogicException("Error interno: lista de libros  no existe.");    		
     	}
-    	
-    	logger.info("retornando todas los libros ");
-    	return libros;
+        ArrayList<LibroDTO> libs = new ArrayList<>();
+        for (int i = 0; i < libros.size(); i++) {
+            libs.add(libros.get(i));
+        }
+        	logger.info("retornando todas los libros ");
+        return libs;
     }
 
  
@@ -96,7 +108,7 @@ public class LibroMock {
     	
         // agrega el libro
     	logger.info("agregando libro " + newLibro);
-        libros.add(newLibro);
+        libros.add(new LibroCompletoDTO(newLibro));
         return newLibro;
     }
     /**
@@ -105,14 +117,14 @@ public class LibroMock {
 	 * @return libro
 	 * @throws CityLogicException cuando no existe la lista en memoria  
 	 */    
-    public LibroDTO getLibro(Long isbn) throws CityLogicException {
+    public LibroCompletoDTO getLibro(Long isbn) throws CityLogicException {
     	if (libros == null) {
     		logger.severe("Error interno: lista de libros  no existe.");
     		throw new CityLogicException("Error interno: lista de libros no existe.");    		
     	}
     	
     	logger.info("retornando la biblioteca buscado ");
-    	for (LibroDTO libro : libros) {
+    	for (LibroCompletoDTO libro : libros) {
 	        	// si existe una biblioteca con ese id
 	            if (Objects.equals(isbn, libro.getIsbn())){
                         logger.severe("el libro");
@@ -172,7 +184,7 @@ public class LibroMock {
 	            if (Objects.equals(isbn, libro.getIsbn())){
                         logger.severe("el libro con el isbn: "+isbn);
                         libros.remove(libro);
-                        libros.add(newLibro);
+                        libros.add(new LibroCompletoDTO(newLibro));
                         return newLibro;
                     }
                     

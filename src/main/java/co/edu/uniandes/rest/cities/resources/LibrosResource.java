@@ -86,6 +86,6 @@ public class LibrosResource {
     @Path("{isbn: \\d+}")
     public LibroDTO updateLibro(@PathParam("isbn") Long isbn, LibroDTO newLibro) throws CityLogicException{
         return libroLogic.updateLibro(isbn, newLibro);
-    }
+    } 
 }
 
