@@ -176,11 +176,8 @@ public class AlquilerMock
     		logger.severe("Error interno: lista de alquileres no existe.");
     		throw new CityLogicException("Error interno: lista de alquileres no existe.");    		
     	}
-    	logger.info("retornando la biblioteca buscada ");
     	for (AlquilerDTO alquiler : alquileres) 
         {
-            
-                        logger.severe("la biblioteca con el id: "+id);
 	            if (Objects.equals(id, alquiler.getId()))
                     {
                         alquileres.remove(alquiler);
@@ -192,6 +189,99 @@ public class AlquilerMock
         logger.severe("Error interno: el alquiler no existe.");
     	throw new CityLogicException("Error interno: el alquiler no existe."); 
         
+    }
+     
+     /**
+     * Retorna un alquiler con un id dado.
+     * @param id El id del alquiler que se dea obtener
+     * @return El alquiler que se desea obtener.
+     * @throws CityLogicException En caso de no haber un alquiler con el id dado o que la lista de alquileres sea vacía.
+     */
+    public AlquilerDTO getAlguilerUsuario(Long id) throws CityLogicException
+    {
+        if (alquileres == null)
+        {
+            logger.severe("Error: La lista de alquileres está vacia. ");
+            throw new CityLogicException("Error: La lista de alquileres esta vacia. ");
+        }
+        else
+        {
+            for (AlquilerDTO alquiler : alquileres)
+            {
+                if (alquiler.getId().equals(id))
+                {
+                    return alquiler;
+                }
+            }
+                
+        }
+        logger.severe("No se encontro un alquiler con el id dado.");
+        throw new CityLogicException("No se encontro un alquiler con el id dado.");
+    }
+    
+     /**
+     * Elimina un alquiler dado de la lista de alquileres.
+     * @param id El id del alquiler que se desea eliminar.
+     * @throws CityLogicException Si no encuentra un recurso con el id dado o si la lista de reservas está vacía.
+     */
+    public void deleteAlquilerUsuario (Long id) throws CityLogicException
+    {
+        if (alquileres == null)
+        {
+            logger.severe("Error: La lista de alquileres esta vacia ");
+            throw new CityLogicException("Error: La lista de alquileres esta vacia. ");
+        }
+        else
+        {
+            for (AlquilerDTO alquiler : alquileres) 
+            {
+	            if (Objects.equals(id, alquiler.getId()))
+                    {
+                        logger.severe("Existe el alquiler con id: "+id);
+                        alquileres.remove(alquiler);
+                        logger.severe("Se borró el alquiler con id: "+id);
+                        return;
+                    }
+                    
+            }
+            logger.severe("No se encontro un alquiler con el id dado.");
+            throw new CityLogicException("No se encontro un alquiler con el id dado.");
+        }
+       
+
+    }
+    
+    /**
+     * Actualiza una instancia de un alquiler.
+     * @param id Id del alquiler que se quiere actualizar.
+     * @return La instancia del alquiler actualizada.
+     * @throws CityLogicException Si la lista de alquileres es vacía, si no hay una reserva con el id dado o si el path y el id de la alquiler no coinciden.
+     */
+    public AlquilerDTO updateAlquilerUsuario(Long idUsuario, Long id , AlquilerDTO alquiler) throws CityLogicException
+    {
+        if (alquileres==null)
+        {
+            logger.severe("Error: La lista de alquileres está vacia ");
+            throw new CityLogicException("Error: La lista de alquileres está vacia. ");
+        }
+        else if( id != alquiler.getId())
+        {
+            logger.severe("El id del path y de la alquileres a modificar no coinciden.");
+            throw new CityLogicException("El id del path y de la reserva a modificar no coinciden.");          
+        }
+        else
+        {
+            for (int i = 0 ; i < alquileres.size() ; i++)
+            {
+                if (alquileres.get(i).getId() == id )
+                {
+                    alquileres.set(i, alquiler);
+                    return alquiler;
+                }
+            }       
+        }
+        logger.severe("No se encontro un alquiler con el id dado.");
+        throw new CityLogicException("No se encontro un alquiler con el id dado.");
     }
 
 }

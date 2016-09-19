@@ -306,7 +306,6 @@ public class ReservaMock {
                         logger.severe("Se borro la reserva con id: "+id);
                         break;
                     }
-                    
                   }               
         }
         if (!isIdInArray)
