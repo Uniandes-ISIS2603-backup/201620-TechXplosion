@@ -19,7 +19,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 
-@Path("video/{idVideo: \\d+}/reservas")
+@Path("videos/{idVideo: \\d+}/reservas")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 
