@@ -20,74 +20,82 @@ import javax.ws.rs.Produces;
 
 /**
  *
- * @author js.numpaque10
+ * @author sa.pardo10
  */
-@Path("/reservas")
+@Path("usuarios/{idUsuario: \\d+}/reservas")
 @Produces("application/json")
 @Consumes("application/json")
-public class ReservaResource {
+public class UsuarioReservaResource  {
+
+
+        ReservaMock reservaMock = new ReservaMock();
     
-    ReservaMock reservaMock = new ReservaMock();
-    
+
     /**
      * Obtiene el listado de reservas
+     *
+     * @param idUsuario
      * @return Lista de reservas
-     * @throws CityLogicException 
+     * @throws CityLogicException
      */
     @GET
-    public List<ReservaDTO> getReservas() throws CityLogicException
-    {
-        return reservaMock.getReservas();
+    public List<ReservaDTO> getReservas(@PathParam("idUsuario") Long idUsuario) throws CityLogicException {
+        return reservaMock.getReservasUsuario(idUsuario);
     }
-    
+
     /**
      * Retorna una reserva con un id dado
+     *
      * @param id El id de la reserva que se desea obtener
      * @return La reserva que se deseaba obtener
-     * @throws CityLogicException En caso de no haber una reserva con el ida dado o que la lista de reservas sea vacía.
+     * @throws CityLogicException En caso de no haber una reserva con el ida
+     * dado o que la lista de reservas sea vacía.
      */
     @GET
     @Path("{id: \\d+}")
-    public ReservaDTO getReserva(@PathParam("id") Long id) throws CityLogicException 
-    {
-        return reservaMock.getReserva(id);
+    public ReservaDTO getReserva(@PathParam("idUsuario") Long idUsuario, @PathParam("id") Long id) throws CityLogicException {
+        return reservaMock.getReservaUsuario(idUsuario, id);
     }
-        
+
     /**
      * Agrega una reserva
+     *
      * @param nuevaReserva Reserva a agregar.
      * @return La reserva agregada.
      * @throws CityLogicException Cuando ya hay una reserva con el mismo id.
      */
     @POST
-    public ReservaDTO createReserva(ReservaDTO nuevaReserva) throws CityLogicException
-    {
-        return reservaMock.createReserva(nuevaReserva);
+    public ReservaDTO createReserva(@PathParam("idUsuario") Long idUsuario, ReservaDTO nuevaReserva) throws CityLogicException {
+        return reservaMock.createReservaUsuario(idUsuario, nuevaReserva);
     }
-    
+
     /**
      * Elimina un recurso dado de la lista de reservas.
+     *
      * @param id El id del recurso que se desea eliminar.
-     * @throws CityLogicException Si no encuentra un recurso con el id dado o si la lista de reservas está vacía.
+     * @throws CityLogicException Si no encuentra un recurso con el id dado o si
+     * la lista de reservas está vacía.
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteReserva(@PathParam("id") Long id) throws CityLogicException
-    {
-      reservaMock.deleteReserva(id);
+    public void deleteReserva(@PathParam("idUsuario") Long idUsuario, @PathParam("id") Long id) throws CityLogicException {
+        reservaMock.deleteReservaUsuario(idUsuario, id);
     }
+
     /**
      * Actualiza una instancia de la entidad Reserva.
+     *
      * @param id Id de la instancia que se quiere actualizar.
      * @param reservaMod La instancia de Reserva actualizada.
      * @return La instancia de Reserva actualizada.
-     * @throws CityLogicException Si la lista de reservas es vacía, si no hay una reserva con el id dado o si el path y el id de la reserva no coinciden.
-    */
+     * @throws CityLogicException Si la lista de reservas es vacía, si no hay
+     * una reserva con el id dado o si el path y el id de la reserva no
+     * coinciden.
+     */
     @PUT
     @Path("{id: \\d+}")
-    public ReservaDTO updateReserva(@PathParam("id") Long id ,ReservaDTO reservaMod) throws CityLogicException
-    {
-        return reservaMock.updateReserva( id, reservaMod);
+    public ReservaDTO updateReserva(@PathParam("idUsuario") Long idUsuario, @PathParam("id") Long id, ReservaDTO reservaMod) throws CityLogicException {
+        return reservaMock.updateReservaUsuario(idUsuario, id, reservaMod);
     }
-    
+
 }
