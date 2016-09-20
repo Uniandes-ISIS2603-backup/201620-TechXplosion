@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.rest.cities.dtos;
-
 /**
  * Clase que representa la información de un video.
  * @author nd.munoz10
@@ -39,11 +38,12 @@ public class VideoDTO
     /**
      * Atributo que modela el tipo del video.
      */
-    private String tipo;
-    
+    private String tipo; 
     public VideoDTO()
     {
-        
+     /**
+     * Constructor vacio
+     */
     }
     
     /**
