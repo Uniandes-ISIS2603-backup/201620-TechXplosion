@@ -8,12 +8,21 @@
      
             $stateProvider.state('alquilerList', {
                 url: '/alquiler',
+                views: {
+                    'mainView': {
+                        controller: 'alquilerCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'alquiler.list.html'
+                    }
+                }
+            }).state('alquilerListView', {
+                url: '/alquiler',
                 parent:'usuarioEdit',
                 views: {
                     'usuarioInstanceView': {
                         controller: 'alquilerCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'alquiler.list.html'
+                        templateUrl: basePath + 'alquiler.listView.html'
                     }
                 }
             }).state('alquilerCreate', {
@@ -29,12 +38,11 @@
 
             }).state('alquilerEdit', {
                 url: '/alquiler/:alquilerId',
-                parent:'usuarioEdit',
                 param: {
                     alquilerId: null
                 },
                 views: {
-                    'usuarioInstanceView': {
+                    'mainView': {
                        controller: 'alquilerCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'alquiler.index.html'
