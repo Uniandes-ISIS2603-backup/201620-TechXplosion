@@ -21,6 +21,9 @@ public class MedioPagoDTO {
      * Constructor por defecto
      */
     public MedioPagoDTO() {
+         /**
+     * Constructor por defecto
+     */
     }
 
     /**

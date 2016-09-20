@@ -18,7 +18,9 @@ public class LibroCompletoDTO extends LibroDTO{
      * Constructor vacio
      */
     public LibroCompletoDTO(){
-        
+        /**
+     * Constructor vacio
+     */
     }
 
    

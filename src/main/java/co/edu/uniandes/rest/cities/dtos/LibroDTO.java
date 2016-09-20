@@ -12,8 +12,8 @@ package co.edu.uniandes.rest.cities.dtos;
  */
 public class LibroDTO {
 
-    public final static boolean VIRTUAL = true;
-    public final static boolean FISICO = false;
+    public static final boolean VIRTUAL = true;
+    public static final boolean FISICO = false;
     private Long isbn;
     private String nombre;
     private String editorial;
@@ -25,6 +25,9 @@ public class LibroDTO {
      * Constructor por defecto
      */
     public LibroDTO() {
+         /**
+     * Constructor por defecto
+     */
     }
 
     /**
