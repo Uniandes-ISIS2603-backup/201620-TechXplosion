@@ -35,7 +35,11 @@
                         controller: 'videoCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'video.index.html'
+                    },
+                    'childView': {
+                        templateUrl: basePath + 'video.instance.html'
                     }
+                    
                 }
                 
             });

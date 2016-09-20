@@ -33,7 +33,7 @@
                     blogId: null
                 },
                 views: {
-                    'LibroInsatnceView': {
+                    'LibroInstanceView': {
                         controller: 'blogCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'blog.create.html'

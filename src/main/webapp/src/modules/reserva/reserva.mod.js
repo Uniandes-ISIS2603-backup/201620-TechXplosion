@@ -13,6 +13,11 @@
                         controller: 'reservaCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + "reserva.list.html"
+                    },
+                    'LibroInstanceView': {
+                        controller: 'reservaCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + "reserva.list.html"
                     }
                 }
             }).state('reservaCreate', {
@@ -23,6 +28,11 @@
                         controller: 'reservaCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'reserva.create.html'
+                    },
+                    'LibroInstanceView': {
+                        controller: 'reservaCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + "reserva.list.html"
                     }
                 }
 
@@ -37,6 +47,11 @@
                         controller: 'reservaCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'reserva.create.html'
+                    },
+                    'LibroInstanceView': {
+                        controller: 'reservaCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + "reserva.list.html"
                     }
                 }
             });
