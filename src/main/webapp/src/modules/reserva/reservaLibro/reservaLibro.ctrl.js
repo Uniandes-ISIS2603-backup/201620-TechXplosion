@@ -41,15 +41,15 @@
 
 
 
-            this.updateBookAuthors = function (selectedAuthors) {
-                $log.warn('Put ' + booksContext + "/" + id + "/authors");
+            this.updateReservasLibros = function (selectedReservas) {
+                $log.warn('Put ' + librosContext + "/" + id + "/reservas");
                  var log = [];
                 $log.warn(angular.forEach(Array.from(selectedAuthors), function (v, k) {
                     this.push(k + ': ' + v);
                 }, log));
-                $http.put(booksContext + "/" + id + "/authors", selectedAuthors).then(function (response) {
+                $http.put(librosContext + "/" + id + "/reservas", selectedAuthors).then(function (response) {
 
-                    $state.go('bookAuthorsList');
+                    $state.go('reservaLibroList');
                 }, responseError);
             };
             $scope.disabled = undefined;
