@@ -4,7 +4,6 @@
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/reserva/';
             $urlRouterProvider.otherwise("/reservaList");
-     
             $stateProvider.state('reservaList', {
                 url: '/reservas',
                 parent:'usuarioEdit',
@@ -13,7 +12,7 @@
                         controller: 'reservaCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + "reserva.list.html"
-                    },
+                    }
                 }
             }).state('reservaCreate', {
                 url: '/reservas/create',
@@ -23,7 +22,7 @@
                         controller: 'reservaCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'reserva.create.html'
-                    },
+                    }
                 }
 
             }).state('reservaEdit', {
@@ -37,7 +36,7 @@
                         controller: 'reservaCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'reserva.create.html'
-                    },
+                    }
                 }
             }).state('libroReservaList', {
                 url: '/reservas',
@@ -47,7 +46,7 @@
                         controller: 'reservaLibroCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + "reservaLibro.list.html"
-                    },
+                    }
                 }
             }).state('libroReservaEdit', {
                 url: '/reservas',
@@ -57,7 +56,7 @@
                         controller: 'reservaLibroCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + "reservaLibro.edit.html"
-                    },
+                    }
                 }
             }).state('libroReservaCreate', {
                 url: '/reservas',
@@ -67,7 +66,7 @@
                         controller: 'reservaCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + "reserva.create.html"
-                    },
+                    }
                 }
             }).state('videoReservaList', {
                 url: '/reservas',
@@ -77,7 +76,7 @@
                         controller: 'reservaVideoCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + "reservaVideo.list.html"
-                    },
+                    }
                 }
             }).state('videoReservaEdit', {
                 url: '/reservas',
@@ -87,7 +86,7 @@
                         controller: 'reservaVideoCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + "reservaVideo.edit.html"
-                    },
+                    }
                 }
             }).state('videoReservaCreate', {
                 url: '/reservas',
@@ -97,7 +96,7 @@
                         controller: 'reservaCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + "reserva.create.html"
-                    },
+                    }
                 }
             });
         }]);
