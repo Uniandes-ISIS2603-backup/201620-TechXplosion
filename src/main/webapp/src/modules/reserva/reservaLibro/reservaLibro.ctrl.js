@@ -44,10 +44,10 @@
             this.updateReservasLibros = function (selectedReservas) {
                 $log.warn('Put ' + librosContext + "/" + id + "/reservas");
                  var log = [];
-                $log.warn(angular.forEach(Array.from(selectedAuthors), function (v, k) {
+                $log.warn(angular.forEach(Array.from(selectedReservas), function (v, k) {
                     this.push(k + ': ' + v);
                 }, log));
-                $http.put(librosContext + "/" + id + "/reservas", selectedAuthors).then(function (response) {
+                $http.put(librosContext + "/" + id + "/reservas", selectedReservas).then(function (response) {
 
                     $state.go('reservaLibroList');
                 }, responseError);

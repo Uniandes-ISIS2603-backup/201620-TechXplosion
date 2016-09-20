@@ -1,55 +1,55 @@
 (function (ng) {
-    var mod = ng.module("bookModule");
-    mod.controller("booksAuthorCtrl", ['$scope', '$state', '$stateParams', '$http', 'booksContext', 'authorsContext', '$log',
-        function ($scope, $state, $stateParams, $http, booksContext, authorsContext, $log) {
+    var mod = ng.module("libroModule");
+    mod.controller("reservaVideoCtrl", ['$scope', '$state', '$stateParams', '$http', 'videosContext', 'reservasContext', '$log',
+        function ($scope, $state, $stateParams, $http, videosContext, reservasContext, $log) {
 
-            // carga los authores del book $stateParams.bookId
-            if ($stateParams.bookId !== null && $stateParams.bookId !== undefined) {
+            // carga las reservas del libro $stateParams.libroId
+            if ($stateParams.videoId !== null && $stateParams.videoId !== undefined) {
 
                 // toma el id del parámetro
-                id = $stateParams.bookId;
+                id = $stateParams.videoId;
                 // obtiene el dato del recurso REST
-                $log.warn('Get ' + booksContext + "/" + id + "/authors");
-                $http.get(booksContext + "/" + id + "/authors")
+                $log.warn('Get ' + videosContext + "/" + id + "/reservas");
+                $http.get(videosContext + "/" + id + "/reservas")
                         .then(function (response) {
                             // $http.get es una promesa
                             // cuando llegue el dato, actualice currentRecord
-                            $scope.bookAuthors = response.data;
-                            $scope.selectedAuthors = Array.from($scope.bookAuthors);
+                            $scope.videoReservas = response.data;
+                            $scope.selectedReservas = Array.from($scope.videoReservas);
                         }, responseError);
-                // el controlador no recibió un bookId
+                // el controlador no recibió un libroId
             } else {
-                showError(" El ibro no existe");
-                $scope.bookAuthors = {};
-                $scope.selectedAuthors = []; // Contendra la lista de authores del libro en $stateParams.bookId
+                showError("El video no existe");
+                $scope.videoReservas = {};
+                $scope.selectedReservas = []; // Contendra la lista de reservas del video en $stateParams.videoId
             }
 
 
-            $scope.records = {}; // Contendra la lista de authores del libro en $stateParams.bookId
-            $scope.allAuthors = [];
-            // carga todos los authors
-            $log.warn(authorsContext);
-            $http.get(authorsContext).then(function (response) {
+            $scope.records = {}; // Contendra la lista de reservas del video en $stateParams.videoId
+            $scope.allReservas = [];
+            // carga todas las reservas
+            $log.warn(reservasContext);
+            $http.get(reservasContext).then(function (response) {
                 $scope.records = response.data;
                 var log = [];
                 $log.warn(angular.forEach(Array.from($scope.records), function (v, k) {
                     this.push(k + ': ' + v);
                 }, log));
 
-                $scope.allAuthors = Array.from($scope.records);
+                $scope.allReservas = Array.from($scope.records);
             }, responseError);
 
 
 
-            this.updateBookAuthors = function (selectedAuthors) {
-                $log.warn('Put ' + booksContext + "/" + id + "/authors");
+            this.updateReservasLibros = function (selectedReservas) {
+                $log.warn('Put ' + videosContext + "/" + id + "/reservas");
                  var log = [];
-                $log.warn(angular.forEach(Array.from(selectedAuthors), function (v, k) {
+                $log.warn(angular.forEach(Array.from(selectedReservas), function (v, k) {
                     this.push(k + ': ' + v);
                 }, log));
-                $http.put(booksContext + "/" + id + "/authors", selectedAuthors).then(function (response) {
+                $http.put(videosContext + "/" + id + "/reservas", selectedReservas).then(function (response) {
 
-                    $state.go('bookAuthorsList');
+                    $state.go('reservaVideoList');
                 }, responseError);
             };
             $scope.disabled = undefined;
