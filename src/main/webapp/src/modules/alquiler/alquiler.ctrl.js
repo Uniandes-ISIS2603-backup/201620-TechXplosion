@@ -30,14 +30,14 @@
                 if (id == null) {
                     return $http.post(context, currentRecord).then(function () 
                 {
-                            $state.go('alquilerList');
+                            $state.go('alquilerListView');
                         }, responseError);                     
                 } else {
                     return $http.put(context + "/" + currentRecord.id, currentRecord)
                         .then(function () {
                             // $http.put es una promesa
                             // cuando termine bien, cambie de estado
-                            $state.go('alquilerList');
+                            $state.go('alquilerListView');
                         }, responseError);
                 };
             };
