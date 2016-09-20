@@ -20,26 +20,7 @@ public class UsuarioDTO
     /**
      * Atributo que modela el nombre del usuario
      */
-    private String nombre;
-    /**
-     * Atributo que modela la fecha
-     * 
-     */
-    //private Date fechaNacimiento;
-    /**
-     * Atributo que modela la multa
-     */
-    //private boolean estaMultado;
-    /**
-     * Atributo que modela la fdireccion
-     */
-    //private String direccionEnvio;
-    /**
-     * Atributo que modela el apellido
-     */
-    //private String apellido;
-    
-    
+    private String nombre;    
     /**
      * Constructor de la clase
      * @param pId
@@ -49,17 +30,15 @@ public class UsuarioDTO
     {
         id=pId;
        nombre = pNombre;
-       //fechaNacimiento = pDate;
-       //direccionEnvio = direccion;
-       //apellido = Apellido;
-       //estaMultado = false;
     }
     /**
      * Constructor vacio
      */
     public UsuarioDTO()
     {
-        
+     /**
+     * Constructor vacio
+     */
     }
     
     /**
