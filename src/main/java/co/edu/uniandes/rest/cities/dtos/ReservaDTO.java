@@ -99,6 +99,7 @@ public class ReservaDTO {
 
     /**
      * Convierte el objeto a una cadena
+     * @return string
      */
     @Override
     public String toString() {

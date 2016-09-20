@@ -4,9 +4,6 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.rest.cities.dtos;
-
-import java.util.Date;
-
 /**
  *
  * @author jm.rodriguez11
