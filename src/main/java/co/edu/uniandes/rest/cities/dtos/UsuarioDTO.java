@@ -76,44 +76,7 @@ public class UsuarioDTO
     public void setName(String n)
     {
          nombre = n;
-    }
-    
-    
-    /**
-     * Cambia la fecha de  nac
-     * @param pFecha nueva fecha de nac
-     */
-    public void setFechaNacimiento(Date pFecha)
-    {
-        //fechaNacimiento = pFecha;
-    }
-        /**
-     * retorna la fecha de nacimiento
-     * @return     
-     */
-    public Date getFechaNacimiento()
-    {
-        //return fechaNacimiento ;
-        return null;
-    }
-    /**
-     * Dice si esta o no multado
-     * @return true si esta vencido, false de lo contrario
-     */
-    public boolean estaMultado()
-    {
-        //return estaMultado;
-        return false;
-    }
-    
-    /**
-     * Cambia el estado de la variable 
-     */
-    public void setMulta()
-    {
-        //estaMultado = !estaMultado;
-    }
-    
+    }    
     /**
      * Retorna un string representando el objeto
      * @return 
@@ -126,45 +89,5 @@ public class UsuarioDTO
             id = 0L;
         }
         return "{ id: "+id+", Nombre: "+nombre+"}";
-    }
-    
-     /**
-     * Da el apellido
-     * @return apellido
-     */
-    public String getAp()
-    {
-        //return apellido;
-        return null;
-    }
-    
-        /**
-     * modifica el apellido
-     * @param n
-     */
-    public void setAp(String n)
-    {
-         //apellido = n;
-    }
-    
-    
-        /**
-     * obtiene la direccion
-     * @return direccion
-     */
-    public String getDireccion()
-    {
-        //return direccionEnvio;
-        return null;
-    }
-    
-        /**
-     * modifica la direccion
-     * @param n
-     *
-     */
-    public void setdireccion(String n)
-    {
-         //direccionEnvio= n;
     }
 }
