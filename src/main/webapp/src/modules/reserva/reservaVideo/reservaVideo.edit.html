@@ -1,11 +1,11 @@
 <div class="col-md-6">
     <div class="container-fluid">
 
-        <ui-select multiple ng-model="ctrl.selectedAuthors" ng-disabled="disabled" 
+        <ui-select multiple ng-model="ctrl.selectedVideos" ng-disabled="disabled" 
                    sortable="false" close-on-select="false">
-            <ui-select-match placeholder="Select author...">{{$item.name}}</ui-select-match>
-            <ui-select-choices repeat="author in allAuthors">
-                <div ng-bind-html="author.name"></div>
+            <ui-select-match placeholder="Select video...">{{$item.name}}</ui-select-match>
+            <ui-select-choices repeat="video in allVideos">
+                <div ng-bind-html="video.name"></div>
             </ui-select-choices>
         </ui-select>
 
@@ -15,7 +15,7 @@
 
         <div class="form-group col-md-6">
             <button type="button" ui-sref='reservaVideoList'>Cancel</button>
-            <button type="button" ng-click='ctrl.updateBookAuthors(ctrl.selectedAuthors)' >Save</button>   
+            <button type="button" ng-click='ctrl.updateReservaVideo(ctrl.selectedVideos)' >Save</button>   
         </div>
         
     </div>
