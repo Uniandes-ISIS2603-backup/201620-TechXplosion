@@ -1,6 +1,6 @@
 (function (ng) {
     var mod = ng.module("libroModule");
-    mod.controller("libroReservaCtrl", ['$scope', '$state', '$stateParams', '$http', 'librosContext', 'reservasContext', '$log',
+    mod.controller("reservaLibroCtrl", ['$scope', '$state', '$stateParams', '$http', 'librosContext', 'reservasContext', '$log',
         function ($scope, $state, $stateParams, $http, librosContext, reservasContext, $log) {
 
             // carga las reservas del libro $stateParams.libroId
