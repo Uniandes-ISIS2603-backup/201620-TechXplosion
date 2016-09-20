@@ -9,17 +9,17 @@
                 // toma el id del parámetro
                 id = $stateParams.libroId;
                 // obtiene el dato del recurso REST
-                $log.warn('Get ' + booksContext + "/" + id + "/authors");
-                $http.get(booksContext + "/" + id + "/authors")
+                $log.warn('Get ' + librosContext + "/" + id + "/reservas");
+                $http.get(librosContext + "/" + id + "/reservas")
                         .then(function (response) {
                             // $http.get es una promesa
                             // cuando llegue el dato, actualice currentRecord
-                            $scope.bookAuthors = response.data;
-                            $scope.selectedAuthors = Array.from($scope.bookAuthors);
+                            $scope.libroReservas = response.data;
+                            $scope.selectedAuthors = Array.from($scope.libroReservas);
                         }, responseError);
                 // el controlador no recibió un bookId
             } else {
-                showError(" El ibro no existe");
+                showError(" El libro no existe");
                 $scope.bookAuthors = {};
                 $scope.selectedAuthors = []; // Contendra la lista de authores del libro en $stateParams.bookId
             }
