@@ -15,28 +15,28 @@
                             // $http.get es una promesa
                             // cuando llegue el dato, actualice currentRecord
                             $scope.libroReservas = response.data;
-                            $scope.selectedAuthors = Array.from($scope.libroReservas);
+                            $scope.selectedReservas = Array.from($scope.libroReservas);
                         }, responseError);
-                // el controlador no recibió un bookId
+                // el controlador no recibió un libroId
             } else {
-                showError(" El libro no existe");
-                $scope.bookAuthors = {};
-                $scope.selectedAuthors = []; // Contendra la lista de authores del libro en $stateParams.bookId
+                showError("El libro no existe");
+                $scope.libroReservas = {};
+                $scope.selectedReservas = []; // Contendra la lista de reservas del libro en $stateParams.libroId
             }
 
 
-            $scope.records = {}; // Contendra la lista de authores del libro en $stateParams.bookId
-            $scope.allAuthors = [];
-            // carga todos los authors
-            $log.warn(authorsContext);
-            $http.get(authorsContext).then(function (response) {
+            $scope.records = {}; // Contendra la lista de reservas del libro en $stateParams.bookId
+            $scope.allReservas = [];
+            // carga todas las reservas
+            $log.warn(reservasContext);
+            $http.get(reservasContext).then(function (response) {
                 $scope.records = response.data;
                 var log = [];
                 $log.warn(angular.forEach(Array.from($scope.records), function (v, k) {
                     this.push(k + ': ' + v);
                 }, log));
 
-                $scope.allAuthors = Array.from($scope.records);
+                $scope.allReservas = Array.from($scope.records);
             }, responseError);
 
 
