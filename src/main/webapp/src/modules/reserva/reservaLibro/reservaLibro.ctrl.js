@@ -1,13 +1,13 @@
 (function (ng) {
-    var mod = ng.module("bookModule");
-    mod.controller("booksAuthorCtrl", ['$scope', '$state', '$stateParams', '$http', 'booksContext', 'authorsContext', '$log',
-        function ($scope, $state, $stateParams, $http, booksContext, authorsContext, $log) {
+    var mod = ng.module("libroModule");
+    mod.controller("libroReservaCtrl", ['$scope', '$state', '$stateParams', '$http', 'librosContext', 'reservasContext', '$log',
+        function ($scope, $state, $stateParams, $http, librosContext, reservasContext, $log) {
 
-            // carga los authores del book $stateParams.bookId
-            if ($stateParams.bookId !== null && $stateParams.bookId !== undefined) {
+            // carga las reservas del libro $stateParams.libroId
+            if ($stateParams.libroId !== null && $stateParams.libroId !== undefined) {
 
                 // toma el id del parámetro
-                id = $stateParams.bookId;
+                id = $stateParams.libroId;
                 // obtiene el dato del recurso REST
                 $log.warn('Get ' + booksContext + "/" + id + "/authors");
                 $http.get(booksContext + "/" + id + "/authors")
