@@ -1,4 +1,4 @@
-/*
+/**
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -23,7 +23,7 @@ public class AlquilerMock
 {
 
     // objeto para presentar logs de las operaciones
-    private final static Logger logger = Logger.getLogger(AlquilerMock.class.getName());
+    private static final Logger logger = Logger.getLogger(AlquilerMock.class.getName());
 	
     // listado de alquileres
     private static ArrayList<AlquilerDTO> alquileres;
@@ -44,7 +44,7 @@ public class AlquilerMock
     	
     	// muestra información 
     	logger.info("Inicializa la lista de alquileres");
-    	logger.info("alquileres" + alquileres );
+    	logger.log(Level.INFO, "alquileres{0}", alquileres);
     }    
     
 	/**
@@ -74,7 +74,7 @@ public class AlquilerMock
      */
     public AlquilerDTO createAlquiler(AlquilerDTO nuevo) throws CityLogicException 
     {
-    	logger.info("recibiendo solicitud de agregar alquiler " + nuevo);
+    	logger.log(Level.INFO, "recibiendo solicitud de agregar alquiler {0}", nuevo);
     	if(nuevo.getId()!=null)
         {
             for (AlquilerDTO alquiler: alquileres)
@@ -99,7 +99,7 @@ public class AlquilerMock
 	        }
 	        nuevo.setId(newId);
     	}
-    logger.info("agregando el alquiler:  " + nuevo);
+    logger.log(Level.INFO, "agregando el alquiler:  {0}", nuevo);
         alquileres.add(nuevo);
         return nuevo;
     }
@@ -150,7 +150,7 @@ public class AlquilerMock
                     {
                         alquileres.remove(alquiler);
                         encontrado=true;
-                        logger.severe("se borro el alquiler con id: "+id);
+                        logger.log(Level.SEVERE, "se borro el alquiler con id: {0}", id);
                         
                     }
                     
@@ -237,9 +237,9 @@ public class AlquilerMock
             {
 	            if (Objects.equals(id, alquiler.getId()))
                     {
-                        logger.severe("Existe el alquiler con id: "+id);
+                        logger.log(Level.SEVERE, "Existe el alquiler con id: {0}", id);
                         alquileres.remove(alquiler);
-                        logger.severe("Se borró el alquiler con id: "+id);
+                        logger.log(Level.SEVERE, "Se borro el alquiler con id: {0}", id);
                         return;
                     }
                     
@@ -253,7 +253,9 @@ public class AlquilerMock
     
     /**
      * Actualiza una instancia de un alquiler.
+     * @param idUsuario
      * @param id Id del alquiler que se quiere actualizar.
+     * @param alquiler
      * @return La instancia del alquiler actualizada.
      * @throws CityLogicException Si la lista de alquileres es vacía, si no hay una reserva con el id dado o si el path y el id de la alquiler no coinciden.
      */
@@ -264,7 +266,7 @@ public class AlquilerMock
             logger.severe("Error: La lista de alquileres está vacia ");
             throw new CityLogicException("Error: La lista de alquileres está vacia. ");
         }
-        else if( id != alquiler.getId())
+        else if( !Objects.equals(id, alquiler.getId()))
         {
             logger.severe("El id del path y de la alquileres a modificar no coinciden.");
             throw new CityLogicException("El id del path y de la reserva a modificar no coinciden.");          
@@ -273,7 +275,7 @@ public class AlquilerMock
         {
             for (int i = 0 ; i < alquileres.size() ; i++)
             {
-                if (alquileres.get(i).getId() == id )
+                if (Objects.equals(alquileres.get(i).getId(), id) )
                 {
                     alquileres.set(i, alquiler);
                     return alquiler;

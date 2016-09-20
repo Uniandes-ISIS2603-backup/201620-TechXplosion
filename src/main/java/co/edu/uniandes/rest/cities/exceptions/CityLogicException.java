@@ -1,10 +1,8 @@
 package co.edu.uniandes.rest.cities.exceptions;
-
 /**
  * Representa las excepciones de la lógica de CityLogic 
  */
 public class CityLogicException extends Exception {
-
 	/**
 	 * versión usada en la serialización de la clase
 	 */
@@ -14,6 +12,9 @@ public class CityLogicException extends Exception {
 	 * Constructor por defecto
 	 */
 	public CityLogicException() {
+            /**
+	 * Constructor por defecto
+	 */
 	}
 
 	/**
