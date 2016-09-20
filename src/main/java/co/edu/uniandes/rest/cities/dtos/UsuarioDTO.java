@@ -142,6 +142,10 @@ public class UsuarioDTO
     @Override
     public String toString()
     {
+        if(id == null)
+        {
+            id = 0L;
+        }
         return "{ id: "+id+", Nombre: "+nombre+"}";
     }
     

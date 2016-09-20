@@ -44,7 +44,7 @@
          </plugin>
          <!-- Execute Bower to install/update JS dependencies -->
          <!-- Execute Bower to install/update JS dependencies -->
-         <!--<plugin>
+         <plugin>
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>exec-maven-plugin</artifactId>
             <version>1.3.2</version>
@@ -63,7 +63,7 @@
             </arguments>
             <workingDirectory>${basedir}</workingDirectory>
             </configuration>
-            </plugin>-->
+            </plugin>
          <!-- Include Java EE endorsed APIs during compilation -->
          <!-- Include Java EE endorsed APIs during compilation -->
          <plugin>
