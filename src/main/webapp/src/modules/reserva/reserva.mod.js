@@ -44,9 +44,9 @@
                 parent:'libroEdit',
                 views: {
                     'LibroInstanceView': {
-                        controller: 'reservaCtrl',
+                        controller: 'reservaLibroCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + "reserva.list.html"
+                        templateUrl: basePath + "reservaLibro.list.html"
                     },
                 }
             }).state('libroReservaEdit', {
@@ -54,9 +54,9 @@
                 parent:'libroEdit',
                 views: {
                     'LibroInstanceView': {
-                        controller: 'reservaCtrl',
+                        controller: 'reservaLibroCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + "reserva.create.html"
+                        templateUrl: basePath + "reservaLibro.edit.html"
                     },
                 }
             }).state('libroReservaCreate', {
@@ -74,9 +74,9 @@
                 parent:'videoEdit',
                 views: {
                     'VideoInstanceView': {
-                        controller: 'reservaCtrl',
+                        controller: 'reservaVideoCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + "reserva.list.html"
+                        templateUrl: basePath + "reservaVideo.list.html"
                     },
                 }
             }).state('videoReservaEdit', {
@@ -84,9 +84,9 @@
                 parent:'videoEdit',
                 views: {
                     'VideoInstanceView': {
-                        controller: 'reservaCtrl',
+                        controller: 'reservaVideoCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + "reserva.create.html"
+                        templateUrl: basePath + "reservaVideo.edit.html"
                     },
                 }
             }).state('videoReservaCreate', {
