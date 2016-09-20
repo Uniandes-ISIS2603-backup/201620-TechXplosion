@@ -1,16 +1,23 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<div class="col-md-6">
+    <div class="container-fluid">
+
+        <ui-select multiple ng-model="ctrl.selectedAuthors" ng-disabled="disabled" 
+                   sortable="false" close-on-select="false">
+            <ui-select-match placeholder="Select author...">{{$item.name}}</ui-select-match>
+            <ui-select-choices repeat="author in allAuthors">
+                <div ng-bind-html="author.name"></div>
+            </ui-select-choices>
+        </ui-select>
+
+
+
+        <hr/>
+
+        <div class="form-group col-md-6">
+            <button type="button" ui-sref='reservaLibroList'>Cancel</button>
+            <button type="button" ng-click='ctrl.updateBookAuthors(ctrl.selectedAuthors)' >Save</button>   
+        </div>
+        
+    </div>
+
+</div>
