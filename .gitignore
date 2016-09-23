@@ -8,8 +8,7 @@ tmp/
 *.class
 
 # Binaries produced by Maven
-/target/
-/shopping_cart/target/
+target/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
