@@ -9,6 +9,8 @@ tmp/
 
 # Binaries produced by Maven
 target/
+bibliotecas-web/target/
+bibliotecas-back/target/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
@@ -40,6 +42,8 @@ node_modules/
 # NetBeans
 nbactions.xml
 nb-configuration.xml
+bibliotecas-back/nb-configuration.xml/
+bibliotecas-web/nb-configuration.xml/
 
 # Eclipse 
 .project
