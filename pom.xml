@@ -8,8 +8,8 @@
     <packaging>pom</packaging>
     
 	<modules>
-        <module>bibliotecas.back</module>
-        <module>bibliotecas.web</module>
+        <module>bibliotecas-back</module>
+        <module>bibliotecas-web</module>
     </modules>
 	
     <properties>
