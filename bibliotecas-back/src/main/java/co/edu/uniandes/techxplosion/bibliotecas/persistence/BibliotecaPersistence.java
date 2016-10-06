@@ -5,10 +5,13 @@
  */
 package co.edu.uniandes.techxplosion.bibliotecas.persistence;
 
+import javax.ejb.Stateless;
+
 /**
  *
  * @author js.sosa10
  */
+@Stateless
 public class BibliotecaPersistence {
     
 }
