@@ -9,6 +9,6 @@ package co.edu.uniandes.techxplosion.bibliotecas.persistence;
  *
  * @author js.sosa10
  */
-public class ReservaPerisistence {
+public class ReservaPersistence {
     
 }
