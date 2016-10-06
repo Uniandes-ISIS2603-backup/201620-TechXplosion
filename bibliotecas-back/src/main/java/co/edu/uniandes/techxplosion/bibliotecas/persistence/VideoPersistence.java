@@ -24,7 +24,7 @@ public class VideoPersistence
 {
     private static final Logger LOGGER = Logger.getLogger(VideoPersistence.class.getName());
 
-    @PersistenceContext(unitName = "techxplosionPU")
+    @PersistenceContext(unitName = "TechxplosionPU")
     protected EntityManager em;
     
     public VideoEntity find(Long id) 
