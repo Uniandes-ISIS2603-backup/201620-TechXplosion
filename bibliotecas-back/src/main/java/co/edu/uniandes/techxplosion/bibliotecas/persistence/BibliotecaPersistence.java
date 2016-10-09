@@ -20,10 +20,10 @@ import javax.persistence.Query;
  */
 @Stateless
 public class BibliotecaPersistence {
-    private static final Logger LOGGER = Logger.getLogger(LibroPersistence.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(BibliotecaPersistence.class.getName());
     @PersistenceContext(unitName="TechxplsionPU")
     protected EntityManager em;
-    public BibliotecaEntity fing(Long id){
+    public BibliotecaEntity find(Long id){
         LOGGER.log(Level.INFO,"Consulatndo Biblioteca con id={0}",id);
         return em.find(BibliotecaEntity.class,id);
     }
