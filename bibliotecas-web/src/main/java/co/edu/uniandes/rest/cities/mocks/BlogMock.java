@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 import co.edu.uniandes.rest.cities.dtos.BlogDTO;
-import co.edu.uniandes.rest.cities.dtos.LibroCompletoDTO;
+import co.edu.uniandes.rest.cities.dtos.LibroDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 public class BlogMock {
      // objeto para presentar logs de las operaciones
@@ -186,13 +186,13 @@ public class BlogMock {
      public List<BlogDTO> updateBolgsLibro(Long id, List<BlogDTO> updateBlogs) throws CityLogicException{
          logger.info("recibiendo la solicitud de modificar los blogs del del libro "+id);
          LibroMock lbm = LibroMock.getInstance();
-         LibroCompletoDTO  libro= lbm.getLibro(id);
+         LibroDTO  libro= lbm.getLibro(id);
          libro.setBlogs(updateBlogs);
          return updateBlogs;
      }
      public List<BlogDTO> getBlogsLibro(Long id) throws CityLogicException{
          LibroMock lbm = LibroMock.getInstance();
-         LibroCompletoDTO libro = lbm.getLibro(id);
+         LibroDTO libro = lbm.getLibro(id);
          return libro.getBlogs();
      }
 

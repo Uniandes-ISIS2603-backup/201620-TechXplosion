@@ -9,7 +9,7 @@ package co.edu.uniandes.rest.cities.mocks;
  *Mock del recurso Libro (Mock del servicio REST) 
  * @author jc.sanchez16
  */
-import co.edu.uniandes.rest.cities.dtos.LibroCompletoDTO;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -23,7 +23,7 @@ public class LibroMock {
         private static LibroMock instance =null;
 	
 	// listado de libros
-    private static ArrayList<LibroCompletoDTO> libros;
+    private static ArrayList<LibroDTO> libros;
 
     static LibroMock getInstance() {
        if(instance==null){
@@ -39,9 +39,9 @@ public class LibroMock {
 
     	if (libros == null) {
             libros = new ArrayList<>();
-            libros.add(new LibroCompletoDTO(1L, "Cien años de soledad", "createSpace", "Gabriel Garcia Marquez", 2, false));
-            libros.add(new LibroCompletoDTO(2L, "El jugador", "akal", "Fiodor M.", 4, true));
-            libros.add(new LibroCompletoDTO(3L, "Crimen y castigo", "Encuentro", "Jose Cabrera", 0, false));
+            libros.add(new LibroDTO(1L, "Cien años de soledad", "createSpace", "Gabriel Garcia Marquez", 2, false));
+            libros.add(new LibroDTO(2L, "El jugador", "akal", "Fiodor M.", 4, true));
+            libros.add(new LibroDTO(3L, "Crimen y castigo", "Encuentro", "Jose Cabrera", 0, false));
         }
         
     	// indica que se muestren todos los mensajes
@@ -82,11 +82,11 @@ public class LibroMock {
     	logger.info("recibiendo solicitud de agregar libro " + newLibro);
     	
     	// el nuevo libro tiene isbn ?
-    	if ( newLibro.getIsbn() != null ) {
+    	if ( newLibro.getId() != null ) {
 	    	// busca la biblioteca con el ismn suministrado
 	        for (LibroDTO libro : libros) {
 	        	// si existe una biblioteca con ese isbn
-	            if (Objects.equals(libro.getIsbn(), newLibro.getIsbn())){
+	            if (Objects.equals(libro.getId(), newLibro.getId())){
 	            	logger.severe("Ya existe un libro con ese ISBN");
 	                throw new CityLogicException("Ya existe un libro con ese ISBN");
 	            }
@@ -99,16 +99,16 @@ public class LibroMock {
     		logger.info("Generando isbn para el nuevo libro");
     		long newISBN= 0000001;
 	        for (LibroDTO libro : libros) {
-	            if (newISBN <= libro.getIsbn()){
-	                newISBN =  libro.getIsbn()+ 1;
+	            if (newISBN <= libro.getId()){
+	                newISBN =  libro.getId()+ 1;
 	            }
 	        }
-	        newLibro.setIsbn(newISBN);
+	        newLibro.setId(newISBN);
     	}
     	
         // agrega el libro
     	logger.info("agregando libro " + newLibro);
-        libros.add(new LibroCompletoDTO(newLibro));
+        libros.add(new LibroDTO(newLibro));
         return newLibro;
     }
     /**
@@ -117,16 +117,16 @@ public class LibroMock {
 	 * @return libro
 	 * @throws CityLogicException cuando no existe la lista en memoria  
 	 */    
-    public LibroCompletoDTO getLibro(Long isbn) throws CityLogicException {
+    public LibroDTO getLibro(Long id) throws CityLogicException {
     	if (libros == null) {
     		logger.severe("Error interno: lista de libros  no existe.");
     		throw new CityLogicException("Error interno: lista de libros no existe.");    		
     	}
     	
     	logger.info("retornando la biblioteca buscado ");
-    	for (LibroCompletoDTO libro : libros) {
+    	for (LibroDTO libro : libros) {
 	        	// si existe una biblioteca con ese id
-	            if (Objects.equals(isbn, libro.getIsbn())){
+	            if (Objects.equals(id, libro.getId())){
                         logger.severe("el libro");
                         return libro;
                     }
@@ -138,23 +138,23 @@ public class LibroMock {
     }
     /**
      * elimina el libro con el isbn suministrado de la lista.
-     * @param isbn identificador del libro a eliminar
+     * @param id identificador del libro a eliminar
      * @throws CityLogicException si la lista no existe o el libro con el isbn dado no existe
      */
-    public void deleteLibro(Long isbn)throws CityLogicException{
+    public void deleteLibro(Long id)throws CityLogicException{
         if (libros == null) {
     		logger.severe("Error interno: lista de libros  no existe.");
     		throw new CityLogicException("Error interno: lista de libros no existe.");    		
     	}
     	boolean existe =false;
-    	logger.info("buscando el libro con el isbnd: "+isbn);
+    	logger.info("buscando el libro con el isbnd: "+id);
     	for (LibroDTO libro : libros) {
 	        	// si existe un biblioteca con ese id
-	            if (Objects.equals(isbn, libro.getIsbn())){
-                        logger.severe("existe el libro con isbn: "+isbn);
+	            if (Objects.equals(id, libro.getId())){
+                        logger.severe("existe el libro con isbn: "+id);
                         LibroMock.libros.remove(libro);
                         existe=true;
-                        logger.severe("se borro el libro con isbn: "+isbn);
+                        logger.severe("se borro el libro con isbn: "+id);
                         break;
                     }
                     
@@ -167,12 +167,12 @@ public class LibroMock {
     }
     /**
      * actualiza la informacion del libro con el id suministrado. 
-     * @param isbn identificador del libro a actualizar.
+     * @param id identificador del libro a actualizar.
      * @param newLibro objeto con la nueva infomación dle libro.
      * @return el libro actualizada.
      * @throws CityLogicException si la lista de libros no existe o el libro con el isbn dado no existe.
      */
-     public LibroDTO updateLibro(Long isbn,LibroDTO newLibro) throws CityLogicException {
+     public LibroDTO updateLibro(Long id,LibroDTO newLibro) throws CityLogicException {
     	if (libros == null) {
     		logger.severe("Error interno: lista de libros  no existe.");
     		throw new CityLogicException("Error interno: lista de libros no existe.");    		
@@ -181,10 +181,10 @@ public class LibroMock {
     	logger.info("retornando el libro buscada ");
     	for (LibroDTO libro : libros) {
 	        	// si existe un biblioteca con ese id
-	            if (Objects.equals(isbn, libro.getIsbn())){
-                        logger.severe("el libro con el isbn: "+isbn);
+	            if (Objects.equals(id, libro.getId())){
+                        logger.severe("el libro con el isbn: "+id);
                         libros.remove(libro);
-                        libros.add(new LibroCompletoDTO(newLibro));
+                        libros.add(new LibroDTO(newLibro));
                         return newLibro;
                     }
                     

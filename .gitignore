@@ -52,3 +52,4 @@ bibliotecas-web/nb-configuration.xml/
 
 # IntelliJ
 .idea/
+/bibliotecas-back/nbproject/

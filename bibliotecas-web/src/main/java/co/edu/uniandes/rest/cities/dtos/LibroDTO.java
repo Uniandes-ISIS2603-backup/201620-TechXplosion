@@ -5,6 +5,9 @@
  */
 package co.edu.uniandes.rest.cities.dtos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Clase que guarda la informacíon de un libro
  *
@@ -14,12 +17,13 @@ public class LibroDTO {
 
     public static final boolean VIRTUAL = true;
     public static final boolean FISICO = false;
-    private Long isbn;
+    private Long id;
     private String nombre;
     private String editorial;
     private String autor;
     private int edicion;
-    private boolean tipo;
+    private boolean tipo;    
+    private List<BlogDTO> blogs =new ArrayList<>();
 
     /**
      * Constructor por defecto
@@ -33,35 +37,43 @@ public class LibroDTO {
     /**
      * Constructor con parámetros.
      *
-     * @param isbn codico unico del libro
+     * @param id codico unico del libro
      * @param nombre Titulo del libro
      * @param editorial nombre de la empresa que promociona el libro
      * @param autor Nombre de la persona que hizo el libro
      * @param edicion Numero de la edicion
      * @param tipo Si es virtual o fisico
      */
-    public LibroDTO(Long isbn, String nombre, String editorial, String autor, int edicion, boolean tipo) {
+    public LibroDTO(Long id, String nombre, String editorial, String autor, int edicion, boolean tipo) {
         super();
-        this.isbn = isbn;
+        this.id = id;
         this.nombre = nombre;
         this.editorial = editorial;
         this.autor = autor;
         this.edicion = edicion;
         this.tipo = tipo;
     }
-
+    
+    public LibroDTO(LibroDTO libro){
+        this.id = libro.getId();
+        this.nombre = libro.getNombre();
+        this.editorial = libro.getEditorial();
+        this.autor = libro.getAutor();
+        this.edicion = libro.getEdicion();
+        this.tipo = libro.getTipo();        
+    }
     /**
      * @return el isbn del libro
      */
-    public Long getIsbn() {
-        return isbn;
+    public Long getId() {
+        return id;
     }
 
     /**
-     * @param isbn el isbn a actualizar.
+     * @param id el isbn a actualizar.
      */
-    public void setIsbn(Long isbn) {
-        this.isbn = isbn;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     /**
@@ -100,10 +112,10 @@ public class LibroDTO {
     }
 
     /**
-     * @param editorial
+     * @param edicion
      */
-    public void setEdicion(String editorial) {
-        this.editorial = editorial;
+    public void setEdicion(int edicion) {
+        this.edicion = edicion;
     }
 
     /**
@@ -130,10 +142,20 @@ public class LibroDTO {
     /**
      * @param tipo el tipo a actualizar.
      */
-    public void setEditorial(boolean tipo) {
+    public void setTipo(boolean tipo) {
         this.tipo = tipo;
     }
-
+    
+     public List<BlogDTO> getBlogs() {
+        return blogs;
+    }
+     /**
+      * Metodo para actualizar a lista de blogs del libro
+      * @param blogs nueva lista de blogs
+      */
+    public void setBlogs(List<BlogDTO> blogs) {
+        this.blogs = blogs;
+    }
     /**
      * Convierte el objeto a una cadena
      *
@@ -142,6 +164,6 @@ public class LibroDTO {
     @Override
     public String toString() {
         String tip = getTipo() ? "Virtual" : "Fisico";
-        return "{ ISBN : " + getIsbn() + ", Nombre : \"" + getNombre() + "\", Autor : \"" + getAutor() + "\", Editorial : \"" + getEditorial() + "\", Editorial : " + getEditorial() + ", Tipo : \"" + tip + "\"}";
+        return "{ ID : " + getId() + ", Nombre : \"" + getNombre() + "\", Autor : \"" + getAutor() + "\", Editorial : \"" + getEditorial() + "\", Editorial : " + getEditorial() + ", Tipo : \"" + tip + "\"}"+" ,Blogs\"" + getBlogs().toString();
     }
 }

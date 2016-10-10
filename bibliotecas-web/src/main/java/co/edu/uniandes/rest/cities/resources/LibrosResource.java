@@ -60,9 +60,9 @@ public class LibrosResource {
      * @throws CityLogicException cunado no existe un libro con ese isbn.
      */
     @GET
-    @Path("{isbn: \\d+}")
-    public LibroDTO  getLibro( @PathParam("isbn") Long isbn) throws CityLogicException {
-        return libroLogic.getLibro(isbn);
+    @Path("{id: \\d+}")
+    public LibroDTO  getLibro( @PathParam("id") Long id) throws CityLogicException {
+        return libroLogic.getLibro(id);
     }
      /**
      * elimina el libro identificada con el isbn.
@@ -70,9 +70,9 @@ public class LibrosResource {
      * @throws CityLogicException si el libro no identificado con ese isbn no existe.
      */
     @DELETE
-    @Path("{isbn: \\d+}")
-    public void  deleteLibro( @PathParam("isbn") Long isbn) throws CityLogicException {
-        libroLogic.deleteLibro(isbn);
+    @Path("{id: \\d+}")
+    public void  deleteLibro( @PathParam("id") Long id) throws CityLogicException {
+        libroLogic.deleteLibro(id);
     }
 
     /**
@@ -83,9 +83,9 @@ public class LibrosResource {
      * @throws CityLogicException si el libro con el isbn dado no existe.
      */
     @PUT
-    @Path("{isbn: \\d+}")
-    public LibroDTO updateLibro(@PathParam("isbn") Long isbn, LibroDTO newLibro) throws CityLogicException{
-        return libroLogic.updateLibro(isbn, newLibro);
+    @Path("{id: \\d+}")
+    public LibroDTO updateLibro(@PathParam("id") Long id, LibroDTO newLibro) throws CityLogicException{
+        return libroLogic.updateLibro(id, newLibro);
     } 
 }
 

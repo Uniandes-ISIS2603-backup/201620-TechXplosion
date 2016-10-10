@@ -11,11 +11,11 @@
             $scope.records = response.data;    
         }, responseError);
         
-    if ($stateParams.libroIsbn !== null && $stateParams.libroIsbn !== undefined)
+    if ($stateParams.libroId !== null && $stateParams.libroId !== undefined)
     {
                 
-                isbn = $stateParams.libroIsbn;
-                $http.get(context + "/" + isbn)
+                id = $stateParams.libroId;
+                $http.get(context + "/" + id)
                     .then(function (response) 
                        {
                         // $http.get es una promesa
@@ -28,12 +28,12 @@
             
         {
                 $scope.currentRecord = {
-                   isbn: undefined ,
+                   id: undefined ,
                    nombre: '' ,
-                   tipo:'',
+                   tipo:false,
                    autor:'',
                    editorial:'',
-                   edicion:''
+                   edicion:0
                    
                 };
               
@@ -41,11 +41,11 @@
             }
 
 
-            this.saveRecord = function (isbn) 
+            this.saveRecord = function (id) 
             {
                 currentRecord = $scope.currentRecord;
                 
-                if (isbn == null) {
+                if (id == null) {
 
                     // ejecuta POST en el recurso REST
                     return $http.post(context, currentRecord)
@@ -58,7 +58,7 @@
                 } else {
                     
                     // ejecuta PUT en el recurso REST
-                    return $http.put(context + "/" + currentRecord.isbn, currentRecord)
+                    return $http.put(context + "/" + currentRecord.id, currentRecord)
                         .then(function () {
                             // $http.put es una promesa
                             // cuando termine bien, cambie de estado
@@ -73,7 +73,7 @@
           
                     
                     // ejecuta DELETE en el recurso REST
-                   return $http.delete(context + "/" + currentRecord.isbn)
+                   return $http.delete(context + "/" + currentRecord.id)
                         .then(function () {
                             // $http.delete es una promesa
                             // cuando termine bien, cambie de estado
