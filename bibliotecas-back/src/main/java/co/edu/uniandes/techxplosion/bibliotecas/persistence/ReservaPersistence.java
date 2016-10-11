@@ -59,4 +59,29 @@ public class ReservaPersistence {
         return q.getResultList();
     }
     
+
+    public ReservaEntity create(ReservaEntity entity) {
+        LOGGER.info("Creando una reserva nueva");
+        em.persist(entity);
+        LOGGER.info("Reserva creada");
+        return entity;
+    }
+
+    public ReservaEntity update(ReservaEntity entity) {
+        LOGGER.log(Level.INFO, "Actualizando reserva con id={0}", entity.getId());
+        return em.merge(entity);
+    }
+    
+    /**
+     *
+     * @param id: corresponde a un id válido que existe el deptarment
+     * crrespondiente en la base de datos.
+     */
+    public void delete(Long id) {
+        LOGGER.log(Level.INFO, "Borrando reserva con id={0}", id);
+        ReservaEntity entity = em.find(ReservaEntity.class, id);
+        assert entity != null;
+        em.remove(entity);
+    }
+    
 }
