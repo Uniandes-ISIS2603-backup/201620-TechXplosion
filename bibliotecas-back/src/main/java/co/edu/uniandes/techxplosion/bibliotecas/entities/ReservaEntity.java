@@ -10,9 +10,22 @@ import javax.persistence.Entity;
 
 /**
  *
- * @author 
+ * @author js.numpaque10
  */
 @Entity
 public class ReservaEntity extends BaseEntity implements Serializable{
+    
+    @PodamExclude
+    @ManyToOne
+    private VideoEntity video;
+    @PodamExclude
+    @ManyToOne
+    private LibroEntity libro;
+    @PodamExclude
+    @OneToOne
+    private UsuarioEntity usuario;
+    private String fechaSolicitud;
+    
+    
     
 }
