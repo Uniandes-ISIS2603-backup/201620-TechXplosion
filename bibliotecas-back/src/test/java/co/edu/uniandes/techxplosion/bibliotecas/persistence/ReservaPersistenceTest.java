@@ -113,19 +113,135 @@ public class ReservaPersistenceTest {
      */
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
-        fatherEntity = factory.manufacturePojo(CompanyEntity.class);
-        fatherEntity.setId(1L);
-        em.persist(fatherEntity);
+        fatherEntity1 = factory.manufacturePojo(LibroEntity.class);
+        fatherEntity1.setId(1L);
+        em.persist(fatherEntity1);
+        fatherEntity2 = factory.manufacturePojo(LibroEntity.class);
+        fatherEntity2.setId(1L);
+        em.persist(fatherEntity2);
+        fatherEntity3 = factory.manufacturePojo(LibroEntity.class);
+        fatherEntity3.setId(1L);
+        em.persist(fatherEntity3);
         for (int i = 0; i < 3; i++) {
-            DepartmentEntity entity = factory.manufacturePojo(DepartmentEntity.class);
-            entity.setCompany(fatherEntity);
+            ReservaEntity entity = factory.manufacturePojo(ReservaEntity.class);
+            entity.setLibro(fatherEntity1);
+            entity.setVideo(fatherEntity2);
+            entity.setUsuario(fatherEntity3);
             data.add(entity);
             em.persist(entity);
-        }
-
+        }  
     }
     
+    /**
+     * Prueba para crear un Department.
+     */
+    @Test
+    public void createReservaTest() {
+        PodamFactory factory = new PodamFactoryImpl();
+        ReservaEntity newEntity = factory.manufacturePojo(ReservaEntity.class);
+        newEntity.setLibro(fatherEntity1);
+        newEntity.setVideo(fatherEntity2);
+        newEntity.setUsuario(fatherEntity3);
+        ReservaEntity result = reservaPersistence.create(newEntity);
+
+        Assert.assertNotNull(result);
+
+        ReservaEntity entity = em.find(ReservaEntity.class, result.getId());
+
+        Assert.assertEquals(newEntity.getName(), entity.getName());
+    }
     
+    /**
+     * Prueba para consultar la lista de Reservas.
+     */
+    @Test
+    public void getReservasByLibroTest() {
+        List<ReservaEntity> list = reservaPersistence.findAllByLibro(fatherEntity1.getId());
+        Assert.assertEquals(data.size(), list.size());
+        for (ReservaEntity ent : list) {
+            boolean found = false;
+            for (ReservaEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+
+    /**
+     * Prueba para consultar la lista de Reservas.
+     */
+    @Test
+    public void getReservasByVideoTest() {
+        List<ReservaEntity> list = reservaPersistence.findAllByVideo(fatherEntity2.getId());
+        Assert.assertEquals(data.size(), list.size());
+        for (ReservaEntity ent : list) {
+            boolean found = false;
+            for (ReservaEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
     
+    /**
+     * Prueba para consultar la lista de Reservas.
+     */
+    @Test
+    public void getReservasByUsuarioTest() {
+        List<ReservaEntity> list = reservaPersistence.findAllByUsuario(fatherEntity3.getId());
+        Assert.assertEquals(data.size(), list.size());
+        for (ReservaEntity ent : list) {
+            boolean found = false;
+            for (ReservaEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
     
+    /**
+     * Prueba para consultar un Department.
+     */
+    @Test
+    public void getReservaTest() {
+        ReservaEntity entity = data.get(0);
+        ReservaEntity newEntity = reservaPersistence.find(entity.getId());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getName(), newEntity.getName());
+    }
+
+    /**
+     * Prueba para eliminar un Department.
+     */
+    @Test
+    public void deleteDepartmentTest() {
+        ReservaEntity entity = data.get(0);
+        reservaPersistence.delete(entity.getId());
+        ReservaEntity deleted = em.find(ReservaEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+    
+    /**
+     * Prueba para actualizar un Department.
+     */
+    @Test
+    public void updateReservaTest() {
+        ReservaEntity entity = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        ReservaEntity newEntity = factory.manufacturePojo(ReservaEntity.class);
+
+        newEntity.setId(entity.getId());
+
+        reservaPersistence.update(newEntity);
+
+        ReservaEntity resp = em.find(ReservaEntity.class, entity.getId());
+
+        Assert.assertEquals(newEntity.getName(), resp.getName());
+    }    
 }
