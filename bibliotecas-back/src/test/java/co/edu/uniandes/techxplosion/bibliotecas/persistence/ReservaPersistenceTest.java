@@ -60,6 +60,70 @@ public class ReservaPersistenceTest {
      */
     VideoEntity fatherEntity3;
     
+    /**
+     * Lista de las reservas que serán utilizadas en las pruebas. 
+     */
+    private List<ReservaEntity> data = new ArrayList<>();
+    
+    @Inject
+    private RepartmentPersistence reservaPersistence;
+
+    @PersistenceContext
+    private EntityManager em;
+
+    @Inject
+    UserTransaction utx;
+    
+    /**
+     * Configuración inicial de cada método de prueba.
+     *
+     */
+    @Before
+    public void setUp() {
+        try {
+            utx.begin();
+            em.joinTransaction();
+            clearData();
+            insertData();
+            utx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                utx.rollback();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
+    
+    /**
+     * Limpia las tablas que están implicadas en la prueba.
+     */
+    private void clearData() {
+        em.createQuery("delete  from DepartmentEntity").executeUpdate();
+        em.createQuery("delete  from LibroEntity").executeUpdate();
+        em.createQuery("delete  from VideoEntity").executeUpdate();
+        em.createQuery("delete  from UsuarioEntity").executeUpdate();
+    }
+    
+    /**
+     * Para el correcto funcionamiento de las pruebas, inserta los datos
+     * iniciales en la base de datos utilizando un manejador de persistencia.
+     *
+     */
+    private void insertData() {
+        PodamFactory factory = new PodamFactoryImpl();
+        fatherEntity = factory.manufacturePojo(CompanyEntity.class);
+        fatherEntity.setId(1L);
+        em.persist(fatherEntity);
+        for (int i = 0; i < 3; i++) {
+            DepartmentEntity entity = factory.manufacturePojo(DepartmentEntity.class);
+            entity.setCompany(fatherEntity);
+            data.add(entity);
+            em.persist(entity);
+        }
+
+    }
     
     
     
