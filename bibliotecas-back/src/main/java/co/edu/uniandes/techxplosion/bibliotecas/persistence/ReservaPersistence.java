@@ -5,10 +5,19 @@
  */
 package co.edu.uniandes.techxplosion.bibliotecas.persistence;
 
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+
 /**
  *
- * @author js.sosa10
+ * @author js.numpaque10
  */
+@Stateless
 public class ReservaPersistence {
     
 }
