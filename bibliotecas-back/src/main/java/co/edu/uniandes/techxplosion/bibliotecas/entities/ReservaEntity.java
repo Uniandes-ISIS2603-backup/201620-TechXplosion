@@ -67,7 +67,7 @@ public class ReservaEntity extends BaseEntity implements Serializable{
      * @return atributo fechaSolicitud.
      *
     */
-    public UsuarioEntity getFechaSolicitud()
+    public String getFechaSolicitud()
     {
        return fechaSolicitud;
     }
