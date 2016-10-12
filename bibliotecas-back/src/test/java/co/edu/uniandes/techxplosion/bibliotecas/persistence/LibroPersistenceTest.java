@@ -19,6 +19,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -46,7 +47,7 @@ public class LibroPersistenceTest {
     }
     
     @Inject
-    private LibroPersistence libroPersistance;
+    private LibroPersistence libroPersistence;
     
     @PersistenceContext
     private EntityManager em;
@@ -88,7 +89,7 @@ public class LibroPersistenceTest {
     private void insertData() 
     {
         PodamFactory factory = new PodamFactoryImpl();
-        for (int i = 0; i < 3; i++) 
+        for (int i = 0; i < 6; i++) 
         {
             LibroEntity entity = factory.manufacturePojo(LibroEntity.class);
             em.persist(entity);
@@ -101,16 +102,12 @@ public class LibroPersistenceTest {
      */
     @Test
     public void testFind() throws Exception {
-        System.out.println("find");
-        Long id = null;
-        EJBContainer container = javax.ejb.embeddable.EJBContainer.createEJBContainer();
-        LibroPersistence instance = (LibroPersistence)container.getContext().lookup("java:global/classes/LibroPersistence");
-        LibroEntity expResult = null;
-        LibroEntity result = instance.find(id);
-        assertEquals(expResult, result);
-        container.close();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        LibroEntity entity = data.get(0);
+        LibroEntity newEntity = libroPersistence.find(entity.getId());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getId(), newEntity.getId());
+        Assert.assertEquals(entity.getName(), newEntity.getName());
+        Assert.assertEquals(entity.getBiblioteca(), newEntity.getBiblioteca());
     }
 
     /**
@@ -118,32 +115,34 @@ public class LibroPersistenceTest {
      */
     @Test
     public void testFindByName() throws Exception {
-        System.out.println("findByName");
-        String name = "";
-        EJBContainer container = javax.ejb.embeddable.EJBContainer.createEJBContainer();
-        LibroPersistence instance = (LibroPersistence)container.getContext().lookup("java:global/classes/LibroPersistence");
-        LibroEntity expResult = null;
-        LibroEntity result = instance.findByName(name);
-        assertEquals(expResult, result);
-        container.close();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        LibroEntity entity = data.get(0);
+        LibroEntity newEntity = libroPersistence.findByName(entity.getName());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getId(), newEntity.getId());
+        Assert.assertEquals(entity.getName(), newEntity.getName());
+        Assert.assertEquals(entity.getBiblioteca(), newEntity.getBiblioteca());
     }
 
     /**
      * Test of findAll method, of class LibroPersistence.
      */
     @Test
-    public void testFindAll() throws Exception {
-        System.out.println("findAll");
-        EJBContainer container = javax.ejb.embeddable.EJBContainer.createEJBContainer();
-        LibroPersistence instance = (LibroPersistence)container.getContext().lookup("java:global/classes/LibroPersistence");
-        List<LibroEntity> expResult = null;
-        List<LibroEntity> result = instance.findAll();
-        assertEquals(expResult, result);
-        container.close();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testFindAll() throws Exception 
+    {
+        List<LibroEntity> list = libroPersistence.findAll();
+        Assert.assertEquals(data.size(), list.size());
+        for (LibroEntity ent : list) 
+        {
+            boolean found = false;
+            for (LibroEntity entity : data) 
+            {
+                if (ent.getId().equals(entity.getId())) 
+                {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
     }
 
     /**
@@ -151,33 +150,36 @@ public class LibroPersistenceTest {
      */
     @Test
     public void testCreate() throws Exception {
-        System.out.println("create");
-        LibroEntity entity = null;
-        EJBContainer container = javax.ejb.embeddable.EJBContainer.createEJBContainer();
-        LibroPersistence instance = (LibroPersistence)container.getContext().lookup("java:global/classes/LibroPersistence");
-        LibroEntity expResult = null;
-        LibroEntity result = instance.create(entity);
-        assertEquals(expResult, result);
-        container.close();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        PodamFactory factory = new PodamFactoryImpl();
+        LibroEntity newEntity = factory.manufacturePojo(LibroEntity.class);
+        LibroEntity resultado =  libroPersistence.create(newEntity);
+        Assert.assertNotNull(resultado);
+        LibroEntity entity = em.find(LibroEntity.class, resultado.getId());
+        Assert.assertNotNull(entity);
+        Assert.assertEquals(entity.getId(), newEntity.getId());
+        Assert.assertEquals(entity.getName(), newEntity.getName());
+        Assert.assertEquals(entity.getBiblioteca(), newEntity.getBiblioteca());
     }
 
     /**
-     * Test of update method, of class LibroPersistence.
+;     * Test of update method, of class LibroPersistence.
      */
     @Test
     public void testUpdate() throws Exception {
-        System.out.println("update");
-        LibroEntity entity = null;
-        EJBContainer container = javax.ejb.embeddable.EJBContainer.createEJBContainer();
-        LibroPersistence instance = (LibroPersistence)container.getContext().lookup("java:global/classes/LibroPersistence");
-        LibroEntity expResult = null;
-        LibroEntity result = instance.update(entity);
-        assertEquals(expResult, result);
-        container.close();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        LibroEntity primero = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        LibroEntity newEntity = factory.manufacturePojo(LibroEntity.class);
+
+        newEntity.setId(primero.getId());
+
+        libroPersistence.update(newEntity);
+
+        LibroEntity entity = em.find(LibroEntity.class, primero.getId());
+        Assert.assertNotNull(entity);
+        Assert.assertEquals(entity.getId(), newEntity.getId());
+        Assert.assertEquals(entity.getName(), newEntity.getName());
+        Assert.assertEquals(entity.getBiblioteca(), newEntity.getBiblioteca());
+    
     }
 
     /**
@@ -185,14 +187,11 @@ public class LibroPersistenceTest {
      */
     @Test
     public void testDelete() throws Exception {
-        System.out.println("delete");
-        Long id = null;
-        EJBContainer container = javax.ejb.embeddable.EJBContainer.createEJBContainer();
-        LibroPersistence instance = (LibroPersistence)container.getContext().lookup("java:global/classes/LibroPersistence");
-        instance.delete(id);
-        container.close();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        LibroEntity entity = data.get(0);
+        libroPersistence.delete(entity.getId());
+        
+        LibroEntity resp= em.find(LibroEntity.class, entity.getId());
+        Assert.assertNull(resp);
     }
     
 }
