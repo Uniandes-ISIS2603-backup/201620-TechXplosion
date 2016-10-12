@@ -21,7 +21,7 @@ import javax.persistence.Query;
 @Stateless
 public class BibliotecaPersistence {
     private static final Logger LOGGER = Logger.getLogger(BibliotecaPersistence.class.getName());
-    @PersistenceContext(unitName="TechxplsionPU")
+    @PersistenceContext(unitName="TechxplosionPU")
     protected EntityManager em;
     public BibliotecaEntity find(Long id){
         LOGGER.log(Level.INFO,"Consulatndo Biblioteca con id={0}",id);
