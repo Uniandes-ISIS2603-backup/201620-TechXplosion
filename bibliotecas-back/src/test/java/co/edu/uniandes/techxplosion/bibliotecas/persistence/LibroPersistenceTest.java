@@ -6,38 +6,80 @@
 package co.edu.uniandes.techxplosion.bibliotecas.persistence;
 
 import co.edu.uniandes.techxplosion.bibliotecas.entities.LibroEntity;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.embeddable.EJBContainer;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.UserTransaction;
+import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
 
 /**
  *
  * @author jc.sanchez16
  */
+@RunWith(Arquillian.class)
 public class LibroPersistenceTest {
     
+     @Deployment
+    public static JavaArchive createDeployment() {
+        return ShrinkWrap.create(JavaArchive.class)
+                .addPackage(LibroEntity.class.getPackage())
+                .addPackage(LibroPersistence.class.getPackage())
+                .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
+                .addAsManifestResource("META-INF/beans.xml", "beans.xml");
+    }
     public LibroPersistenceTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
+    @Inject
+    private LibroPersistence libroPersistance;
     
-    @AfterClass
-    public static void tearDownClass() {
-    }
+    @PersistenceContext
+    private EntityManager em;
+    
+    @Inject
+    UserTransaction utx;
+     
+     private List<LibroEntity> data = new ArrayList<LibroEntity>();
     
     @Before
     public void setUp() {
+        try {
+            utx.begin();
+            em.joinTransaction();
+            clearData();
+            insertData();
+            utx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                utx.rollback();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+    }
     }
     
-    @After
-    public void tearDown() {
+    private void clearData() 
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void insertData() 
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -140,3 +182,5 @@ public class LibroPersistenceTest {
     }
     
 }
+
+   
