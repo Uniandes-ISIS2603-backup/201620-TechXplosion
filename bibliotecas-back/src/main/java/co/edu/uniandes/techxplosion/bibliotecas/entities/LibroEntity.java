@@ -30,7 +30,11 @@ public class LibroEntity extends BaseEntity implements Serializable{
     
     @PodamExclude
     @OneToMany(mappedBy="libro", cascade= CascadeType.ALL, orphanRemoval = true)
-    private List<BlogEntity> reservas = new ArrayList(); 
+    private List<ReservaEntity> reservas = new ArrayList(); 
+    
+    @PodamExclude
+    @OneToMany(mappedBy="libro", cascade= CascadeType.ALL, orphanRemoval = true)
+    private List<AlquilerEntity> alquileres = new ArrayList();
     
     public BibliotecaEntity getBiblioteca() 
     {
@@ -48,12 +52,21 @@ public class LibroEntity extends BaseEntity implements Serializable{
     {
         this.blogs = blogs;
     }
-    public List<BlogEntity> getReservas() 
+    public List<ReservaEntity> getReservas() 
     {
         return reservas;
     }
-    public void setReservas(List<BlogEntity> reservas) 
+    public void setReservas(List<ReservaEntity> reservas) 
     {
         this.reservas = reservas;
+    }
+    
+    public List<AlquilerEntity> getAlquileres() 
+    {
+        return alquileres;
+    }
+    public void setAlquileres(List<AlquilerEntity> alquileres) 
+    {
+        this.alquileres = alquileres;
     }
 }
