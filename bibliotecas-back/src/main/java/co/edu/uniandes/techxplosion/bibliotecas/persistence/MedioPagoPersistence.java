@@ -5,7 +5,14 @@
  */
 package co.edu.uniandes.techxplosion.bibliotecas.persistence;
 
+import co.edu.uniandes.techxplosion.bibliotecas.entities.MedioPagoEntity;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -13,5 +20,33 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class MedioPagoPersistence {
+    private static final Logger LOGGER = Logger.getLogger(MedioPagoPersistence.class.getName());
+    @PersistenceContext (unitName="TechxplosionPU")
+    protected EntityManager em;
+    public MedioPagoEntity find(Long id){
+        LOGGER.log(Level.INFO,"Consultando Medio de pago con id={0}",id);
+        return em.find(MedioPagoEntity.class,id);
+    }
+    public List<MedioPagoEntity> findAll (){
+        LOGGER.info("Consultando todos los medios de pago");
+        Query q = em.createQuery("select u from MedioPagoEntity u");
+        return q.getResultList();
+    }
+    public MedioPagoEntity create(MedioPagoEntity entity){
+        LOGGER.info("Creando un medio de pago nuevo");
+        em.persist(entity);
+        LOGGER.info("Medio de pago creado");
+        return entity;
+    }
+    public MedioPagoEntity update(MedioPagoEntity entity){
+        LOGGER.log(Level.INFO,"Actualizando Medio de pago con id={0}",entity.getId());
+        return em.merge(entity);
+    }
+    public void delete(Long id){
+        LOGGER.log(Level.INFO,"Borrando Medio de pago con id={0}",id);
+        MedioPagoEntity entity = em.find(MedioPagoEntity.class, id);
+        em.remove(entity);
+    }
     
+
 }
