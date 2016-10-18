@@ -58,7 +58,8 @@ public class LibroPersistenceTest {
      private List<LibroEntity> data = new ArrayList<LibroEntity>();
     
     @Before
-    public void setUp() {
+    public void setUp() 
+    {
         try 
         {
             utx.begin();
