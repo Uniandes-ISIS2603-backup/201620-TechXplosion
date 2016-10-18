@@ -21,10 +21,13 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class AlquilerEntity extends BaseEntity implements Serializable
 { 
    @ManyToOne
+   @PodamExclude
    private LibroEntity libro=new LibroEntity();
    @ManyToOne
+   @PodamExclude
    private VideoEntity video=new VideoEntity();
    @ManyToOne
+   @PodamExclude
    private UsuarioEntity usuario=new UsuarioEntity();
    public LibroEntity getLibro()
    {

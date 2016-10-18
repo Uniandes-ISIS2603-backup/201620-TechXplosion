@@ -48,7 +48,7 @@ public class AlquilerPersistenceTest {
     }
     
     @Inject
-    private AlquilerPersistence libroPersistence;
+    private AlquilerPersistence alquilerPersistence;
     
     @PersistenceContext
     private EntityManager em;
@@ -105,7 +105,7 @@ public class AlquilerPersistenceTest {
     @Test
     public void testFind() throws Exception {
         AlquilerEntity entity = data.get(0);
-        AlquilerEntity newEntity = libroPersistence.find(entity.getId());
+        AlquilerEntity newEntity = alquilerPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
         Assert.assertEquals(entity.getName(), newEntity.getName());
@@ -120,7 +120,7 @@ public class AlquilerPersistenceTest {
     @Test
     public void testFindByName() throws Exception {
         AlquilerEntity entity = data.get(0);
-        AlquilerEntity newEntity = libroPersistence.findByName(entity.getName());
+        AlquilerEntity newEntity = alquilerPersistence.findByName(entity.getName());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
         Assert.assertEquals(entity.getName(), newEntity.getName());
@@ -135,7 +135,7 @@ public class AlquilerPersistenceTest {
     @Test
     public void testFindAll() throws Exception 
     {
-        List<AlquilerEntity> list = libroPersistence.findAll();
+        List<AlquilerEntity> list = alquilerPersistence.findAll();
         Assert.assertEquals(data.size(), list.size());
         for (AlquilerEntity ent : list) 
         {
@@ -158,7 +158,7 @@ public class AlquilerPersistenceTest {
     public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
         AlquilerEntity newEntity = factory.manufacturePojo(AlquilerEntity.class);
-        AlquilerEntity resultado =  libroPersistence.create(newEntity);
+        AlquilerEntity resultado =  alquilerPersistence.create(newEntity);
         Assert.assertNotNull(resultado);
         AlquilerEntity entity = em.find(AlquilerEntity.class, resultado.getId());
         Assert.assertNotNull(entity);
@@ -180,7 +180,7 @@ public class AlquilerPersistenceTest {
 
         newEntity.setId(primero.getId());
 
-        libroPersistence.update(newEntity);
+        alquilerPersistence.update(newEntity);
 
         AlquilerEntity entity = em.find(AlquilerEntity.class, primero.getId());
         Assert.assertNotNull(entity);
@@ -198,7 +198,7 @@ public class AlquilerPersistenceTest {
     @Test
     public void testDelete() throws Exception {
         AlquilerEntity entity = data.get(0);
-        libroPersistence.delete(entity.getId());
+        alquilerPersistence.delete(entity.getId());
         
         AlquilerEntity resp= em.find(AlquilerEntity.class, entity.getId());
         Assert.assertNull(resp);

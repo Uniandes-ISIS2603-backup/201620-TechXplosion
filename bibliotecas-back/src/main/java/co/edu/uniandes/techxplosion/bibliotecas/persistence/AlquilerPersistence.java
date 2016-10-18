@@ -26,38 +26,38 @@ public class AlquilerPersistence {
 
     public AlquilerEntity find(Long id) 
     {
-        LOGGER.log(Level.INFO, "Consultando company con id={0}", id);
+        LOGGER.log(Level.INFO, "Consultando alquiler con id={0}", id);
         return em.find(AlquilerEntity.class, id);
     }
     
     public AlquilerEntity findByName(String name)
     {
-        LOGGER.log(Level.INFO, "Consultando libro con nombre = {0}", name);
+        LOGGER.log(Level.INFO, "Consultando alquiler con nombre = {0}", name);
         TypedQuery<AlquilerEntity> p = em.createQuery("select u from AlquilerEntity u where u.name = :name", AlquilerEntity.class);
         p = p.setParameter("name", name);
         return p.getSingleResult();
     }
     
     public List<AlquilerEntity> findAll() {
-        LOGGER.info("Consultando todos los libros");
+        LOGGER.info("Consultando todos los alquileres");
         Query p = em.createQuery("select u from AlquilerEntity u");
         return p.getResultList();
     }
 
     public AlquilerEntity create(AlquilerEntity entity) {
-        LOGGER.info("Creando un libro nuevo");
+        LOGGER.info("Creando un alquiler nuevo");
         em.persist(entity);
         LOGGER.info("Alquiler creado");
         return entity;
     }
 
     public AlquilerEntity update(AlquilerEntity entity) {
-        LOGGER.log(Level.INFO, "Actualizando libro con id={0}", entity.getId());
+        LOGGER.log(Level.INFO, "Actualizando alquiler con id={0}", entity.getId());
         return em.merge(entity);
     }
 
     public void delete(Long id) {
-        LOGGER.log(Level.INFO, "Borrando libro con id={0}", id);
+        LOGGER.log(Level.INFO, "Borrando alquiler con id={0}", id);
         AlquilerEntity entity = em.find(AlquilerEntity.class, id);
         em.remove(entity);
     }
