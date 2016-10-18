@@ -12,25 +12,53 @@ import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-/**
- *
- * @author js.sosa10
- */
+
 @Stateless
 public class AlquilerPersistence {
     
-    private static final Logger LOGGER = Logger.getLogger(AlquilerPersistence.class.getName());
+     private static final Logger LOGGER = Logger.getLogger(AlquilerPersistence.class.getName());
 
     @PersistenceContext(unitName = "TechxplosionPU")
     protected EntityManager em;
-    
+
     public AlquilerEntity find(Long id) 
     {
-        LOGGER.log(Level.INFO, "Consultando alquiler con id={0}", id);
+        LOGGER.log(Level.INFO, "Consultando company con id={0}", id);
         return em.find(AlquilerEntity.class, id);
     }
+    
+    public AlquilerEntity findByName(String name)
+    {
+        LOGGER.log(Level.INFO, "Consultando libro con nombre = {0}", name);
+        TypedQuery<AlquilerEntity> p = em.createQuery("select u from AlquilerEntity u where u.name = :name", AlquilerEntity.class);
+        p = p.setParameter("name", name);
+        return p.getSingleResult();
+    }
+    
+    public List<AlquilerEntity> findAll() {
+        LOGGER.info("Consultando todos los libros");
+        Query p = em.createQuery("select u from AlquilerEntity u");
+        return p.getResultList();
+    }
 
-   
+    public AlquilerEntity create(AlquilerEntity entity) {
+        LOGGER.info("Creando un libro nuevo");
+        em.persist(entity);
+        LOGGER.info("Alquiler creado");
+        return entity;
+    }
+
+    public AlquilerEntity update(AlquilerEntity entity) {
+        LOGGER.log(Level.INFO, "Actualizando libro con id={0}", entity.getId());
+        return em.merge(entity);
+    }
+
+    public void delete(Long id) {
+        LOGGER.log(Level.INFO, "Borrando libro con id={0}", id);
+        AlquilerEntity entity = em.find(AlquilerEntity.class, id);
+        em.remove(entity);
+    }
 }
