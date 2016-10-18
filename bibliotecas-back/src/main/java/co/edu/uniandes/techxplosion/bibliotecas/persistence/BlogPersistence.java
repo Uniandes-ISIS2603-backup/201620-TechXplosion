@@ -13,6 +13,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 /**
  *
  * @author js.sosa10
@@ -25,6 +26,14 @@ public class BlogPersistence {
     public BlogEntity find(Long id){
         LOGGER.log(Level.INFO,"Consultando Blog con id={0}",id);
         return em.find(BlogEntity.class, id);
+    }
+       
+    public BlogEntity findByName(String name)
+    {
+        LOGGER.log(Level.INFO, "Consultando Blog con nombre = {0}", name);
+        TypedQuery<BlogEntity> p = em.createQuery("select u from BlogEntity u where u.name = :name", BlogEntity.class);
+        p = p.setParameter("name", name);
+        return p.getSingleResult();
     }
     public List<BlogEntity> findAll(){
         LOGGER.info("consulatndo todos los blogs");

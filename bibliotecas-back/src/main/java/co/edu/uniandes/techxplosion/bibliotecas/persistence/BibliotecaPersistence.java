@@ -13,6 +13,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -26,6 +27,14 @@ public class BibliotecaPersistence {
     public BibliotecaEntity find(Long id){
         LOGGER.log(Level.INFO,"Consulatndo Biblioteca con id={0}",id);
         return em.find(BibliotecaEntity.class,id);
+    }
+       
+    public BibliotecaEntity findByName(String name)
+    {
+        LOGGER.log(Level.INFO, "Consultando Biblioteca con nombre = {0}", name);
+        TypedQuery<BibliotecaEntity> p = em.createQuery("select u from BibliotecaEntity u where u.name = :name", BibliotecaEntity.class);
+        p = p.setParameter("name", name);
+        return p.getSingleResult();
     }
     public List<BibliotecaEntity> findAll(){
       LOGGER.info("Consulatndo todas las bibliotecas");

@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniandes.techxplosion.bibliotecas.test.persistence;
+package co.edu.uniandes.techxplosion.bibliotecas.persistence;
 
-import co.edu.uniandes.techxplosion.bibliotecas.entities.MedioPagoEntity;
-import co.edu.uniandes.techxplosion.bibliotecas.persistence.MedioPagoPersistence;
+import co.edu.uniandes.techxplosion.bibliotecas.entities.BibliotecaEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.embeddable.EJBContainer;
@@ -31,20 +30,20 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  *
  * @author js.sosa10
  */
-public class MedioPagoPersistenceTest {
+public class BibliotecaPersistenceTest {
       @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(MedioPagoEntity.class.getPackage())
-                .addPackage(MedioPagoPersistence.class.getPackage())
+                .addPackage(BibliotecaEntity.class.getPackage())
+                .addPackage(BibliotecaPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
     
-    public MedioPagoPersistenceTest() {
+    public BibliotecaPersistenceTest() {
     }
         @Inject
-    private MedioPagoPersistence MedioPagoPersistence;
+    private BibliotecaPersistence bibliotecaPersistence;
     
     @PersistenceContext
     private EntityManager em;
@@ -52,7 +51,7 @@ public class MedioPagoPersistenceTest {
     @Inject
     UserTransaction utx;
      
-     private List<MedioPagoEntity> data = new ArrayList<MedioPagoEntity>();
+     private List<BibliotecaEntity> data = new ArrayList<BibliotecaEntity>();
     
     @Before
     public void setUp() 
@@ -81,7 +80,7 @@ public class MedioPagoPersistenceTest {
     
     private void clearData() 
     {
-         em.createQuery("delete from MedioPagoEntity").executeUpdate();
+         em.createQuery("delete from BibliotecaEntity").executeUpdate();
     }
 
     private void insertData() 
@@ -89,19 +88,19 @@ public class MedioPagoPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 6; i++) 
         {
-            MedioPagoEntity entity = factory.manufacturePojo(MedioPagoEntity.class);
+            BibliotecaEntity entity = factory.manufacturePojo(BibliotecaEntity.class);
             em.persist(entity);
             data.add(entity);
         }
     }
 
     /**
-     * Test of find method, of class MedioPagoPersistence.
+     * Test of find method, of class bibliotecaPersistence.
      */
     @Test
     public void testFind() throws Exception {
-        MedioPagoEntity entity = data.get(0);
-        MedioPagoEntity newEntity = MedioPagoPersistence.find(entity.getId());
+        BibliotecaEntity entity = data.get(0);
+        BibliotecaEntity newEntity = bibliotecaPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
         Assert.assertEquals(entity.getName(), newEntity.getName());
@@ -109,12 +108,12 @@ public class MedioPagoPersistenceTest {
     }
 
     /**
-     * Test of findByName method, of class MedioPagoPersistence.
+     * Test of findByName method, of class bibliotecaPersistence.
      */
     @Test
     public void testFindByName() throws Exception {
-        MedioPagoEntity entity = data.get(0);
-        MedioPagoEntity newEntity = MedioPagoPersistence.findByName(entity.getName());
+        BibliotecaEntity entity = data.get(0);
+        BibliotecaEntity newEntity = bibliotecaPersistence.findByName(entity.getName());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
         Assert.assertEquals(entity.getName(), newEntity.getName());
@@ -122,17 +121,17 @@ public class MedioPagoPersistenceTest {
     }
 
     /**
-     * Test of findAll method, of class MedioPagoPersistence.
+     * Test of findAll method, of class bibliotecaPersistence.
      */
     @Test
     public void testFindAll() throws Exception 
     {
-        List<MedioPagoEntity> list = MedioPagoPersistence.findAll();
+        List<BibliotecaEntity> list = bibliotecaPersistence.findAll();
         Assert.assertEquals(data.size(), list.size());
-        for (MedioPagoEntity ent : list) 
+        for (BibliotecaEntity ent : list) 
         {
             boolean found = false;
-            for (MedioPagoEntity entity : data) 
+            for (BibliotecaEntity entity : data) 
             {
                 if (ent.getId().equals(entity.getId())) 
                 {
@@ -144,15 +143,15 @@ public class MedioPagoPersistenceTest {
     }
 
     /**
-     * Test of create method, of class MedioPagoPersistence.
+     * Test of create method, of class bibliotecaPersistence.
      */
     @Test
     public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
-        MedioPagoEntity newEntity = factory.manufacturePojo(MedioPagoEntity.class);
-        MedioPagoEntity resultado =  MedioPagoPersistence.create(newEntity);
+        BibliotecaEntity newEntity = factory.manufacturePojo(BibliotecaEntity.class);
+        BibliotecaEntity resultado =  bibliotecaPersistence.create(newEntity);
         Assert.assertNotNull(resultado);
-        MedioPagoEntity entity = em.find(MedioPagoEntity.class, resultado.getId());
+        BibliotecaEntity entity = em.find(BibliotecaEntity.class, resultado.getId());
         Assert.assertNotNull(entity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
         Assert.assertEquals(entity.getName(), newEntity.getName());
@@ -160,19 +159,19 @@ public class MedioPagoPersistenceTest {
     }
 
     /**
-;     * Test of update method, of class MedioPagoPersistence.
+;     * Test of update method, of class bibliotecaPersistence.
      */
     @Test
     public void testUpdate() throws Exception {
-        MedioPagoEntity primero = data.get(0);
+        BibliotecaEntity primero = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        MedioPagoEntity newEntity = factory.manufacturePojo(MedioPagoEntity.class);
+        BibliotecaEntity newEntity = factory.manufacturePojo(BibliotecaEntity.class);
 
         newEntity.setId(primero.getId());
 
-        MedioPagoPersistence.update(newEntity);
+        bibliotecaPersistence.update(newEntity);
 
-        MedioPagoEntity entity = em.find(MedioPagoEntity.class, primero.getId());
+        BibliotecaEntity entity = em.find(BibliotecaEntity.class, primero.getId());
         Assert.assertNotNull(entity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
         Assert.assertEquals(entity.getName(), newEntity.getName());
@@ -181,14 +180,14 @@ public class MedioPagoPersistenceTest {
     }
 
     /**
-     * Test of delete method, of class MedioPagoPersistence.
+     * Test of delete method, of class bibliotecaPersistence.
      */
     @Test
     public void testDelete() throws Exception {
-        MedioPagoEntity entity = data.get(0);
-        MedioPagoPersistence.delete(entity.getId());
+        BibliotecaEntity entity = data.get(0);
+        bibliotecaPersistence.delete(entity.getId());
         
-        MedioPagoEntity resp= em.find(MedioPagoEntity.class, entity.getId());
+        BibliotecaEntity resp= em.find(BibliotecaEntity.class, entity.getId());
         Assert.assertNull(resp);
     }
     

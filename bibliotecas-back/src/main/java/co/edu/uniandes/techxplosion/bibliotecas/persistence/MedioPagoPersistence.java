@@ -13,6 +13,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -26,6 +27,14 @@ public class MedioPagoPersistence {
     public MedioPagoEntity find(Long id){
         LOGGER.log(Level.INFO,"Consultando Medio de pago con id={0}",id);
         return em.find(MedioPagoEntity.class,id);
+    }
+       
+    public MedioPagoEntity findByName(String name)
+    {
+        LOGGER.log(Level.INFO, "Consultando MedioPago con nombre = {0}", name);
+        TypedQuery<MedioPagoEntity> p = em.createQuery("select u from MedioPagoEntity u where u.name = :name", MedioPagoEntity.class);
+        p = p.setParameter("name", name);
+        return p.getSingleResult();
     }
     public List<MedioPagoEntity> findAll (){
         LOGGER.info("Consultando todos los medios de pago");
