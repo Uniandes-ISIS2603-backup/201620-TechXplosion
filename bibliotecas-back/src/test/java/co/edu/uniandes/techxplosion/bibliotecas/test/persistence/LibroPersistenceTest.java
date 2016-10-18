@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniandes.techxplosion.bibliotecas.persistence;
+package co.edu.uniandes.techxplosion.bibliotecas.test.persistence;
 
-import co.edu.uniandes.techxplosion.bibliotecas.entities.BibliotecaEntity;
+import co.edu.uniandes.techxplosion.bibliotecas.entities.LibroEntity;
+import co.edu.uniandes.techxplosion.bibliotecas.persistence.LibroPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.embeddable.EJBContainer;
@@ -14,6 +15,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
@@ -23,27 +25,30 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 /**
  *
- * @author js.sosa10
+ * @author jc.sanchez16
  */
-public class BibliotecaPersistenceTest {
-      @Deployment
+@RunWith(Arquillian.class)
+public class LibroPersistenceTest {
+    
+     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(BibliotecaEntity.class.getPackage())
-                .addPackage(BibliotecaPersistence.class.getPackage())
+                .addPackage(LibroEntity.class.getPackage())
+                .addPackage(LibroPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
-    
-    public BibliotecaPersistenceTest() {
+    public LibroPersistenceTest() {
     }
-        @Inject
-    private BibliotecaPersistence bibliotecaPersistence;
+    
+    @Inject
+    private LibroPersistence libroPersistence;
     
     @PersistenceContext
     private EntityManager em;
@@ -51,7 +56,7 @@ public class BibliotecaPersistenceTest {
     @Inject
     UserTransaction utx;
      
-     private List<BibliotecaEntity> data = new ArrayList<BibliotecaEntity>();
+     private List<LibroEntity> data = new ArrayList<LibroEntity>();
     
     @Before
     public void setUp() 
@@ -80,7 +85,7 @@ public class BibliotecaPersistenceTest {
     
     private void clearData() 
     {
-         em.createQuery("delete from BibliotecaEntity").executeUpdate();
+         em.createQuery("delete from LibroEntity").executeUpdate();
     }
 
     private void insertData() 
@@ -88,50 +93,50 @@ public class BibliotecaPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 6; i++) 
         {
-            BibliotecaEntity entity = factory.manufacturePojo(BibliotecaEntity.class);
+            LibroEntity entity = factory.manufacturePojo(LibroEntity.class);
             em.persist(entity);
             data.add(entity);
         }
     }
 
     /**
-     * Test of find method, of class bibliotecaPersistence.
+     * Test of find method, of class LibroPersistence.
      */
     @Test
     public void testFind() throws Exception {
-        BibliotecaEntity entity = data.get(0);
-        BibliotecaEntity newEntity = bibliotecaPersistence.find(entity.getId());
+        LibroEntity entity = data.get(0);
+        LibroEntity newEntity = libroPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
         Assert.assertEquals(entity.getName(), newEntity.getName());
-       
+        Assert.assertEquals(entity.getBiblioteca(), newEntity.getBiblioteca());
     }
 
     /**
-     * Test of findByName method, of class bibliotecaPersistence.
+     * Test of findByName method, of class LibroPersistence.
      */
     @Test
     public void testFindByName() throws Exception {
-        BibliotecaEntity entity = data.get(0);
-        BibliotecaEntity newEntity = bibliotecaPersistence.findByName(entity.getName());
+        LibroEntity entity = data.get(0);
+        LibroEntity newEntity = libroPersistence.findByName(entity.getName());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
         Assert.assertEquals(entity.getName(), newEntity.getName());
-        
+        Assert.assertEquals(entity.getBiblioteca(), newEntity.getBiblioteca());
     }
 
     /**
-     * Test of findAll method, of class bibliotecaPersistence.
+     * Test of findAll method, of class LibroPersistence.
      */
     @Test
     public void testFindAll() throws Exception 
     {
-        List<BibliotecaEntity> list = bibliotecaPersistence.findAll();
+        List<LibroEntity> list = libroPersistence.findAll();
         Assert.assertEquals(data.size(), list.size());
-        for (BibliotecaEntity ent : list) 
+        for (LibroEntity ent : list) 
         {
             boolean found = false;
-            for (BibliotecaEntity entity : data) 
+            for (LibroEntity entity : data) 
             {
                 if (ent.getId().equals(entity.getId())) 
                 {
@@ -143,52 +148,54 @@ public class BibliotecaPersistenceTest {
     }
 
     /**
-     * Test of create method, of class bibliotecaPersistence.
+     * Test of create method, of class LibroPersistence.
      */
     @Test
     public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
-        BibliotecaEntity newEntity = factory.manufacturePojo(BibliotecaEntity.class);
-        BibliotecaEntity resultado =  bibliotecaPersistence.create(newEntity);
+        LibroEntity newEntity = factory.manufacturePojo(LibroEntity.class);
+        LibroEntity resultado =  libroPersistence.create(newEntity);
         Assert.assertNotNull(resultado);
-        BibliotecaEntity entity = em.find(BibliotecaEntity.class, resultado.getId());
+        LibroEntity entity = em.find(LibroEntity.class, resultado.getId());
         Assert.assertNotNull(entity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
         Assert.assertEquals(entity.getName(), newEntity.getName());
-        
+        Assert.assertEquals(entity.getBiblioteca(), newEntity.getBiblioteca());
     }
 
     /**
-;     * Test of update method, of class bibliotecaPersistence.
+;     * Test of update method, of class LibroPersistence.
      */
     @Test
     public void testUpdate() throws Exception {
-        BibliotecaEntity primero = data.get(0);
+        LibroEntity primero = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        BibliotecaEntity newEntity = factory.manufacturePojo(BibliotecaEntity.class);
+        LibroEntity newEntity = factory.manufacturePojo(LibroEntity.class);
 
         newEntity.setId(primero.getId());
 
-        bibliotecaPersistence.update(newEntity);
+        libroPersistence.update(newEntity);
 
-        BibliotecaEntity entity = em.find(BibliotecaEntity.class, primero.getId());
+        LibroEntity entity = em.find(LibroEntity.class, primero.getId());
         Assert.assertNotNull(entity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
         Assert.assertEquals(entity.getName(), newEntity.getName());
-      
+        Assert.assertEquals(entity.getBiblioteca(), newEntity.getBiblioteca());
     
     }
 
     /**
-     * Test of delete method, of class bibliotecaPersistence.
+     * Test of delete method, of class LibroPersistence.
      */
     @Test
     public void testDelete() throws Exception {
-        BibliotecaEntity entity = data.get(0);
-        bibliotecaPersistence.delete(entity.getId());
+        LibroEntity entity = data.get(0);
+        libroPersistence.delete(entity.getId());
         
-        BibliotecaEntity resp= em.find(BibliotecaEntity.class, entity.getId());
+        LibroEntity resp= em.find(LibroEntity.class, entity.getId());
         Assert.assertNull(resp);
     }
     
 }
+
+   

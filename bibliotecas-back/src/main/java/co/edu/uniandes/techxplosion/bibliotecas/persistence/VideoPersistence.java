@@ -54,7 +54,7 @@ public class VideoPersistence
         em.remove(entity);
     }
 
-    VideoEntity findByName(String name) {
+    public VideoEntity findByName(String name) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
