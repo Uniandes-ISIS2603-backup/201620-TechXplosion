@@ -5,8 +5,10 @@
  */
 package co.edu.uniandes.techxplosion.bibliotecas.entities;
 
-import java.io.Serializable;
+import java.io.*;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -23,7 +25,7 @@ public class UsuarioEntity extends BaseEntity implements Serializable{
     private LibroEntity libro;
     @PodamExclude
     @ManyToOne
-    private UsuarioEntity usuario;
+    private BibliotecaEntity biblioteca;
     private String fechaSolicitud;
     
     

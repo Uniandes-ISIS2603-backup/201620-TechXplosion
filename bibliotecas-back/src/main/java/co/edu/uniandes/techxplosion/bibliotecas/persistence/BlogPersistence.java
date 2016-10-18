@@ -21,7 +21,7 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class BlogPersistence {
     private static final Logger LOGGER = Logger.getLogger(BlogPersistence.class.getName());
-    @PersistenceContext(unitName="TecxplosionPU")
+    @PersistenceContext(unitName="TechxplosionPU")
     protected EntityManager em;
     public BlogEntity find(Long id){
         LOGGER.log(Level.INFO,"Consultando Blog con id={0}",id);
