@@ -22,13 +22,13 @@ public class AlquilerEntity extends BaseEntity implements Serializable
 { 
    @ManyToOne
    @PodamExclude
-   private LibroEntity libro=new LibroEntity();
+   private LibroEntity libro;
    @ManyToOne
    @PodamExclude
-   private VideoEntity video=new VideoEntity();
+   private VideoEntity video;
    @ManyToOne
    @PodamExclude
-   private UsuarioEntity usuario=new UsuarioEntity();
+   private UsuarioEntity usuario;
    public LibroEntity getLibro()
    {
        return libro;
