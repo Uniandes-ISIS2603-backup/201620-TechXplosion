@@ -19,31 +19,17 @@ public class UsuarioPersistence {
     @PersistenceContext(unitName = "TechxplosionPU")
     protected EntityManager em;
     
-    public ReservaEntity find(Long id) {
-        LOGGER.log(Level.INFO, "Consultando reserva con id={0}", id);
-        return em.find(ReservaEntity.class, id);
+    public UsuarioEntity find(Long id) {
+        LOGGER.log(Level.INFO, "Consultando usuario con id={0}", id);
+        return em.find(UsuarioEntity.class, id);
     }
     
-     public List<ReservaEntity> findAll() {
-        LOGGER.info("Consultando todas las reservas");
-        Query q = em.createQuery("select u from ReservatEntity u");
+     public List<UsuarioEntity> findAll() {
+        LOGGER.info("Consultando todos los usuarios");
+        Query q = em.createQuery("select u from UsuarioEntity u");
         return q.getResultList();
     }
      
-    public List<ReservaEntity> findAllByVideo(Long videoId) {
-        LOGGER.log(Level.INFO, "Consultando todas las reservas por video id={0}", videoId);
-        TypedQuery q = em.createQuery("select d from ReservaEntity d  where d.video.id = :videoId", ReservaEntity.class);
-        q = q.setParameter("videoId", videoId);
-        return q.getResultList();
-    }
-    
-    public List<ReservaEntity> findAllByLibro(Long libroId) {
-        LOGGER.log(Level.INFO, "Consultando todas las reservas por libro id={0}", libroId);
-        TypedQuery q = em.createQuery("select d from ReservaEntity d  where d.libro.id = :libroId", ReservaEntity.class);
-        q = q.setParameter("libroId", libroId);
-        return q.getResultList();
-    }
-
     public List<ReservaEntity> findAllByUsuario(Long usuarioId) {
         LOGGER.log(Level.INFO, "Consultando todas las reservas por usuario id={0}", usuarioId);
         TypedQuery q = em.createQuery("select d from ReservaEntity d  where d.usuario.id = :usuarioId", ReservaEntity.class);
@@ -51,16 +37,25 @@ public class UsuarioPersistence {
         return q.getResultList();
     }
     
+    public List<AlquilerEntity> findAllByUser(Long usuarioId) {
+        LOGGER.log(Level.INFO, "Consultando todos los alquileres por usuario id={0}", usuarioId);
+        TypedQuery q = em.createQuery("select d from AlquilerEntity d  where d.usuario.id = :usuarioId", ReservaEntity.class);
+        q = q.setParameter("usuarioId", usuarioId);
+        return q.getResultList();
+    }
 
-    public ReservaEntity create(ReservaEntity entity) {
-        LOGGER.info("Creando una reserva nueva");
+  
+    
+
+    public UsuarioEntity create(UsuarioEntity entity) {
+        LOGGER.info("Creando un usuario nuevo");
         em.persist(entity);
-        LOGGER.info("Reserva creada");
+        LOGGER.info("Usuario creado");
         return entity;
     }
 
-    public ReservaEntity update(ReservaEntity entity) {
-        LOGGER.log(Level.INFO, "Actualizando reserva con id={0}", entity.getId());
+    public UsuarioEntity update(UsuarioEntity entity) {
+        LOGGER.log(Level.INFO, "Actualizando usuario con id={0}", entity.getId());
         return em.merge(entity);
     }
     
@@ -70,8 +65,8 @@ public class UsuarioPersistence {
      * crrespondiente en la base de datos.
      */
     public void delete(Long id) {
-        LOGGER.log(Level.INFO, "Borrando reserva con id={0}", id);
-        ReservaEntity entity = em.find(ReservaEntity.class, id);
+        LOGGER.log(Level.INFO, "Borrando usuario con id={0}", id);
+        UsuarioEntity entity = em.find(UsuarioEntity.class, id);
         assert entity != null;
         em.remove(entity);
     }

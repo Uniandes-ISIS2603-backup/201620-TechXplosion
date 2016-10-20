@@ -26,203 +26,191 @@ public class UsuarioPersistenceTest {
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
     
-    /**
-     * Libro al que están asociadas las reservas.
-     */
-    LibroEntity fatherEntity1;
+    public UsuarioPersistenceTest() {
+    }
     
-    /**
-     * Video al que están asociadas las reservas.
-     */
-    VideoEntity fatherEntity2;
+    private UsuarioPersistence usuarioPersistence;
     
-    /**
-     * Usuario al que están asociadas las reservas.
-     */
-    VideoEntity fatherEntity3;
-    
-    /**
-     * Lista de las reservas que serán utilizadas en las pruebas. 
-     */
-    private List<ReservaEntity> data = new ArrayList<>();
-    
-    @Inject
-    private RepartmentPersistence reservaPersistence;
-
     @PersistenceContext
     private EntityManager em;
-
+    
     @Inject
     UserTransaction utx;
+     
+     private List<UsuarioEntity> data = new ArrayList<UsuarioEntity>();
     
-    /**
-     * Configuración inicial de cada método de prueba.
-     *
-     */
     @Before
-    public void setUp() {
-        try {
+    public void setUp() 
+    {
+        try 
+        {
             utx.begin();
             em.joinTransaction();
             clearData();
             insertData();
             utx.commit();
-        } catch (Exception e) {
+        } 
+        catch (Exception e) 
+        {
             e.printStackTrace();
-            try {
+            try 
+            {
                 utx.rollback();
-            } catch (Exception e1) {
+            } 
+            catch (Exception e1) 
+            {
                 e1.printStackTrace();
             }
-        }
+         }
     }
     
-    /**
-     * Limpia las tablas que están implicadas en la prueba.
-     */
-    private void clearData() {
-        em.createQuery("delete  from DepartmentEntity").executeUpdate();
-        em.createQuery("delete  from LibroEntity").executeUpdate();
-        em.createQuery("delete  from VideoEntity").executeUpdate();
-        em.createQuery("delete  from UsuarioEntity").executeUpdate();
+    private void clearData() 
+    {
+         em.createQuery("delete from UsuarioEntity").executeUpdate();
     }
-    
-    /**
-     * Para el correcto funcionamiento de las pruebas, inserta los datos
-     * iniciales en la base de datos utilizando un manejador de persistencia.
-     *
-     */
-    private void insertData() {
+
+    private void insertData() 
+    {
         PodamFactory factory = new PodamFactoryImpl();
-        fatherEntity1 = factory.manufacturePojo(LibroEntity.class);
-        fatherEntity1.setId(1L);
-        em.persist(fatherEntity1);
-        fatherEntity2 = factory.manufacturePojo(LibroEntity.class);
-        fatherEntity2.setId(1L);
-        em.persist(fatherEntity2);
-        fatherEntity3 = factory.manufacturePojo(LibroEntity.class);
-        fatherEntity3.setId(1L);
-        em.persist(fatherEntity3);
-        for (int i = 0; i < 3; i++) {
-            ReservaEntity entity = factory.manufacturePojo(ReservaEntity.class);
-            entity.setLibro(fatherEntity1);
-            entity.setVideo(fatherEntity2);
-            entity.setUsuario(fatherEntity3);
-            data.add(entity);
+        for (int i = 0; i < 6; i++) 
+        {
+            UsuarioEntity entity = factory.manufacturePojo(UsuarioEntity.class);
             em.persist(entity);
-        }  
-    }
-    
-    /**
-     * Prueba para crear un Department.
-     */
-    @Test
-    public void createReservaTest() {
-        PodamFactory factory = new PodamFactoryImpl();
-        ReservaEntity newEntity = factory.manufacturePojo(ReservaEntity.class);
-        newEntity.setLibro(fatherEntity1);
-        newEntity.setVideo(fatherEntity2);
-        newEntity.setUsuario(fatherEntity3);
-        ReservaEntity result = reservaPersistence.create(newEntity);
-
-        Assert.assertNotNull(result);
-
-        ReservaEntity entity = em.find(ReservaEntity.class, result.getId());
-
-        Assert.assertEquals(newEntity.getName(), entity.getName());
-    }
-    
-    /**
-     * Prueba para consultar la lista de Reservas.
-     */
-    @Test
-    public void getReservasByLibroTest() {
-        List<ReservaEntity> list = reservaPersistence.findAllByLibro(fatherEntity1.getId());
-        Assert.assertEquals(data.size(), list.size());
-        for (ReservaEntity ent : list) {
-            boolean found = false;
-            for (ReservaEntity entity : data) {
-                if (ent.getId().equals(entity.getId())) {
-                    found = true;
-                }
-            }
-            Assert.assertTrue(found);
+            data.add(entity);
         }
     }
 
-    /**
-     * Prueba para consultar la lista de Reservas.
-     */
-    @Test
-    public void getReservasByVideoTest() {
-        List<ReservaEntity> list = reservaPersistence.findAllByVideo(fatherEntity2.getId());
-        Assert.assertEquals(data.size(), list.size());
-        for (ReservaEntity ent : list) {
-            boolean found = false;
-            for (ReservaEntity entity : data) {
-                if (ent.getId().equals(entity.getId())) {
-                    found = true;
-                }
-            }
-            Assert.assertTrue(found);
-        }
-    }
+    
     
     /**
-     * Prueba para consultar la lista de Reservas.
+     * Test of find method, of class UsuarioPersistence.
      */
     @Test
-    public void getReservasByUsuarioTest() {
-        List<ReservaEntity> list = reservaPersistence.findAllByUsuario(fatherEntity3.getId());
-        Assert.assertEquals(data.size(), list.size());
-        for (ReservaEntity ent : list) {
-            boolean found = false;
-            for (ReservaEntity entity : data) {
-                if (ent.getId().equals(entity.getId())) {
-                    found = true;
-                }
-            }
-            Assert.assertTrue(found);
-        }
-    }
-    
-    /**
-     * Prueba para consultar un Department.
-     */
-    @Test
-    public void getReservaTest() {
-        ReservaEntity entity = data.get(0);
-        ReservaEntity newEntity = reservaPersistence.find(entity.getId());
+    public void testFind() throws Exception {
+        UsuarioEntity entity = data.get(0);
+        UsuarioEntity newEntity = UsuarioPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getId(), newEntity.getId());
         Assert.assertEquals(entity.getName(), newEntity.getName());
+       
     }
 
     /**
-     * Prueba para eliminar un Department.
+     * Test of findAllByUsuario method, of class UsuarioPersistence.
      */
     @Test
-    public void deleteDepartmentTest() {
-        ReservaEntity entity = data.get(0);
-        reservaPersistence.delete(entity.getId());
-        ReservaEntity deleted = em.find(ReservaEntity.class, entity.getId());
-        Assert.assertNull(deleted);
+    public void testfindAllByUsuario() throws Exception {
+        
+       UsuarioEntity entity = data.get(0);
+       List<UsuarioEntity> list = usuarioPersistence.findAllByUsuario(entity.getId());
+        Assert.assertEquals(data.size(), list.size());
+        for (UsuarioEntity ent : list) 
+        {
+            boolean found = false;
+            for (UsuarioEntity entity : data) 
+            {
+                if (ent.getId().equals(entity.getId())) 
+                {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+        
     }
     
     /**
-     * Prueba para actualizar un Department.
+     * Test of findAllByUser method, of class UsuarioPersistence.
      */
     @Test
-    public void updateReservaTest() {
-        ReservaEntity entity = data.get(0);
+    public void testfindAllByUser() throws Exception {
+        
+       UsuarioEntity entity = data.get(0);
+       List<UsuarioEntity> list = usuarioPersistence.findAllByUser(entity.getId());
+        Assert.assertEquals(data.size(), list.size());
+        for (UsuarioEntity ent : list) 
+        {
+            boolean found = false;
+            for (UsuarioEntity entity : data) 
+            {
+                if (ent.getId().equals(entity.getId())) 
+                {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+        
+    }
+
+    /**
+     * Test of findAll method, of class bibliotecaPersistence.
+     */
+    @Test
+    public void testFindAll() throws Exception 
+    {
+        List<UsuarioEntity> list = usuarioPersistence.findAll();
+        Assert.assertEquals(data.size(), list.size());
+        for (UsuarioEntity ent : list) 
+        {
+            boolean found = false;
+            for (UsuarioEntity entity : data) 
+            {
+                if (ent.getId().equals(entity.getId())) 
+                {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+
+    /**
+     * Test of create method, of class bibliotecaPersistence.
+     */
+    @Test
+    public void testCreate() throws Exception {
         PodamFactory factory = new PodamFactoryImpl();
-        ReservaEntity newEntity = factory.manufacturePojo(ReservaEntity.class);
+        UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
+        UsuarioEntity resultado =  UsuarioPersistence.create(newEntity);
+        Assert.assertNotNull(resultado);
+        UsuarioEntity entity = em.find(UsuarioEntity.class, resultado.getId());
+        Assert.assertNotNull(entity);
+        Assert.assertEquals(entity.getId(), newEntity.getId());
+        Assert.assertEquals(entity.getName(), newEntity.getName());
+        
+    }
 
-        newEntity.setId(entity.getId());
+    /**
+;     * Test of update method, of class bibliotecaPersistence.
+     */
+    @Test
+    public void testUpdate() throws Exception {
+        UsuarioEntity primero = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
 
-        reservaPersistence.update(newEntity);
+        newEntity.setId(primero.getId());
 
-        ReservaEntity resp = em.find(ReservaEntity.class, entity.getId());
+        UsuarioPersistence.update(newEntity);
 
-        Assert.assertEquals(newEntity.getName(), resp.getName());
-    }    
+        UsuarioEntity entity = em.find(UsuarioEntity.class, primero.getId());
+        Assert.assertNotNull(entity);
+        Assert.assertEquals(entity.getId(), newEntity.getId());
+        Assert.assertEquals(entity.getName(), newEntity.getName());
+      
+    
+    }
+
+    /**
+     * Test of delete method, of class bibliotecaPersistence.
+     */
+    @Test
+    public void testDelete() throws Exception {
+        UsuarioEntity entity = data.get(0);
+        bibliotecaPersistence.delete(entity.getId());
+        
+        UsuarioEntity resp= em.find(UsuarioEntity.class, entity.getId());
+        Assert.assertNull(resp);
+    }
 }

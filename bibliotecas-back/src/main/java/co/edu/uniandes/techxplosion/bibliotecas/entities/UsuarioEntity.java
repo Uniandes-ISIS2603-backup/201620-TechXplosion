@@ -6,6 +6,8 @@
 package co.edu.uniandes.techxplosion.bibliotecas.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 
 /**
@@ -15,103 +17,60 @@ import javax.persistence.Entity;
 @Entity
 public class UsuarioEntity extends BaseEntity implements Serializable{
     
-    @PodamExclude
-    @ManyToOne
-    private VideoEntity video;
-    @PodamExclude
-    @ManyToOne
-    private LibroEntity libro;
-    @PodamExclude
-    @ManyToOne
-    private UsuarioEntity usuario;
-    private String fechaSolicitud;
+   @PodamExclude 
+   @OneToMany(mappedBy="usuario",cascade=CascadeType.ALL,orphanRemoval=true)
+   private List<ReservaEntity>reservas=new ArrayList();
+   
+   @PodamExclude 
+   @OneToMany(mappedBy="usuario",cascade=CascadeType.ALL,orphanRemoval=true)
+   private List<AlquilerEntity>alquileres=new ArrayList();
+   
+   @PodamExclude 
+   @OneToMany(mappedBy="usuario",cascade=CascadeType.ALL,orphanRemoval=true)
+   private List<MedioPagoEntity>mediosDePago=new ArrayList();
+   
+   
+   public List<ReservaEntity> getReservas(){
+       return reservas;
+   }
+   
+   public List<MedioPagoEntity> getMedioPago(){
+       return mediosDePago;
+   }
+   
+   public void setReservas(List<ReservaEntity> reserva){
+       this.reserva=reserva;
+   }
     
-    
-    /**
-     * Obtiene el atributo libro.
-     *
-     * @return atributo libro.
-     *
-    */
-    public LibroEntity getLibro()
-    {
-       return libro;
+   public List<AlquilerEntity> getAlquileres(){
+       return alquileres;
+   }
+   public void setAlquileres(List<AlquileresEntity> alquileres){
+       this.alquileres=alquileres;
+   }
+   
+    public void setMediosDePago(List<MedioPagoEntity> medios){
+       this.mediosDePago =medios;
+   }
+   
+     private Long id;
+    private String name;
+
+    public Long getId() {
+        return id;
     }
-    
-    /**
-     * Obtiene el atributo video.
-     *
-     * @return atributo video.
-     *
-    */
-    public VideoEntity getVideo()
-    {
-       return video;
+
+    public void setId(Long id) {
+        this.id = id;
     }
-    /**
-     * Obtiene el atributo usuario.
-     *
-     * @return atributo usuario.
-     *
-    */
-    public UsuarioEntity getUsuario()
-    {
-       return usuario;
+
+    public String getName() {
+        return name;
     }
-    
-    /**
-     * Obtiene el atributo fechaSolicitud.
-     *
-     * @return atributo fechaSolicitud.
-     *
-    */
-    public String getFechaSolicitud()
-    {
-       return fechaSolicitud;
+
+    public void setName(String name) {
+        this.name = name;
     }
-    
-    /**
-     * Establece el valor del atributo usuario.
-     *
-     * @param usuario nuevo valor del atributo
-     *
-    */
-    public void setUsuario(UsuarioEntity pUsuario)
-    {
-       usuario = pUsuario;
-    }
-    
-    /**
-     * Establece el valor del atributo libro.
-     *
-     * @param libro nuevo valor del atributo
-     *
-    */
-    public void setLibro(LibroEntity pLibro)
-    {
-       libro = pLibro;
-    }
-    
-    /**
-     * Establece el valor del atributo video.
-     *
-     * @param video nuevo valor del atributo
-     *
-    */
-    public void setUsuario(VideoEntity pVideo)
-    {
-       video = pVideo;
-    }
-    
-    /**
-     * Establece el valor del atributo usuario.
-     *
-     * @param usuario nuevo valor del atributo
-     *
-    */
-    public void setFechaSolicitud(String pFechaSolicitud)
-    {
-       fechaSolicitud = pFechaSolicitud;
-    }
-    
+
+   
 }
