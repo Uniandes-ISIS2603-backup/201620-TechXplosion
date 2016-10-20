@@ -97,6 +97,7 @@ public class BibliotecaPersistenceTest {
 
     /**
      * Test of find method, of class bibliotecaPersistence.
+     * @throws java.lang.Exception
      */
     @Test
     public void testFind() throws Exception {
