@@ -21,6 +21,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class LibroEntity extends BaseEntity implements Serializable{
     
+    @PodamExclude
     @ManyToOne
     private BibliotecaEntity biblioteca;
     
