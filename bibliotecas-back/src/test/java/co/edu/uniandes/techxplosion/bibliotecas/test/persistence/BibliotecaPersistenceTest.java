@@ -43,7 +43,7 @@ public class BibliotecaPersistenceTest {
     
     public BibliotecaPersistenceTest() {
     }
-        @Inject
+    @Inject
     private BibliotecaPersistence bibliotecaPersistence;
     
     @PersistenceContext
