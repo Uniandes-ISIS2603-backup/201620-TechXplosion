@@ -8,9 +8,13 @@ package co.edu.uniandes.techxplosion.bibliotecas.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
+import co.edu.uniandes.techxplosion.bibliotecas.entities.AlquilerEntity;
+import co.edu.uniandes.techxplosion.bibliotecas.entities.ReservaEntity;
 
 /**
  *
@@ -30,6 +34,7 @@ public class UsuarioEntity extends BaseEntity implements Serializable{
    @PodamExclude 
    @OneToMany(mappedBy="usuario",cascade=CascadeType.ALL,orphanRemoval=true)
    private List<MedioPagoEntity>mediosDePago=new ArrayList();
+    private List<ReservaEntity> reserva;
    
    
    public List<ReservaEntity> getReservas(){
@@ -47,7 +52,7 @@ public class UsuarioEntity extends BaseEntity implements Serializable{
    public List<AlquilerEntity> getAlquileres(){
        return alquileres;
    }
-   public void setAlquileres(List<AlquileresEntity> alquileres){
+   public void setAlquileres(List<AlquilerEntity> alquileres){
        this.alquileres=alquileres;
    }
    

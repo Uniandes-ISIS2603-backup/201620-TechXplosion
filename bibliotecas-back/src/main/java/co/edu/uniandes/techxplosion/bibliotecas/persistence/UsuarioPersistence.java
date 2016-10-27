@@ -5,9 +5,16 @@
  */
 package co.edu.uniandes.techxplosion.bibliotecas.persistence;
 
+import co.edu.uniandes.techxplosion.bibliotecas.entities.AlquilerEntity;
+import co.edu.uniandes.techxplosion.bibliotecas.entities.ReservaEntity;
+import co.edu.uniandes.techxplosion.bibliotecas.entities.UsuarioEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
