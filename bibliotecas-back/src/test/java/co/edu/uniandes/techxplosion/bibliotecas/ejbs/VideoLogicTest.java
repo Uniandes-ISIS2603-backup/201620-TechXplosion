@@ -97,11 +97,11 @@ public class VideoLogicTest
     }
 
     /**
-     * Test of getAlquileres method, of class AlquilerLogic.
+     * Test of getVideos method, of class VideoLogic.
      * @throws java.lang.Exception
      */
     @Test
-    public void testGetAlquileres() throws Exception 
+    public void testGetVideos() throws Exception 
     {
         List<VideoEntity> list = videoLogic.getVideos();
          Assert.assertEquals(data.size(), list.size());   
