@@ -5,10 +5,13 @@
  */
 package co.edu.uniandes.rest.cities.dtos;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author sa.pardo10
  */
+@XmlRootElement
 public class AlquilerDTO {
 
     /**
