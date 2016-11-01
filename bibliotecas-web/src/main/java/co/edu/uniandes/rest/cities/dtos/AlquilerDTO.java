@@ -5,6 +5,10 @@
  */
 package co.edu.uniandes.rest.cities.dtos;
 
+import co.edu.uniandes.rest.cities.entities.AlquilerEntity;
+import co.edu.uniandes.rest.cities.entities.LibroEntity;
+import co.edu.uniandes.rest.cities.entities.UsuarioEntity;
+import co.edu.uniandes.rest.cities.entities.VideoEntity;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -21,11 +25,14 @@ public class AlquilerDTO {
     /**
      * Atributo que modela el id del usuario que realizo el alquiler
      */
-    private int idUsuario;
+    private UsuarioEntity idUsuario;
     /**
      * Atributo que modela el id del recurso que se alquila
      */
-    private int idRecurso;
+    private LibroEntity idLibro;
+    private VideoEntity idVideo;
+
+    
     /**
      * Atributo que modela la fecha en la que se realizo el alquiler
      */
@@ -42,21 +49,33 @@ public class AlquilerDTO {
     /**
      * Constructor de la clase
      *
-     * @param pId
-     * @param pIdUsuario
-     * @param pIdRecurso
-     * @param inicio
-     * @param fin
      */
-    public AlquilerDTO(Long pId, int pIdUsuario, int pIdRecurso, String inicio, String fin) {
-        id = pId;
-        idUsuario = pIdUsuario;
-        idRecurso = pIdRecurso;
-        fechaAlquiler = inicio;
-        fechaDevolucion = fin;
+    public AlquilerDTO(AlquilerEntity entity) 
+    {
+        if (entity != null) 
+        {
+        id = entity.getId();
+        idUsuario = entity.getUsuario();
+        idLibro = entity.getLibro();
+        idVideo = entity.getVideo();
+        fechaAlquiler = entity.getFechaAlquiler();
+        fechaDevolucion = entity.getFechaDevolucion();
         estaVencido = false;
+        }
     }
 
+    public AlquilerEntity toEntity()
+    {
+        AlquilerEntity entity = new AlquilerEntity();
+        entity.setId(this.id);
+        entity.setLibro(this.idLibro);
+        entity.setVideo(idVideo);
+        entity.setUsuario(idUsuario);
+        entity.setFechaAlquiler(fechaAlquiler);
+        entity.setFechaDevolucion(fechaDevolucion);
+        return entity;
+    }
+    
     /**
      * Constructor vacio
      */
@@ -89,7 +108,7 @@ public class AlquilerDTO {
      *
      * @return id del usuario
      */
-    public int getIdUsuario() {
+    public UsuarioEntity getUsuario() {
         return idUsuario;
     }
 
@@ -98,27 +117,27 @@ public class AlquilerDTO {
      *
      * @param pIdUsuario nuevo id del usuario
      */
-    public void setIdUsuario(int pIdUsuario) {
-        idUsuario = pIdUsuario;
+    public void setUsuario(UsuarioEntity pUsuario) {
+        idUsuario = pUsuario;
     }
 
-    /**
-     * Da el id del recurso
-     *
-     * @return id del recurso
-     */
-    public int getIdRecurso() {
-        return idRecurso;
+   public LibroEntity getLibro() {
+        return idLibro;
     }
 
-    /**
-     * Cambia el id del recurso
-     *
-     * @param pIdRecurso nuevo id del recurso
-     */
-    public void setIdRecurso(int pIdRecurso) {
-        idRecurso = pIdRecurso;
+    public void setLibro(LibroEntity idLibro) {
+        this.idLibro = idLibro;
     }
+
+    public VideoEntity getIdVideo() {
+        return idVideo;
+    }
+
+    public void setIdVideo(VideoEntity idVideo) {
+        this.idVideo = idVideo;
+    }
+
+  
 
     /**
      * Da la fecha de alquiler del recurso
@@ -179,7 +198,7 @@ public class AlquilerDTO {
      */
     @Override
     public String toString() {
-        return "{ id: " + id + ", idUsuario: " + idUsuario + ", idRecurso: " + idRecurso + "}";
+        return "{ id: " + id + ", idUsuario: " + idUsuario + ", idRecurso: " + idLibro + "}";
     }
 
 }

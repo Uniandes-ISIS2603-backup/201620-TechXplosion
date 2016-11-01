@@ -35,8 +35,6 @@ public class AlquilerMock
 
     	if (alquileres == null) {
             alquileres = new ArrayList<>();
-            alquileres.add(new AlquilerDTO(0L,1,0,"8/5/2016", "16/5/2016"));
-            alquileres.add(new AlquilerDTO(1L,1,0,"9/5/2016", "20/5/2016"));
         }
         
     	// indica que se muestren todos los mensajes
