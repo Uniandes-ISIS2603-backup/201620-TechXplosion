@@ -31,6 +31,14 @@ public class VideoEntity extends BaseEntity implements Serializable
    @OneToMany(mappedBy="video",cascade=CascadeType.ALL,orphanRemoval=true)
    private List<ReservaEntity>reservas=new ArrayList();
    
+   private String nombre;
+   
+   private Long id;
+   
+   private Double duracion;
+   
+   private String tipo;
+   
    public BibliotecaEntity getBiblioteca()
    {
        return biblioteca;
@@ -56,4 +64,47 @@ public class VideoEntity extends BaseEntity implements Serializable
    {
        return alquileres;
    }
+   
+   public String getNombre()
+   {
+       return nombre;
+   }
+   
+   public Long getId()
+   {
+       return id;
+   }
+   
+   public Double getDuracion()
+   {
+       return duracion;
+   }
+   
+   public String getTipo()
+   {
+       return tipo;
+   }
+
+    public void setReservas(List<ReservaEntity> reservas) {
+        this.reservas = reservas;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setDuracion(Double duracion) {
+        this.duracion = duracion;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+   
+   
+   
 }

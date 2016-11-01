@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.rest.cities.dtos;
 
+import co.edu.uniandes.rest.cities.entities.VideoEntity;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -136,6 +137,27 @@ public class VideoDTO {
      */
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+    
+    public VideoDTO(VideoEntity entity) 
+    {
+        if (entity != null) 
+        {
+        id = entity.getId();
+        nombre = entity.getName();
+        duracion = entity.getDuracion();
+        tipo = entity.getTipo();
+        }
+    }
+    
+     public VideoEntity toEntity()
+    {
+        VideoEntity entity = new VideoEntity();
+        entity.setId(this.id);
+        entity.setNombre(this.nombre);
+        entity.setDuracion(this.duracion);
+        entity.setTipo(this.tipo);
+        return entity;
     }
 
     /**

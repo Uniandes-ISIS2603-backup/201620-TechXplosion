@@ -5,10 +5,19 @@
  */
 package co.edu.uniandes.rest.cities.resources;
 
+import co.edu.uniandes.rest.cities.api.IAlquilerLogic;
+import co.edu.uniandes.rest.cities.api.IVideoLogic;
+import co.edu.uniandes.rest.cities.dtos.AlquilerDetailDTO;
 import co.edu.uniandes.rest.cities.dtos.VideoDTO;
+import co.edu.uniandes.rest.cities.dtos.VideoDetailDTO;
+import co.edu.uniandes.rest.cities.entities.VideoEntity;
+import co.edu.uniandes.rest.cities.dtos.VideoDTO;
+import co.edu.uniandes.rest.cities.entities.AlquilerEntity;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 import co.edu.uniandes.rest.cities.mocks.VideoMock;
+import java.util.ArrayList;
 import java.util.List;
+import javax.inject.Inject;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -25,7 +34,17 @@ import javax.ws.rs.Produces;
 @Produces("application/json")
 public class VideoResource 
 {
-      VideoMock videoLogic = new VideoMock();
+      @Inject
+    private IVideoLogic videoLogic;
+
+   private List<VideoDetailDTO> listEntity2DTO(List<VideoEntity> entityList) 
+   {
+        List<VideoDetailDTO> list = new ArrayList<>();
+        for (VideoEntity entity : entityList) {
+            list.add(new VideoDetailDTO(entity));
+        }
+        return list;
+    } 
       
       /**
      * Obtiene el listado de videos.
@@ -34,9 +53,9 @@ public class VideoResource
      * @throws CityLogicException excepción retornada por la lógica
      */
     @GET
-    public List<VideoDTO> getVideo() throws CityLogicException 
+    public List<VideoDetailDTO> getVideos() throws CityLogicException 
     {
-        return videoLogic.getVideos();
+        return listEntity2DTO(videoLogic.getVideos());
     }
     
      /**
@@ -48,9 +67,9 @@ public class VideoResource
      * suministrado
      */
     @POST
-    public VideoDTO  createVideo( VideoDTO  video ) throws CityLogicException 
+    public VideoDTO  createVideo( VideoDetailDTO  video ) throws CityLogicException, Exception 
     {
-        return videoLogic.createVideo(video);
+         return new VideoDetailDTO(videoLogic.createVideo(video.toEntity()));
     }
     
     /**
@@ -61,9 +80,9 @@ public class VideoResource
      */
     @GET
     @Path("{id: \\d+}")
-    public VideoDTO  getVideo( @PathParam("id") Long id) throws CityLogicException 
+    public VideoDetailDTO  getVideo( @PathParam("id") Long id) throws CityLogicException 
     {
-        return videoLogic.getVideo(id);
+        return new VideoDetailDTO( videoLogic.getVideo(id));
     }
     
     /**
@@ -75,7 +94,7 @@ public class VideoResource
     @Path("{id: \\d+}")
     public void  deleteVideo( @PathParam("id") Long id) throws CityLogicException 
     {
-        videoLogic.delete(id);
+        videoLogic.deleteVideo(id);
     }
     
      /**
@@ -87,8 +106,10 @@ public class VideoResource
      */
     @PUT
     @Path("{id: \\d+}")
-    public VideoDTO updateVideo(@PathParam("id") Long id, VideoDTO newVideo) throws CityLogicException
+    public VideoDTO updateVideo(@PathParam("id") Long id, VideoDetailDTO newVideo) throws CityLogicException
     {
-        return videoLogic.updateVideo(id, newVideo);
+        VideoEntity entity = newVideo.toEntity();
+        entity.setId(id);
+        return new VideoDetailDTO(videoLogic.updateVideo(entity));
     }
 }

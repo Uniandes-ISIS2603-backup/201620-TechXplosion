@@ -7,6 +7,7 @@ package co.edu.uniandes.rest.cities.api;
 
 
 import co.edu.uniandes.rest.cities.entities.AlquilerEntity;
+import co.edu.uniandes.rest.cities.entities.VideoEntity;
 import java.util.List;
 
 /**
@@ -20,6 +21,5 @@ public interface IAlquilerLogic
     public List<AlquilerEntity> getAlquilerPorUsuario(Long idUsuario);
     public AlquilerEntity createAlquiler(AlquilerEntity entity) throws Exception;
     public AlquilerEntity updateAlquiler(AlquilerEntity entity);
-    public void deleteAlquiler(Long id);
-    
+    public void deleteAlquiler(Long id);    
 }
