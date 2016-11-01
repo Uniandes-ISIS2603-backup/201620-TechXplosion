@@ -65,7 +65,7 @@ public class VideoLogicTest
     
     private void clearData()
     {
-        em.createQuery("delete from VideoEntity").executeUpdate();
+        em.createQuery("delete from AlquilerEntity").executeUpdate();
     }
     
     private void insertData()
@@ -97,11 +97,11 @@ public class VideoLogicTest
     }
 
     /**
-     * Test of getVideos method, of class VideoLogic.
+     * Test of getAlquileres method, of class AlquilerLogic.
      * @throws java.lang.Exception
      */
     @Test
-    public void testGetVideos() throws Exception 
+    public void testGetAlquileres() throws Exception 
     {
         List<VideoEntity> list = videoLogic.getVideos();
          Assert.assertEquals(data.size(), list.size());   
@@ -124,7 +124,13 @@ public class VideoLogicTest
      * @throws java.lang.Exception
      */
     @Test
-    public void testGetVideo() throws Exception {
+    public void testGetAlquiler() throws Exception 
+    {
+        VideoEntity entity = data.get(0);
+        
+        VideoEntity resultEntity = videoLogic.getVideo(entity.getId());
+        Assert.assertNotNull(resultEntity);
+        Assert.assertEquals(entity.getId(), resultEntity.getId());
     }
 
     /**
@@ -136,27 +142,48 @@ public class VideoLogicTest
     }
 
     /**
-     * Test of createVideo method, of class VideoLogic.
+     * Test of createAlquiler method, of class VideoLogic.
      */
     @Test
-    public void testCreateVideo() throws Exception {
-    }
-
-    /**
-     * Test of updateVideo method, of class VideoLogic.
-     * @throws java.lang.Exception
-     */
-    @Test
-    public void testUpdateVideo() throws Exception {
-    }
-
-    /**
-     * Test of deleteVideo method, of class VideoLogic.
-     * @throws java.lang.Exception
-     */
-    @Test
-    public void testDeleteVideo() throws Exception 
+    public void testCreateAlquiler() throws Exception 
     {
+        VideoEntity entity = factory.manufacturePojo(VideoEntity.class);
+        VideoEntity buscado = videoLogic.createVideo(entity);
+        Assert.assertNotNull(buscado);
+        
+        buscado = em.find(VideoEntity.class, entity.getId());
+        Assert.assertEquals(entity, buscado);
+    }
+
+    /**
+     * Test of updateAlquiler method, of class AlquilerLogic.
+     * @throws java.lang.Exception
+     */
+    @Test
+    public void testUpdateAlquiler() throws Exception 
+    {
+        VideoEntity entity = data.get(0);
+        VideoEntity nuevo = factory.manufacturePojo(VideoEntity.class);
+        nuevo.setId(entity.getId());
+        
+        videoLogic.updateVideo(nuevo);
+        
+        VideoEntity buscado = em.find(VideoEntity.class, entity.getId());
+        
+        Assert.assertEquals(nuevo.getId(), buscado.getId());
+    }
+
+    /**
+     * Test of deleteAlquiler method, of class AlquilerLogic.
+     * @throws java.lang.Exception
+     */
+    @Test
+    public void testDeleteAlquiler() throws Exception 
+    {
+        VideoEntity entity = data.get(0);
+        videoLogic.deleteVideo(entity.getId());
+        VideoEntity deleted = em.find(VideoEntity.class, entity.getId());
+        Assert.assertNull(deleted);
     }
     
 }

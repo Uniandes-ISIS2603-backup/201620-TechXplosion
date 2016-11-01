@@ -20,5 +20,7 @@ public interface IVideoLogic
     public VideoEntity createVideo(VideoEntity entity) throws Exception;
     public VideoEntity updateVideo(VideoEntity entity);
     public void deleteVideo(Long id);
+
+    public VideoEntity getVideo(VideoEntity entity);
     
 }
