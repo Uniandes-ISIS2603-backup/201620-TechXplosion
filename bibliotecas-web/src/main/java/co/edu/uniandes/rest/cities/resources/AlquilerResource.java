@@ -5,10 +5,15 @@
  */
 package co.edu.uniandes.rest.cities.resources;
 
+import co.edu.uniandes.rest.cities.api.IAlquilerLogic;
 import co.edu.uniandes.rest.cities.dtos.AlquilerDTO;
+import co.edu.uniandes.rest.cities.dtos.AlquilerDetailDTO;
+import co.edu.uniandes.rest.cities.entities.AlquilerEntity;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 import co.edu.uniandes.rest.cities.mocks.AlquilerMock;
+import java.util.ArrayList;
 import java.util.List;
+import javax.inject.Inject;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -26,8 +31,17 @@ import javax.ws.rs.Produces;
 @Produces("application/json")
 public class AlquilerResource 
 {
-    AlquilerMock alquilerLogic = new AlquilerMock();
+    @Inject
+    private IAlquilerLogic alquilerLogic;
 
+   private List<AlquilerDetailDTO> listEntity2DTO(List<AlquilerEntity> entityList) {
+        List<AlquilerDetailDTO> list = new ArrayList<>();
+        for (AlquilerEntity entity : entityList) {
+            list.add(new AlquilerDetailDTO(entity));
+        }
+        return list;
+    } 
+    
     /**
      * Obtiene el listado de ciudades.
      *
@@ -35,9 +49,9 @@ public class AlquilerResource
      * @throws CityLogicException excepción retornada por la lógica
      */
     @GET
-    public List<AlquilerDTO> getAlquileres(/**@PathParam("idUsuario")Long idLibro**/) throws CityLogicException 
+    public List<AlquilerDetailDTO> getAlquileres(/**@PathParam("idUsuario")Long idLibro**/) throws CityLogicException 
     {
-        return alquilerLogic.getAlquileres();
+        return listEntity2DTO(alquilerLogic.getAlquileres());
     }
 
    
@@ -50,9 +64,9 @@ public class AlquilerResource
      * suministrado
      */
     @POST
-    public AlquilerDTO createAlquiler(AlquilerDTO alquiler) throws CityLogicException 
+    public AlquilerDTO createAlquiler(AlquilerDetailDTO alquiler) throws CityLogicException, Exception 
     {
-        return alquilerLogic.createAlquiler(alquiler);
+        return new AlquilerDetailDTO(alquilerLogic.createAlquiler(alquiler.toEntity()));
     }
     
     /**
@@ -75,9 +89,9 @@ public class AlquilerResource
      */
     @GET
     @Path("{id: \\d+}")
-    public AlquilerDTO  getAlquiler( @PathParam("id") Long id) throws CityLogicException 
+    public AlquilerDetailDTO  getAlquiler( @PathParam("id") Long id) throws CityLogicException 
     {
-        return alquilerLogic.getAlquiler(id);
+        return new AlquilerDetailDTO( alquilerLogic.getAlquiler(id));
     }
     /**
      * Actualiza la informacion de un alquiler con un id dado
@@ -88,9 +102,11 @@ public class AlquilerResource
      */
     @PUT
     @Path("{id: \\d+}")
-    public AlquilerDTO updateAlquiler(@PathParam("id") Long id,  AlquilerDTO nueva) throws CityLogicException
+    public AlquilerDetailDTO updateAlquiler(@PathParam("id") Long id,  AlquilerDetailDTO nueva) throws CityLogicException
     {
-        return alquilerLogic.updateAlquiler(id, nueva);
+        AlquilerEntity entity = nueva.toEntity();
+        entity.setId(id);
+        return new AlquilerDetailDTO(alquilerLogic.updateAlquiler(entity));
     }
     
     
