@@ -5,11 +5,14 @@
  */
 package co.edu.uniandes.rest.cities.dtos;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Clase que representa la información de un video.
  *
  * @author nd.munoz10
  */
+@XmlRootElement
 public class VideoDTO {
 
     /**
