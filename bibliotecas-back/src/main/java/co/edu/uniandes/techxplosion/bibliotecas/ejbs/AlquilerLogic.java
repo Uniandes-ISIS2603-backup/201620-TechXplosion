@@ -32,31 +32,33 @@ public class AlquilerLogic implements IAlquilerLogic
     @Override
     public AlquilerEntity getAlquiler(Long id) 
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return persistence.find(id); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public List<AlquilerEntity> getAlquilerPorUsuario(Long idUsuario) 
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public AlquilerEntity createAlquiler(AlquilerEntity entity) throws Exception 
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        AlquilerEntity alreadyExist = getAlquiler(entity.getId());
+        if (alreadyExist != null) {
+            throw new Exception("Ya existe un alquiler con ese id");
+        } else
+        {
+            persistence.create(entity);
+        }
+        return entity;
     }
 
     @Override
     public AlquilerEntity updateAlquiler(AlquilerEntity entity) 
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return persistence.update(entity);
     }
 
     @Override
     public void deleteAlquiler(Long id) 
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        persistence.delete(id);
     }
     
 }

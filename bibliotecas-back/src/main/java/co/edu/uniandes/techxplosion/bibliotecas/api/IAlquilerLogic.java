@@ -16,7 +16,6 @@ public interface IAlquilerLogic
 {
     public List<AlquilerEntity> getAlquileres();
     public AlquilerEntity getAlquiler(Long id);
-    public List<AlquilerEntity> getAlquilerPorUsuario(Long idUsuario);
     public AlquilerEntity createAlquiler(AlquilerEntity entity) throws Exception;
     public AlquilerEntity updateAlquiler(AlquilerEntity entity);
     public void deleteAlquiler(Long id);
