@@ -124,7 +124,13 @@ public class AlquilerLogicTest
      * @throws java.lang.Exception
      */
     @Test
-    public void testGetAlquiler() throws Exception {
+    public void testGetAlquiler() throws Exception 
+    {
+        AlquilerEntity entity = data.get(0);
+        
+        AlquilerEntity resultEntity = alquilerLogic.getAlquiler(entity.getId());
+        Assert.assertNotNull(resultEntity);
+        Assert.assertEquals(entity.getId(), resultEntity.getId());
     }
 
     /**
@@ -139,7 +145,14 @@ public class AlquilerLogicTest
      * Test of createAlquiler method, of class AlquilerLogic.
      */
     @Test
-    public void testCreateAlquiler() throws Exception {
+    public void testCreateAlquiler() throws Exception 
+    {
+        AlquilerEntity entity = factory.manufacturePojo(AlquilerEntity.class);
+        AlquilerEntity buscado = alquilerLogic.createAlquiler(entity);
+        Assert.assertNotNull(buscado);
+        
+        buscado = em.find(AlquilerEntity.class, entity.getId());
+        Assert.assertEquals(entity, buscado);
     }
 
     /**
@@ -147,7 +160,17 @@ public class AlquilerLogicTest
      * @throws java.lang.Exception
      */
     @Test
-    public void testUpdateAlquiler() throws Exception {
+    public void testUpdateAlquiler() throws Exception 
+    {
+        AlquilerEntity entity = data.get(0);
+        AlquilerEntity nuevo = factory.manufacturePojo(AlquilerEntity.class);
+        nuevo.setId(entity.getId());
+        
+        alquilerLogic.updateAlquiler(nuevo);
+        
+        AlquilerEntity buscado = em.find(AlquilerEntity.class, entity.getId());
+        
+        Assert.assertEquals(nuevo.getId(), buscado.getId());
     }
 
     /**
@@ -157,6 +180,10 @@ public class AlquilerLogicTest
     @Test
     public void testDeleteAlquiler() throws Exception 
     {
+        AlquilerEntity entity = data.get(0);
+        alquilerLogic.deleteAlquiler(entity.getId());
+        AlquilerEntity deleted = em.find(AlquilerEntity.class, entity.getId());
+        Assert.assertNull(deleted);
     }
     
 }
