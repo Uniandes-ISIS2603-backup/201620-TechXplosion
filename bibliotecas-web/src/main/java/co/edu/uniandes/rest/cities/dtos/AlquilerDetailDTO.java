@@ -5,11 +5,44 @@
  */
 package co.edu.uniandes.rest.cities.dtos;
 
+import co.edu.uniandes.rest.cities.entities.AlquilerEntity;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author sa.pardo10
  */
-public class AlquilerDetailDTO 
+@XmlRootElement
+public class AlquilerDetailDTO extends AlquilerDTO 
 {
+    private LibroDTO libro ;
+
+
+    private VideoDTO video ;
+    private UsuarioDTO Usuario ;
     
+    public AlquilerDetailDTO()
+    {
+        super();
+    }
+    
+    public AlquilerDetailDTO(AlquilerEntity entity)
+    {
+        super(entity);
+        libro = new LibroDTO(entity.getLibro());
+        video = new VideoDTO(entity.getVideo());
+        usuario = new UsuarioDTO(entity.getUsuario());
+    }
+    
+    @Override
+    public AlquilerEntity toEntity()
+    {
+        AlquilerEntity entity = super.toEntity();
+        entity.setLibro(libro.toEntity());
+        entity.setVideo(video.toEntity());
+        entity.setUsuario(usuario.toEntity());
+        return entity;
+    }
+    
+  
 }
