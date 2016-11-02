@@ -8,7 +8,7 @@ package co.edu.uniandes.rest.cities.resources;
 import co.edu.uniandes.rest.cities.api.IAlquilerLogic;
 import co.edu.uniandes.rest.cities.dtos.AlquilerDTO;
 import co.edu.uniandes.rest.cities.dtos.AlquilerDetailDTO;
-import co.edu.uniandes.rest.cities.entities.AlquilerEntity;
+import co.edu.uniandes.techxplosion.bibliotecas.entities.AlquilerEntity;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 import co.edu.uniandes.rest.cities.mocks.AlquilerMock;
 import java.util.ArrayList;

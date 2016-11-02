@@ -5,10 +5,8 @@
  */
 package co.edu.uniandes.rest.cities.dtos;
 
-import co.edu.uniandes.rest.cities.entities.AlquilerEntity;
-import co.edu.uniandes.rest.cities.entities.LibroEntity;
-import co.edu.uniandes.rest.cities.entities.UsuarioEntity;
-import co.edu.uniandes.rest.cities.entities.VideoEntity;
+
+import co.edu.uniandes.techxplosion.bibliotecas.entities.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**

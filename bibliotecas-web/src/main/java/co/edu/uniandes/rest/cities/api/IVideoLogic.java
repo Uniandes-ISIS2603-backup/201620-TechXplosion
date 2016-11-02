@@ -6,7 +6,7 @@
 package co.edu.uniandes.rest.cities.api;
 
 
-import co.edu.uniandes.rest.cities.entities.VideoEntity;
+import co.edu.uniandes.techxplosion.bibliotecas.entities.VideoEntity;
 import java.util.List;
 
 /**

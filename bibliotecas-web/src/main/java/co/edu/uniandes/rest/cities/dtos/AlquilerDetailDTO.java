@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.rest.cities.dtos;
 
-import co.edu.uniandes.rest.cities.entities.AlquilerEntity;
+import co.edu.uniandes.techxplosion.bibliotecas.entities.AlquilerEntity;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -19,7 +19,7 @@ public class AlquilerDetailDTO extends AlquilerDTO
 
 
     private VideoDTO video ;
-    private UsuarioDTO Usuario ;
+    private UsuarioDTO usuario ;
     
     public AlquilerDetailDTO()
     {

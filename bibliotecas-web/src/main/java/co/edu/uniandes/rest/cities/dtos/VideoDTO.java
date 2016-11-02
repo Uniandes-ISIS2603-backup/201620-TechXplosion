@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.rest.cities.dtos;
 
-import co.edu.uniandes.rest.cities.entities.VideoEntity;
+import co.edu.uniandes.techxplosion.bibliotecas.entities.VideoEntity;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
