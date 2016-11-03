@@ -5,63 +5,65 @@
  */
 package co.edu.uniandes.techxplosion.bibliotecas.ejbs;
 
-import co.edu.uniandes.techxplosion.bibliotecas.api.IVideoLogic;
+import co.edu.uniandes.techxplosion.bibliotecas.api.ILibroLogic;
+import co.edu.uniandes.techxplosion.bibliotecas.entities.AlquilerEntity;
+import co.edu.uniandes.techxplosion.bibliotecas.entities.LibroEntity;
 import co.edu.uniandes.techxplosion.bibliotecas.entities.VideoEntity;
+import co.edu.uniandes.techxplosion.bibliotecas.persistence.LibroPersistence;
 import co.edu.uniandes.techxplosion.bibliotecas.persistence.VideoPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-/**
- *
- * @author nd.munoz10
- */
 @Stateless
-public class VideoLogic implements IVideoLogic
+public class LibroLogic implements ILibroLogic
 {
 
     @Inject
-    private VideoPersistence persistence;
+    private LibroPersistence persistence;
     
     @Override
-    public List<VideoEntity> getVideos() 
+    public List<LibroEntity> getLibros() 
     {
         return persistence.findAll();
     }
 
     @Override
-    public VideoEntity getVideo(Long id) 
+    public LibroEntity getLibro(Long id) 
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         return persistence.find(id);
     }
 
     @Override
-    public List<VideoEntity> getVideoPorUsuario(Long idUsuario) 
+    public LibroEntity getLibroPorNombre(String name) 
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return persistence.findByName(name);
     }
 
     @Override
-    public VideoEntity createVideo(VideoEntity entity) throws Exception 
-    {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public LibroEntity createLibro(LibroEntity entity) throws Exception 
+    {       
+       LibroEntity alreadyExist = getLibro(entity.getId());
+        if (alreadyExist != null) {
+            throw new Exception("Ya existe un libro con ese id");
+        } else
+        {
+            persistence.create(entity);
+        }
+        return entity; 
     }
 
     @Override
-    public VideoEntity updateVideo(VideoEntity entity) 
+    public LibroEntity updateLibro(LibroEntity entity) 
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return persistence.update(entity);
     }
 
     @Override
-    public void deleteVideo(Long id) 
+    public void deleteLibro(Long id) 
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       persistence.delete(id);
     }
 
-    @Override
-    public VideoEntity getVideo(VideoEntity entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }

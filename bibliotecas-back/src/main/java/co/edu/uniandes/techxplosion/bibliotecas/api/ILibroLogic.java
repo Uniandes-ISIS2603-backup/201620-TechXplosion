@@ -5,22 +5,15 @@
  */
 package co.edu.uniandes.techxplosion.bibliotecas.api;
 
-import co.edu.uniandes.techxplosion.bibliotecas.entities.VideoEntity;
+import co.edu.uniandes.techxplosion.bibliotecas.entities.LibroEntity;
 import java.util.List;
 
-/**
- *
- * @author nd.munoz10
- */
-public interface IVideoLogic 
+public interface ILibroLogic 
 {
-    public List<VideoEntity> getVideos();
-    public VideoEntity getVideo(Long id);
-    public List<VideoEntity> getVideoPorUsuario(Long idUsuario);
-    public VideoEntity createVideo(VideoEntity entity) throws Exception;
-    public VideoEntity updateVideo(VideoEntity entity);
-    public void deleteVideo(Long id);
-
-    public VideoEntity getVideo(VideoEntity entity);
-    
+    public List<LibroEntity> getLibros();
+    public LibroEntity getLibro(Long id);
+    public LibroEntity getLibroPorNombre(String name);
+    public LibroEntity createLibro(LibroEntity entity) throws Exception;
+    public LibroEntity updateLibro(LibroEntity entity);
+    public void deleteLibro(Long id);
 }

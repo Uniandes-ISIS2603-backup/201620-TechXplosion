@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.techxplosion.bibliotecas.ejbs;
 
-import co.edu.uniandes.techxplosion.bibliotecas.api.IVideoLogic;
 import co.edu.uniandes.techxplosion.bibliotecas.entities.VideoEntity;
 import co.edu.uniandes.techxplosion.bibliotecas.persistence.VideoPersistence;
 import java.util.ArrayList;
@@ -29,6 +28,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
+import co.edu.uniandes.techxplosion.bibliotecas.api.IVideoLogic;
 
 /**
  *
