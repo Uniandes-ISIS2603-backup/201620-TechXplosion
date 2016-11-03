@@ -34,7 +34,32 @@ public class UsuarioEntity extends BaseEntity implements Serializable{
    @PodamExclude 
    @OneToMany(mappedBy="usuario",cascade=CascadeType.ALL,orphanRemoval=true)
    private List<MedioPagoEntity>mediosDePago=new ArrayList();
-    private List<ReservaEntity> reserva;
+   
+    
+   private String nombre;
+   private Long id;
+   private String address;
+  
+   
+   public String getName(){
+       return nombre;
+   }
+   public void setNombre(String nombre){
+       this.nombre=nombre;
+   }
+   public Long getId(){
+       return id;
+   }
+   public void setId(Long numero){
+        this.id=numero;
+   }
+   public String getAddress(){
+       return address;
+   }
+   public void setAddress(String address){
+       this.address=address;
+   }
+
    
    
    public List<ReservaEntity> getReservas(){
@@ -46,7 +71,7 @@ public class UsuarioEntity extends BaseEntity implements Serializable{
    }
    
    public void setReservas(List<ReservaEntity> reserva){
-       this.reserva=reserva;
+       this.reservas=reserva;
    }
     
    public List<AlquilerEntity> getAlquileres(){
