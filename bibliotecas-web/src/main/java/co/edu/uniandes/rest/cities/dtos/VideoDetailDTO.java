@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author sa.pardo10
+ * @author nd.munoz10
  */
 @XmlRootElement
 public class VideoDetailDTO extends VideoDTO 
