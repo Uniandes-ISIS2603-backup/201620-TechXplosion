@@ -18,13 +18,13 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class BibliotecaEntity extends BaseEntity implements Serializable{
    @PodamExclude 
-   @OneToMany(mappedBy="biblioteca",cascade=CascadeType.ALL,orphanRemoval=true)
+   @OneToMany(cascade=CascadeType.ALL,orphanRemoval=true)
    private List<LibroEntity>libros=new ArrayList();
    @PodamExclude 
-   @OneToMany(mappedBy="biblioteca",cascade=CascadeType.ALL,orphanRemoval=true)
+   @OneToMany(cascade=CascadeType.ALL,orphanRemoval=true)
    private List<VideoEntity>videos=new ArrayList();
    @PodamExclude 
-   @OneToMany(mappedBy="biblioteca",cascade=CascadeType.ALL,orphanRemoval=true)
+   @OneToMany(cascade=CascadeType.ALL,orphanRemoval=true)
    private List<UsuarioEntity>usuarios=new ArrayList();
    public List<LibroEntity> getLibros(){
        return libros;
