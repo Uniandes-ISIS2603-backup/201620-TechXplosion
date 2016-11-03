@@ -12,6 +12,7 @@ import java.util.List;
  *
  * @author sa.pardo10
  */
+
 public interface IAlquilerLogic 
 {
     public List<AlquilerEntity> getAlquileres();
