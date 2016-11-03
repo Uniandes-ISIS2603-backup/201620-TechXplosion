@@ -5,12 +5,12 @@
  */
 package co.edu.uniandes.techxplosion.bibliotecas.ejbs;
 
+import co.edu.uniandes.techxplosion.bibliotecas.api.IVideoLogic;
 import co.edu.uniandes.techxplosion.bibliotecas.entities.VideoEntity;
 import co.edu.uniandes.techxplosion.bibliotecas.persistence.VideoPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import co.edu.uniandes.techxplosion.bibliotecas.api.IVideoLogic;
 
 /**
  *
