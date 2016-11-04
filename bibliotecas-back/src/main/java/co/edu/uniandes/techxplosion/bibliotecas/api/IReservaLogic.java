@@ -5,10 +5,19 @@
  */
 package co.edu.uniandes.techxplosion.bibliotecas.api;
 
+import co.edu.uniandes.techxplosion.bibliotecas.entities.ReservaEntity;
+import java.util.List;
+
 /**
  *
  * @author js.numpaque10
  */
 public interface IReservaLogic {
+    
+    public List<ReservaEntity> getReservas();
+    public ReservaEntity getReserva(Long id);
+    public ReservaEntity createReserva(ReservaEntity entity) throws Exception;
+    public ReservaEntity updateReserva(ReservaEntity entity);
+    public void deleteReserva(Long id);
     
 }
