@@ -102,7 +102,7 @@ public class UsuarioPersistenceTest
     }
 
     /**
-     * Test of find method, of class AlquilerPersistence.
+     * Test of find method, 
      */
     @Test
     public void testFind() throws Exception {
@@ -113,18 +113,7 @@ public class UsuarioPersistenceTest
         Assert.assertEquals(entity.getName(), newEntity.getName());
     }
 
-    /**
-     * Test of findByName method, of class AlquilerPersistence.
-     */
-    @Test
-    public void testFindByName() throws Exception {
-       UsuarioEntity entity = data.get(0);
-        UsuarioEntity newEntity = UsuarioPersistence.findByName(entity.getName());
-        Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getId(), newEntity.getId());
-        Assert.assertEquals(entity.getName(), newEntity.getName());
-        
-    }
+   
 
     /**
      * Test of findAll method, of class AlquilerPersistence.
