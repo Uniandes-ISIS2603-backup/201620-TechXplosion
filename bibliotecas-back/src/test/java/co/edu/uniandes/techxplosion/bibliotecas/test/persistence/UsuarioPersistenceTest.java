@@ -13,6 +13,18 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.UserTransaction;
+import org.junit.Assert;
+import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import static org.glassfish.api.admin.Supplemental.Timing.Before;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -96,7 +108,7 @@ public class UsuarioPersistenceTest
     }
 
     /**
-     * Test of find method, of class AlquilerPersistence.
+     * Test of find method, 
      */
     @Test
     public void testFind() throws Exception {
@@ -107,18 +119,7 @@ public class UsuarioPersistenceTest
         Assert.assertEquals(entity.getName(), newEntity.getName());
     }
 
-    /**
-     * Test of findByName method, of class AlquilerPersistence.
-     */
-    @Test
-    public void testFindByName() throws Exception {
-       UsuarioEntity entity = data.get(0);
-        UsuarioEntity newEntity = UsuarioPersistence.findByName(entity.getName());
-        Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getId(), newEntity.getId());
-        Assert.assertEquals(entity.getName(), newEntity.getName());
-        
-    }
+   
 
     /**
      * Test of findAll method, of class AlquilerPersistence.
