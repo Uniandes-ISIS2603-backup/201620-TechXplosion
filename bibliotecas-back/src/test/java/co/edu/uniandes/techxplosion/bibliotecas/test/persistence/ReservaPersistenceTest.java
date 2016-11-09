@@ -95,10 +95,10 @@ public class ReservaPersistenceTest {
         ReservaEntity newEntity = reservaPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
-        Assert.assertEquals(entity.getName(), newEntity.getName());
         Assert.assertEquals(entity.getLibro(), newEntity.getLibro());
         Assert.assertEquals(entity.getVideo(), newEntity.getVideo());
         Assert.assertEquals(entity.getUsuario(), newEntity.getUsuario());
+        Assert.assertEquals(entity.getFechaSolicitud(), newEntity.getFechaSolicitud());
     }
 
     /**
@@ -110,10 +110,10 @@ public class ReservaPersistenceTest {
         ReservaEntity newEntity = reservaPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
-        Assert.assertEquals(entity.getName(), newEntity.getName());
         Assert.assertEquals(entity.getLibro(), newEntity.getLibro());
         Assert.assertEquals(entity.getVideo(), newEntity.getVideo());
         Assert.assertEquals(entity.getUsuario(), newEntity.getUsuario());
+        Assert.assertEquals(entity.getFechaSolicitud(), newEntity.getFechaSolicitud());
         Assert.assertTrue(true);
     }
 
@@ -151,10 +151,10 @@ public class ReservaPersistenceTest {
         ReservaEntity entity = em.find(ReservaEntity.class, resultado.getId());
         Assert.assertNotNull(entity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
-        Assert.assertEquals(entity.getName(), newEntity.getName());
         Assert.assertEquals(entity.getLibro(), newEntity.getLibro());
         Assert.assertEquals(entity.getVideo(), newEntity.getVideo());
         Assert.assertEquals(entity.getUsuario(), newEntity.getUsuario());
+        Assert.assertEquals(entity.getFechaSolicitud(), newEntity.getFechaSolicitud());
     }
 
     /**
@@ -173,10 +173,10 @@ public class ReservaPersistenceTest {
         ReservaEntity entity = em.find(ReservaEntity.class, primero.getId());
         Assert.assertNotNull(entity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
-        Assert.assertEquals(entity.getName(), newEntity.getName());
         Assert.assertEquals(entity.getLibro(), newEntity.getLibro());
         Assert.assertEquals(entity.getVideo(), newEntity.getVideo());
         Assert.assertEquals(entity.getUsuario(), newEntity.getUsuario());
+        Assert.assertEquals(entity.getFechaSolicitud(), newEntity.getFechaSolicitud());
     
     }
 
