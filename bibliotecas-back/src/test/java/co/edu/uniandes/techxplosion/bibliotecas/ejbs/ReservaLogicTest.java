@@ -7,8 +7,21 @@ package co.edu.uniandes.techxplosion.bibliotecas.ejbs;
 
 import co.edu.uniandes.techxplosion.bibliotecas.api.IReservaLogic;
 import co.edu.uniandes.techxplosion.bibliotecas.entities.ReservaEntity;
+import co.edu.uniandes.techxplosion.bibliotecas.persistence.ReservaPersistence;
 import java.util.ArrayList;
 import java.util.List;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.UserTransaction;
+import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import uk.co.jemos.podam.api.PodamFactory;
+import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 /**
  *
@@ -131,7 +144,7 @@ public class ReservaLogicTest {
      * @throws java.lang.Exception
      */
     @Test
-    public void testUpdateAlquiler() throws Exception 
+    public void testUpdateReserva() throws Exception 
     {
         ReservaEntity entity = data.get(0);
         ReservaEntity nuevo = factory.manufacturePojo(ReservaEntity.class);
