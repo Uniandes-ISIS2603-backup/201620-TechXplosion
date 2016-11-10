@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.rest.cities.dtos;
+
+import co.edu.uniandes.techxplosion.bibliotecas.entities.UsuarioEntity;
+
 /**
  *
  * @author jm.rodriguez11
@@ -28,6 +31,35 @@ public class UsuarioDTO
         id=pId;
        nombre = pNombre;
     }
+    
+     /**
+     * Constructor de la clase
+     
+     * @param entity
+     */
+    public UsuarioDTO(UsuarioEntity entity)
+    {
+        if(entity !=null)
+        {
+     this.nombre = entity.getName();
+     this.id = entity.getId();
+        }
+    }
+    
+     /**
+     * To entity
+     
+     
+     */
+    public UsuarioEntity toEntity()
+    {
+        UsuarioEntity entity = new UsuarioEntity();
+        entity.setId(this.id);
+        entity.setName(this.nombre);
+        return entity;
+        
+    }
+    
     /**
      * Constructor vacio
      */
