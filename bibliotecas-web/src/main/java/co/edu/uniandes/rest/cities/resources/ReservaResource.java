@@ -11,6 +11,7 @@ import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 import co.edu.uniandes.rest.cities.mocks.ReservaMock;
 import co.edu.uniandes.techxplosion.bibliotecas.api.IReservaLogic;
 import co.edu.uniandes.techxplosion.bibliotecas.entities.ReservaEntity;
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -35,14 +36,29 @@ public class ReservaResource {
     private IReservaLogic reservaLogic;
     
     /**
+     * Convierte una lista de ReservaEntity a una lista de ReservaDetailDTO.
+     *
+     * @param entityList Lista de ReservaEntity a convertir.
+     * @return Lista de ReservaDetailDTO convertida.
+     *
+     */
+    private List<ReservaDetailDTO> listEntity2DTO(List<ReservaEntity> entityList) {
+        List<ReservaDetailDTO> list = new ArrayList<>();
+        for (ReservaEntity entity : entityList) {
+            list.add(new ReservaDetailDTO(entity));
+        }
+        return list;
+    }
+    
+    /**
      * Obtiene el listado de reservas
      * @return Lista de reservas
      * @throws CityLogicException 
      */
     @GET
-    public List<ReservaDTO> getReservas() throws CityLogicException
+    public List<ReservaDetailDTO> getReservas() throws CityLogicException
     {
-        
+        return listEntity2DTO(reservaLogic.getReservas());
     }
     
     /**
