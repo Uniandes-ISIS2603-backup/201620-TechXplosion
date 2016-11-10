@@ -5,10 +5,34 @@
  */
 package co.edu.uniandes.rest.cities.dtos;
 
+import co.edu.uniandes.techxplosion.bibliotecas.entities.BlogEntity;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author sa.pardo10
  */
-public class BlogDetailDTO {
+@XmlRootElement
+public class BlogDetailDTO extends BlogDTO 
+{
+    private LibroDTO libro;
+    
+    public BlogDetailDTO()
+    {
+        super();
+    }
+    
+    public BlogDetailDTO(BlogEntity entity)
+    {
+        super(entity);
+        libro = new LibroDTO(entity.getLibro());
+    }
+    @Override
+    public BlogEntity toEntity()
+    {
+        BlogEntity entity = super.toEntity();
+        entity.setLibro(libro.toEntity());
+        return entity;
+                }
     
 }

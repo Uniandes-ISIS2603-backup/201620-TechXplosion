@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.rest.cities.dtos;
 
+import co.edu.uniandes.techxplosion.bibliotecas.entities.MedioPagoEntity;
+
 /**
  * Clase que guarda la información de un medio de pago.
  *
@@ -41,6 +43,22 @@ public class MedioPagoDTO {
         this.numeroSeguridad = numeroSeguridad;
     }
 
+    public MedioPagoDTO(MedioPagoEntity entity)
+    {
+        if (entity != null) 
+        {
+                this.tipo = entity.getName();
+                this.id = entity.getId();
+        }
+    }
+    
+    public MedioPagoEntity toEntity()
+    {
+        MedioPagoEntity entity = new MedioPagoEntity();
+        entity.setId(this.id);
+        entity.setName(this.tipo);
+        return entity;
+    }
     /**
      * metodo que retorna el id del medio de pago
      *
