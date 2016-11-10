@@ -9,6 +9,7 @@
         <groupId>co.edu.uniandes.TechXplosion</groupId>
         <artifactId>bibliotecas</artifactId>
         <version>1.0-SNAPSHOT</version>
+           <packaging>jar</packaging>
     </parent>
 
     <dependencies>
