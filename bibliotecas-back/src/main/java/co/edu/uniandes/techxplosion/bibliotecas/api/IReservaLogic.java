@@ -16,9 +16,9 @@ public interface IReservaLogic {
     
     public List<ReservaEntity> getReservas();
     public ReservaEntity getReserva(Long id);
-    public List<ReservaEntity> getReservasPorVideo(Long idVideo);
-    public List<ReservaEntity> getReservasPorLibro(Long idLibro);
-    public List<ReservaEntity> getReservasPorUsuario(Long idUsuario);
+    public List<ReservaEntity> getReservasByVideo(Long idVideo);
+    public List<ReservaEntity> getReservasByLibro(Long idLibro);
+    public List<ReservaEntity> getReservasByUsuario(Long idUsuario);
     public ReservaEntity createReserva(ReservaEntity entity) throws Exception;
     public ReservaEntity updateReserva(ReservaEntity entity);
     public void deleteReserva(Long id);

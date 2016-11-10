@@ -42,17 +42,17 @@ public class ReservaLogic implements IReservaLogic {
     }
     
     @Override
-    public List<ReservaEntity> getReservasPorVideo(Long idVideo) {
+    public List<ReservaEntity> getReservasByVideo(Long idVideo) {
         return persistence.findAllByVideo(idVideo);
     }
     
     @Override
-    public List<ReservaEntity> getReservasPorLibro(Long idLibro) {
+    public List<ReservaEntity> getReservasByLibro(Long idLibro) {
         return persistence.findAllByLibro(idLibro);
     }
     
     @Override
-    public List<ReservaEntity> getReservasPorUsuario(Long idUsuario) {
+    public List<ReservaEntity> getReservasByUsuario(Long idUsuario) {
         return persistence.findAllByUsuario(idUsuario);
     }
 
