@@ -62,4 +62,6 @@ public class BlogEntity extends BaseEntity implements Serializable{
    public void setContenido(String contenido){
        this.contenido=contenido;
    }
+
+ 
 }

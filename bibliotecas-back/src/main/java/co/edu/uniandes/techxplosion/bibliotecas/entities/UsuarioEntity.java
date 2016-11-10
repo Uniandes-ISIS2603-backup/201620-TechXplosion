@@ -37,7 +37,6 @@ public class UsuarioEntity extends BaseEntity implements Serializable{
    
     
    private String nombre;
-   private Long id;
    private String address;
   
    
@@ -47,12 +46,7 @@ public class UsuarioEntity extends BaseEntity implements Serializable{
    public void setNombre(String nombre){
        this.nombre=nombre;
    }
-   public Long getId(){
-       return id;
-   }
-   public void setId(Long numero){
-        this.id=numero;
-   }
+
    public String getAddress(){
        return address;
    }
