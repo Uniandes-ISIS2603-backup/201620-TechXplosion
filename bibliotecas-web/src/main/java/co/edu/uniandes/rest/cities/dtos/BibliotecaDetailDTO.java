@@ -53,7 +53,7 @@ public class BibliotecaDetailDTO extends BibliotecaDTO
         }
         List<UsuarioDTO> usuarioList = this.getUsuarios();
         for(UsuarioDTO usu: usuarioList){
-            entity.getUsuarios().add(usu.toEntity);
+            entity.getUsuarios().add(usu.toEntity());
         }        
         return entity;
     }
