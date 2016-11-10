@@ -17,8 +17,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class ReservaDTO {
 
     private Long id;
-    private Long idUsuario;
-    private Long idRecurso;
     private String fechaSolicitud;
 
     /**
@@ -58,21 +56,6 @@ public class ReservaDTO {
     }
 
     /**
-     *
-     * @param id Identificador de la reserva.
-     * @param idUsuario Identificador de quien realiza la reserva.
-     * @param idRecurso Identificador del recurso reservado.
-     * @param fechaSolicitud Fecha de reserva.
-     */
-    public ReservaDTO(Long id, Long idUsuario, Long idRecurso, String fechaSolicitud) {
-        super();
-        this.id = id;
-        this.idUsuario = idUsuario;
-        this.idRecurso = idRecurso;
-        this.fechaSolicitud = fechaSolicitud;
-    }
-
-    /**
      * @return El id de la reserva.
      */
     public Long getId() {
@@ -84,34 +67,6 @@ public class ReservaDTO {
      */
     public void setId(Long id) {
         this.id = id;
-    }
-
-    /**
-     * @return El id del usuario que hizo la reserva.
-     */
-    public Long getIdUsuario() {
-        return idUsuario;
-    }
-
-    /**
-     * @param idUsuario El id del usuario que hizo la reserva.
-     */
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    /**
-     * @return El id del recurso que fue reservado.
-     */
-    public Long getIdRecurso() {
-        return idRecurso;
-    }
-
-    /**
-     * @param idRecurso El id del recurso que fue reservado.
-     */
-    public void setIdRecurso(Long idRecurso) {
-        this.idRecurso = idRecurso;
     }
 
     /**
@@ -128,13 +83,5 @@ public class ReservaDTO {
         this.fechaSolicitud = fechaSolicitud;
     }
 
-    /**
-     * Convierte el objeto a una cadena
-     * @return string
-     */
-    @Override
-    public String toString() {
-        return "{ id: " + getId() + ", idUsuario : \"" + getIdUsuario() + "\"" + ", idRecurso : \"" + getIdRecurso() + "\"" + ", fechaSolicitud : \"" + getFechaSolicitud() + "\"}";
-    }
 
 }
