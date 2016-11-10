@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.rest.cities.dtos;
 
+import co.edu.uniandes.techxplosion.bibliotecas.entities.BlogEntity;
+
 
 /**
  * Clase con la infomción de un blog.
@@ -42,7 +44,25 @@ public class BlogDTO {
         this.descripcion = descripcion;
         this.comentarios = comentarios;
     }
+    
+    public BlogDTO(BlogEntity entity)
+    {
+        if (entity != null) 
+        {
+                this.name = entity.getName();
+                this.id = entity.getId();
+        }
+    }
 
+    public BlogEntity toEntity() 
+    {
+        BlogEntity entity = new BlogEntity();
+        entity.setId(this.id);
+        entity.setName(this.name);
+        return entity;
+    }
+    
+    
     /**
      * @return el identificador del blog.
      */

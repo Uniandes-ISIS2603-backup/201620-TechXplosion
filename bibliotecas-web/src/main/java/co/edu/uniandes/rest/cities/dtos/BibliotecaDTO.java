@@ -76,11 +76,18 @@ public class BibliotecaDTO {
         this.name = name;
     }
 
+    public BibliotecaEntity toEntity() {
+        BibliotecaEntity entity = new BibliotecaEntity();
+        entity.setId(this.id);
+        entity.setName(this.name);
+        return entity;
+    }
     /**
      * Convierte el objeto a una cadena
      *
      * @return la cadena que represnta el objeto
      */
+    
     @Override
     public String toString() {
         return "{ id : " + getId() + ", name : \"" + getName() + "\" }";
