@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.rest.cities.dtos;
 
+import co.edu.uniandes.techxplosion.bibliotecas.entities.BibliotecaEntity;
+
 /**
  * Clase que guarda la informacíon de una biblioteca
  *
@@ -35,6 +37,16 @@ public class BibliotecaDTO {
         this.id = id;
         this.name = name;
     }
+
+    public BibliotecaDTO(BibliotecaEntity entity) 
+    {
+        if (entity != null) 
+        {
+                this.name = entity.getName();
+                this.id = entity.getId();
+        }
+    }
+   
 
     /**
      * @return el id de la biblioteca
