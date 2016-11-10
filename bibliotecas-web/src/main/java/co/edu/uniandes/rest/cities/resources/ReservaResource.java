@@ -6,8 +6,12 @@
 package co.edu.uniandes.rest.cities.resources;
 
 import co.edu.uniandes.rest.cities.dtos.ReservaDTO;
+import co.edu.uniandes.rest.cities.dtos.ReservaDetailDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 import co.edu.uniandes.rest.cities.mocks.ReservaMock;
+import co.edu.uniandes.techxplosion.bibliotecas.api.IReservaLogic;
+import co.edu.uniandes.techxplosion.bibliotecas.entities.ReservaEntity;
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -32,27 +36,42 @@ public class ReservaResource {
     private IReservaLogic reservaLogic;
     
     /**
+     * Convierte una lista de ReservaEntity a una lista de ReservaDetailDTO.
+     *
+     * @param entityList Lista de ReservaEntity a convertir.
+     * @return Lista de ReservaDetailDTO convertida.
+     *
+     */
+    private List<ReservaDetailDTO> listEntity2DTO(List<ReservaEntity> entityList) {
+        List<ReservaDetailDTO> list = new ArrayList<>();
+        for (ReservaEntity entity : entityList) {
+            list.add(new ReservaDetailDTO(entity));
+        }
+        return list;
+    }
+    
+    /**
      * Obtiene el listado de reservas
      * @return Lista de reservas
      * @throws CityLogicException 
      */
     @GET
-    public List<ReservaDTO> getReservas() throws CityLogicException
+    public List<ReservaDetailDTO> getReservas() throws CityLogicException
     {
-        return reservaMock.getReservas();
+        return listEntity2DTO(reservaLogic.getReservas());
     }
     
     /**
      * Retorna una reserva con un id dado
      * @param id El id de la reserva que se desea obtener
      * @return La reserva que se deseaba obtener
-     * @throws CityLogicException En caso de no haber una reserva con el ida dado o que la lista de reservas sea vacía.
+     * @throws CityLogicException En caso de no haber una reserva con el id dado o que la lista de reservas sea vacía.
      */
     @GET
     @Path("{id: \\d+}")
     public ReservaDTO getReserva(@PathParam("id") Long id) throws CityLogicException 
     {
-        return reservaMock.getReserva(id);
+        return new ReservaDetailDTO(reservaLogic.getReserva(id));
     }
         
     /**
@@ -62,9 +81,9 @@ public class ReservaResource {
      * @throws CityLogicException Cuando ya hay una reserva con el mismo id.
      */
     @POST
-    public ReservaDTO createReserva(ReservaDTO nuevaReserva) throws CityLogicException
+    public ReservaDTO createReserva(ReservaDetailDTO nuevaReserva) throws CityLogicException, Exception
     {
-        return reservaMock.createReserva(nuevaReserva);
+        return new ReservaDetailDTO(reservaLogic.createReserva(nuevaReserva.toEntity()));
     }
     
     /**
@@ -76,7 +95,7 @@ public class ReservaResource {
     @Path("{id: \\d+}")
     public void deleteReserva(@PathParam("id") Long id) throws CityLogicException
     {
-      reservaMock.deleteReserva(id);
+      reservaLogic.deleteReserva(id);
     }
     /**
      * Actualiza una instancia de la entidad Reserva.
@@ -87,9 +106,11 @@ public class ReservaResource {
     */
     @PUT
     @Path("{id: \\d+}")
-    public ReservaDTO updateReserva(@PathParam("id") Long id ,ReservaDTO reservaMod) throws CityLogicException
+    public ReservaDTO updateReserva(@PathParam("id") Long id ,ReservaDetailDTO reservaMod) throws CityLogicException
     {
-        return reservaMock.updateReserva( id, reservaMod);
+        ReservaEntity entity = reservaMod.toEntity();
+        entity.setId(id);
+        return new ReservaDetailDTO(reservaLogic.updateReserva(entity));
     }
     
 }
