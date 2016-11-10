@@ -9,6 +9,7 @@ import co.edu.uniandes.rest.cities.dtos.ReservaDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 import co.edu.uniandes.rest.cities.mocks.ReservaMock;
 import java.util.List;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -27,7 +28,8 @@ import javax.ws.rs.Produces;
 @Consumes("application/json")
 public class ReservaResource {
     
-    ReservaMock reservaMock = new ReservaMock();
+    @Inject 
+    private IReservaLogic reservaLogic;
     
     /**
      * Obtiene el listado de reservas

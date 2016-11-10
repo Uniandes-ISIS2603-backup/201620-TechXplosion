@@ -9,6 +9,6 @@ package co.edu.uniandes.rest.cities.dtos;
  *
  * @author js.numpaque10
  */
-public class ReservaDetailDTO {
+public class ReservaDetailDTO extends ReservaDTO {
     
 }
