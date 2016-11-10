@@ -40,6 +40,22 @@ public class ReservaLogic implements IReservaLogic {
     {
         return persistence.find(id); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    @Override
+    public List<ReservaEntity> getReservasByVideo(Long idVideo) {
+        return persistence.findAllByVideo(idVideo);
+    }
+    
+    @Override
+    public List<ReservaEntity> getReservasByLibro(Long idLibro) {
+        return persistence.findAllByLibro(idLibro);
+    }
+    
+    @Override
+    public List<ReservaEntity> getReservasByUsuario(Long idUsuario) {
+        return persistence.findAllByUsuario(idUsuario);
+    }
+
 
 
     @Override
@@ -66,5 +82,5 @@ public class ReservaLogic implements IReservaLogic {
     {
         persistence.delete(id);
     }
-    
+
 }

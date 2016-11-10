@@ -100,7 +100,7 @@ public class ReservaEntity extends BaseEntity implements Serializable{
      * @param video nuevo valor del atributo
      *
     */
-    public void setUsuario(VideoEntity pVideo)
+    public void setVideo(VideoEntity pVideo)
     {
        video = pVideo;
     }
@@ -108,7 +108,7 @@ public class ReservaEntity extends BaseEntity implements Serializable{
     /**
      * Establece el valor del atributo usuario.
      *
-     * @param usuario nuevo valor del atributo
+     * @param pFechaSolicitud nuevo valor del atributo
      *
     */
     public void setFechaSolicitud(String pFechaSolicitud)

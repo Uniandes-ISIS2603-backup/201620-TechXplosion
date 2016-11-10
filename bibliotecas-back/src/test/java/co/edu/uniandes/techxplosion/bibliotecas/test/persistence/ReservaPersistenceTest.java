@@ -114,22 +114,6 @@ public class ReservaPersistenceTest {
     }
 
     /**
-     * Test of findByName method, of class ReservaPersistence.
-     */
-    @Test
-    public void testFindByName() throws Exception {
-        ReservaEntity entity = data.get(0);
-        ReservaEntity newEntity = reservaPersistence.find(entity.getId());
-        Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getId(), newEntity.getId());
-        Assert.assertEquals(entity.getLibro(), newEntity.getLibro());
-        Assert.assertEquals(entity.getVideo(), newEntity.getVideo());
-        Assert.assertEquals(entity.getUsuario(), newEntity.getUsuario());
-        Assert.assertEquals(entity.getFechaSolicitud(), newEntity.getFechaSolicitud());
-        Assert.assertTrue(true);
-    }
-
-    /**
      * Test of findAll method, of class AlquilerPersistence.
      */
     @Test

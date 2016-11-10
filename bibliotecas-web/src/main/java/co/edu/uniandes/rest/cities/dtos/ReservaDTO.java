@@ -5,11 +5,15 @@
  */
 package co.edu.uniandes.rest.cities.dtos;
 
+import co.edu.uniandes.techxplosion.bibliotecas.entities.ReservaEntity;
+import javax.xml.bind.annotation.XmlRootElement;
+
 
 /**
  *
  * @author js.numpaque10
  */
+@XmlRootElement
 public class ReservaDTO {
 
     private Long id;
@@ -24,6 +28,33 @@ public class ReservaDTO {
         /**
      * Constructor por defecto
      */
+    }
+    
+    /**
+     * Crea un objeto ReservaDTO a partir de un objeto ReservaEntity.
+     *
+     * @param entity Entidad ReservaEntity desde la cual se va a crear el nuevo
+     * objeto.
+     * 
+     */
+    public ReservaDTO(ReservaEntity entity) {
+        if (entity != null) {
+            this.id = entity.getId();
+            this.fechaSolicitud = entity.getFechaSolicitud();
+        }
+    }
+    
+    /**
+     * Convierte un objeto ReservaDTO a ReservaEntity.
+     *
+     * @return Nueva objeto ReservaEntity.
+     * 
+     */
+    public ReservaEntity toEntity() {
+        ReservaEntity entity = new ReservaEntity();
+        entity.setId(this.getId());
+        entity.setFechaSolicitud(this.getFechaSolicitud());
+        return entity;
     }
 
     /**
