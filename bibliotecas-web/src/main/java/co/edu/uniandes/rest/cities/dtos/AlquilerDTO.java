@@ -23,12 +23,12 @@ public class AlquilerDTO {
     /**
      * Atributo que modela el id del usuario que realizo el alquiler
      */
-    private UsuarioEntity idUsuario;
+    private Long idUsuario;
     /**
      * Atributo que modela el id del recurso que se alquila
      */
-    private LibroEntity idLibro;
-    private VideoEntity idVideo;
+    private Long idLibro;
+    private Long idVideo;
 
     
     /**
@@ -43,6 +43,8 @@ public class AlquilerDTO {
      * Atributo que modela si el alquiler ya entro en vencimiento o no
      */
     private boolean estaVencido;
+    
+    private String name;        
 
     /**
      * Constructor de la clase
@@ -53,9 +55,9 @@ public class AlquilerDTO {
         if (entity != null) 
         {
         id = entity.getId();
-        idUsuario = entity.getUsuario();
-        idLibro = entity.getLibro();
-        idVideo = entity.getVideo();
+        idUsuario = entity.getUsuario().getId();
+        idLibro = entity.getLibro().getId();
+        idVideo = entity.getVideo().getId();
         fechaAlquiler = entity.getFechaAlquiler();
         fechaDevolucion = entity.getFechaDevolucion();
         estaVencido = false;
@@ -66,11 +68,7 @@ public class AlquilerDTO {
     {
         AlquilerEntity entity = new AlquilerEntity();
         entity.setId(this.id);
-        entity.setLibro(this.idLibro);
-        entity.setVideo(idVideo);
-        entity.setUsuario(idUsuario);
-        entity.setFechaAlquiler(fechaAlquiler);
-        entity.setFechaDevolucion(fechaDevolucion);
+        entity.setName(this.name);
         return entity;
     }
     
@@ -106,7 +104,7 @@ public class AlquilerDTO {
      *
      * @return id del usuario
      */
-    public UsuarioEntity getUsuario() {
+    public Long getUsuario() {
         return idUsuario;
     }
 
@@ -115,23 +113,23 @@ public class AlquilerDTO {
      *
      * @param pIdUsuario nuevo id del usuario
      */
-    public void setUsuario(UsuarioEntity pUsuario) {
+    public void setUsuario(Long pUsuario) {
         idUsuario = pUsuario;
     }
 
-   public LibroEntity getLibro() {
+   public Long getLibro() {
         return idLibro;
     }
 
-    public void setLibro(LibroEntity idLibro) {
+    public void setLibro(Long idLibro) {
         this.idLibro = idLibro;
     }
 
-    public VideoEntity getIdVideo() {
+    public Long getIdVideo() {
         return idVideo;
     }
 
-    public void setIdVideo(VideoEntity idVideo) {
+    public void setIdVideo(Long idVideo) {
         this.idVideo = idVideo;
     }
 
