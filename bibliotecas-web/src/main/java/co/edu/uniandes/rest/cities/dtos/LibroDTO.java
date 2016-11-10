@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.rest.cities.dtos;
 
+import co.edu.uniandes.techxplosion.bibliotecas.entities.BibliotecaEntity;
+import co.edu.uniandes.techxplosion.bibliotecas.entities.LibroEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,6 +63,15 @@ public class LibroDTO {
         this.autor = libro.getAutor();
         this.edicion = libro.getEdicion();
         this.tipo = libro.getTipo();        
+    }
+    
+    public LibroDTO(LibroEntity entity) 
+    {
+        if (entity != null) 
+        {
+                this.nombre = entity.getName();
+                this.id = entity.getId();
+        }
     }
     /**
      * @return el isbn del libro
@@ -155,6 +166,12 @@ public class LibroDTO {
       */
     public void setBlogs(List<BlogDTO> blogs) {
         this.blogs = blogs;
+    }
+    public LibroEntity toEntity() {
+        LibroEntity entity = new LibroEntity();
+        entity.setId(this.id);
+        entity.setName(this.nombre);
+        return entity;
     }
     /**
      * Convierte el objeto a una cadena
