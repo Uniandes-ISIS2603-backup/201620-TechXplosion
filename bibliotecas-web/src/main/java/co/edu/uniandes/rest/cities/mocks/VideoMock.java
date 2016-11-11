@@ -38,6 +38,12 @@ public class VideoMock
         {
             videos = new ArrayList<>();
         }
+        // indica que se muestren todos los mensajes
+    	logger.setLevel(Level.INFO);
+    	
+    	// muestra información 
+    	logger.info("Inicializa la lista de alquileres");
+    	logger.log(Level.INFO, "alquileres{0}", videos);
     }
     
     /**

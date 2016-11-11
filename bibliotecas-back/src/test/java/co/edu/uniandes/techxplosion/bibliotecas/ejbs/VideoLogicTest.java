@@ -29,6 +29,8 @@ import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 import co.edu.uniandes.techxplosion.bibliotecas.api.IVideoLogic;
+import com.sun.jdo.spi.persistence.utility.logging.LoggerJDK14;
+import java.util.logging.Logger;
 
 /**
  *
@@ -65,7 +67,7 @@ public class VideoLogicTest
     
     private void clearData()
     {
-        em.createQuery("delete from AlquilerEntity").executeUpdate();
+        em.createQuery("delete from VideoEntity").executeUpdate();
     }
     
     private void insertData()
@@ -97,11 +99,11 @@ public class VideoLogicTest
     }
 
     /**
-     * Test of getAlquileres method, of class AlquilerLogic.
+     * Test of getVideos method, of class VideoLogic.
      * @throws java.lang.Exception
      */
     @Test
-    public void testGetAlquileres() throws Exception 
+    public void testGetVideos() throws Exception 
     {
         List<VideoEntity> list = videoLogic.getVideos();
          Assert.assertEquals(data.size(), list.size());   
@@ -124,7 +126,7 @@ public class VideoLogicTest
      * @throws java.lang.Exception
      */
     @Test
-    public void testGetAlquiler() throws Exception 
+    public void testGetVideo() throws Exception 
     {
         VideoEntity entity = data.get(0);
         
@@ -138,14 +140,16 @@ public class VideoLogicTest
      * @throws java.lang.Exception
      */
     @Test
-    public void testGetVideoPorUsuario() throws Exception {
+    public void testGetVideoPorUsuario() throws Exception 
+    {
+        
     }
 
     /**
-     * Test of createAlquiler method, of class VideoLogic.
+     * Test of createVideo method, of class VideoLogic.
      */
     @Test
-    public void testCreateAlquiler() throws Exception 
+    public void testCreateVideo() throws Exception 
     {
         VideoEntity entity = factory.manufacturePojo(VideoEntity.class);
         VideoEntity buscado = videoLogic.createVideo(entity);
@@ -156,11 +160,11 @@ public class VideoLogicTest
     }
 
     /**
-     * Test of updateAlquiler method, of class AlquilerLogic.
+     * Test of updateVideo method, of class VideoLogic.
      * @throws java.lang.Exception
      */
     @Test
-    public void testUpdateAlquiler() throws Exception 
+    public void testUpdateVideo() throws Exception 
     {
         VideoEntity entity = data.get(0);
         VideoEntity nuevo = factory.manufacturePojo(VideoEntity.class);
@@ -174,11 +178,11 @@ public class VideoLogicTest
     }
 
     /**
-     * Test of deleteAlquiler method, of class AlquilerLogic.
+     * Test of deleteVideo method, of class VideoLogic.
      * @throws java.lang.Exception
      */
     @Test
-    public void testDeleteAlquiler() throws Exception 
+    public void testDeleteVideo() throws Exception 
     {
         VideoEntity entity = data.get(0);
         videoLogic.deleteVideo(entity.getId());

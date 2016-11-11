@@ -80,7 +80,7 @@ public class VideoEntity extends BaseEntity implements Serializable
    
     public void setNombre(String nombre)
    {
-       this.nombre=nombre;
+       this.nombre = nombre;
    }
     
      public void setDuracion(Double duracion)

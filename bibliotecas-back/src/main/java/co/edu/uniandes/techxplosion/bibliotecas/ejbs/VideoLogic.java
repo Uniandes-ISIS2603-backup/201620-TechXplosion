@@ -32,7 +32,7 @@ public class VideoLogic implements IVideoLogic
     @Override
     public VideoEntity getVideo(Long id) 
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         return persistence.find(id); 
     }
 
     @Override
@@ -44,19 +44,27 @@ public class VideoLogic implements IVideoLogic
     @Override
     public VideoEntity createVideo(VideoEntity entity) throws Exception 
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         VideoEntity alreadyExist = getVideo(entity.getId());
+        if (alreadyExist != null) 
+        {
+            throw new Exception("Ya existe un videos con ese id");
+        } else
+        {
+            persistence.create(entity);
+        }
+        return entity;
     }
 
     @Override
     public VideoEntity updateVideo(VideoEntity entity) 
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return persistence.update(entity);
     }
 
     @Override
     public void deleteVideo(Long id) 
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        persistence.delete(id);
     }
 
     @Override
