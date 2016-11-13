@@ -56,7 +56,7 @@ public class UsuarioPersistenceTest
     }
     
     @Inject
-    private UsuarioPersistence UsuarioPersistence;
+    private UsuarioPersistence usuarioPersistence;
     
     @PersistenceContext
     private EntityManager em;
@@ -113,7 +113,7 @@ public class UsuarioPersistenceTest
     @Test
     public void testFind() throws Exception {
         UsuarioEntity entity = data.get(0);
-        UsuarioEntity newEntity = UsuarioPersistence.find(entity.getId());
+        UsuarioEntity newEntity = usuarioPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
         Assert.assertEquals(entity.getName(), newEntity.getName());
@@ -127,7 +127,7 @@ public class UsuarioPersistenceTest
     @Test
     public void testFindAll() throws Exception 
     {
-        List<UsuarioEntity> list = UsuarioPersistence.findAll();
+        List<UsuarioEntity> list = usuarioPersistence.findAll();
         Assert.assertEquals(data.size(), list.size());
         for (UsuarioEntity ent : list) 
         {
@@ -147,10 +147,11 @@ public class UsuarioPersistenceTest
      * Test of create method, of class AlquilerPersistence.
      */
     @Test
-    public void testCreate() throws Exception {
+    public void testCreate() throws Exception 
+    {
         PodamFactory factory = new PodamFactoryImpl();
         UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
-        UsuarioEntity resultado =  UsuarioPersistence.create(newEntity);
+        UsuarioEntity resultado =  usuarioPersistence.create(newEntity);
         Assert.assertNotNull(resultado);
         UsuarioEntity entity = em.find(UsuarioEntity.class, resultado.getId());
         Assert.assertNotNull(entity);
@@ -169,7 +170,7 @@ public class UsuarioPersistenceTest
 
         newEntity.setId(primero.getId());
 
-        UsuarioPersistence.update(newEntity);
+        usuarioPersistence.update(newEntity);
 
         UsuarioEntity entity = em.find(UsuarioEntity.class, primero.getId());
         Assert.assertNotNull(entity);
@@ -184,7 +185,7 @@ public class UsuarioPersistenceTest
     @Test
     public void testDelete() throws Exception {
         UsuarioEntity entity = data.get(0);
-        UsuarioPersistence.delete(entity.getId());
+        usuarioPersistence.delete(entity.getId());
         
         UsuarioEntity resp= em.find(UsuarioEntity.class, entity.getId());
         Assert.assertNull(resp);

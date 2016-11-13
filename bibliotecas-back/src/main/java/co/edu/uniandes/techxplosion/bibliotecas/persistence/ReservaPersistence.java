@@ -34,7 +34,7 @@ public class ReservaPersistence {
     
      public List<ReservaEntity> findAll() {
         LOGGER.info("Consultando todas las reservas");
-        Query q = em.createQuery("select u from ReservatEntity u");
+        Query q = em.createQuery("select u from ReservaEntity u");
         return q.getResultList();
     }
      
