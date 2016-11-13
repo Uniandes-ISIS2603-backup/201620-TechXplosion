@@ -32,9 +32,9 @@ public class ReservaMock {
     {
      	if (reservas == null) {
             reservas = new ArrayList<>();
-            reservas.add(new ReservaDTO(1L,1L,1L,"01-01-2016"));
-            reservas.add(new ReservaDTO(2L,2L,2L,"01-02-2016"));
-            reservas.add(new ReservaDTO(3L,3L,3L,"01-03-2016"));
+            //reservas.add(new ReservaDTO(1L,1L,1L,"01-01-2016"));
+           // reservas.add(new ReservaDTO(2L,2L,2L,"01-02-2016"));
+           // reservas.add(new ReservaDTO(3L,3L,3L,"01-03-2016"));
         }
         
     	// indica que se muestren todos los mensajes
