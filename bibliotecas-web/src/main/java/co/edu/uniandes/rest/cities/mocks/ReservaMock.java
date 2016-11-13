@@ -231,7 +231,7 @@ public class ReservaMock {
         {
             for (ReservaDTO reserva : reservas)
             {
-                if (reserva.getIdRecurso().equals(idRecurso))
+                if (reserva.getId().equals(idRecurso))
                 {
                   reservasPorRecurso.add(reserva);
                 }
