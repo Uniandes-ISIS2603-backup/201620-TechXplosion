@@ -2,9 +2,13 @@
 package co.edu.uniandes.rest.cities.resources;
 
 import co.edu.uniandes.rest.cities.dtos.ReservaDTO;
+import co.edu.uniandes.rest.cities.dtos.ReservaDetailDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
-import co.edu.uniandes.rest.cities.mocks.ReservaMock;
+import co.edu.uniandes.techxplosion.bibliotecas.api.IReservaLogic;
+import co.edu.uniandes.techxplosion.bibliotecas.entities.ReservaEntity;
+import java.util.ArrayList;
 import java.util.List;
+import javax.inject.Inject;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -26,7 +30,23 @@ import javax.ws.rs.core.MediaType;
  */
 public class LibroReservaResource {
     
-    ReservaMock reservaMock = new ReservaMock();
+    @Inject 
+    private IReservaLogic reservaLogic;
+    
+        /**
+     * Convierte una lista de ReservaEntity a una lista de ReservaDetailDTO.
+     *
+     * @param entityList Lista de ReservaEntity a convertir.
+     * @return Lista de ReservaDetailDTO convertida.
+     *
+     */
+    private List<ReservaDetailDTO> listEntity2DTO(List<ReservaEntity> entityList) {
+        List<ReservaDetailDTO> list = new ArrayList<>();
+        for (ReservaEntity entity : entityList) {
+            list.add(new ReservaDetailDTO(entity));
+        }
+        return list;
+    }
 
     /**
     * Retorna una lista de reservas asociadas a un libro dado.
@@ -35,9 +55,9 @@ public class LibroReservaResource {
     * @throws CityLogicException 
     */
     @GET
-    public List<ReservaDTO> getReservaPorLibro(@PathParam("idLibro")Long idLibro) throws CityLogicException 
+    public List<ReservaDetailDTO> getReservaPorLibro(@PathParam("idLibro")Long idLibro) throws CityLogicException 
     {
-        return reservaMock.getReservaPorRecurso(idLibro);
+        return listEntity2DTO(reservaLogic.getReservasByLibro(idLibro));
     }
     
     /**
@@ -51,7 +71,9 @@ public class LibroReservaResource {
     @Path("{id: \\d+}")
     public ReservaDTO updateReserva(@PathParam("idLibro") Long idLibro, @PathParam("id") Long id , ReservaDTO reservaMod) throws CityLogicException
     {
-        return reservaMock.updateReserva(id, reservaMod);
+        ReservaEntity entity = reservaMod.toEntity();
+        entity.setId(id);
+        return new ReservaDetailDTO(reservaLogic.updateReserva(entity));
     }
 
     /**
@@ -62,8 +84,9 @@ public class LibroReservaResource {
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteReserva(@PathParam("idLibro") Long idLibro, @PathParam("id") Long id) throws CityLogicException {
-        reservaMock.deleteReserva(id);
+    public void deleteReserva(@PathParam("idLibro") Long idLibro, @PathParam("id") Long id) throws CityLogicException 
+    {
+      reservaLogic.deleteReserva(id);
     }
     
 }
