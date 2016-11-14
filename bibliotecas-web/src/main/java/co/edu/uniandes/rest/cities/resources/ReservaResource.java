@@ -8,7 +8,6 @@ package co.edu.uniandes.rest.cities.resources;
 import co.edu.uniandes.rest.cities.dtos.ReservaDTO;
 import co.edu.uniandes.rest.cities.dtos.ReservaDetailDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
-import co.edu.uniandes.rest.cities.mocks.ReservaMock;
 import co.edu.uniandes.techxplosion.bibliotecas.api.IReservaLogic;
 import co.edu.uniandes.techxplosion.bibliotecas.entities.ReservaEntity;
 import java.util.ArrayList;

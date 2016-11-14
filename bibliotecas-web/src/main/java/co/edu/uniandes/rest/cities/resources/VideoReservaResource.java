@@ -6,9 +6,13 @@
 package co.edu.uniandes.rest.cities.resources;
 
 import co.edu.uniandes.rest.cities.dtos.ReservaDTO;
+import co.edu.uniandes.rest.cities.dtos.ReservaDetailDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
-import co.edu.uniandes.rest.cities.mocks.ReservaMock;
+import co.edu.uniandes.techxplosion.bibliotecas.api.IReservaLogic;
+import co.edu.uniandes.techxplosion.bibliotecas.entities.ReservaEntity;
+import java.util.ArrayList;
 import java.util.List;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -29,8 +33,26 @@ import javax.ws.rs.core.MediaType;
  */
 public class VideoReservaResource {
     
-    ReservaMock reservaMock = new ReservaMock();
+        
+    @Inject 
+    private IReservaLogic reservaLogic;
     
+        /**
+     * Convierte una lista de ReservaEntity a una lista de ReservaDetailDTO.
+     *
+     * @param entityList Lista de ReservaEntity a convertir.
+     * @return Lista de ReservaDetailDTO convertida.
+     *
+     */
+    private List<ReservaDetailDTO> listEntity2DTO(List<ReservaEntity> entityList) {
+        List<ReservaDetailDTO> list = new ArrayList<>();
+        for (ReservaEntity entity : entityList) {
+            list.add(new ReservaDetailDTO(entity));
+        }
+        return list;
+    }    
+    
+
     /**
     * Retorna una lista de reservas asociadas a un video dado.
     * @param id El id del libro del cual se desean obtener las reservas.
@@ -38,9 +60,9 @@ public class VideoReservaResource {
     * @throws CityLogicException 
     */
     @GET
-    public List<ReservaDTO> getReservaPorVideo(@PathParam("idVideo")Long idVideo) throws CityLogicException 
+    public List<ReservaDetailDTO> getReservaPorVideo(@PathParam("idVideo")Long idVideo) throws CityLogicException 
     {
-        return reservaMock.getReservaPorRecurso(idVideo);
+        return listEntity2DTO(reservaLogic.getReservasByVideo(idVideo));
     }
     
     /**
@@ -54,7 +76,9 @@ public class VideoReservaResource {
     @Path("{id: \\d+}")
     public ReservaDTO updateReserva(@PathParam("idVideo") Long idVideo, @PathParam("id") Long id , ReservaDTO reservaMod) throws CityLogicException
     {
-        return reservaMock.updateReserva(id, reservaMod);
+        ReservaEntity entity = reservaMod.toEntity();
+        entity.setId(id);
+        return new ReservaDetailDTO(reservaLogic.updateReserva(entity));
     }
 
     /**
@@ -65,8 +89,9 @@ public class VideoReservaResource {
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteReserva(@PathParam("idVideo") Long idVideo, @PathParam("id") Long id) throws CityLogicException {
-        reservaMock.deleteReserva(id);
+    public void deleteReserva(@PathParam("idVideo") Long idVideo, @PathParam("id") Long id) throws CityLogicException 
+    {
+        reservaLogic.deleteReserva(id);
     }
     
 }
