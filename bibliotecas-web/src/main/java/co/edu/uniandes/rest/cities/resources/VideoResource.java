@@ -13,7 +13,6 @@ import co.edu.uniandes.rest.cities.dtos.VideoDetailDTO;
 import co.edu.uniandes.techxplosion.bibliotecas.entities.AlquilerEntity;
 import co.edu.uniandes.rest.cities.dtos.VideoDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
-import co.edu.uniandes.rest.cities.mocks.VideoMock;
 import co.edu.uniandes.techxplosion.bibliotecas.entities.VideoEntity;
 import java.util.ArrayList;
 import java.util.List;
