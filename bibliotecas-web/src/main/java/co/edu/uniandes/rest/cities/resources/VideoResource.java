@@ -57,6 +57,7 @@ public class VideoResource
         return listEntity2DTO(videoLogic.getVideos());
     }
     
+    
      /**
      * Agrega un video nuevo
      *
