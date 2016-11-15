@@ -6,7 +6,6 @@
 package co.edu.uniandes.rest.cities.resources;
 import co.edu.uniandes.rest.cities.dtos.BlogDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
-import co.edu.uniandes.rest.cities.mocks.BlogMock;
 
 
 import java.util.List;
