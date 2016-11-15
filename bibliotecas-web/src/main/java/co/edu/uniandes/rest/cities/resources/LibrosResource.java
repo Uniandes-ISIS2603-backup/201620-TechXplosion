@@ -5,11 +5,18 @@
  */
 package co.edu.uniandes.rest.cities.resources;
 import co.edu.uniandes.rest.cities.dtos.LibroDTO;
+import co.edu.uniandes.rest.cities.dtos.LibroDetailDTO;
+import co.edu.uniandes.rest.cities.dtos.VideoDetailDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
-import co.edu.uniandes.rest.cities.mocks.LibroMock;
+import co.edu.uniandes.techxplosion.bibliotecas.api.ILibroLogic;
+import co.edu.uniandes.techxplosion.bibliotecas.ejbs.LibroLogic;
+import co.edu.uniandes.techxplosion.bibliotecas.entities.LibroEntity;
+import co.edu.uniandes.techxplosion.bibliotecas.entities.VideoEntity;
+import java.util.ArrayList;
 
 
 import java.util.List;
+import javax.inject.Inject;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -17,18 +24,28 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 /**
  *
  * @author jc.sanchez16
  */
 @Path("libros")
-@Produces("application/json")
+@Produces(MediaType.APPLICATION_JSON)
 public class LibrosResource {
 
 
-
-    LibroMock libroLogic = new LibroMock();
-
+    @Inject
+    private ILibroLogic libroLogic;
+            
+            
+    private List<LibroDetailDTO> listEntity2DTO(List<LibroEntity> entityList) 
+   {
+        List<LibroDetailDTO> list = new ArrayList<>();
+        for (LibroEntity entity : entityList) {
+            list.add(new LibroDetailDTO(entity));
+        }
+        return list;
+    } 
     /**
      * Obtiene el listado de libros.
      *
@@ -36,8 +53,8 @@ public class LibrosResource {
      * @throws CityLogicException excepción retornada por la lógica
      */
     @GET
-    public List<LibroDTO> getLibros() throws CityLogicException {
-        return libroLogic.getLibros();
+    public List<LibroDetailDTO> getLibros() throws CityLogicException {
+        return listEntity2DTO(libroLogic.getLibros());
     }
 
    
@@ -50,8 +67,8 @@ public class LibrosResource {
      * suministrado
      */
     @POST
-    public LibroDTO  createLibro( LibroDTO  libro ) throws CityLogicException {
-        return libroLogic.createLibro(libro);
+    public LibroDTO  createLibro( LibroDetailDTO libro ) throws  Exception {
+        return new LibroDetailDTO (libroLogic.createLibro(libro.toEntity()));
     }
     /**
      * obtiene la infomacion del libro identificado con el isbn.
@@ -61,8 +78,8 @@ public class LibrosResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public LibroDTO  getLibro( @PathParam("id") Long id) throws CityLogicException {
-        return libroLogic.getLibro(id);
+    public LibroDTO  getLibro( @PathParam("id") Long id) throws Exception {
+        return new LibroDetailDTO(libroLogic.getLibro(id));
     }
      /**
      * elimina el libro identificada con el isbn.
@@ -71,7 +88,7 @@ public class LibrosResource {
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void  deleteLibro( @PathParam("id") Long id) throws CityLogicException {
+    public void  deleteLibro( @PathParam("id") Long id) throws Exception {
         libroLogic.deleteLibro(id);
     }
 
@@ -84,8 +101,11 @@ public class LibrosResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public LibroDTO updateLibro(@PathParam("id") Long id, LibroDTO newLibro) throws CityLogicException{
-        return libroLogic.updateLibro(id, newLibro);
+    public LibroDTO updateLibro(@PathParam("id") Long id, LibroDTO newLibro) throws CityLogicException
+    {
+        LibroEntity entity = newLibro.toEntity();
+        entity.setId(id);
+        return new LibroDetailDTO(libroLogic.updateLibro(entity));
     } 
 }
 
