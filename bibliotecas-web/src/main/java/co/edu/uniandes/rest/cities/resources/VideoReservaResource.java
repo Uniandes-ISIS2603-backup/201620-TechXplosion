@@ -55,7 +55,7 @@ public class VideoReservaResource {
 
     /**
     * Retorna una lista de reservas asociadas a un video dado.
-    * @param id El id del libro del cual se desean obtener las reservas.
+    * @param idVideo El id del libro del cual se desean obtener las reservas.
     * @return La lista de reservas que se deseaba obtener.
     * @throws CityLogicException 
     */
@@ -67,6 +67,7 @@ public class VideoReservaResource {
     
     /**
      * Actualiza una instancia de la entidad Reserva.
+     * @param idVideo
      * @param id Id de la instancia que se quiere actualizar.
      * @param reservaMod La instancia de Reserva actualizada.
      * @return La instancia de Reserva actualizada.
@@ -84,6 +85,7 @@ public class VideoReservaResource {
     /**
      * Elimina los datos de una reserva
      *
+     * @param idVideo
      * @param id identificador de la reserva a eliminar
      * @throws CityLogicException cuando no existe una reserva con el id dado.
      */

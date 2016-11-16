@@ -6,6 +6,7 @@
 package co.edu.uniandes.rest.cities.resources;
 import co.edu.uniandes.rest.cities.dtos.BlogDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
+import java.util.ArrayList;
 
 
 import java.util.List;
@@ -24,16 +25,25 @@ import javax.ws.rs.Produces;
 @Path("libros/{isbn: \\d++}/blogs")
 @Produces("application/json")
 public class BlogResource {
-    BlogMock blogLogic = new BlogMock();
-
+    private IBlogLogic blogLogic ;
+    
+    
+     private List<BlogDetailDTO> listEntity2DTO(List<BlogEntity> entityList) 
+   {
+        List<BlogDetailDTO> list = new ArrayList<>();
+        for (BlogEntity entity : entityList) {
+            list.add(new BlogDetailDTO(entity));
+        }
+        return list;
+    } 
     /**
      * Obtiene el listado de Blogs.
      * @return lista de blogs
      * @throws CityLogicException excepción retornada por la lógica
      */
     @GET
-    public List<BlogDTO> getBlogs(@PathParam("isbn") Long isbn) throws CityLogicException {
-        return blogLogic.getBlogs(isbn);
+    public List<BlogDetailDTO> getBlogs(@PathParam("id") Long id) throws CityLogicException {
+        return  listEntity2DTO(blogLogic.getBlogs(id));
     }
 
    
@@ -45,8 +55,8 @@ public class BlogResource {
      * suministrado
      */
     @POST
-    public BlogDTO  createBlog( @PathParam("isbn") Long isbn,BlogDTO  blog) throws CityLogicException {
-        return blogLogic.createBlog(isbn,blog);
+    public BlogDTO  createBlog( BlogDetailDTO  blog) throws CityLogicException {
+        return new BlogDetailDTO (blogLogic.createBlog(blog.toEntity));
     }
     
     /**
@@ -57,8 +67,8 @@ public class BlogResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public BlogDTO  getBlog(@PathParam("isbn") Long isbn, @PathParam("id") Long id) throws CityLogicException {
-        return blogLogic.getBlog(isbn,id); 
+    public BlogDTO  getBlog(@PathParam("id") Long id) throws CityLogicException {
+        return new BlogDetailDTO (blogLogic.getBlog(id)); 
     }
 
     /**
@@ -68,8 +78,8 @@ public class BlogResource {
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void  deleteBlog(@PathParam("isbn") Long isbn, @PathParam("id") Long id) throws CityLogicException {
-        blogLogic.deleteBlog(isbn,id);
+    public void  deleteBlog( @PathParam("id") Long id) throws CityLogicException {
+        blogLogic.deleteBlog(id);
     }
 
     /**
@@ -81,7 +91,9 @@ public class BlogResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public BlogDTO updateBlog(@PathParam("isbn") Long isbn,@PathParam("id") Long id, BlogDTO newBlog) throws CityLogicException{
-        return blogLogic.updateBlog(isbn,id, newBlog);
+    public BlogDTO updateBlog(@PathParam("id") Long id, BlogDTO newBlog) throws CityLogicException{
+        BlogEntity entity = newBlog.toEntity():
+        entity.detId(id)
+        return new BlogDetailDTO(blogLogic.updateBlog(entity);
     }
 }

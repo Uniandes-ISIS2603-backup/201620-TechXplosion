@@ -5,9 +5,15 @@
  */
 package co.edu.uniandes.rest.cities.resources;
 import co.edu.uniandes.rest.cities.dtos.BibliotecaDTO;
+import co.edu.uniandes.rest.cities.dtos.BibliotecaDetailDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
+import co.edu.uniandes.techxplosion.bibliotecas.api.IBibliotecaLogic;
+import co.edu.uniandes.techxplosion.bibliotecas.entities.BibliotecaEntity;
+import java.util.ArrayList;
+
 
 import java.util.List;
+import javax.inject.Inject;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -21,11 +27,20 @@ import javax.ws.rs.Produces;
  */
 @Path("bibliotecas")
 @Produces("application/json")
-public class BibliotecaResource {
-
-
-
-    BibliotecaMock bibliotecaLogic = new BibliotecaMock();
+public class BibliotecaResource 
+{
+    @Inject
+    private IBibliotecaLogic bibliotecaLogic;
+    
+    private List<BibliotecaDetailDTO> listEntity2DTO(List<BibliotecaEntity> entityList)
+    {
+        List<BibliotecaDetailDTO> list = new ArrayList<>();
+        for (BibliotecaEntity entity : entityList) 
+        {
+            list.add(new BibliotecaDetailDTO(entity));
+        }
+        return list;
+    }   
 
     /**
      * Obtiene el listado de Bibliotecas.
@@ -33,9 +48,16 @@ public class BibliotecaResource {
      * @return lista de bibliotecas
      * @throws CityLogicException excepción retornada por la lógica
      */
+     /**
+     * Obtiene el listado de bibliotecas.
+     *
+     * @return lista de bibliotecas
+     * @throws CityLogicException excepción retornada por la lógica
+     */
     @GET
-    public List<BibliotecaDTO> getBibliotecas() throws CityLogicException {
-        return bibliotecaLogic.getBibliotecas();
+    public List<BibliotecaDetailDTO> getBibliotecas() throws CityLogicException 
+    {
+        return listEntity2DTO(bibliotecaLogic.getBibliotecas());
     }
 
    
@@ -48,9 +70,11 @@ public class BibliotecaResource {
      * suministrado
      */
     @POST
-    public BibliotecaDTO  createBiblioteca( BibliotecaDTO  biblioteca ) throws CityLogicException {
-        return bibliotecaLogic.createBiblioteca(biblioteca);
+    public BibliotecaDTO createAlquiler(BibliotecaDetailDTO biblioteca) throws CityLogicException, Exception 
+    {
+        return new BibliotecaDetailDTO(bibliotecaLogic.createBiblioteca(biblioteca.toEntity()));
     }
+    
     /**
      * obtiene la infomacion de la biblioteca identificado con el id.
      * @param id de la biblioteca a buscar.
@@ -59,9 +83,11 @@ public class BibliotecaResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public BibliotecaDTO  getBiblioteca( @PathParam("id") Long id) throws CityLogicException {
-        return bibliotecaLogic.getBiblioteca(id);
+    public BibliotecaDetailDTO  getBiblioteca( @PathParam("id") Long id) throws CityLogicException 
+    {
+        return new BibliotecaDetailDTO( bibliotecaLogic.getBiblioteca(id));
     }
+    
      /**
      * elimina la biblioteca identificada con el id.
      * @param id identificador de la biblioteca a eliminar.
@@ -82,8 +108,11 @@ public class BibliotecaResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public BibliotecaDTO updateBiblioteca(@PathParam("id") Long id, BibliotecaDTO newBiblioteca) throws CityLogicException{
-        return bibliotecaLogic.updateBiblioteca(id, newBiblioteca);
+    public BibliotecaDetailDTO updateAlquiler(@PathParam("id") Long id,  BibliotecaDetailDTO newBiblioteca) throws CityLogicException
+    {
+        BibliotecaEntity entity = newBiblioteca.toEntity();
+        entity.setId(id);
+        return new BibliotecaDetailDTO(bibliotecaLogic.updateBiblioteca(entity));
     }
 }
 
