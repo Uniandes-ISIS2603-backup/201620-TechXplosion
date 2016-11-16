@@ -5,12 +5,14 @@
  */
 package co.edu.uniandes.rest.cities.resources;
 import co.edu.uniandes.rest.cities.dtos.MedioPagoDTO;
+import co.edu.uniandes.rest.cities.dtos.MedioPagoDetailDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
-import co.edu.uniandes.rest.cities.mocks.MedioPagoMock;
-
+import co.edu.uniandes.techxplosion.bibliotecas.api.IMedioPagoLogic;
+import co.edu.uniandes.techxplosion.bibliotecas.entities.MedioPagoEntity;
+import java.util.ArrayList;
 
 import java.util.List;
-
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -24,30 +26,44 @@ import javax.ws.rs.Produces;
  */
 @Path("medioPagos")
 @Produces("application/json")
-public class MedioPagoResource {
-    MedioPagoMock MedioPagoLogic = new MedioPagoMock();
-
+public class MedioPagoResource 
+{
+    @Inject
+    private IMedioPagoLogic medioPagoLogic;
+    
+    private List<MedioPagoDetailDTO> listEntity2DTO(List<MedioPagoEntity> entityList) 
+    {
+        List<MedioPagoDetailDTO> list = new ArrayList<>();
+        for (MedioPagoEntity entity : entityList) 
+        {
+            list.add(new MedioPagoDetailDTO(entity));
+        }
+        return list;
+    } 
+    
     /**
      * Obtiene el listado de MedioPagos.
      * @return lista de MedioPagos
      * @throws CityLogicException excepción retornada por la lógica
      */
     @GET
-    public List<MedioPagoDTO> getMedioPagos() throws CityLogicException {
-        return MedioPagoLogic.getMedioPagos();
+    public List<MedioPagoDetailDTO> getMedioPagos() throws CityLogicException 
+    {
+        return listEntity2DTO(medioPagoLogic.getMedioPagos());
     }
 
    
     /**
      * Agrega una MedioPago
-     * @param MedioPago  MedioPago  a agregar
+     * @param pMedioPago  MedioPago  a agregar
      * @return datos del MedioPago  a agregar
      * @throws CityLogicException cuando ya existe un MedioPago con el id
      * suministrado
      */
     @POST
-    public MedioPagoDTO  createMedioPago( MedioPagoDTO  MedioPago) throws CityLogicException {
-        return MedioPagoLogic.createMedioPago(MedioPago);
+     public MedioPagoDTO createAlquiler(MedioPagoDetailDTO pMedioPago) throws CityLogicException, Exception 
+    {
+        return new MedioPagoDetailDTO(medioPagoLogic.createMedioPago(pMedioPago.toEntity()));
     }
     
     /**
@@ -58,8 +74,9 @@ public class MedioPagoResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public MedioPagoDTO  getMedioPago( @PathParam("id") Long id) throws CityLogicException {
-        return MedioPagoLogic.getMedioPago(id); 
+    public MedioPagoDetailDTO  getMedioPago( @PathParam("id") Long id) throws CityLogicException 
+    {
+        return new MedioPagoDetailDTO( medioPagoLogic.getMedioPago(id));
     }
 
     /**
@@ -69,8 +86,9 @@ public class MedioPagoResource {
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void  deleteMedioPago( @PathParam("id") Long id) throws CityLogicException {
-        MedioPagoLogic.deleteMedioPago(id);
+    public void  deleteMedioPago( @PathParam("id") Long id) throws CityLogicException 
+    {
+       medioPagoLogic.deleteMedioPago(id);
     }
 
     /**
@@ -81,8 +99,10 @@ public class MedioPagoResource {
      * @throws CityLogicException si el MedioPago con el id dado no existe.
      */
     @PUT
-    @Path("{id: \\d+}")
-    public MedioPagoDTO updateMedioPago(@PathParam("id") Long id, MedioPagoDTO newMedioPago) throws CityLogicException{
-        return MedioPagoLogic.updateMedioPago(id, newMedioPago);
+    public MedioPagoDetailDTO updateAlquiler(@PathParam("id") Long id,  MedioPagoDetailDTO nueva) throws CityLogicException
+    {
+        MedioPagoEntity entity = nueva.toEntity();
+        entity.setId(id);
+        return new MedioPagoDetailDTO(medioPagoLogic.updateMedioPago(entity));
     }
 }
