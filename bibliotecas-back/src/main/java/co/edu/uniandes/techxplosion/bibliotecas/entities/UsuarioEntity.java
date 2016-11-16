@@ -10,18 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
-import co.edu.uniandes.techxplosion.bibliotecas.entities.AlquilerEntity;
-import co.edu.uniandes.techxplosion.bibliotecas.entities.ReservaEntity;
 
 /**
  *
  * @author jm.rodriguez11
  */
 @Entity
-public class UsuarioEntity extends BaseEntity implements Serializable{
+public class UsuarioEntity extends BaseEntity implements Serializable
+{
     
    @PodamExclude 
    @OneToMany(mappedBy="usuario",cascade=CascadeType.ALL,orphanRemoval=true)
@@ -40,10 +38,13 @@ public class UsuarioEntity extends BaseEntity implements Serializable{
    private String address;
   
    
-   public String getName(){
+   @Override
+   public String getName()
+   {
        return nombre;
    }
-   public void setNombre(String nombre){
+   public void setNombre(String nombre)
+   {
        this.nombre=nombre;
    }
 

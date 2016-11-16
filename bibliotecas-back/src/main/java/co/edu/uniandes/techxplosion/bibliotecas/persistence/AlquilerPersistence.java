@@ -15,9 +15,14 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+/**
+ *
+ * @author sa.pardo10
+ */
 
 @Stateless
-public class AlquilerPersistence {
+public class AlquilerPersistence 
+{
     
      private static final Logger LOGGER = Logger.getLogger(AlquilerPersistence.class.getName());
 

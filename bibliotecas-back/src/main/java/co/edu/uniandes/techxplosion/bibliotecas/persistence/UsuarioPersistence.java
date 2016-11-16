@@ -22,7 +22,8 @@ import javax.persistence.TypedQuery;
  * @author jm.rodriguez11
  */
 @Stateless
-public class UsuarioPersistence {
+public class UsuarioPersistence 
+{
      private static final Logger LOGGER = Logger.getLogger(ReservaPersistence.class.getName());
     
     @PersistenceContext(unitName = "TechxplosionPU")
