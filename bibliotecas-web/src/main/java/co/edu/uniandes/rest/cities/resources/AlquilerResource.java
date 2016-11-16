@@ -42,9 +42,9 @@ public class AlquilerResource
     } 
     
     /**
-     * Obtiene el listado de ciudades.
+     * Obtiene el listado de alquileres.
      *
-     * @return lista de ciudades
+     * @return lista de alquileres
      * @throws CityLogicException excepción retornada por la lógica
      */
     @GET
@@ -55,17 +55,17 @@ public class AlquilerResource
 
    
     /**
-     * Agrega una ciudad
+     * Agrega un alquiler
      *
-     * @param city ciudad a agregar
-     * @return datos de la ciudad a agregar
+     * @param pAlquiler alquiler a agregar
+     * @return datos del alquiler a agregar
      * @throws CityLogicException cuando ya existe una ciudad con el id
      * suministrado
      */
     @POST
-    public AlquilerDTO createAlquiler(AlquilerDetailDTO alquiler) throws CityLogicException, Exception 
+    public AlquilerDTO createAlquiler(AlquilerDetailDTO pAlquiler) throws CityLogicException, Exception 
     {
-        return new AlquilerDetailDTO(alquilerLogic.createAlquiler(alquiler.toEntity()));
+        return new AlquilerDetailDTO(alquilerLogic.createAlquiler(pAlquiler.toEntity()));
     }
     
     /**
