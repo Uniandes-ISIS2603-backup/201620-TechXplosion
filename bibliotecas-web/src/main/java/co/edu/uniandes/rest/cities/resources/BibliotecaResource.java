@@ -4,12 +4,10 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.rest.cities.resources;
-import co.edu.uniandes.rest.cities.dtos.AlquilerDetailDTO;
 import co.edu.uniandes.rest.cities.dtos.BibliotecaDTO;
 import co.edu.uniandes.rest.cities.dtos.BibliotecaDetailDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 import co.edu.uniandes.techxplosion.bibliotecas.api.IBibliotecaLogic;
-import co.edu.uniandes.techxplosion.bibliotecas.entities.AlquilerEntity;
 import co.edu.uniandes.techxplosion.bibliotecas.entities.BibliotecaEntity;
 import java.util.ArrayList;
 
