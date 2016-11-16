@@ -6,7 +6,6 @@
 package co.edu.uniandes.rest.cities.resources;
 
 import co.edu.uniandes.rest.cities.dtos.VideoDetailDTO;
-import co.edu.uniandes.techxplosion.bibliotecas.entities.AlquilerEntity;
 import co.edu.uniandes.rest.cities.dtos.VideoDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 import co.edu.uniandes.techxplosion.bibliotecas.api.IVideoLogic;
