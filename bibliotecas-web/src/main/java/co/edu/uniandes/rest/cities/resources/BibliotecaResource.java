@@ -6,8 +6,6 @@
 package co.edu.uniandes.rest.cities.resources;
 import co.edu.uniandes.rest.cities.dtos.BibliotecaDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
-import co.edu.uniandes.rest.cities.mocks.BibliotecaMock;
-
 
 import java.util.List;
 import javax.ws.rs.DELETE;
