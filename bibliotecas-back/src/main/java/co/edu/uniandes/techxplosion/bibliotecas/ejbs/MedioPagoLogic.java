@@ -22,7 +22,7 @@ public class MedioPagoLogic implements IMedioPagoLogic
     private MedioPagoPersistence persistence;
 
     @Override
-    public List<MedioPagoEntity> getMedioPago() 
+    public List<MedioPagoEntity> getMedioPagos() 
     {
         return persistence.findAll();
     }

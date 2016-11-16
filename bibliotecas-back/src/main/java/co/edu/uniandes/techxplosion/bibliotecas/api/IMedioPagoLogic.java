@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface IMedioPagoLogic 
 {
-    public List<MedioPagoEntity> getMedioPago();
+    public List<MedioPagoEntity> getMedioPagos();
     public MedioPagoEntity getMedioPago(Long id);
     public MedioPagoEntity createMedioPago(MedioPagoEntity entity) throws Exception;
     public MedioPagoEntity updateMedioPago(MedioPagoEntity entity);
