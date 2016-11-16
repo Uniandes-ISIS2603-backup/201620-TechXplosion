@@ -5,14 +5,11 @@
  */
 package co.edu.uniandes.rest.cities.resources;
 
-import co.edu.uniandes.rest.cities.api.IAlquilerLogic;
-import co.edu.uniandes.rest.cities.api.IVideoLogic;
-import co.edu.uniandes.rest.cities.dtos.AlquilerDetailDTO;
-import co.edu.uniandes.rest.cities.dtos.VideoDTO;
 import co.edu.uniandes.rest.cities.dtos.VideoDetailDTO;
 import co.edu.uniandes.techxplosion.bibliotecas.entities.AlquilerEntity;
 import co.edu.uniandes.rest.cities.dtos.VideoDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
+import co.edu.uniandes.techxplosion.bibliotecas.api.IVideoLogic;
 import co.edu.uniandes.techxplosion.bibliotecas.entities.VideoEntity;
 import java.util.ArrayList;
 import java.util.List;

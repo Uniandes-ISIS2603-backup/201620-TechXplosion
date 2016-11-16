@@ -5,11 +5,12 @@
  */
 package co.edu.uniandes.rest.cities.resources;
 
-import co.edu.uniandes.rest.cities.api.IAlquilerLogic;
+
 import co.edu.uniandes.rest.cities.dtos.AlquilerDTO;
 import co.edu.uniandes.rest.cities.dtos.AlquilerDetailDTO;
 import co.edu.uniandes.techxplosion.bibliotecas.entities.AlquilerEntity;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
+import co.edu.uniandes.techxplosion.bibliotecas.api.IAlquilerLogic;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
