@@ -65,7 +65,7 @@ public class UsuarioLogicTest {
     
     private void clearData()
     {
-        em.createQuery("delete from ReservaEntity").executeUpdate();
+        em.createQuery("delete from UsuarioEntity").executeUpdate();
     }
     
     private void insertData()

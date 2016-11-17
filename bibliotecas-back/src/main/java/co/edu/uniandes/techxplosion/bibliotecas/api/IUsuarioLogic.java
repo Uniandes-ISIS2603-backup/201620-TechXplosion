@@ -24,6 +24,7 @@ public interface IUsuarioLogic
     public List<AlquilerEntity> getAlquileres(Long usuarioId);
     public List<ReservaEntity> getReservas(Long usuarioId);
     public UsuarioEntity getUsuario(Long usuarioId);
+    public List<UsuarioEntity> getUsuarios();
     public UsuarioEntity createUsuario(UsuarioEntity entity) throws Exception;
     
     public UsuarioEntity updateUsuario(UsuarioEntity entity) ;
