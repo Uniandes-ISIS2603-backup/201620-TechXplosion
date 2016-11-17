@@ -49,6 +49,7 @@ public class AlquilerDTO {
     /**
      * Constructor de la clase
      *
+     * @param entity
      */
     public AlquilerDTO(AlquilerEntity entity) 
     {
@@ -113,8 +114,8 @@ public class AlquilerDTO {
      *
      * @param pIdUsuario nuevo id del usuario
      */
-    public void setUsuario(Long pUsuario) {
-        idUsuario = pUsuario;
+    public void setUsuario(Long pIdUsuario) {
+        idUsuario = pIdUsuario;
     }
 
    public Long getLibro() {
