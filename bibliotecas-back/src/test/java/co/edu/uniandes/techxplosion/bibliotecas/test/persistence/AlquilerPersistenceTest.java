@@ -9,22 +9,18 @@ import co.edu.uniandes.techxplosion.bibliotecas.entities.AlquilerEntity;
 import co.edu.uniandes.techxplosion.bibliotecas.persistence.AlquilerPersistence;
 import java.util.ArrayList;
 import java.util.List;
-import javax.ejb.embeddable.EJBContainer;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
@@ -56,7 +52,7 @@ public class AlquilerPersistenceTest {
     @Inject
     UserTransaction utx;
      
-     private List<AlquilerEntity> data = new ArrayList<AlquilerEntity>();
+     private final List<AlquilerEntity> data = new ArrayList<>();
     
     @Before
     public void setUp() 
@@ -71,14 +67,13 @@ public class AlquilerPersistenceTest {
         } 
         catch (Exception e) 
         {
-            e.printStackTrace();
             try 
             {
                 utx.rollback();
             } 
-            catch (Exception e1) 
+            catch (IllegalStateException | SecurityException | SystemException e1) 
             {
-                e1.printStackTrace();
+                System.out.println("co.edu.uniandes.techxplosion.bibliotecas.test.persistence.AlquilerPersistenceTest.setUp() + error");
             }
          }
     }
@@ -101,6 +96,7 @@ public class AlquilerPersistenceTest {
 
     /**
      * Test of find method, of class AlquilerPersistence.
+     * @throws java.lang.Exception
      */
     @Test
     public void testFind() throws Exception {
@@ -116,6 +112,7 @@ public class AlquilerPersistenceTest {
 
     /**
      * Test of findByName method, of class AlquilerPersistence.
+     * @throws java.lang.Exception
      */
     @Test
     public void testFindByName() throws Exception {
@@ -131,6 +128,7 @@ public class AlquilerPersistenceTest {
 
     /**
      * Test of findAll method, of class AlquilerPersistence.
+     * @throws java.lang.Exception
      */
     @Test
     public void testFindAll() throws Exception 
@@ -153,6 +151,7 @@ public class AlquilerPersistenceTest {
 
     /**
      * Test of create method, of class AlquilerPersistence.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCreate() throws Exception {
@@ -171,6 +170,7 @@ public class AlquilerPersistenceTest {
 
     /**
 ;     * Test of update method, of class AlquilerPersistence.
+     * @throws java.lang.Exception
      */
     @Test
     public void testUpdate() throws Exception {
@@ -194,6 +194,7 @@ public class AlquilerPersistenceTest {
 
     /**
      * Test of delete method, of class AlquilerPersistence.
+     * @throws java.lang.Exception
      */
     @Test
     public void testDelete() throws Exception {

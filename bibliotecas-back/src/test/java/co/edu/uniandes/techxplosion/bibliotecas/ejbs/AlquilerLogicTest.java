@@ -14,9 +14,6 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
-import javax.transaction.NotSupportedException;
-import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 import org.junit.Assert;
@@ -49,7 +46,7 @@ public class AlquilerLogicTest
     @Inject
     private UserTransaction utx;
     
-    private List<AlquilerEntity> data = new ArrayList<AlquilerEntity>();
+    private final List<AlquilerEntity> data = new ArrayList<>();
     
     @Deployment
     public static JavaArchive createDeployment() 
@@ -86,12 +83,16 @@ public class AlquilerLogicTest
             clearData();
             insertData();
             utx.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            try {
+        } 
+        catch (Exception e) 
+        {
+            try 
+            {
                 utx.rollback();
-            } catch (Exception e1) {
-                e1.printStackTrace();
+            } 
+            catch (IllegalStateException | SecurityException | SystemException e1) 
+            {
+                System.err.println(e.getMessage());
             }
         }
     }
@@ -143,6 +144,7 @@ public class AlquilerLogicTest
 
     /**
      * Test of createAlquiler method, of class AlquilerLogic.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCreateAlquiler() throws Exception 
