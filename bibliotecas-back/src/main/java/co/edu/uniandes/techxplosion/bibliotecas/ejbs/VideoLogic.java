@@ -47,7 +47,7 @@ public class VideoLogic implements IVideoLogic
          VideoEntity alreadyExist = getVideo(entity.getId());
         if (alreadyExist != null) 
         {
-            throw new Exception("Ya existe un videos con ese id");
+            throw new Exception("Ya existe un video con ese id");
         } else
         {
             persistence.create(entity);

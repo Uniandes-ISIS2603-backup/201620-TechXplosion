@@ -38,10 +38,15 @@ public class UsuarioLogic implements IUsuarioLogic
     {
         return persistence.findAllByUser(usuarioId);
     }
-
+    @Override
     public UsuarioEntity getUsuario(Long usuarioId)
     {
         return persistence.find(usuarioId);
+    }
+    @Override
+    public List getUsuarios()
+    {
+        return persistence.findAll();
     }
 
     @Override
@@ -68,6 +73,7 @@ public class UsuarioLogic implements IUsuarioLogic
     {
         persistence.delete(id);
     }
+    @Override
     public List<MedioPagoEntity> getMedioPago()
     {
         List<MedioPagoEntity> ab ;
