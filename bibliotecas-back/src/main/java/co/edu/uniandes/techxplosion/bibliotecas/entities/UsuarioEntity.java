@@ -33,20 +33,8 @@ public class UsuarioEntity extends BaseEntity implements Serializable
    @OneToMany(mappedBy="usuario",cascade=CascadeType.ALL,orphanRemoval=true)
    private List<MedioPagoEntity>mediosDePago=new ArrayList();
    
-    
-   private String nombre;
    private String address;
-  
-   
-   @Override
-   public String getName()
-   {
-       return nombre;
-   }
-   public void setNombre(String nombre)
-   {
-       this.nombre=nombre;
-   }
+ 
 
    public String getAddress(){
        return address;

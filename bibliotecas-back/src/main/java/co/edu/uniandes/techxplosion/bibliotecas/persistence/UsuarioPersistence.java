@@ -57,7 +57,9 @@ public class UsuarioPersistence
   
     
 
-    public UsuarioEntity create(UsuarioEntity entity) {
+    public UsuarioEntity create(UsuarioEntity entity)
+    {
+        
         LOGGER.info("Creando un usuario nuevo");
         em.persist(entity);
         LOGGER.info("Usuario creado");
