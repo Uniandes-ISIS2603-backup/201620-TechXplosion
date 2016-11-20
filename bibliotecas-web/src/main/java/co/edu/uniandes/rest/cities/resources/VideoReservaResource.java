@@ -57,7 +57,7 @@ public class VideoReservaResource {
     * Retorna una lista de reservas asociadas a un video dado.
     * @param idVideo El id del libro del cual se desean obtener las reservas.
     * @return La lista de reservas que se deseaba obtener.
-    * @throws CityLogicException 
+    * @throws CityLogicException cuando no se puede
     */
     @GET
     public List<ReservaDetailDTO> getReservaPorVideo(@PathParam("idVideo")Long idVideo) throws CityLogicException 
@@ -67,7 +67,7 @@ public class VideoReservaResource {
     
     /**
      * Actualiza una instancia de la entidad Reserva.
-     * @param idVideo
+     * @param idVideo id del video
      * @param id Id de la instancia que se quiere actualizar.
      * @param reservaMod La instancia de Reserva actualizada.
      * @return La instancia de Reserva actualizada.
@@ -85,7 +85,7 @@ public class VideoReservaResource {
     /**
      * Elimina los datos de una reserva
      *
-     * @param idVideo
+     * @param idVideo id del video
      * @param id identificador de la reserva a eliminar
      * @throws CityLogicException cuando no existe una reserva con el id dado.
      */

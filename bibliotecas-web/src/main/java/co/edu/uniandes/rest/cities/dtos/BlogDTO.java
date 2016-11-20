@@ -34,8 +34,8 @@ public class BlogDTO {
      *
      * @param id identificador del blog
      * @param name nombre de la Biblioteca
-     * @param descripcion
-     * @param comentarios
+     * @param descripcion descripcion
+     * @param comentarios comentarios
      */
     public BlogDTO(Long id, String name, String descripcion, String comentarios) {
         super();
@@ -71,7 +71,7 @@ public class BlogDTO {
     }
 
     /**
-     * @param id
+     * @param id id
      */
     public void setId(Long id) {
         this.id = id;

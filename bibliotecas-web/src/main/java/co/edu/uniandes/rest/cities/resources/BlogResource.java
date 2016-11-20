@@ -41,6 +41,7 @@ public class BlogResource {
     } 
     /**
      * Obtiene el listado de Blogs.
+     * @param id id
      * @return lista de blogs
      * @throws CityLogicException excepción retornada por la lógica
      */

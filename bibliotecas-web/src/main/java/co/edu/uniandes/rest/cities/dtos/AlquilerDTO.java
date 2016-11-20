@@ -49,7 +49,7 @@ public class AlquilerDTO {
     /**
      * Constructor de la clase
      *
-     * @param entity
+     * @param entity entidad
      */
     public AlquilerDTO(AlquilerEntity entity) 
     {
@@ -191,7 +191,7 @@ public class AlquilerDTO {
 
     /**
      * Retorna un string representando el objeto
-     * @return 
+     * @return string de la clase
      */
     @Override
     public String toString() {

@@ -95,7 +95,7 @@ public class LibroDTO {
     }
 
     /**
-     * @param nombre
+     * @param nombre nombre de la clase
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -123,7 +123,7 @@ public class LibroDTO {
     }
 
     /**
-     * @param edicion
+     * @param edicion edicion del libro
      */
     public void setEdicion(int edicion) {
         this.edicion = edicion;

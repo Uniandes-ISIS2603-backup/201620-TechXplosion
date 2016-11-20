@@ -94,7 +94,7 @@ public class MedioPagoResource
     /**
      * Actualiza la información del MedioPago identificado con el id.
      * @param id identificador asociado al MedioPago a actualizar
-     * @param newMedioPago objeto con la nueva información del MedioPago
+     * @param nueva objeto con la nueva información del MedioPago
      * @return el MedioPago identificado con el id.
      * @throws CityLogicException si el MedioPago con el id dado no existe.
      */

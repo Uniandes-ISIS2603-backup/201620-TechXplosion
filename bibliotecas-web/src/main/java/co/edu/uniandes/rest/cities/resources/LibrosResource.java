@@ -6,12 +6,9 @@
 package co.edu.uniandes.rest.cities.resources;
 import co.edu.uniandes.rest.cities.dtos.LibroDTO;
 import co.edu.uniandes.rest.cities.dtos.LibroDetailDTO;
-import co.edu.uniandes.rest.cities.dtos.VideoDetailDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 import co.edu.uniandes.techxplosion.bibliotecas.api.ILibroLogic;
-import co.edu.uniandes.techxplosion.bibliotecas.ejbs.LibroLogic;
 import co.edu.uniandes.techxplosion.bibliotecas.entities.LibroEntity;
-import co.edu.uniandes.techxplosion.bibliotecas.entities.VideoEntity;
 import java.util.ArrayList;
 
 
@@ -71,10 +68,10 @@ public class LibrosResource {
         return new LibroDetailDTO (libroLogic.createLibro(libro.toEntity()));
     }
     /**
-     * obtiene la infomacion del libro identificado con el isbn.
-     * @param isbn del libro a buscar.
-     * @return el libro identificada con el isbn.
-     * @throws CityLogicException cunado no existe un libro con ese isbn.
+     * obtiene la infomacion del libro identificado con el id.
+     * @param id del libro a buscar.
+     * @return el libro identificada con el id.
+     * @throws CityLogicException cunado no existe un libro con ese id.
      */
     @GET
     @Path("{id: \\d+}")
@@ -82,9 +79,9 @@ public class LibrosResource {
         return new LibroDetailDTO(libroLogic.getLibro(id));
     }
      /**
-     * elimina el libro identificada con el isbn.
-     * @param isbn identificador del libro a eliminar.
-     * @throws CityLogicException si el libro no identificado con ese isbn no existe.
+     * elimina el libro identificada con el id.
+     * @param id identificador del libro a eliminar.
+     * @throws CityLogicException si el libro no identificado con ese id no existe.
      */
     @DELETE
     @Path("{id: \\d+}")
@@ -93,11 +90,11 @@ public class LibrosResource {
     }
 
     /**
-     * Actualiza la información del libro identificada con el isbn.
-     * @param isbn identificador asociado al libro a actualizar
+     * Actualiza la información del libro identificada con el id.
+     * @param id identificador asociado al libro a actualizar
      * @param newLibro objeto con la nueva información del libro
-     * @return el libro identificado con el isbn.
-     * @throws CityLogicException si el libro con el isbn dado no existe.
+     * @return el libro identificado con el id.
+     * @throws CityLogicException si el libro con el id dado no existe.
      */
     @PUT
     @Path("{id: \\d+}")

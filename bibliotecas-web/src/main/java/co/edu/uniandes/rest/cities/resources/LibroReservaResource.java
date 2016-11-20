@@ -50,9 +50,9 @@ public class LibroReservaResource {
 
     /**
     * Retorna una lista de reservas asociadas a un libro dado.
-    * @param id El id del libro del cual se desean obtener las reservas.
+    * @param idLibro El id del libro del cual se desean obtener las reservas.
     * @return La lista de reservas que se deseaba obtener.
-    * @throws CityLogicException 
+    * @throws CityLogicException cuando no se puede
     */
     @GET
     public List<ReservaDetailDTO> getReservaPorLibro(@PathParam("idLibro")Long idLibro) throws CityLogicException 
@@ -63,6 +63,7 @@ public class LibroReservaResource {
     /**
      * Actualiza una instancia de la entidad Reserva.
      * @param id Id de la instancia que se quiere actualizar.
+     * @param idLibro id del libro
      * @param reservaMod La instancia de Reserva actualizada.
      * @return La instancia de Reserva actualizada.
      * @throws CityLogicException Si la lista de reservas es vacía, si no hay una reserva con el id dado o si el path y el id de la reserva no coinciden.
@@ -78,7 +79,7 @@ public class LibroReservaResource {
 
     /**
      * Elimina los datos de una reserva
-     *
+     * @param idLibro id del libro
      * @param id identificador de la reserva a eliminar
      * @throws CityLogicException cuando no existe un libro con el id dado
      */

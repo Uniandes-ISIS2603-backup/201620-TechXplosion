@@ -52,7 +52,7 @@ public class ReservaResource {
     /**
      * Obtiene el listado de reservas
      * @return Lista de reservas
-     * @throws CityLogicException 
+     * @throws CityLogicException cuando no se puede
      */
     @GET
     public List<ReservaDetailDTO> getReservas() throws CityLogicException

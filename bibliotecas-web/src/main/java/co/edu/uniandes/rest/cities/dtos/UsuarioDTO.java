@@ -23,8 +23,8 @@ public class UsuarioDTO
     private String nombre;    
     /**
      * Constructor de la clase
-     * @param pId
-     * @param pNombre
+     * @param pId id
+     * @param pNombre nombre
      */
     public UsuarioDTO(Long pId, String pNombre)
     {
@@ -35,7 +35,7 @@ public class UsuarioDTO
      /**
      * Constructor de la clase
      
-     * @param entity
+     * @param entity entidad
      */
     public UsuarioDTO(UsuarioEntity entity)
     {
@@ -48,8 +48,7 @@ public class UsuarioDTO
     
      /**
      * To entity
-     
-     
+     * @return entidad
      */
     public UsuarioEntity toEntity()
     {
@@ -99,8 +98,7 @@ public class UsuarioDTO
     
         /**
      * pone el nombre del usuario
-     *  @param n
-     * 
+     *  @param n nombre
      */
     public void setName(String n)
     {
@@ -108,7 +106,7 @@ public class UsuarioDTO
     }    
     /**
      * Retorna un string representando el objeto
-     * @return 
+     * @return string de la clase
      */
     @Override
     public String toString()

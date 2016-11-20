@@ -89,7 +89,7 @@ public class MedioPagoDTO {
     /**
      * metodo para actualizar el tipoo de medio de pago
      *
-     * @param tipo
+     * @param tipo tipo de medio de pago
      */
     public void setTipo(String tipo) {
         this.tipo = tipo;
@@ -107,7 +107,7 @@ public class MedioPagoDTO {
     /**
      * metodo para actualizar el numero del medio de pago
      *
-     * @param numero
+     * @param numero numero de identifiacion del medio de pago
      */
     public void setNumero(int numero) {
         this.numero = numero;
@@ -125,7 +125,7 @@ public class MedioPagoDTO {
     /**
      * metodo para actualizar el numero de seguridad del medio de pago
      *
-     * @param numeroSeguridad
+     * @param numeroSeguridad codigo de seguridad
      */
     public void setNumeroSeguridad(int numeroSeguridad) {
         this.numeroSeguridad = numeroSeguridad;
