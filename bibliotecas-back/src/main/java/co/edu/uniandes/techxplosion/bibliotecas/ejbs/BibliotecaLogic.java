@@ -12,6 +12,7 @@ import co.edu.uniandes.techxplosion.bibliotecas.persistence.BibliotecaPersistenc
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -40,7 +41,10 @@ public class BibliotecaLogic implements IBibliotecaLogic
     @Override
     public BibliotecaEntity createBiblioteca(BibliotecaEntity entity) 
     {
-        
+            if(getBibliotecaByName(entity.getName())!=null){
+                throw new WebApplicationException("No se puede crear una biblioteca con un nombre que ya existe");
+            }
+            
             persistence.create(entity);
         
         return entity;

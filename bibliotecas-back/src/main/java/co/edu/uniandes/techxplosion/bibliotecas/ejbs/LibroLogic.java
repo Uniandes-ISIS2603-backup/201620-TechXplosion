@@ -43,13 +43,13 @@ public class LibroLogic implements ILibroLogic
     @Override
     public LibroEntity createLibro(LibroEntity entity) throws Exception 
     {       
-       LibroEntity alreadyExist = getLibro(entity.getId());
-        if (alreadyExist != null) {
-            throw new Exception("Ya existe un libro con ese id");
-        } else
-        {
+       //LibroEntity alreadyExist = getLibro(entity.getId());
+       // if (alreadyExist != null) {
+         //   throw new Exception("Ya existe un libro con ese id");
+        //} else
+       // {
             persistence.create(entity);
-        }
+       // }
         return entity; 
     }
 
