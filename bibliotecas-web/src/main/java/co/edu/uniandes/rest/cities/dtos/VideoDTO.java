@@ -32,7 +32,7 @@ public class VideoDTO {
     private String name;
 
     /**
-     * Atributo que modela el id de un libro.
+     * Atributo que modela el id de un video.
      */
     private Long id;
 

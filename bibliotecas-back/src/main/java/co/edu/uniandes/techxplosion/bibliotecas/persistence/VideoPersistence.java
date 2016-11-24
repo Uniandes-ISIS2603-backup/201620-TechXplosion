@@ -37,14 +37,14 @@ public class VideoPersistence {
         return p.getSingleResult();
     }
     public List<VideoEntity> findAll(){
-      LOGGER.info("Consulatndo todas los videos");
+      LOGGER.info("Consultando todos los videos");
       Query q = em.createQuery("select u from VideoEntity u");
       return q.getResultList();
     }
     public VideoEntity create(VideoEntity entity){
-        LOGGER.info("Creando una video nueva");
+        LOGGER.info("Creando un video nueva");
         em.persist(entity);
-        LOGGER.info("Video creada");
+        LOGGER.info("Video creado");
         return entity;
     }
     public VideoEntity update(VideoEntity entity){
