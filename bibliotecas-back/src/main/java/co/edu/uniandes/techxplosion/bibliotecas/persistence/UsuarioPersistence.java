@@ -31,7 +31,9 @@ public class UsuarioPersistence
     
     public UsuarioEntity find(Long id) {
         LOGGER.log(Level.INFO, "Consultando usuario con id={0}", id);
-        return em.find(UsuarioEntity.class, id);
+        UsuarioEntity us =  em.find(UsuarioEntity.class, id);
+        LOGGER.log(Level.INFO, us.toString());
+        return us;
     }
     
      public List<UsuarioEntity> findAll() {

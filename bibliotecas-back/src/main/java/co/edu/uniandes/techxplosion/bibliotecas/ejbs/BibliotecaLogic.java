@@ -64,7 +64,7 @@ public class BibliotecaLogic implements IBibliotecaLogic
 
     @Override
     public BibliotecaEntity getBibliotecaByName(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return persistence.findByName(name);
     }
 
     @Override

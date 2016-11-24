@@ -7,8 +7,9 @@
      
             $stateProvider.state('medioList', {
                 url: '/medios',
+                parent:'usuarioEdit',
                 views: {
-                    'mainView': {
+                    'usuarioInstanceView': {
                         controller: 'medioCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + "medio.list.html"
@@ -16,8 +17,9 @@
                 }
             }).state('medioCreate', {
                 url: '/medios/create',
+                parent:'usuarioEdit',
                 views: {
-                    'mainView': {
+                    'usuarioInstanceView': {
                         controller: 'medioCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'medio.create.html'
@@ -29,8 +31,9 @@
                 param: {
                     medioId: null
                 },
+                parent:'usuarioEdit',
                 views: {
-                    'mainView': {
+                    'usuarioInstanceView': {
                         controller: 'medioCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'medio.create.html'

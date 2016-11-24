@@ -6,6 +6,7 @@
 package co.edu.uniandes.techxplosion.bibliotecas.ejbs;
 
 import co.edu.uniandes.techxplosion.bibliotecas.api.IMedioPagoLogic;
+import co.edu.uniandes.techxplosion.bibliotecas.api.IUsuarioLogic;
 import co.edu.uniandes.techxplosion.bibliotecas.entities.BibliotecaEntity;
 import co.edu.uniandes.techxplosion.bibliotecas.entities.MedioPagoEntity;
 import co.edu.uniandes.techxplosion.bibliotecas.persistence.MedioPagoPersistence;
@@ -20,6 +21,8 @@ public class MedioPagoLogic implements IMedioPagoLogic
 {
     @Inject
     private MedioPagoPersistence persistence;
+     @Inject
+    private IUsuarioLogic usuarioLogic;
 
     @Override
     public List<MedioPagoEntity> getMedioPagos() 
@@ -32,9 +35,22 @@ public class MedioPagoLogic implements IMedioPagoLogic
     {
         return persistence.find(id);
     }
-
+    @Override 
+    public MedioPagoEntity createMedioPago(MedioPagoEntity entity)throws Exception{
+        MedioPagoEntity alreadyExist = getMedioPago(entity.getId());
+        if (alreadyExist != null) 
+        {
+            throw new Exception("Ya existe un MedioPago con ese id");
+        } 
+        else
+        {
+           
+            persistence.create(entity);
+        }
+        return entity;
+    }
     @Override
-    public MedioPagoEntity createMedioPago(MedioPagoEntity entity) throws Exception 
+    public MedioPagoEntity createMedioPago(MedioPagoEntity entity,Long usuario) throws Exception 
     {
         MedioPagoEntity alreadyExist = getMedioPago(entity.getId());
         if (alreadyExist != null) 
@@ -43,6 +59,7 @@ public class MedioPagoLogic implements IMedioPagoLogic
         } 
         else
         {
+            entity.setUsuario(usuarioLogic.getUsuario(usuario));
             persistence.create(entity);
         }
         return entity;

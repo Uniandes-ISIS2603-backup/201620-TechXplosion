@@ -8,6 +8,7 @@ import co.edu.uniandes.rest.cities.dtos.MedioPagoDTO;
 import co.edu.uniandes.rest.cities.dtos.MedioPagoDetailDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
 import co.edu.uniandes.techxplosion.bibliotecas.api.IMedioPagoLogic;
+import co.edu.uniandes.techxplosion.bibliotecas.api.IUsuarioLogic;
 import co.edu.uniandes.techxplosion.bibliotecas.entities.MedioPagoEntity;
 import java.util.ArrayList;
 
@@ -24,12 +25,16 @@ import javax.ws.rs.Produces;
  * Clase que represnta el recurso MedioPago, que cumple con la arquitectura REST de la aplicación
  * @author js.sosa10
  */
-@Path("medioPagos")
+@Path("/usuarios/{usuarioId: \\d+}/mediosPagos")
 @Produces("application/json")
 public class MedioPagoResource 
 {
     @Inject
     private IMedioPagoLogic medioPagoLogic;
+    @Inject 
+    private IUsuarioLogic usuarioLogic;
+     @PathParam("usuarioId")
+    private Long usuarioId;
     
     private List<MedioPagoDetailDTO> listEntity2DTO(List<MedioPagoEntity> entityList) 
     {
@@ -61,9 +66,9 @@ public class MedioPagoResource
      * suministrado
      */
     @POST
-     public MedioPagoDTO createAlquiler(MedioPagoDetailDTO pMedioPago) throws CityLogicException, Exception 
+     public MedioPagoDTO createMedioPago(MedioPagoDetailDTO pMedioPago) throws CityLogicException, Exception 
     {
-        return new MedioPagoDetailDTO(medioPagoLogic.createMedioPago(pMedioPago.toEntity()));
+        return new MedioPagoDetailDTO(medioPagoLogic.createMedioPago(pMedioPago.toEntity(),usuarioId));
     }
     
     /**
@@ -99,7 +104,7 @@ public class MedioPagoResource
      * @throws CityLogicException si el MedioPago con el id dado no existe.
      */
     @PUT
-    public MedioPagoDetailDTO updateAlquiler(@PathParam("id") Long id,  MedioPagoDetailDTO nueva) throws CityLogicException
+    public MedioPagoDetailDTO updateMedioPago(@PathParam("id") Long id,  MedioPagoDetailDTO nueva) throws CityLogicException
     {
         MedioPagoEntity entity = nueva.toEntity();
         entity.setId(id);

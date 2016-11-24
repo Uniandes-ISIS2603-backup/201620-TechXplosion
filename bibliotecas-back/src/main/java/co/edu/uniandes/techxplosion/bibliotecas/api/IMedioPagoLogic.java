@@ -17,6 +17,7 @@ public interface IMedioPagoLogic
     public List<MedioPagoEntity> getMedioPagos();
     public MedioPagoEntity getMedioPago(Long id);
     public MedioPagoEntity createMedioPago(MedioPagoEntity entity) throws Exception;
+    public MedioPagoEntity createMedioPago(MedioPagoEntity entity, Long usuario) throws Exception;
     public MedioPagoEntity updateMedioPago(MedioPagoEntity entity);
     public void deleteMedioPago(Long id);
 }

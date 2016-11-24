@@ -34,7 +34,12 @@ public class BibliotecaPersistence {
         LOGGER.log(Level.INFO, "Consultando Biblioteca con nombre = {0}", name);
         TypedQuery<BibliotecaEntity> p = em.createQuery("select u from BibliotecaEntity u where u.name = :name", BibliotecaEntity.class);
         p = p.setParameter("name", name);
-        return p.getSingleResult();
+         List<BibliotecaEntity> bibliotecasSimilarName = p.getResultList();
+        if (bibliotecasSimilarName.isEmpty() ) {
+            return null; 
+        } else {
+            return bibliotecasSimilarName.get(0);
+        }
     }
     public List<BibliotecaEntity> findAll(){
       LOGGER.info("Consulatndo todas las bibliotecas");
