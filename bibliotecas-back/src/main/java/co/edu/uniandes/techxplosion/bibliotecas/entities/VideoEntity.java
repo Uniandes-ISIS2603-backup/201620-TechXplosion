@@ -63,6 +63,11 @@ public class VideoEntity extends BaseEntity implements Serializable
        return alquileres;
    }
    
+   public void setBibliotecas(BibliotecaEntity biblioteca)
+   {
+       this.biblioteca = biblioteca;
+   }
+   
    public String getNombre()
    {
        return nombre;
@@ -82,7 +87,7 @@ public class VideoEntity extends BaseEntity implements Serializable
    {
        this.nombre = nombre;
    }
-    
+
      public void setDuracion(Double duracion)
    {
        this.duracion = duracion;

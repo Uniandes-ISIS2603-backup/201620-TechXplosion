@@ -44,11 +44,11 @@ public class VideoLogic implements IVideoLogic
     @Override
     public VideoEntity createVideo(VideoEntity entity) throws Exception 
     {
-         VideoEntity alreadyExist = getVideo(entity.getId());
-        if (alreadyExist != null) 
-        {
-            throw new Exception("Ya existe un video con ese id");
-        } else
+//         VideoEntity alreadyExist = getVideo(entity.getId());
+//        if (alreadyExist != null) 
+//        {
+//            throw new Exception("Ya existe un video con ese id");
+//        } else
         {
             persistence.create(entity);
         }
