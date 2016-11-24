@@ -154,7 +154,7 @@ public class VideoDTO {
     {
         VideoEntity entity = new VideoEntity();
         entity.setId(this.id);
-        entity.setNombre(this.name);
+        entity.setName(this.name);
         entity.setDuracion(this.duracion);
         entity.setTipo(this.tipo);
         return entity;

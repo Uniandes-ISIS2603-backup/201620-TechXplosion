@@ -31,7 +31,6 @@ public class VideoEntity extends BaseEntity implements Serializable
    @OneToMany(mappedBy="video",cascade=CascadeType.ALL,orphanRemoval=true)
    private List<ReservaEntity>reservas=new ArrayList();
    
-   private String nombre;
    
    private Double duracion;
    
@@ -68,10 +67,6 @@ public class VideoEntity extends BaseEntity implements Serializable
        this.biblioteca = biblioteca;
    }
    
-   public String getNombre()
-   {
-       return nombre;
-   }
    
    public Double getDuracion()
    {
@@ -82,11 +77,7 @@ public class VideoEntity extends BaseEntity implements Serializable
    {
        return tipo;
    }
-   
-    public void setNombre(String nombre)
-   {
-       this.nombre = nombre;
-   }
+
 
      public void setDuracion(Double duracion)
    {
