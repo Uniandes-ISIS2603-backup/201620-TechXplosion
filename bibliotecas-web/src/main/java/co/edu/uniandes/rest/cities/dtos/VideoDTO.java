@@ -29,7 +29,7 @@ public class VideoDTO {
     /**
      * Atributo que modela el nombre de un video.
      */
-    private String nombre;
+    private String name;
 
     /**
      * Atributo que modela el id de un libro.
@@ -61,7 +61,7 @@ public class VideoDTO {
      * @param tipo tipo del video, false si es físico, true si es virtual.
      */
     public VideoDTO(String nombre, Long id, double duracion, String tipo) {
-        this.nombre = nombre;
+        this.name = nombre;
         this.id = id;
         this.duracion = duracion;
         this.tipo = tipo;
@@ -73,7 +73,7 @@ public class VideoDTO {
      * @return nombre del video.
      */
     public String getNombre() {
-        return nombre;
+        return name;
     }
 
     /**
@@ -82,7 +82,7 @@ public class VideoDTO {
      * @param nombre nombre del nuevo video.
      */
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this.name = nombre;
     }
 
     /**
@@ -144,7 +144,7 @@ public class VideoDTO {
         if (entity != null) 
         {
         id = entity.getId();
-        nombre = entity.getName();
+        name = entity.getName();
         duracion = entity.getDuracion();
         tipo = entity.getTipo();
         }
@@ -154,7 +154,7 @@ public class VideoDTO {
     {
         VideoEntity entity = new VideoEntity();
         entity.setId(this.id);
-        entity.setNombre(this.nombre);
+        entity.setNombre(this.name);
         entity.setDuracion(this.duracion);
         entity.setTipo(this.tipo);
         return entity;
