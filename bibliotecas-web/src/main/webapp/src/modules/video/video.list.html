@@ -3,7 +3,6 @@
     <table class="table table-striped" class="col-md-4">
         <thead>
             <tr>
-                <th>Id del video</th>
                 <th>Nombre del video</th>   
                 <th>Duración del video</th>
                 <th>Tipo del video</th> 
@@ -13,7 +12,6 @@
         </thead>
         <tbody>
             <tr ng-repeat="record in records">
-                <td id="{{$index}}-idVideo">{{record.id}}</td>
                 <td id="{{$index}}-nombreVideo">{{record.nombre}}</td>
                 <td id="{{$index}}-duracion">{{record.duracion}}</td>
                  <td id="{{$index}}-tipoVideo">{{record.tipo}}</td>

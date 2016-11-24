@@ -60,8 +60,7 @@ public class VideoDetailDTO extends VideoDTO
         {
             entity.getReservas().add(res.toEntity());
         }
-        entity.setBibliotecas(biblioteca.toEntity());
-        System.out.println(biblioteca + " HOLAAAAAAA");
+        entity.setBibliotecas(entity.getBiblioteca());
        
         return entity;
     }
