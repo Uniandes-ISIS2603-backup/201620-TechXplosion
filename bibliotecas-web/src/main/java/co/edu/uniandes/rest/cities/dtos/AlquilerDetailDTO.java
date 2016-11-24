@@ -38,9 +38,9 @@ public class AlquilerDetailDTO extends AlquilerDTO
     public AlquilerEntity toEntity()
     {
         AlquilerEntity entity = super.toEntity();
-        entity.setLibro(libro.toEntity());
-        entity.setVideo(video.toEntity());
-        entity.setUsuario(usuario.toEntity());
+        entity.setLibro(entity.getLibro());
+        entity.setVideo(entity.getVideo());
+        entity.setUsuario(entity.getUsuario());
         return entity;
     }
     

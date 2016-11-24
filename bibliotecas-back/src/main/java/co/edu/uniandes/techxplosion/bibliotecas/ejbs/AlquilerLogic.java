@@ -39,10 +39,10 @@ public class AlquilerLogic implements IAlquilerLogic
     @Override
     public AlquilerEntity createAlquiler(AlquilerEntity entity) throws Exception 
     {
-        AlquilerEntity alreadyExist = getAlquiler(entity.getId());
-        if (alreadyExist != null) {
-            throw new Exception("Ya existe un alquiler con ese id");
-        } else
+//        AlquilerEntity alreadyExist = getAlquiler(entity.getId());
+//        if (alreadyExist != null) {
+//            throw new Exception("Ya existe un alquiler con ese id");
+//        } else
         {
             persistence.create(entity);
         }
