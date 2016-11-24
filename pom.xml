@@ -27,11 +27,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>org.eclipse.persistence</groupId>
-                <artifactId>org.eclipse.persistence.moxy</artifactId>
-                <version>2.6.1</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
