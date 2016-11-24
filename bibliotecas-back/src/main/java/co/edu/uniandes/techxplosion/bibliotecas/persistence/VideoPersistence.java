@@ -24,7 +24,8 @@ public class VideoPersistence {
     private static final Logger LOGGER = Logger.getLogger(VideoPersistence.class.getName());
     @PersistenceContext(unitName="TechxplosionPU")
     protected EntityManager em;
-    public VideoEntity find(Long id){
+    
+    public VideoEntity find(Long id){ 
         LOGGER.log(Level.INFO,"Consultando Video con id={0}",id);
         return em.find(VideoEntity.class,id);
     }
@@ -42,7 +43,7 @@ public class VideoPersistence {
       return q.getResultList();
     }
     public VideoEntity create(VideoEntity entity){
-        LOGGER.info("Creando un video nueva");
+        LOGGER.info("Creando un video nuevo");
         em.persist(entity);
         LOGGER.info("Video creado");
         return entity;

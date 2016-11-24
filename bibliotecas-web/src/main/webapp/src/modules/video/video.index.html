@@ -18,8 +18,11 @@
                     <input id="duracion" name="duracion" class="form-control" type="text" ng-model="currentRecord.duracion" ng-init="currentRecord.duracion" required />
                 </div>
                   <label for="name" class="col-md-2 control-label">Tipo del video</label>
-                <div class="col-md-12">
-                    <input id="tipo" name="tipo" class="form-control" type="text" ng-model="currentRecord.tipo" ng-init="currentRecord.tipo" required />
+                  <div class="col-md-12">
+                    <select id ="tipo" name="tipo" class="form-control" type="text" ng-model="currentRecord.tipo" ng-init = "currentRecord.tipo" required>
+                        <option value="Virtual">Virtual</option> 
+                        <option value="Físico">Fisico</option> 
+                    </select>
                 </div>
             </div>
            
